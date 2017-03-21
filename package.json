@@ -4,14 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "app:dev" : "nodemon app/server.js",
-    "builder:dev" : "nodemon builder/server.js"
+    "app:dev": "nodemon app/server.js",
+    "render:dev": "nodemon render/server.js"
   },
   "dependencies": {
+    "contentful": "^3.8.1",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
     "koa": "^2.2.0",
     "koa-json": "^2.0.2",
     "koa-router": "next",
-    "mollie-api-node": "^1.3.5"
+    "mollie-api-node": "^1.3.5",
+    "nunjucks": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

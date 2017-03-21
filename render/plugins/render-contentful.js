@@ -43,7 +43,7 @@ module.exports = function (...contextIncludes) {
 
     return through.obj(async (file, encoding, callback) => {
         if(!env) {
-             env = nunjucks.configure(path.dirname(file.path));
+             env = nunjucks.configure(process.env.INPUT_DIR);
         }
 
         if(!ctx) {

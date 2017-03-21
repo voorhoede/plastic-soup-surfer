@@ -5,8 +5,8 @@ const path = require('path');
 
 module.exports = function (...contextIncludes) {
     const client = contentful.createClient({
-        space       : process.env.SPACE,
-        accessToken : process.env.ACCESS_TOKEN
+        space       : process.env.CONTENTFUL_SPACE,
+        accessToken : process.env.CONTENTFUL_ACCESS_TOKEN
     });
 
     function group(items) {

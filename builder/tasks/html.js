@@ -15,7 +15,7 @@ function addJuicerFeed(ctx) {
 }
 
 module.exports = function ({dir}) {
-    return this.src('./templates/*')
+    return this.src(process.env.INPUT_DIR  + '/**/*.html')
         .pipe(renderContentful())
-        .pipe(this.dest('./build'));
+        .pipe(this.dest(process.env.OUTPUT_DIR));
 }

@@ -7,10 +7,12 @@ services:
             - "8080:80"
         links:
             - app:app
+            - contentful_builder:contentful_builder
         env_file: 
             - .env
         depends_on: 
             - app
+            - contentful_builder
         volumes:
             - ./dist:/var/www:ro
             - ./nginx.conf:/etc/nginx/nginx.conf:ro
@@ -26,15 +28,19 @@ services:
         image: node:7.7-alpine
         env_file: 
             - .env
+        environment: 
+            - INPUT_DIR=/usr/src/in
+            - OUTPUT_DIR=/usr/src/out
         volumes:
-            - ./builder:/usr/src/app
-            - ./dist:/usr/src/dist
+            - ./builder:/usr/src/builder
+            - ./dist:/usr/src/out
+            - ./src:/usr/src/in
         volumes_from:
             - node_modules
         depends_on: 
             - node_modules
         working_dir: /usr/src
-        entrypoint: npm run builder:dev
+        entrypoint: npm run server:dev
 
     app:
         image: node:7.7-alpine

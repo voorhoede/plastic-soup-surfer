@@ -1,0 +1,50 @@
+version: "2.0"
+
+services: 
+    server:
+        image: nginx
+        ports:
+            - "8080:80"
+        links:
+            - app:app
+        env_file: 
+            - .env
+        depends_on: 
+            - app
+        volumes:
+            - ./dist:/var/www:ro
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    
+    node_modules:
+        build:
+            dockerfile: Dockerfile.dev
+            context: .
+        volumes:
+            - /usr/src
+
+    contentful_builder:
+        image: node:7.7-alpine
+        env_file: 
+            - .env
+        volumes:
+            - ./builder:/usr/src/app
+            - ./dist:/usr/src/dist
+        volumes_from:
+            - node_modules
+        depends_on: 
+            - node_modules
+        working_dir: /usr/src
+        entrypoint: npm run builder:dev
+
+    app:
+        image: node:7.7-alpine
+        env_file: 
+            - .env
+        volumes:
+            - ./app:/usr/src/app
+        volumes_from:
+            - node_modules
+        depends_on: 
+            - node_modules
+        working_dir: /usr/src
+        entrypoint: npm run app:dev

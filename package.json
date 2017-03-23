@@ -1,23 +1,48 @@
 {
-  "name": "site",
+  "name": "soupsurfer",
+  "author": "Remco",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "app:dev": "nodemon app/server.js",
-    "render:dev": "nodemon render/server.js"
+    "app:dev": "nodemon --watch app app/server.js",
+    "render-webhook:dev": "nodemon --watch render render/server.js",
+    "dev": "npm-run-all --parallel render-webhook:dev watch",
+    "watch": "npm-run-all --parallel html:watch style:watch script:watch",
+    "html:watch": "gulp html:watch",
+    "html": "gulp html",
+    "style:watch": "gulp style:watch",
+    "style": "gulp style",
+    "script:watch": "gulp script:watch",
+    "script": "gulp script"
   },
   "dependencies": {
     "contentful": "^3.8.1",
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
+    "dotenv": "^4.0.0",
     "koa": "^2.2.0",
+    "koa-basic-auth": "^2.0.0",
+    "koa-body": "2",
     "koa-json": "^2.0.2",
     "koa-router": "next",
     "mollie-api-node": "^1.3.5",
-    "nunjucks": "^3.0.0"
+    "node-glob": "^1.2.0",
+    "npm-run-all": "^4.0.2",
+    "nunjucks": "^3.0.0",
+    "write-file-atomic": "^1.3.1"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-buble": "^0.8.0",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-if": "^2.0.2",
+    "gulp-less": "^3.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11",
+    "less": "^2.7.2",
     "nodemon": "^1.11.0"
   }
 }

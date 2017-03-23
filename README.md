@@ -4,7 +4,7 @@
 
 - nginx is used for hosting the static files
 - the app folder contains the files for the koa server which serves the payment, gps routes
-- the builder folder contains the files for the koa server which serves the contentful webhook receiver
+- the render folder contains the files for the koa server which serves the contentful webhook receiver
 - the src folder contains the source for the site
 - the dist folder contains the static assets for the site (these are served by the nginx server)
 

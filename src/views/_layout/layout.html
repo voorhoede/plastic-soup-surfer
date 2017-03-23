@@ -1,0 +1,11 @@
+<html>
+    <body>
+        {% block header %}
+            {% include "components/header/header.html" %}
+        {%- endblock -%}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>

@@ -1,3 +1,17 @@
-<html>
-    
-</html>
+{%- extends "views/_layout/layout.html" -%}
+
+{%- block content -%}
+        <h2>Wat zijn exploots</h2>
+
+        {% set exploot = exploot[0] %}
+
+        {{ exploot.fields.intro }}
+
+        <h2>Doe een donatie</h2>
+
+        <form action="/app/payments/add" method="POST">
+            <input type="range" min="10" value="100" step="10" name="donation">
+            <input type="submit">   
+        </form>
+ 
+{%- endblock -%} 

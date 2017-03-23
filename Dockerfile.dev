@@ -1,6 +1,0 @@
-FROM node:7.7-alpine
-
-RUN mkdir -p /usr/src
-COPY package.json /usr/src
-WORKDIR /usr/src
-RUN npm install

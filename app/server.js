@@ -1,18 +1,34 @@
 const Koa = require('koa');
 const Router = require('koa-router');
-const json = require('koa-json');
+const fs = require('fs');
+const path = require('path');
+const assert = require('assert');
 
 const app = new Koa();
 
 const mainRouter = new Router();
 
-const payments = new Router();
-payments.post('/add', ctx => {
-    ctx.body = "response from app";
+fs.readdirSync(__dirname + "/routes").forEach(file => {
+    if(path.extname(file) !== ".js") {
+        return;
+    }
+
+    const name = path.basename(file, ".js");
+    const module = require(`${__dirname}/routes/${file}`);
+
+    assert.ok(typeof module === "function", "Route should be a function");
+
+    const router = new Router();
+    module(router);
+    mainRouter.use("/" + name, router.routes());
 });
 
-mainRouter.use('/payments', json({pretty : false, param : 'pretty'}), payments.routes());
 
 app.use( mainRouter.routes() );
+
+app.use(ctx => {
+    console.log(ctx.request);
+    ctx.body = "ok";
+});
 
 app.listen(80);

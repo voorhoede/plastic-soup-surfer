@@ -1,5 +1,7 @@
 FROM node:7.7-alpine
 
+RUN apk add --update python make gcc g++
+
 RUN mkdir -p /usr/src/app
 COPY package.json /usr/src/app
 WORKDIR /usr/src/app

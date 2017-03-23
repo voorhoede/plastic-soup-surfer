@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const renderContentful = require('../render/lib/render');
+const renderContentful = require('../lib/render');
 const watch = require('gulp-watch');
 
 gulp.task('html', function (cb) {
@@ -17,7 +17,7 @@ gulp.task('html', function (cb) {
 });
 
 gulp.task('html:watch', ['html'], function () {
-    return watch(process.env.SRC_DIR  + '/views/**/*.html', () => {
+    return watch(process.env.SRC_DIR  + '/**/*.html', () => {
         gulp.start('html');
     });
 });

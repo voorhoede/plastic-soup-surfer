@@ -1,7 +1,13 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+
     <body>
         
-            <header>
+            <header class="site-header">
+    <h2>Header</h2>
+
     <nav>
         <ul>
             <li>
@@ -15,7 +21,7 @@
             </li>
         </ul>
     </nav>
-</header><main>
+</header><main class="site-main">
             <h2>Wat zijn exploots</h2>
 
         
@@ -25,9 +31,14 @@
         <h2>Doe een donatie</h2>
 
         <form action="/app/payments/add" method="POST">
-            <input type="range" min="10" value="100" step="10" name="donation">
+            &euro;10,- + <input type="number" min="0" name="extra">
             <input type="submit">   
         </form>
         </main>
+
+        
+            <footer class="site-footer">
+    Footer komt hier
+</footer><script src="/assets/js/all.js"></script>
     </body>
 </html>

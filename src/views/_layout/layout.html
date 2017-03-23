@@ -1,11 +1,21 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+
     <body>
         {% block header %}
             {% include "components/header/header.html" %}
         {%- endblock -%}
 
-        <main>
+        <main class="site-main">
             {% block content %}{% endblock %}
         </main>
+
+        {% block footer %}
+            {% include "components/footer/footer.html" %}
+        {%- endblock -%}
+
+        <script src="/assets/js/all.js"></script>
     </body>
 </html>

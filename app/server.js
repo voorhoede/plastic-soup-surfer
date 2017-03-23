@@ -3,6 +3,7 @@ const Router = require('koa-router');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
+const xhr = require('../lib/koa-xhr');
 
 const app = new Koa();
 
@@ -20,14 +21,16 @@ fs.readdirSync(__dirname + "/routes").forEach(file => {
 
     const router = new Router();
     module(router);
+
+    console.log(`register route ${name}`);
+
     mainRouter.use("/" + name, router.routes());
 });
 
-
+app.use( xhr() );
 app.use( mainRouter.routes() );
 
 app.use(ctx => {
-    console.log(ctx.request);
     ctx.body = "ok";
 });
 

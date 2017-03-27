@@ -12,6 +12,10 @@ function loadGmap(callback) {
 }
 
 function initializeLiveMap(el) {
+    //1. always keep current route in focus
+    //2. put overlay on top of map
+    //3. show the latest location
+
     const gmap = new google.maps.Map(el, {
         center: {lat: -34.397, lng: 150.644},
         zoom: 8

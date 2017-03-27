@@ -1,19 +1,24 @@
 const gulp = require('gulp');
-const renderContentful = require('../lib/render');
 const watch = require('gulp-watch');
+const http = require('http');
+const axios = require('axios');
 
 gulp.task('html', function (cb) {
-    renderContentful({
-        srcDir : process.env.SRC_DIR,
-        viewGlob : process.env.SRC_DIR + "/views/**/*.html",
-        contentFul : {
-            accessToken : process.env.CONTENTFUL_ACCESS_TOKEN,
-            space : process.env.CONTENTFUL_SPACE
+    axios.request({
+        url : '/webhook/contentful',
+        params : {
+            cache : true
         },
-        useCache : process.env.NODE_ENV === "development",
-        outDir : process.env.DIST_DIR,
-        contextIncludes : []
-    }).then(cb);
+        method : "GET",
+        auth : {
+            username : process.env.WEBHOOK_USER,
+            password : process.env.WEBHOOK_PASS
+        }
+    })
+    .then(res => {
+        console.log(res.data);
+        cb();
+    });
 });
 
 gulp.task('html:watch', ['html'], function () {

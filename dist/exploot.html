@@ -1,6 +1,9 @@
+<!DOCTYPE html>
+
 <html>
     <head>
         <link rel="stylesheet" href="/assets/css/main.css">
+<link href="//assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
@@ -11,7 +14,7 @@
     <nav>
         <ul>
             <li>
-                <a href="/">Home</a>
+                <a href="/">Journey</a>
             </li>
             <li>
                 <a href="/exploot">Exploot</a>
@@ -21,6 +24,8 @@
             </li>
         </ul>
     </nav>
+
+    Totaal gedoneerd: 70
 </header><main class="site-main">
             <h2>Wat zijn exploots</h2>
 
@@ -30,15 +35,16 @@
 
         <h2>Doe een donatie</h2>
 
-        <form action="/app/payments/add" method="POST">
+        <form action="/app/donations/add" method="POST">
             &euro;10,- + <input type="number" min="0" name="extra">
             <input type="submit">   
-        </form>
+        </form> 
         </main>
 
         
             <footer class="site-footer">
     Footer komt hier
 </footer><script src="/assets/js/all.js"></script>
+<script src="//assets.juicer.io/embed.js"></script>
     </body>
 </html>

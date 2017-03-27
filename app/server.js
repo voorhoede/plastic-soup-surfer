@@ -3,7 +3,7 @@ const Router = require('koa-router');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
-const xhr = require('../lib/koa-xhr');
+const xhr = require('./lib/koa-xhr');
 
 const app = new Koa();
 

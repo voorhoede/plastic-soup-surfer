@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+
 <html>
     <head>
-        <link rel="stylesheet" href="/assets/css/main.css">
+        {% include "./header-styles.html" %}
     </head>
 
     <body>
@@ -9,13 +11,13 @@
         {%- endblock -%}
 
         <main class="site-main">
-            {% block content %}{% endblock %}
+            {% block content %}{% endblock %} 
         </main>
 
         {% block footer %}
             {% include "components/footer/footer.html" %}
         {%- endblock -%}
 
-        <script src="/assets/js/all.js"></script>
+        {% include "./footer-scripts.html" %}
     </body>
 </html>

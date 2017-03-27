@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "npm-run-all --parallel server:dev watch",
     "server:dev": "nodemon --watch app --watch lib app/server.js",
-    "watch": "npm-run-all --parallel html:watch style:watch script:watch",
+    "watch": "npm-run-all --parallel style:watch script:watch html:watch",
     "html:watch": "gulp html:watch",
     "html": "gulp html",
     "style:watch": "gulp style:watch",
@@ -16,6 +16,7 @@
     "script": "gulp script"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "bluebird": "^3.5.0",
     "contentful": "^3.8.1",
     "dotenv": "^4.0.0",
@@ -27,6 +28,7 @@
     "koa-json": "^2.0.2",
     "koa-router": "next",
     "level": "^1.6.0",
+    "minimist": "^1.2.0",
     "mollie-api-node": "^1.3.5",
     "node-glob": "^1.2.0",
     "npm-run-all": "^4.0.2",

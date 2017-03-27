@@ -1,7 +1,9 @@
-{%- extends "views/_layout/layout.html" -%}
+{%- extends "views/_base/layout.html" -%}
 
 {%- block content -%}
     
     {% include "components/map/map.html" %}
 
-{%- endblock -%} 
+    {% include "components/juicer/juicer.html" %} 
+
+{%- endblock -%}   

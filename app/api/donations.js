@@ -12,15 +12,14 @@ module.exports = function (router) {
     const mollieClient = new Mollie.API.Client;
     mollieClient.setApiKey(process.env.MOLLIE_API_KEY);
 
-    const defaultPaymentBody = {
-        description: "Plastic Soup Donation",
-        redirectUrl: process.env.HOST + "/api/donations/done",
-        webhookUrl: process.env.HOST + "/api/donations/report"
-    }
-
-    function createPaymentInMollie(amount = 0) {
+    function createPaymentInMollie(ctx, amount = 0) {
         return new Promise((resolve, reject) => {
-            const requestBody = Object.assign({amount}, defaultPaymentBody);
+            const requestBody = {
+                amount,
+                description: "Plastic Soup Donation",
+                redirectUrl: ctx.request.ip + "/api/donations/done",
+                webhookUrl: ctx.request.ip + "/api/donations/report"
+            };
 
             mollieClient.payments.create(requestBody, payment => {
                 if(payment.error) {
@@ -57,7 +56,7 @@ module.exports = function (router) {
 
         let payment;
         try {
-            payment = await createPaymentInMollie(amount);
+            payment = await createPaymentInMollie(ctx, amount);
         }
         catch(e) {
             console.log(`payment error: ${e.toString()}`);

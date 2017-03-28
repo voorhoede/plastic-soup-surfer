@@ -1,31 +1,21 @@
 const Mollie = require('mollie-api-node');
+const contentfulManagement = require('contentful-management');
 const body = require('koa-body');
 const json = require('koa-json');
 const error = require('../lib/koa-error-response');
-const db = require('../lib/db');
-const renderQueue = require('../lib/render');
-
-const donationCounter = require('../lib/level-counter')(db, 'donated');
 
 module.exports = function (router) {
+    const contentfulClient = contentfulManagement.createClient({
+        accessToken : process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
+    });
+
     const mollieClient = new Mollie.API.Client;
     mollieClient.setApiKey(process.env.MOLLIE_API_KEY);
 
     const defaultPaymentBody = {
         description: "Plastic Soup Donation",
-        redirectUrl: process.env.HOST + "/app/donations/done",
-        webhookUrl: process.env.HOST + "/app/donations/report"
-    }
-
-    let delayedTimeout;
-    function delayedRender() {
-        if(delayedTimeout) {
-            return;
-        }
-        delayedTimeout = setTimeout(async () => {
-            renderQueue.addTask({useContentfulCache : true});
-            delayedTimeout = undefined;
-        }, 10000).unref();
+        redirectUrl: process.env.HOST + "/api/donations/done",
+        webhookUrl: process.env.HOST + "/api/donations/report"
     }
 
     function createPaymentInMollie(amount = 0) {
@@ -52,7 +42,7 @@ module.exports = function (router) {
         });
     }
 
-    router.post('/add', body(), json(), error.middleware(), async (ctx) => {
+    router.post('/donations/add', body(), json(), error.middleware(), async (ctx) => {
         let {extra = ""} = ctx.request.body || {};
 
         extra = parseFloat(extra || 0);
@@ -85,7 +75,20 @@ module.exports = function (router) {
         }
     });
 
-    router.post('/report', body(), error.middleware(), async (ctx) => {
+    // router.get('/donations/test', async (ctx) => {
+    //     const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
+    //     let entry = await space.getEntry('5GOz7wbP8WOUGaUCoy6UmI');
+
+    //     entry.fields.totaal['en-EU'] = parseInt(entry.fields.totaal['en-EU'], 10) + 10;
+
+    //     entry = await entry.update();
+    //     await entry.publish();
+
+    //     ctx.status = 200;
+    //     ctx.body = "ok";
+    // });
+
+    router.post('/donations/report', body(), error.middleware(), async (ctx) => {
         const {id = null} = ctx.request.body || {};
 
         console.log("Payment report");
@@ -111,18 +114,19 @@ module.exports = function (router) {
             return;
         }
 
-        //increment the total payments
-        const donated = await donationCounter.add(savedPayment.amount);
-        console.log(`Incremented total payments by ${savedPayment.amount}. New total: ${donated}`);
+        const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
+        let entry = await space.getEntry('5GOz7wbP8WOUGaUCoy6UmI');
 
-        //rerender the site
-        delayedRender();
+        entry.fields.totaal['en-EU'] = parseInt(entry.fields.totaal['en-EU'], 10) + parseInt(savedPayment.amount, 10);
+
+        entry = await entry.update();
+        await entry.publish();
 
         ctx.status = 200;
         ctx.body = "ok";
     });
 
-    router.get('/done', body(), ctx => {
+    router.get('/donations/done', body(), ctx => {
         console.log(ctx.request.body);
         ctx.body = "bedankt!";
     });

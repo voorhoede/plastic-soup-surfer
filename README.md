@@ -9,8 +9,6 @@
 
 ## notes
 
-- i'm using leveldb as a simple key value. Currently i only use it to save the total donated amount. It is important that the app is designed so that no 2 processes access the database (otherwise you get an error). 
-- rendering the site is done in a forked node process. Template data concerning database values is passed through arguments (because of the previous point).
 
 ## Dev environment
 

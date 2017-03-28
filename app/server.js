@@ -1,5 +1,8 @@
+require('dotenv').config(__dirname + "/..");
+
 const Koa = require('koa');
 const Router = require('koa-router');
+const static = require('koa-static');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
@@ -9,29 +12,33 @@ const app = new Koa();
 
 const mainRouter = new Router();
 
-fs.readdirSync(__dirname + "/routes").forEach(file => {
-    if(path.extname(file) !== ".js") {
-        return;
-    }
+function addRoutes(dir, router) {
+    fs.readdirSync(dir).forEach(file => {
+        if(path.extname(file) !== ".js") {
+            return;
+        }
 
-    const name = path.basename(file, ".js");
-    const module = require(`${__dirname}/routes/${file}`);
+        const name = path.basename(file, ".js");
+        const module = require(`${dir}/${file}`);
 
-    assert.ok(typeof module === "function", "Route should be a function");
+        assert.ok(typeof module === "function", "Route should be a function");
 
-    const router = new Router();
-    module(router);
+        module(router);
 
-    console.log(`register route ${name}`);
+        console.log(`register route ${name}`);
+    });
+}
 
-    mainRouter.use("/" + name, router.routes());
-});
+const apiRouter = new Router();
+addRoutes(__dirname + "/api", apiRouter);
+mainRouter.use("/api", apiRouter.routes());
+
+const pagesRouter = new Router();
+addRoutes(__dirname + "/pages", pagesRouter);
+mainRouter.use("/", pagesRouter.routes());
 
 app.use( xhr() );
 app.use( mainRouter.routes() );
+app.use( static(__dirname + "/../dist") );
 
-app.use(ctx => {
-    ctx.body = "ok";
-});
-
-app.listen(80);
+app.listen(8080);

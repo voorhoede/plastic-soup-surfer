@@ -1,19 +1,29 @@
 <header class="site-header">
-    <h2>Header</h2>
+    <div class="centered-column">
+        <div class="">
+            <img src="/assets/logo.png">
 
-    <nav>
-        <ul>
-            <li>
-                <a href="/">Journey</a>
-            </li>
-            <li>
-                <a href="/exploot">Exploot</a>
-            </li>
-            <li>
-                <a href="/about">About</a>
-            </li>
-        </ul>
-    </nav>
+            #SOURCE2SEA
+        </div>
 
-    Totaal gedoneerd: {{ donated }}
+        <nav class="site-header__nav">
+            <ul>
+                <li>
+                    <a href="/" class="site-header__item">Journey</a>
+                </li>  
+                <li>
+                    <a href="/exploot" class="site-header__item">Exploot</a>
+                </li>
+                <li>
+                    <a href="/about" class="site-header__item">About</a>
+                </li>
+            </ul> 
+        </nav>
+
+        <div class="site-header__donate">
+            {% set donated = donated[0] %}
+
+            Totaal gedoneerd: {{ donated.fields.totaal }}
+        </div>
+    </div>
 </header>

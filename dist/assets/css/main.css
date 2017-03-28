@@ -1,3 +1,41 @@
+.site-header {
+  height: 88px;
+  box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.11);
+  text-align: center;
+}
+.site-header .centered-column:before {
+  content: "";
+  display: inline-block;
+  height: 88px;
+  vertical-align: middle;
+}
+.site-header__donate {
+  float: right;
+}
+.site-header__nav {
+  display: inline-block;
+  font-size: 20px;
+}
+.site-header__nav ul,
+.site-header__nav li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.site-header__item {
+  margin-right: 60px;
+}
+html {
+  font-size: 16px;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+.centered-column {
+  margin: 0 auto;
+  width: 900px;
+}
 #live-map {
   width: 600px;
   height: 500px;

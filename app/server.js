@@ -7,7 +7,6 @@ const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
 const xhr = require('./lib/koa-xhr');
-const browserSync = require('browser-sync');
 const contentfulCache = require('./lib/contentful-cache');
 
 const port = 8080;
@@ -32,6 +31,8 @@ app.use( static(__dirname + "/../dist") );
 
 app.listen(port, function () {
     if(process.env.NODE_ENV === "development") {
+        const browserSync = require('browser-sync');
+
         // https://ponyfoo.com/articles/a-browsersync-primer#inside-a-node-application
         browserSync({
             files: ['src/**/*.{html}', 'dist/**/*.{js,css}'],

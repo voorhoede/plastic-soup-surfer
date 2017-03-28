@@ -1,10 +1,10 @@
 <header class="site-header">
     <div class="centered-column">
-        <div class="site-header__left">
+        <figure class="site-header__left">
             <img src="/assets/images/logo.png" srcset="/assets/images/logo.png 1x, /assets/images/logo@2x.png 2x" class="site-header__logo">
 
-            <h1 class="site-header__s2s">#SOURCE2SEA</h1>
-        </div>
+            <figcaption class="site-header__s2s">#SOURCE2SEA</figcaption>
+        </figure>
 
         <nav class="site-header__nav">
             <ul>
@@ -22,10 +22,16 @@
 
         <div class="site-header__right">
             {% set siteStatus = siteStatus[0] %}
+            
+            <div class="site-header__right-content">
+                <a href="" class="site-header__btn-donate button button--pink">Donate now</a>
 
-            <a href="" class="button button--pink">Donate now</a>
+                <span class="site-header__progressvalue">{{ donatedProgress*100 }}%</span>
 
-            Totaal gedoneerd: {{ siteStatus.fields.donated }}
+                <div class="site-header__progressbar">
+                    <div class="site-header__progress" style="width:{{ donatedProgress*100 }}%"></div>
+                </div>
+            </div>
         </div>
     </div>
 </header>

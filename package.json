@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "pm2 app/server.js",
+    "start": "pm2 start app/server.js",
     "start:dev": "npm-run-all --parallel server:dev watch",
     "server:dev": "nodemon --debug --watch app --watch lib app/server.js",
     "watch": "npm-run-all --parallel style:watch script:watch",

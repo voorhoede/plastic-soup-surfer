@@ -8,18 +8,23 @@ module.exports = function (router) {
     });
 
     router.use(async (ctx, next) => {
-        ctx.state.templateData = await contentfulCache.get();
+        const {siteStatus} = ctx.state.baseTemplateData = await contentfulCache.get();
+        
+        Object.assign(ctx.state.baseTemplateData, {
+            donatedProgress : Math.round( siteStatus[0].fields.donated / 10000 )
+        });
+
         await next();
     });
 
     router.get('/', ctx => {
-        ctx.body = env.render('views/index/index.html', Object.assign(ctx.state.templateData, {
+        ctx.body = env.render('views/index/index.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'index'
         }));
     });
 
     router.get('exploot', ctx => {
-        ctx.body = env.render('views/exploot/exploot.html', Object.assign(ctx.state.templateData, {
+        ctx.body = env.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'exploot'
         }));
     });

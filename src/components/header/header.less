@@ -1,3 +1,6 @@
+@import (reference) "variables";
+@import (reference) "core";
+
 .site-header {
     height:88px;
     box-shadow: 0 4px 0 0 rgba(0,0,0,0.11);
@@ -7,16 +10,15 @@
 
     @headerHeight:88px;
 
-    .centered-column:before {
-        content:"";
-        display:inline-block;
-        height:@headerHeight;
-        vertical-align: middle;
+    .centered-column {
+        .valign-center;
+        height:100%;
     }
 
     &__left {
         float:left;
         line-height:@headerHeight;
+        margin:0;
     }
 
     &__logo {
@@ -29,11 +31,19 @@
         vertical-align: middle;
         margin:0; 
         font-size:24px;
+        .header;
     }
 
     &__right {
         float:right;
-        line-height:@headerHeight;
+        .valign-center;
+        height:100%;
+    }
+
+    &__right-content {
+        display:inline-block;
+        vertical-align: middle;
+        text-align: right;
     }
 
     &__nav {
@@ -62,5 +72,26 @@
         }
     }
 
+    &__btn-donate {
+        display:block;
+        clear:both;
+        margin-bottom:9px;
+    }
+    
+    &__progressbar {
+        height: 9px;
+        opacity: 0.19;
+        background-color: #36AFC5;
+        border-radius: 100px;
+        overflow:hidden;
+    }
 
+    &__progressvalue {
+        float:right;
+        margin-left:5px;
+        color:@color-pelorous;
+        font:11px @font-header;
+        line-height:9px;
+        vertical-align: middle;
+    }
 }

@@ -1,3 +1,66 @@
+@font-face {
+  font-family: 'proxima_nova_rgregular';
+  src: url('../fonts/proximanova-regular-webfont.woff2') format('woff2'), url('../fonts/proximanova-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'nanami_roundedbold';
+  src: url('../fonts/nanami-rounded-bold-webfont.woff2') format('woff2'), url('../fonts/nanami-rounded-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.centered-column {
+  margin: 0 auto;
+  max-width: 960px;
+}
+.valign-center:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.header {
+  font-family: nanami_roundedbold, sans-serif;
+  font-weight: normal;
+  text-shadow: 0.06em 0.063em 0px #F26F69;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.button {
+  display: inline-block;
+  padding: .5em .5em .4em .5em;
+  border-radius: 2px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.button--pink {
+  background: #F26F69;
+}
+h1,
+h2,
+h3 {
+  font-family: nanami_roundedbold, sans-serif;
+  font-weight: normal;
+  text-shadow: 0.06em 0.063em 0px #F26F69;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: 60px;
+}
+html {
+  font-size: 16px;
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-family: proxima_nova_rgregular, sans-serif;
+  line-height: 1.3;
+  color: #2B2F47;
+}
 .site-header {
   height: 88px;
   box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.11);
@@ -5,15 +68,25 @@
   float: left;
   width: 100%;
 }
+.site-header .centered-column {
+  height: 100%;
+}
 .site-header .centered-column:before {
   content: "";
   display: inline-block;
-  height: 88px;
+  height: 100%;
+  vertical-align: middle;
+}
+.site-header .centered-column:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
   vertical-align: middle;
 }
 .site-header__left {
   float: left;
   line-height: 88px;
+  margin: 0;
 }
 .site-header__logo {
   float: left;
@@ -24,10 +97,32 @@
   vertical-align: middle;
   margin: 0;
   font-size: 24px;
+  font-family: nanami_roundedbold, sans-serif;
+  font-weight: normal;
+  text-shadow: 0.06em 0.063em 0px #F26F69;
+  letter-spacing: .03em;
+  text-transform: uppercase;
 }
 .site-header__right {
   float: right;
-  line-height: 88px;
+  height: 100%;
+}
+.site-header__right:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.site-header__right:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.site-header__right-content {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
 }
 .site-header__nav {
   display: inline-block;
@@ -51,17 +146,25 @@ li:last-child .site-header__item {
 .site-header__item--active {
   border-bottom: 5px solid #F26F69;
 }
-.centered-column {
-  margin: 0 auto;
-  max-width: 960px;
+.site-header__btn-donate {
+  display: block;
+  clear: both;
+  margin-bottom: 9px;
 }
-html {
-  font-size: 16px;
+.site-header__progressbar {
+  height: 9px;
+  opacity: 0.19;
+  background-color: #36AFC5;
+  border-radius: 100px;
+  overflow: hidden;
 }
-body {
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
+.site-header__progressvalue {
+  float: right;
+  margin-left: 5px;
+  color: #36AFC5;
+  font: 11px nanami_roundedbold, sans-serif;
+  line-height: 9px;
+  vertical-align: middle;
 }
 .site-main {
   float: left;

@@ -1,15 +1,15 @@
 <header class="site-header">
     <div class="centered-column">
-        <div class="">
-            <img src="/assets/logo.png">
+        <div class="site-header__left">
+            <img src="/assets/images/logo.png" srcset="/assets/images/logo.png 1x, /assets/images/logo@2x.png 2x" class="site-header__logo">
 
-            #SOURCE2SEA
+            <h1 class="site-header__s2s">#SOURCE2SEA</h1>
         </div>
 
         <nav class="site-header__nav">
             <ul>
                 <li>
-                    <a href="/" class="site-header__item">Journey</a>
+                    <a href="/" class="site-header__item {{ 'site-header__item--active' if page == 'index' else '' }}">Journey</a>
                 </li>  
                 <li>
                     <a href="/exploot" class="site-header__item">Exploot</a>
@@ -20,10 +20,12 @@
             </ul> 
         </nav>
 
-        <div class="site-header__donate">
-            {% set donated = donated[0] %}
+        <div class="site-header__right">
+            {% set siteStatus = siteStatus[0] %}
 
-            Totaal gedoneerd: {{ donated.fields.totaal }}
+            <a href="" class="button button--pink">Donate now</a>
+
+            Totaal gedoneerd: {{ siteStatus.fields.donated }}
         </div>
     </div>
 </header>

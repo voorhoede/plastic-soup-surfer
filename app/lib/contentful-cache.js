@@ -1,6 +1,7 @@
 const writeAtomic = require('./write-atomic');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
+const contentful = require('contentful');
 
 function group(items) {
     let grouped = {};
@@ -17,6 +18,16 @@ function group(items) {
 let cache = null;
 const cachePath = process.env.DATA_DIR + "/.contentful_cache";
 
+const client = contentful.createClient({
+    accessToken : process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
+    space       : process.env.CONTENTFUL_SPACE
+});
+
+exports.update = function () {
+    return client.getEntries()
+        .then(entries => this.set(entries));
+}
+
 exports.get = function () {
     if(cache) {
         return Promise.resolve(cache);
@@ -25,13 +36,18 @@ exports.get = function () {
         return fs.readFileAsync(cachePath, 'utf8')
             .then(contents => {
                 return (cache = JSON.parse(contents));
+            })
+            .catch(() => {
+                console.log("not cached!");
+                return this.update();
             });
     }
 }
 
-exports.set = function ({items}) {
+exports.set = function (entries) {
     //group by contentType (makes the data easier to query)
-    cache = group(items);
+    cache = group(entries.items);
 
-    return writeAtomic(cachePath, JSON.stringify(cache));
+    return writeAtomic(cachePath, JSON.stringify(cache))
+        .then(() => cache);
 }

@@ -4,3 +4,4 @@ node_modules/
 .contentful_cache
 keys/
 .vscode/
+dist/

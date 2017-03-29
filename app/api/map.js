@@ -12,13 +12,16 @@ module.exports = function (router) {
 
         const juicerFeedItems = juicerFeed.data.posts.items;
 
-        let mapItems = [];
+        let mapData = {
+            items : [], 
+            currentLocation : cache.siteStatus[0].fields.currentLocation
+        };
 
         for(let post of cache.highlightedPost) {
             const postUrl = post.fields.url;
             const feedItem = juicerFeedItems.find(item => item.full_url === postUrl);
             if(feedItem) {
-                mapItems.push({
+                mapData.items.push({
                     message : feedItem.unformatted_message,
                     image   : feedItem.image,
                     date    : new Date(feedItem.external_created_at),
@@ -28,7 +31,7 @@ module.exports = function (router) {
         }
 
         if(cache.event) {
-            mapItems = mapItems.concat(
+            mapData.items = mapData.items.concat(
                 cache.event.map(event => {
                     let {description : message, image : imageData, location} = event.fields;
 
@@ -46,6 +49,6 @@ module.exports = function (router) {
             );
         }
 
-        ctx.body = mapItems;
+        ctx.body = mapData;
     });
 }

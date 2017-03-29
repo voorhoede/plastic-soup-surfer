@@ -12,12 +12,12 @@ gulp.task('script', function () {
     var environment = process.env.NODE_ENV;
 
     return gulp.src(process.env.SRC_DIR + "/**/*.js")
-        .pipe(gulpif(environment !== 'production', sourcemaps.init()))
+        .pipe(sourcemaps.init())
         .pipe(buble())
         .pipe(concat('all.js'))
         .pipe(iife())
-        .pipe(gulpif(environment === 'production', uglify()))
-        .pipe(gulpif(environment !== 'production', sourcemaps.write('./')))
+        .pipe(gulpif(environment !== 'development', uglify()))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(process.env.DIST_DIR + '/assets/js/'))
 });
 

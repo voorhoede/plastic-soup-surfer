@@ -4,7 +4,7 @@ const json = require('koa-json');
 const {URL, URLSearchParams} = require('url');
 
 module.exports = function (router) {
-    router.get('/map', json(), async (ctx) => {
+    router.get('/map/data', json(), async (ctx) => {
         const [juicerFeed, cache] = await Promise.all([
             axios.get('https://www.juicer.io/api/feeds/plastic-soup'),
             contentfulCache.get()

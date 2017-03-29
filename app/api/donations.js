@@ -114,9 +114,9 @@ module.exports = function (router) {
         }
 
         const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
-        let entry = await space.getEntry('5GOz7wbP8WOUGaUCoy6UmI');
+        let entry = await space.getEntry('R6yIE4OKKOUGuWWMsaGUa');
 
-        entry.fields.totaal['en-EU'] = parseInt(entry.fields.totaal['en-EU'], 10) + parseInt(savedPayment.amount, 10);
+        entry.fields.donated['en-EU'] = parseInt(entry.fields.donated['en-EU'], 10) + parseInt(savedPayment.amount, 10);
 
         entry = await entry.update();
         await entry.publish();

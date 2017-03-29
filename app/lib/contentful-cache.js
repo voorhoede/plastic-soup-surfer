@@ -48,6 +48,8 @@ exports.set = function (entries) {
     //group by contentType (makes the data easier to query)
     cache = group(entries.items);
 
+    console.log(cache.siteStatus);
+
     return writeAtomic(cachePath, JSON.stringify(cache))
         .then(() => cache);
 }

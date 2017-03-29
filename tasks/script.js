@@ -5,7 +5,6 @@ const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const gulpif = require('gulp-if');
-const watch = require('gulp-watch');
 const iife = require('gulp-iife');
 
 gulp.task('script', function () {
@@ -21,8 +20,11 @@ gulp.task('script', function () {
         .pipe(gulp.dest(process.env.DIST_DIR + '/assets/js/'))
 });
 
-gulp.task('script:watch', ['script'], function () {
-    watch(process.env.SRC_DIR  + '/**/*.js', () => {
-        gulp.start('script');
+if(process.env.NODE_ENV === 'development') {
+    const watch = require('gulp-watch');
+    gulp.task('script:watch', ['script'], function () {
+        watch(process.env.SRC_DIR  + '/**/*.js', () => {
+            gulp.start('script');
+        });
     });
-});
+}

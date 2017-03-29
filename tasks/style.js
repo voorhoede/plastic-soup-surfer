@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const watch = require('gulp-watch');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const less = require('gulp-less');
@@ -26,8 +25,11 @@ gulp.task('style', function () {
 		.pipe(gulp.dest(process.env.DIST_DIR + '/assets/css/'));
 });
 
-gulp.task('style:watch', ['style'], function () {
-    return watch(process.env.SRC_DIR  + '/**/*.less', () => {
-        gulp.start('style');
-    });
-});
+if(process.env.NODE_ENV === 'development') {
+    const watch = require('gulp-watch');
+	gulp.task('style:watch', ['style'], function () {
+		return watch(process.env.SRC_DIR  + '/**/*.less', () => {
+			gulp.start('style');
+		});
+	});
+}

@@ -3,7 +3,15 @@ const contentfulCache = require('../lib/contentful-cache');
 const json = require('koa-json');
 const {URL, URLSearchParams} = require('url');
 
+function fixContentfulLocation({lat, lon}) {
+    return {lat, lng : lon};
+}
+
 module.exports = function (router) {
+    router.get('/map/live', async (ctx) => {
+
+    });
+
     router.get('/map/data', json(), async (ctx) => {
         const [juicerFeed, cache] = await Promise.all([
             axios.get('https://www.juicer.io/api/feeds/plastic-soup'),
@@ -14,18 +22,19 @@ module.exports = function (router) {
 
         let mapData = {
             items : [], 
-            currentLocation : cache.siteStatus[0].fields.currentLocation
+            currentLocation : fixContentfulLocation(cache.siteStatus[0].fields.currentLocation)
         };
 
         for(let post of cache.highlightedPost) {
             const postUrl = post.fields.url;
             const feedItem = juicerFeedItems.find(item => item.full_url === postUrl);
+
             if(feedItem) {
                 mapData.items.push({
                     message : feedItem.unformatted_message,
                     image   : feedItem.image,
                     date    : new Date(feedItem.external_created_at),
-                    loc     : post.fields.location
+                    loc     : fixContentfulLocation(post.fields.location)
                 });
             }
         }
@@ -43,7 +52,7 @@ module.exports = function (router) {
                         message, 
                         image : imageData.fields.file.url + "?" + query, 
                         date  : new Date(event.sys.createdAt),
-                        loc   : location
+                        loc   : fixContentfulLocation(location)
                     };
                 })
             );

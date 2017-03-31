@@ -44,11 +44,7 @@ module.exports = function (router) {
     router.post('/donations/add', body(), json(), error.middleware(), async (ctx) => {
         let {extra = ""} = ctx.request.body || {};
 
-        extra = parseFloat(extra || 0);
-
-        console.log("Add payment");
-        
-        if(isNaN(extra) || extra < 0) { //limit extra?
+        if(!extra.match(/^[0-9]+$/)) {
             throw new error.UserError("Ingevulde bonuswaarde is ongeldig");
         }
 

@@ -1,146 +1,71 @@
+/*
+    How to calibrate (georeference) image:
+
+    - map overlay should be around 1860 pixels wide (holland in the image has the same size as holland in g maps at zoom level 6)
+    - put google maps below the image
+    - drag google maps so that holland in overlay is on top of holland in g maps
+    - use map.getCenter().toString() to get the map center;
+*/
+
+import FlatMercatorViewport from 'viewport-mercator-project';
+import Promise from 'promise-polyfill';
+import debug from './mapDebug';
+ 
+//constants  
 const zoom = 6;
+const center = {lat: 50.23784910180976, lng : 10.799029296875009};
+const mapSize = [960, 544]; //map size at desktop
+const liveMapElement = document.getElementById("live-map");
 
-const center = {lat: 49.89936493298099, lng : 11.831744140625009};
+//debug(liveMapElement, {zoom, center});
 
-const styles = [
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            },
-            {
-                "hue": "#60ff00"
+function loadMapData() {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+            if(xhr.readyState === 4) {
+                const mapData = JSON.parse(xhr.responseText);
+                return resolve(mapData);
             }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "weight": "6.73"
-            },
-            {
-                "visibility": "on"
-            },
-            {
-                "lightness": "-18"
-            },
-            {
-                "invert_lightness": true
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "visibility": "off"
-            },
-            {
-                "weight": "2.75"
-            },
-            {
-                "hue": "#faff00"
-            }
-        ]
-    }
-]
-
-const apiKey = "AIzaSyAz8MW3kClPmeZ9SSrk3sRbFnyHOuz21yc";
-
-function loadGmap(callback) {
-    window.__gmapCallback = callback;
-
-    const script = document.createElement("script");
-    script.defer = true;
-    script.async = true;
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=__gmapCallback`;
-    document.body.appendChild(script);
+        }
+        xhr.open("GET", "/api/map/data");
+        xhr.send();
+    });
 }
 
-function initializeLiveMap(el) {
-    //1. always keep current route in focus
-    //2. put overlay on top of map
-    //3. show the latest location
-
-    const map = new google.maps.Map(el, {
-        center,
+function createMap(el) {
+    const projector = new FlatMercatorViewport({
+        tileSize : 256,
+        longitude : center.lng,
+        latitude : center.lat,
         zoom,
-        styles,
-        mapTypeControl: false,
-        streetViewControl : false
+        width : mapSize[0],
+        height : mapSize[1]
     });
 
-     var kmlLayer = new google.maps.KmlLayer({
-         url : 'http://4d5b2310.ngrok.io/assets/kml/rhine.kml',
-         suppressInfoWindows: true,
-         preserveViewport: true,
-         map
-    });
+    return {
+        addMarker({lat, lng, extraClassName = ""}) {
+            const [x,y] = projector.project([lng, lat]);
 
-    window.map = map;
+            const marker = document.createElement("div");
+            marker.style.left = x + "px";
+            marker.style.top = y + "px";
+            marker.className = "map__marker " + extraClassName;
 
-    return map;
-}
-
-function loadMapData(map, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4) {
-            const mapData = JSON.parse(xhr.responseText);
-            
-            const markers = mapData.items.map(item => {
-                const {lat,lon} = item.loc;
-
-                return new google.maps.Marker({
-                    position: new google.maps.LatLng(lat, lon),
-                    label: "",
-                    map
-                });
-            });
+            el.appendChild(marker);
         }
     }
-    xhr.open("GET", "/api/map/data");
-    xhr.send();
 }
 
-const liveMapElement = document.getElementById("live-map");
 if(liveMapElement) {
-    loadGmap(function () {
-        const map = initializeLiveMap(liveMapElement);
-        loadMapData(map, function () {
+    const map = createMap(liveMapElement);
 
+    loadMapData().then(mapData => {
+        mapData.items.map(data => {
+            map.addMarker(data.loc);
         });
+
+        const {lat, lng} = mapData.currentLocation;
+        map.addMarker({extraClassName : "map__marker--current", lat, lng});
     });
 }

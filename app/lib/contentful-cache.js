@@ -3,6 +3,8 @@ const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const contentful = require('contentful');
 
+const cachePath = process.env.DATA_DIR + "/.contentful_cache";
+
 function group(items) {
     let grouped = {};
     for(let item of items) {
@@ -16,7 +18,6 @@ function group(items) {
 }
 
 let cache = null;
-const cachePath = process.env.DATA_DIR + "/.contentful_cache";
 
 const client = contentful.createClient({
     accessToken : process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
@@ -47,8 +48,6 @@ exports.get = function () {
 exports.set = function (entries) {
     //group by contentType (makes the data easier to query)
     cache = group(entries.items);
-
-    console.log(cache.siteStatus);
 
     return writeAtomic(cachePath, JSON.stringify(cache))
         .then(() => cache);

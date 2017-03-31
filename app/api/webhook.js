@@ -1,6 +1,7 @@
 const fork = require('child_process').fork;
 const auth = require('koa-basic-auth');
 const body = require('koa-body');
+const json = require('koa-json');
 const contentfulCache = require('../lib/contentful-cache');
 const contentfulManagement = require('contentful-management');
 
@@ -18,18 +19,26 @@ module.exports = function (router) {
 
     let queue = Promise.resolve();
 
-    router.post('/webhook/gps', body(), async (ctx) => {
-        const {lat, lon} = ctx.request.body || {};
+    router.post('/webhook/gps', body(), json(), async (ctx) => {
+        let {lat, lng} = ctx.request.body || {};
+
+        lat = parseFloat(lat);
+        lng = parseFloat(lng);
+
+        if(isNaN(lat) || isNaN(lng)) {
+            throw new Error('Invalid lat or lng');
+        }
 
         const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
         let entry = await space.getEntry('R6yIE4OKKOUGuWWMsaGUa');
 
-        console.log(entry.fields);
-
-        entry.fields.currentLocation['en-EU'] = {lat, lon};
+        entry.fields.currentLocation['en-EU'] = {lat, lon : lng};
 
         entry = await entry.update();
         await entry.publish();
+
+        ctx.status = 200;
+        ctx.body = {status : "ok"};
     });
 
     router.post('/webhook/contentful', async (ctx) => {

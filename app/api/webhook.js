@@ -15,12 +15,16 @@ module.exports = function (router) {
         accessToken : process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     });
 
-    router.use(authMiddleware);
-
     let queue = Promise.resolve();
 
     router.post('/webhook/gps', body(), json(), async (ctx) => {
-        let {lat, lng} = ctx.request.body || {};
+        let {lat, lng, user, passwd} = ctx.request.body || {};
+
+        if(user !== process.env.WEBHOOK_USER || passwd !== process.env.WEBHOOK_PASS) {
+            ctx.status = 401;
+            ctx.body = "Unauthorized";
+            return;
+        }
 
         lat = parseFloat(lat);
         lng = parseFloat(lng);
@@ -41,7 +45,7 @@ module.exports = function (router) {
         ctx.body = {status : "ok"};
     });
 
-    router.post('/webhook/contentful', async (ctx) => {
+    router.post('/webhook/contentful', authMiddleware, async (ctx) => {
         let {cache = false} = ctx.query || {};
 
         console.log("Contentful webhook!");

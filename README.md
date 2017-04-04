@@ -16,4 +16,8 @@ This file contains passwords and keys for all the required service and is not co
     - npm run build
     - npm start
 
-Visit the site at localhost:8080
+Visit the site at [localhost:8080](http://localhost:8080)
+
+# Requirements
+
+- Node >= 7.6

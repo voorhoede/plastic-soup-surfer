@@ -24,8 +24,11 @@ module.exports = function (router) {
     });
 
     router.get('exploot', ctx => {
+        const {error = null} = ctx.flash.get() || {};
+
         ctx.body = env.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
-            page : 'exploot'
+            page : 'exploot',
+            error
         }));
     });
 }

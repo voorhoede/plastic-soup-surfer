@@ -11,8 +11,8 @@ function statusError(status) {
     }
 }
 
-module.UserError = statusError(400);
-module.InternalError = statusError(500);
+exports.UserError = statusError(400);
+exports.InternalError = statusError(500);
 
 exports.middleware = function () {
     return async function (ctx, next) {
@@ -24,10 +24,9 @@ exports.middleware = function () {
                 throw e;
             }
 
-            console.log(e);
-
             if(!isAjax(ctx)) {
                 //TODO show error page here
+                ctx.flash.set({error : e.message});
                 return ctx.redirect(ctx.headers.referer);
             }
 

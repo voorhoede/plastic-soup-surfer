@@ -7,15 +7,19 @@
     - use map.getCenter().toString() to get the map center;
 */
 
-import FlatMercatorViewport from 'viewport-mercator-project';
+import FlatMercatorViewport from './flat-mercator-viewport';
 import Promise from 'promise-polyfill';
 import debug from './mapDebug';
+import Marker from './marker';
  
 //constants  
 const zoom = 6;
 const center = {lat: 50.23784910180976, lng : 10.799029296875009};
 const mapSize = [960, 544]; //map size at desktop
 const liveMapElement = document.getElementById("live-map");
+
+let contentMarkers = [];
+let livePositionMarker = null;
 
 //debug(liveMapElement, {zoom, center});
 
@@ -43,29 +47,41 @@ function createMap(el) {
         height : mapSize[1]
     });
 
-    return {
-        addMarker({lat, lng, extraClassName = ""}) {
-            const [x,y] = projector.project([lng, lat]);
-
-            const marker = document.createElement("div");
-            marker.style.left = x + "px";
-            marker.style.top = y + "px";
-            marker.className = "map__marker " + extraClassName;
-
-            el.appendChild(marker);
+    return Promise.resolve({
+        addMarker(opts) {
+            const marker = new Marker(projector, opts);
+            marker.appendTo(el);
+            return marker;
         }
+    });
+}
+
+function addMapMarkers(map, mapData) {
+    contentMarkers = mapData.items.map(data => map.addMarker(data.loc));
+
+    const {lat, lng} = mapData.currentLocation;
+    livePositionMarker = map.addMarker({extraClassName : "map__marker--current", lat, lng});
+}
+
+function initLiveFeed() {
+    //TODO load polyfill for live data
+    if(!window.EventSource) {
+        return;
     }
+
+    const sse = new EventSource('/api/map/live');
+    sse.addEventListener("live_position", ({data}) => {
+        data = JSON.parse(data);
+        console.log(data);
+
+        livePositionMarker.location = data;
+    }, false);
 }
 
 if(liveMapElement) {
-    const map = createMap(liveMapElement);
-
-    loadMapData().then(mapData => {
-        mapData.items.map(data => {
-            map.addMarker(data.loc);
+    Promise.all([createMap(liveMapElement), loadMapData()])
+        .then(([map, mapData]) => {
+            addMapMarkers(map, mapData);
+            initLiveFeed(); 
         });
-
-        const {lat, lng} = mapData.currentLocation;
-        map.addMarker({extraClassName : "map__marker--current", lat, lng});
-    });
 }

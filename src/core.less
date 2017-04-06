@@ -1,5 +1,9 @@
 @import (reference) "variables";
 
+main > section {
+    margin-bottom: @margin-double*2;
+}
+
 .centered-column {
     margin:0 auto;
     max-width: 960px;
@@ -36,7 +40,7 @@
 
 .button {
     display:inline-block;
-    padding:@margin-half;
+    padding:@margin-half*1.2 @margin-default*1.5 @margin-half @margin-default*1.5;
     border-radius:2px;
     color:@white;
     text-decoration: none;
@@ -50,6 +54,8 @@
 
 h1, h2, h3 {
     .header;
+    margin-top:0;
+    margin-bottom:@margin-default;
 }
 
 h1 {

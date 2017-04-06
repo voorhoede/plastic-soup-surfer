@@ -1,21 +1,27 @@
 <header class="site-header">
     <div class="centered-column">
+        <h1 class="a11y-sr-only">Plastic Soup Surfer</h1>
         <figure class="site-header__left">
-            <img src="/assets/images/logo.png" srcset="/assets/images/logo.png 1x, /assets/images/logo@2x.png 2x" class="site-header__logo">
+            <a href="">
+                <img src="/assets/images/logo.png" srcset="/assets/images/logo.png 1x, /assets/images/logo@2x.png 2x" class="site-header__logo" alt="">
+            </a>
 
-            <figcaption class="site-header__s2s">#SOURCE2SEA</figcaption>
+            <figcaption class="site-header__s2s">Source 2 Sea</figcaption>
         </figure>
 
         <nav class="site-header__nav">
             <ul>
                 <li>
-                    <a href="/" class="site-header__item {{ 'site-header__item--active' if page == 'index' else '' }}">Journey</a>
+                    <a href="/" class="site-header__item {{ 'site-header__item--active' if page == 'index' }}">Home</a>
                 </li>  
                 <li>
-                    <a href="/exploot" class="site-header__item">Exploot</a>
+                    <a href="/expedition" class="site-header__item {{ 'site-header__item--active' if page == 'expedition' }}">Expedition</a>
                 </li>
                 <li>
-                    <a href="/about" class="site-header__item">About</a>
+                    <a href="/exploot" class="site-header__item {{ 'site-header__item--active' if page == 'exploot' }}">Exploot</a>
+                </li>
+                <li>
+                    <a href="/about" class="site-header__item {{ 'site-header__item--active' if page == 'about' }}">About</a>
                 </li>
             </ul> 
         </nav>

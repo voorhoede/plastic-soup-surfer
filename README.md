@@ -8,7 +8,7 @@ This file contains passwords and keys for all the required service and is not co
 
     - npm install
     - npm run build
-    - npm start:dev
+    - npm run start:dev
 
 ## Production environment
 

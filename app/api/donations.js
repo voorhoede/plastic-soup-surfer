@@ -17,8 +17,8 @@ module.exports = function (router) {
             const requestBody = {
                 amount,
                 description: "Plastic Soup Donation",
-                redirectUrl: ctx.request.ip + "/api/donations/done",
-                webhookUrl: ctx.request.ip + "/api/donations/report"
+                redirectUrl: ctx.request.host + "/api/donations/done",
+                webhookUrl: ctx.request.host + "/api/donations/report"
             };
 
             mollieClient.payments.create(requestBody, payment => {
@@ -42,20 +42,25 @@ module.exports = function (router) {
     }
 
     router.post('/donations/add', body(), json(), error.middleware(), async (ctx) => {
-        let {extra = ""} = ctx.request.body || {};
+        let {extra} = ctx.request.body || {};
 
+        if(!extra) {
+            extra = "0";
+        }
+
+        //simple check for rounded numbers only
         if(!extra.match(/^[0-9]+$/)) {
             throw new error.UserError("Ingevulde bonuswaarde is ongeldig");
         }
 
-        const amount = 10 + extra;
+        const amount = 10 + parseInt(extra, 10);
 
         let payment;
         try {
             payment = await createPaymentInMollie(ctx, amount);
         }
         catch(e) {
-            console.log(`payment error: ${e.toString()}`);
+            console.log(`payment error: ${e.message.toString()}`);
             throw new error.InternalError("Betaling kon niet worden aangemaakt!");
         }
 

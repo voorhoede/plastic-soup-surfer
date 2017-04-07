@@ -2,6 +2,7 @@ node_modules/
 .DS_Store
 .env
 .contentful_cache
+.juicer_cache
 keys/
 .vscode/
 dist/

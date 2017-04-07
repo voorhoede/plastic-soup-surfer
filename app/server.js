@@ -14,12 +14,13 @@ const juicerCache = require('./lib/juicer-cache');
 
 juicerCache.startPeriodicUpdate();
 
-const port = 8080;
+const port = parseInt(process.env.PORT, 10) || 8080;
 
 const app = new Koa();
 
 const appCtxt = {
-    mapLiveStream : require('./lib/koa-sse-stream')()
+    liveStream : require('./lib/koa-sse-stream')(),
+    constants : require('./constants')
 }
 
 const mainRouter = new Router();

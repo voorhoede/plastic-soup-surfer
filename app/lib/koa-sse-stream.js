@@ -22,9 +22,13 @@ module.exports = function () {
 
     return {
         publish(data, {id = null, event = null} = {}) {
-            streams.forEach(stream => {
+            for (let stream of streams) {
                 stream.write({data, id, event});
-            });
+            }
+        },
+
+        publishJSON(data, {id = null, event = null} = {}) {
+            this.publish(JSON.stringify(data), {id, event});
         },
 
         middleware() {

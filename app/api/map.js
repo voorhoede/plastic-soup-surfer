@@ -8,8 +8,8 @@ function fixContentfulLocation({lat, lon}) {
     return {lat, lng : lon};
 }
 
-module.exports = function (router, {mapLiveStream}) {
-    router.get('/map/live', mapLiveStream.middleware());
+module.exports = function (router, {liveStream}) {
+    router.get('/map/live', liveStream.middleware());
 
     router.get('/map/data', json(), async (ctx) => {
         const [juicerFeed, cache] = await Promise.all([

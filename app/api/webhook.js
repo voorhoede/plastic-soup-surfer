@@ -5,7 +5,7 @@ const json = require('koa-json');
 const contentfulCache = require('../lib/contentful-cache');
 const contentfulManagement = require('contentful-management');
 
-module.exports = function (router, {mapLiveStream}) {
+module.exports = function (router, {liveStream}) {
     const authMiddleware = auth({
         name : process.env.WEBHOOK_USER, 
         pass : process.env.WEBHOOK_PASS, 
@@ -51,7 +51,7 @@ module.exports = function (router, {mapLiveStream}) {
             return contentfulCache.update()
                 .then(cache => {
                     const {lat, lon : lng} = cache.siteStatus[0].fields.currentLocation;
-                    mapLiveStream.publish(JSON.stringify({lat, lng}), {event : 'live_position'});
+                    liveStream.publishJSON({lat, lng}, {event : 'live_position'});
                 });
         });
 

@@ -13,8 +13,6 @@ module.exports = function () {
                 this.push('event:' + event + "\n");
             }
             
-            console.log(event, data);
-
             this.push('data:' + data + "\n\n");
             callback();
         });

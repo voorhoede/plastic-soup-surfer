@@ -10,13 +10,16 @@ const path = require('path');
 const assert = require('assert');;
 const xhr = require('./lib/koa-xhr');
 const contentfulCache = require('./lib/contentful-cache');
+const juicerCache = require('./lib/juicer-cache');
+
+juicerCache.startPeriodicUpdate();
 
 const port = 8080;
 
 const app = new Koa();
 
 const appCtxt = {
-    mapLiveStream : require('./lib/sse-stream')()
+    mapLiveStream : require('./lib/koa-sse-stream')()
 }
 
 const mainRouter = new Router();

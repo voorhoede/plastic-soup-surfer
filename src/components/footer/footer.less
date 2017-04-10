@@ -1,3 +1,52 @@
-.site-footer {
-    
+.footer {
+	overflow: auto;
+	padding: @margin-double*2;
+	background: @brand-blue;
+	color: @white;
+
+	ul {
+		margin-bottom: @margin-default*1.5;
+		line-height: 1.8;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&.social-media-icons li {
+			display: inline-block;
+			margin-right: @margin-default;
+		}
+	}
+
+	a {
+		color: @white;
+		text-decoration: none;
+	}
+
+	&__left {
+		float: left;
+		width: 60%;
+		.light-text-on-dark-background();
+	}
+
+	&__right {
+		float: left;
+		width: 40%;
+	}
+
+	&__buttons {
+		margin-top: @margin-double;
+
+		.button {
+			display: block;
+			margin-bottom: @margin-default;
+			max-width: 8rem;
+			text-align: center;
+		}
+	}
+
+	&__credits {
+		.light-text-on-dark-background();
+		font-size: @text-size-smaller;
+	}
 }

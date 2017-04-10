@@ -1,21 +1,22 @@
 const writeAtomic = require('./write-atomic');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
-const contentful = require('contentful');
+const axios = require('axios');
 
-const cachePath = process.env.DATA_DIR + "/.contentful_cache";
+const cachePath = process.env.DATA_DIR + "/.juicer_cache";
+const juicerEndPoint = 'https://www.juicer.io/api/feeds/plastic-soup';
 
 let cache = null;
 
-const client = contentful.createClient({
-    accessToken : process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
-    space       : process.env.CONTENTFUL_SPACE
-});
+exports.startPeriodicUpdate = function () {
+    setInterval(this.update, 10000).unref();
+}
 
 exports.update = function () {
-    return client.getEntries()
-        .then(entries => {
-            cache = group(entries.items);
+    return axios.get(juicerEndPoint)
+        .catch(() => {})
+        .then(res => {
+            cache = res.data;
             return writeAtomic(cachePath, JSON.stringify(cache));
         })
         .then(() => cache);
@@ -34,16 +35,4 @@ exports.get = function () {
                 return this.update();
             });
     }
-}
-
-function group(items) {
-    let grouped = {};
-    for(let item of items) {
-        const {sys : {contentType : {sys : {id}}}} = item;
-        grouped.hasOwnProperty(id)
-            ? grouped[id].push(item)
-            : (grouped[id] = [item]);
-    }
-
-    return grouped;
 }

@@ -5,7 +5,7 @@ const json = require('koa-json');
 const contentfulCache = require('../lib/contentful-cache');
 const contentfulManagement = require('contentful-management');
 
-module.exports = function (router) {
+module.exports = function (router, {liveStream}) {
     const authMiddleware = auth({
         name : process.env.WEBHOOK_USER, 
         pass : process.env.WEBHOOK_PASS, 
@@ -14,8 +14,6 @@ module.exports = function (router) {
     const contentfulClient = contentfulManagement.createClient({
         accessToken : process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     });
-
-    let queue = Promise.resolve();
 
     router.post('/webhook/gps', body(), json(), async (ctx) => {
         let {lat, lng, user, passwd} = ctx.request.body || {};
@@ -45,13 +43,18 @@ module.exports = function (router) {
         ctx.body = {status : "ok"};
     });
 
+    let cfUpdateQueue = Promise.resolve();
     router.post('/webhook/contentful', authMiddleware, async (ctx) => {
         let {cache = false} = ctx.query || {};
 
-        console.log("Contentful webhook!");
+        cfUpdateQueue = cfUpdateQueue.then(() => {
+            return contentfulCache.update()
+                .then(cache => {
+                    const {lat, lon : lng} = cache.siteStatus[0].fields.currentLocation;
+                    liveStream.publishJSON({lat, lng}, {event : 'live_position'});
+                });
+        });
 
-        queue = queue.then(() => contentfulCache.update());
-
-        ctx.body = "Cached!";
+        ctx.body = "Contentful webhook was executed";
     });
 }

@@ -17,8 +17,8 @@ module.exports = function (router) {
             const requestBody = {
                 amount,
                 description: "Plastic Soup Donation",
-                redirectUrl: ctx.request.ip + "/api/donations/done",
-                webhookUrl: ctx.request.ip + "/api/donations/report"
+                redirectUrl: ctx.request.host + "/api/donations/done",
+                webhookUrl: ctx.request.host + "/api/donations/report"
             };
 
             mollieClient.payments.create(requestBody, payment => {
@@ -42,20 +42,25 @@ module.exports = function (router) {
     }
 
     router.post('/donations/add', body(), json(), error.middleware(), async (ctx) => {
-        let {extra = ""} = ctx.request.body || {};
+        let {extra} = ctx.request.body || {};
 
+        if(!extra) {
+            extra = "0";
+        }
+
+        //simple check for rounded numbers only
         if(!extra.match(/^[0-9]+$/)) {
             throw new error.UserError("Ingevulde bonuswaarde is ongeldig");
         }
 
-        const amount = 10 + extra;
+        const amount = 10 + parseInt(extra, 10);
 
         let payment;
         try {
             payment = await createPaymentInMollie(ctx, amount);
         }
         catch(e) {
-            console.log(`payment error: ${e.toString()}`);
+            console.log(`payment error: ${e.message.toString()}`);
             throw new error.InternalError("Betaling kon niet worden aangemaakt!");
         }
 
@@ -70,23 +75,8 @@ module.exports = function (router) {
         }
     });
 
-    // router.get('/donations/test', async (ctx) => {
-    //     const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
-    //     let entry = await space.getEntry('5GOz7wbP8WOUGaUCoy6UmI');
-
-    //     entry.fields.totaal['en-EU'] = parseInt(entry.fields.totaal['en-EU'], 10) + 10;
-
-    //     entry = await entry.update();
-    //     await entry.publish();
-
-    //     ctx.status = 200;
-    //     ctx.body = "ok";
-    // });
-
     router.post('/donations/report', body(), error.middleware(), async (ctx) => {
         const {id = null} = ctx.request.body || {};
-
-        console.log("Payment report");
 
         if(!id) {
             return;
@@ -100,7 +90,7 @@ module.exports = function (router) {
             throw new error.UserError(`Invalid payment id ${id}`);
         }
 
-        console.log(`Found payment ${savedPayment}`);
+        console.log(`Succesfull payment reported by mollie: ${savedPayment}`);
 
         //abort early when the status was not paid
         if(savedPayment.status !== "paid") {
@@ -110,10 +100,14 @@ module.exports = function (router) {
         }
 
         const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
+
+        //get the entry from the contentful space
         let entry = await space.getEntry('R6yIE4OKKOUGuWWMsaGUa');
 
-        entry.fields.donated['en-EU'] = parseInt(entry.fields.donated['en-EU'], 10) + parseInt(savedPayment.amount, 10);
+        //increments the number of donations by 1
+        entry.fields.donated['en-EU'] = parseInt(entry.fields.donated['en-EU'], 10) + 1;
 
+        //update the value and publish it
         entry = await entry.update();
         await entry.publish();
 
@@ -121,6 +115,9 @@ module.exports = function (router) {
         ctx.body = "ok";
     });
 
+    /**
+     * Todo show the thank you page (it should just redirect to the exploot page with a flash message)
+     */
     router.get('/donations/done', body(), ctx => {
         console.log(ctx.request.body);
         ctx.body = "bedankt!";

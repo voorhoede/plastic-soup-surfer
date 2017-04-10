@@ -1,5 +1,6 @@
 const axios = require('axios');
 const contentfulCache = require('../lib/contentful-cache');
+const juicerCache = require('../lib/juicer-cache');
 const json = require('koa-json');
 const {URL, URLSearchParams} = require('url');
 
@@ -7,18 +8,16 @@ function fixContentfulLocation({lat, lon}) {
     return {lat, lng : lon};
 }
 
-module.exports = function (router) {
-    router.get('/map/live', async (ctx) => {
-
-    });
+module.exports = function (router, {liveStream}) {
+    router.get('/map/live', liveStream.middleware());
 
     router.get('/map/data', json(), async (ctx) => {
         const [juicerFeed, cache] = await Promise.all([
-            axios.get('https://www.juicer.io/api/feeds/plastic-soup'),
+            juicerCache.get(),
             contentfulCache.get()
         ]);
 
-        const juicerFeedItems = juicerFeed.data.posts.items;
+        const juicerFeedItems = juicerFeed.posts.items;
 
         let mapData = {
             items : [], 

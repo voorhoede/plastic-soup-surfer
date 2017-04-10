@@ -10,6 +10,23 @@ main > section {
     padding:0 @margin-default;
 }
 
+.two-columns {
+    .clearfix();
+    display: flex;
+
+    .left-column {
+        float: left;
+        padding-right: @margin-default;
+        width: calc(~'50% -' @margin-default);
+    }
+
+    .right-column {
+        float: right;
+        padding-left: @margin-default;
+        width: calc(~'50% -' @margin-default);
+    }
+}
+
 .valign-center {
     &:before {
         content:"";
@@ -52,7 +69,7 @@ main > section {
     }
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     .header;
     margin-top:0;
     margin-bottom:@margin-default;
@@ -64,6 +81,15 @@ h1 {
 
 h2 {
     font-size:@text-size-big;
+    color:@brand-pink;
+}
+
+h3 {
+    font-size:@text-size-bigger;
+}
+
+h4 {
+    font-size:@text-size-default;
 }
 
 html {
@@ -78,6 +104,17 @@ body {
     color:@brand-blue;
 }
 
+.clearfix() {
+    &:before,
+    &:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+    &:after {
+        clear: both;
+    }
+}
+
 .light-text-on-dark-background {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -87,4 +124,10 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.truncate-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

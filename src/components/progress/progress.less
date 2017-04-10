@@ -1,0 +1,35 @@
+.progress {
+	.map ~ & {
+		margin-top: @margin-double;
+	}
+
+	.left-column {
+		width: 45%;
+	}
+
+	.right-column {
+		display: flex;
+		justify-content: space-between;
+		padding: @margin-default*1.5 @margin-double*1.5;
+		width: 55%;
+		background: @grey-light;
+		font-size: @text-size-bigger;
+
+		.call-to-action {
+			float: left;
+			width: 60%;
+			line-height: 1.2;
+
+			p {
+				margin: 0;
+			}
+		}
+
+		.button {
+			float: right;
+			align-self: center;
+			padding-left: @margin-double*1.5;
+			padding-right: @margin-double*1.5;
+		}
+	}
+}

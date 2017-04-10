@@ -10,6 +10,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/header.jpg' : [
+                {
+                    width:1440
+                }
+            ],
+
             'assets/images/logo.png' : [
                 {   
                     width : 127,

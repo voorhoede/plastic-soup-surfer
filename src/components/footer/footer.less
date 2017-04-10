@@ -1,8 +1,24 @@
 .footer {
 	.clearfix();
-	padding: @margin-double*2;
-	background: @brand-blue;
+	padding: 14rem 0 @margin-double*2 0;
+	background: url('/assets/icons/footer-wave.svg') top center no-repeat @brand-blue;
+	background-size: 105% auto;
 	color: @white;
+
+	.two-columns {
+		display: flex;
+
+		.left-column {
+			width: 70%;
+			.light-text-on-dark-background();
+		}
+
+		.right-column {
+			display: flex;
+			flex-wrap: wrap;
+			width: 30%;
+		}
+	}
 
 	ul {
 		margin-bottom: @margin-default*1.5;
@@ -23,17 +39,6 @@
 		text-decoration: none;
 	}
 
-	&__left {
-		float: left;
-		width: 60%;
-		.light-text-on-dark-background();
-	}
-
-	&__right {
-		float: left;
-		width: 40%;
-	}
-
 	&__buttons {
 		margin-top: @margin-double;
 
@@ -47,6 +52,7 @@
 
 	&__credits {
 		.light-text-on-dark-background();
+		align-self: flex-end;
 		font-size: @text-size-smaller;
 	}
 }

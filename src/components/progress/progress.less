@@ -4,7 +4,40 @@
 	}
 
 	.left-column {
+		display: flex;
+		align-items: center;
 		width: 45%;
+
+		.progress {
+			.clearfix();
+			float: left;
+			width: 50%;
+			font-family: @font-header;
+			font-size: @text-size-bigger;
+			font-weight: bold;
+
+			&:before {
+				content: '';
+				float: left;
+				display: block;
+				margin-right: @margin-half*1.5;
+				width: 50px;
+				height: 50px;
+			}
+
+			&__title {
+				margin-bottom: @margin-half/2;
+				color: @grey;
+			}
+		}
+
+		.progress--days:before {
+			background: url('/assets/icons/calendar.svg') center no-repeat;
+		}
+
+		.progress--distance:before {
+			background: url('/assets/icons/route.svg') center / 100% auto no-repeat;
+		}
 	}
 
 	.right-column {

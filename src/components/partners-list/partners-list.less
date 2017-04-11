@@ -1,0 +1,19 @@
+.partners-list {
+	.clearfix();
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	&__item {
+		float: left;
+		margin: 0 @margin-double @margin-double @margin-double;
+	}
+
+	&__company-logo	{
+		@logo-size: 100px;
+
+		width: @logo-size;
+		height: @logo-size;
+		border-radius: @logo-size;
+	}
+}

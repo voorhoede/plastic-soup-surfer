@@ -25,4 +25,38 @@
             background:@brand-pink;
         }
     }
+
+    &__info-panel {
+        position: absolute;
+        padding: @margin-default;
+        top: @margin-double;
+        right: @margin-double;
+        max-width: 250px;
+        background: @white;
+    }
+
+    &__info-panel-image {
+        margin: -@margin-default -@margin-default @margin-default -@margin-default;
+        padding-bottom: 52%;
+        height: 0;
+        background-position: center;
+        background-size: cover;
+    }
+
+    &__info-panel-social {
+        position: absolute;
+        left: @margin-default;
+        top: @margin-default;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 2.5rem;
+        background: @white;
+        text-align: center;
+        line-height: 3.5rem;
+
+        img {
+            width: 1.5rem;
+            height: auto;
+        }
+    }
 }

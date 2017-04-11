@@ -27,12 +27,24 @@ module.exports = function (router, {constants}) {
         }));
     });
 
+    router.get('about', ctx => {
+        ctx.body = env.render('views/about/about.html', Object.assign(ctx.state.baseTemplateData, {
+            page : 'about'
+        }));
+    });
+
     router.get('exploot', ctx => {
         const {error = null} = ctx.flash.get() || {};
 
         ctx.body = env.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'exploot',
             error
+        }));
+    });
+
+    router.get('expedition', ctx => {
+        ctx.body = env.render('views/expedition/expedition.html', Object.assign(ctx.state.baseTemplateData, {
+            page : 'expedition'
         }));
     });
 }

@@ -1,6 +1,7 @@
 @import (reference) "variables";
 
-main > section {
+main > section,
+main > section.centered-column {
     margin-bottom: @margin-double*2;
 }
 
@@ -83,11 +84,11 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size:@text-size-big;
+    font-size:@text-size-heading;
 }
 
 h2 {
-    font-size:@text-size-big;
+    font-size:@text-size-heading;
     color:@brand-pink;
 }
 
@@ -97,6 +98,10 @@ h3 {
 
 h4 {
     font-size:@text-size-default;
+}
+
+p {
+    margin: 0 0 @margin-default 0;
 }
 
 html {

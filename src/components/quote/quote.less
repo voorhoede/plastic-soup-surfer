@@ -1,0 +1,36 @@
+.quote {
+	margin-bottom: @margin-double*2;
+	text-align: center;
+
+	p {
+		position: relative;
+		color: @brand-pink;
+		font-size: @text-size-big;
+		font-style: italic;
+
+		&:before,
+		&:after {
+			color: @brand-pink-light;
+		}
+
+		&:before {
+			content: '“';
+			
+		}
+
+		&:after {
+			content: '„';
+		}
+	}
+
+	cite {
+		font-size: @text-size-bigger;
+		font-style: normal;
+
+		&:before,
+		&:after {
+			content: '-';
+			margin: 0 .2rem;
+		}
+	}
+}

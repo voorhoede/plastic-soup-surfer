@@ -1,9 +1,48 @@
 .waste-statistics {
 	padding: @margin-double;
 	background: @grey-light;
+	text-align: center;
 
 	em {
 		font-style: normal;
 		color: @brand-pink;
+	}
+
+	.statistics-sheet {
+		.clearfix();
+		padding: @margin-double 0 @margin-default 0;
+
+		&__statistic {
+			float: left;
+			margin-bottom: @margin-double;
+			width: 25%;
+		}
+
+		&__statistic--half-width {
+			float: left;
+			margin: @margin-double 0 @margin-default 0;
+			width: 50%;
+		}
+
+		&__number {
+			.text-shadow();
+			display: block;
+			font-family: @font-header;
+			font-size: @text-size-heading*2;
+			line-height: 1;
+		}
+
+		&__unit {
+			display: block;
+			margin-bottom: @margin-default;
+			font-family: @font-header;
+			font-size: @text-size-bigger;
+			text-transform: uppercase;
+		}
+
+		&__description {
+			display: block;
+			padding: 0 @margin-double;
+		}
 	}
 }

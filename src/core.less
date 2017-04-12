@@ -1,5 +1,23 @@
 @import (reference) "variables";
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+    font-size:@text-size-default;
+}
+
+body {
+    padding:0;
+    margin:0;
+    font-family:@font-body;
+    line-height:1.3;
+    color:@brand-blue;
+}
+
 main > section,
 main > section.centered-column {
     margin-bottom: @margin-double*2;
@@ -7,7 +25,7 @@ main > section.centered-column {
 
 .centered-column {
     margin:0 auto;
-    max-width: 960px;
+    max-width:@site-width;
     padding:0 @margin-default;
 }
 
@@ -51,7 +69,7 @@ main > section.centered-column {
 
 .header {
     font-family:@font-header;
-    font-weight:normal;
+    font-weight:bold;
     letter-spacing:.03em;
     text-transform: uppercase;
 }
@@ -102,18 +120,7 @@ h4 {
 
 p {
     margin: 0 0 @margin-default 0;
-}
-
-html {
-    font-size:@text-size-default;
-}
-
-body {
-    padding:0;
-    margin:0;
-    font-family:@font-body;
-    line-height:1.3;
-    color:@brand-blue;
+    line-height: 1.5;
 }
 
 .clearfix() {
@@ -142,4 +149,8 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 0 @brand-pink;
 }

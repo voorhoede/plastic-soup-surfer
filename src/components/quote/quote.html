@@ -1,7 +1,11 @@
+{% macro quote(quote, quotee='') %}
 <blockquote class="quote centered-column">
-	<p>The needless and superfluous plastic packaging must put to a halt wherever there are risks of littering</p>
+	<p>{{ quote }}</p>
 
+	{% if quotee %}
 	<footer>
-		<cite>Merijn Tinga</cite>
+		<cite>{{ quotee}}</cite>
 	</footer>
+	{% endif %}
 </blockquote>
+{% endmacro %}

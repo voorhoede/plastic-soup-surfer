@@ -1,5 +1,23 @@
 @import (reference) "variables";
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+    font-size:@text-size-default;
+}
+
+body {
+    padding:0;
+    margin:0;
+    font-family:@font-body;
+    line-height:1.3;
+    color:@brand-blue;
+}
+
 main > section,
 main > section.centered-column {
     margin-bottom: @margin-double*2;
@@ -103,18 +121,6 @@ h4 {
 p {
     margin: 0 0 @margin-default 0;
     line-height: 1.5;
-}
-
-html {
-    font-size:@text-size-default;
-}
-
-body {
-    padding:0;
-    margin:0;
-    font-family:@font-body;
-    line-height:1.3;
-    color:@brand-blue;
 }
 
 .clearfix() {

@@ -39,8 +39,12 @@ module.exports = function (router, {liveStream}) {
         }
 
         if(cache.event) {
+            const eventsOnMap = cache.event.filter(event => {
+                return event.fields.showOnMap;
+            });
+
             mapData.items = mapData.items.concat(
-                cache.event.map(event => {
+                eventsOnMap.map(event => {
                     let {description : message, image : imageData, location} = event.fields;
 
                     const query = new URLSearchParams();

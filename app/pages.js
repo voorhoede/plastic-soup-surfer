@@ -7,6 +7,16 @@ module.exports = function (router, {constants}) {
         noCache : process.env.NODE_ENV === "development"
     });
 
+    function parseDate(date) {
+        let [year, month, day] = date.split("-");
+
+        year = parseInt(year, 10);
+        month = parseInt(month, 10);
+        day = parseInt(day, 10);
+
+        return Date.UTC(year, month-1, day);
+    }
+
     router.use(async (ctx, next) => {
         const {siteStatus} = ctx.state.baseTemplateData = await contentfulCache.get();
 
@@ -15,15 +25,39 @@ module.exports = function (router, {constants}) {
 
         //the total progress (displayed in the header)
         const donatedProgress = explootProgress / constants.exploots;
-        
-        Object.assign(ctx.state.baseTemplateData, {explootProgress, donatedProgress});
+
+        const dayInMilliseconds = 86400000;
+        const daysDiff = Date.now() - parseDate(siteStatus[0].fields.startDay);
+        const day = Math.floor( daysDiff / dayInMilliseconds ) || 1;
+
+        Object.assign(ctx.state.baseTemplateData, {
+            explootProgress, 
+            donatedProgress,
+            day
+        });
 
         await next();
     });
 
     router.get('/', ctx => {
+        const {event : eventList} = ctx.state.baseTemplateData;
+
+        const now = Date.now();
+
+        const upcomingEvents = eventList.filter(event => {
+            return new Date(event.fields.date) > now;
+        });
+
+        const pastEvents = eventList.filter(event => {
+            return now > new Date(event.fields.date);
+        });
+
+        console.log(pastEvents[0].fields.image);
+
         ctx.body = env.render('views/index/index.html', Object.assign(ctx.state.baseTemplateData, {
-            page : 'index'
+            page : 'index',
+            pastEvents,
+            upcomingEvents
         }));
     });
 

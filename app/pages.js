@@ -1,6 +1,7 @@
 const nunjucks = require('nunjucks');
 const bluebird = require('bluebird');
 const contentfulCache = require('./lib/contentful-cache');
+const moment = require('moment');
 
 module.exports = function (router, {constants}) {
     const env = nunjucks.configure("./src", {
@@ -16,6 +17,7 @@ module.exports = function (router, {constants}) {
 
         return Date.UTC(year, month-1, day);
     }
+
 
     router.use(async (ctx, next) => {
         const {siteStatus} = ctx.state.baseTemplateData = await contentfulCache.get();
@@ -44,15 +46,25 @@ module.exports = function (router, {constants}) {
 
         const now = Date.now();
 
-        const upcomingEvents = eventList.filter(event => {
-            return new Date(event.fields.date) > now;
-        });
+        const upcomingEvents = eventList
+            .filter(event => {
+                return new Date(event.fields.date) > now;
+            })
+            .map(event => {
+                return Object.assign({}, event.fields, {
+                    date : moment(event.fields.date).format("MMMM Do - YYYY")
+                });
+            });
 
-        const pastEvents = eventList.filter(event => {
-            return now > new Date(event.fields.date);
-        });
-
-        console.log(pastEvents[0].fields.image);
+        const pastEvents = eventList
+            .filter(event => {
+                return now > new Date(event.fields.date);
+            })
+            .map(event => {
+                return Object.assign({}, event.fields, {
+                    date : moment(event.fields.date).format("MMMM Do - YYYY")
+                });
+            });
 
         ctx.body = env.render('views/index/index.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'index',

@@ -8,17 +8,17 @@
 			{% for event in upcomingEvents %}
 			<article class="event">
 				<div class="event--image">
-					<span style="background-image: url('{{ event.fields.image.fields.file.url }}?w=150&h=95&fit=fill');"></span>
+					<span style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');"></span>
 				</div>
 
 				<div class="event--content">
 					<div class="event--meta">
-						<h4 class="event--title">{{ event.fields.title }}</h4>
+						<h4 class="event--title">{{ event.title }}</h4>
 						<span class="event--date">September 12th - 2017 - Really long placename</span>
 					</div>
 
 					<div class="event--description">
-						{{ event.fields.description }}
+						{{ event.description }}
 					</div>
 				</div>
 			</article>
@@ -31,17 +31,17 @@
 			{% for event in pastEvents %}
 			<article class="event">
 				<div class="event--image">
-					<span style="background-image: url('{{ event.fields.image.fields.file.url }}?w=150&h=95&fit=fill');"></span>
+					<span style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');"></span>
 				</div>
 
 				<div class="event--content">
 					<div class="event--meta">
-						<h4 class="event--title">{{ event.fields.title }}</h4>
-						<span class="event--date">September 12th - 2017 - Really long placename</span>
+						<h4 class="event--title">{{ event.title }}</h4>
+						<span class="event--date">{{ event.date }} - Really long placename</span>
 					</div>
 
 					<div class="event--description">
-						{{ event.fields.description }}
+						{{ event.description }}
 					</div>
 				</div>
 			</article>

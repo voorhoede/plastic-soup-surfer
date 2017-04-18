@@ -21,6 +21,10 @@ body {
 main > section,
 main > section.centered-column {
     margin-bottom: @margin-double*2;
+
+    @media @s-only {
+        margin-bottom: @margin-double;
+    }
 }
 
 .centered-column {

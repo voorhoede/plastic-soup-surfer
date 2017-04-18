@@ -1,14 +1,15 @@
 {%- extends "views/_base/layout.html" -%}
+{% from "components/quote/quote.html" import quote %}
 
 {%- block content -%}
 
-	<div style="height: 50px;">[temporary spacer]</div>
+	{% include "components/hero-about/hero-about.html" %}
 
 	{% include "components/paddle-board-info/paddle-board-info.html" %}
 
 	{% include "components/waste-statistics/waste-statistics.html" %}
 
-	{% include "components/quote/quote.html" %}
+	{{ quote('The needless and superfluous plastic packaging must put to a halt wherever there are risks of littering', 'Merijn Tinga') }}
 
 	{% include "components/partners-list/partners-list.html" %}
 

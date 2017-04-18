@@ -7,6 +7,10 @@
 	&__item {
 		float: left;
 		margin: 0 @margin-double @margin-double @margin-double;
+
+		@media @s-only {
+			margin: 0 @margin-default @margin-default*1.5 @margin-default;
+		}
 	}
 
 	&__company-logo	{

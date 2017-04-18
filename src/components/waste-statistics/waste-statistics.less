@@ -3,6 +3,11 @@
 	background: @grey-light;
 	text-align: center;
 
+	@media @s-only {
+		padding: @margin-default 0;
+		text-align: left;
+	}
+
 	em {
 		font-style: normal;
 		color: @brand-pink;
@@ -10,18 +15,33 @@
 
 	.statistics-sheet {
 		.clearfix();
+		display: flex;
+		flex-wrap: wrap;
 		padding: @margin-double 0 @margin-default 0;
 
 		&__statistic {
 			float: left;
 			margin-bottom: @margin-double;
 			width: 25%;
+
+			@media @s-only {
+				float: none;
+				margin-bottom: @margin-double*2;
+				width: 100%;
+				text-align: center;
+			}
 		}
 
 		&__statistic--half-width {
 			float: left;
 			margin: @margin-double 0 @margin-default 0;
 			width: 50%;
+
+			@media @s-only {
+				float: none;
+				width: 100%;
+				text-align: center;
+			}
 		}
 
 		&__number {
@@ -30,6 +50,14 @@
 			font-family: @font-header;
 			font-size: @text-size-heading*2;
 			line-height: 1;
+
+			@media @m-only {
+				font-size: 7vw;
+			}
+
+			@media @s-only {
+				font-size: 20vw;
+			}
 		}
 
 		&__unit {

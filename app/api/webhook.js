@@ -15,7 +15,12 @@ module.exports = function (router, {liveStream}) {
         accessToken : process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     });
 
+    let lastGPSSignal;
+    const gpsSignalInterval = 5000;
+
     router.post('/webhook/gps', body(), json(), async (ctx) => {
+        console.log(`${(new Date()).toJSON()} - Got incoming gps request: ${ctx.request.body}`);
+
         let {lat, lng, user, passwd} = ctx.request.body || {};
 
         if(user !== process.env.WEBHOOK_USER || passwd !== process.env.WEBHOOK_PASS) {
@@ -30,6 +35,13 @@ module.exports = function (router, {liveStream}) {
         if(isNaN(lat) || isNaN(lng)) {
             throw new Error('Invalid lat or lng');
         }
+
+        //TODO activate this to 
+        // if(typeof lastGPSSignal !== "undefined" && lastGPSSignal+gpsSignalInterval > Date.now()) {
+        //     return;
+        // }
+
+        lastGPSSignal = Date.now();
 
         const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
         let entry = await space.getEntry('R6yIE4OKKOUGuWWMsaGUa');

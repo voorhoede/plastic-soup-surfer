@@ -19,9 +19,9 @@ module.exports = function (router, {liveStream}) {
     const gpsSignalInterval = 5000;
 
     router.post('/webhook/gps', body(), json(), async (ctx) => {
-        const timestamp = (new Date()).toJSON();
+        const logTime = (new Date()).toJSON();
 
-        console.log(`${timestamp} - Got incoming gps request: ${ctx.request.body}`);
+        console.log(`${logTime} - Got incoming gps request: ${ctx.request.body}`);
 
         let {rawData, user, passwd} = ctx.request.body || {};
 
@@ -32,7 +32,7 @@ module.exports = function (router, {liveStream}) {
         }
 
         if(!rawData) {
-            console.log(`${timestamp} - rawData missing`);
+            console.log(`${logTime} - rawData missing`);
             ctx.status = 400;
             ctx.body = "rawData missing";
             return;
@@ -41,10 +41,10 @@ module.exports = function (router, {liveStream}) {
         //grab the individual values
         const rawDataValues = rawData.split(",");
 
-        console.log(`${timestamp} - Got raw data values: ${rawDataValues}`);
+        console.log(`${logTime} - Got raw data values: ${rawDataValues}`);
 
         if(rawDataValues.length === 0 || (rawDataValues.length % 3) !== 0) {
-            console.log(`${timestamp} - rawData wrong length`);
+            console.log(`${logTime} - rawData wrong length`);
             ctx.status = 400;
             ctx.body = "rawData wrong length";
             return;
@@ -59,7 +59,7 @@ module.exports = function (router, {liveStream}) {
         lng = parseFloat(lng);
 
         if(isNaN(lat) || isNaN(lng)) {
-            console.log(`${timestamp} - Invalid lat or lng`);
+            console.log(`${logTime} - Invalid lat or lng`);
             ctx.status = 400;
             ctx.body = 'Invalid lat or lng';
             return;
@@ -67,7 +67,7 @@ module.exports = function (router, {liveStream}) {
  
         //throttle requests
         if(typeof lastGPSSignal !== "undefined" && lastGPSSignal+gpsSignalInterval > Date.now()) {
-            console.log(`${timestamp} - Ignoring request because of throttling`);
+            console.log(`${logTime} - Ignoring request because of throttling`);
             return;
         }
 

@@ -21,7 +21,7 @@ module.exports = function (router, {liveStream}) {
     router.post('/webhook/gps', body(), json(), async (ctx) => {
         const logTime = (new Date()).toJSON();
 
-        console.log(`${logTime} - Got incoming gps request: ${ctx.request.body}`);
+        console.log(`${logTime} - Got incoming gps request: ${JSON.stringify(ctx.request.body)}`);
 
         let {rawData, user, passwd} = ctx.request.body || {};
 
@@ -51,6 +51,11 @@ module.exports = function (router, {liveStream}) {
         }
 
         console.log(`Got raw data values: ${rawDataValues}`);
+
+        //FIX: strip empty value at the end
+        if(rawDataValues[rawDataValues.length-1] === "") {
+            rawDataValues.pop();
+        }
 
         //currently we assume that the last 3 values are the latest measurements
         const [timestamp, lat, lng] = rawDataValues.slice(-3);

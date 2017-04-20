@@ -58,7 +58,7 @@ module.exports = function (router, {liveStream}) {
         console.log(`Got raw data values: ${rawDataValues}`);
 
         //currently we assume that the last 3 values are the latest measurements
-        const [timestamp, lat, lng] = rawDataValues.slice(-3);
+        let [timestamp, lat, lng] = rawDataValues.slice(-3);
 
         lat = parseFloat(lat);
         lng = parseFloat(lng);

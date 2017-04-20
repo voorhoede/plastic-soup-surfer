@@ -41,6 +41,11 @@ module.exports = function (router, {liveStream}) {
         //grab the individual values
         const rawDataValues = rawData.split(",");
 
+        //FIX: strip empty value at the end
+        if(rawDataValues[rawDataValues.length-1] === "") {
+            rawDataValues.pop();
+        }
+
         console.log(`${logTime} - Got raw data values: ${rawDataValues}`);
 
         if(rawDataValues.length === 0 || (rawDataValues.length % 3) !== 0) {
@@ -51,11 +56,6 @@ module.exports = function (router, {liveStream}) {
         }
 
         console.log(`Got raw data values: ${rawDataValues}`);
-
-        //FIX: strip empty value at the end
-        if(rawDataValues[rawDataValues.length-1] === "") {
-            rawDataValues.pop();
-        }
 
         //currently we assume that the last 3 values are the latest measurements
         const [timestamp, lat, lng] = rawDataValues.slice(-3);

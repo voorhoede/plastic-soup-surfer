@@ -1,6 +1,6 @@
 .video-player {
 	position: relative;
-	margin-bottom: @margin-double;
+	margin: 0 -@margin-default;
 	padding-bottom: 56.25%;
 	height: 0;
 
@@ -12,7 +12,7 @@
 		height: 100%;
 	}
 
-	@media @s-only {
-		margin: 0 -@margin-default;
+	@media @m {
+		margin-bottom: @margin-double;
 	}
 }

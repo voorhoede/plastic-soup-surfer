@@ -1,38 +1,39 @@
 .footer {
 	.clearfix();
-	padding: 15% 0 @margin-double*2 0;
+	padding: 25% 0 @margin-default 0;
 	background: url('/assets/icons/footer-wave.svg') top center no-repeat @brand-blue;
-	background-size: 105% auto;
+	background-size: 200% auto;
 	color: @white;
 
-	@media @s-only {
-		padding-top: 25%;
-		padding-bottom: @margin-default;
-		background-size: 200% auto;
+	@media @m {
+		padding: 15% 0 @margin-double*2 0;
+		background-size: 105% auto;
 	}
 
 	.two-columns {
+		display: block;
+
 		.left-column {
-			width: 70%;
+			width: 100%;
 			.light-text-on-dark-background();
 		}
 
 		.right-column {
-			display: flex;
-			flex-wrap: wrap;
-			width: 30%;
+			padding-left: 0;
+			width: 100%;
 		}
 
-		@media @s-only {
-			display: block;
+		@media @m {
+			display: flex;
 
 			.left-column {
-				width: 100%;
+				width: 70%;
 			}
 
 			.right-column {
-				width: 100%;
-				padding-left: 0;
+				display: flex;
+				flex-wrap: wrap;
+				width: 30%;
 			}
 		}
 	}
@@ -48,10 +49,10 @@
 		&.social-media-icons {
 			li {
 				display: inline-block;
-				margin-right: @margin-default;
+				margin-right: @margin-half;
 
-				@media @s-only {
-					margin-right: @margin-half;
+				@media @m {
+					margin-right: @margin-default;
 				}
 			}
 		}
@@ -64,18 +65,20 @@
 
 	&__buttons {
 		margin-top: @margin-double;
+		width: 100%;
+
+		@media @m {
+			width: auto;
+		}
 
 		.button {
 			display: block;
 			margin-bottom: @margin-default;
+			max-width: 10rem;
 			text-align: center;
-		}
 
-		@media @s-only {
-			width: 100%;
-
-			.button {
-				max-width: 10rem;
+			@media @m {
+				max-width: auto;
 			}
 		}
 	}

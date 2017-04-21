@@ -1,37 +1,32 @@
 .paddle-board {
 	.clearfix();
-	margin: 0 auto @margin-double*3 auto;
+	margin: 0 auto @margin-default auto;
 	padding: 0 @margin-default;
 	max-width: 1100px;
 
-	@media @s-only {
-		margin-bottom: @margin-default;
+	@media @m {
+		margin-bottom: @margin-double*3;
 	}
 
 	&__image {
-		float: left;
-		width: 50%;
-
 		img {
 			width: 100%;
 			height: auto;
 		}
 
-		@media @s-only {
-			float: none;
-			width: 100%;
+		@media @m {
+			float: left;
+			width: 50%;
 		}
 	}
 
 	&__description {
 		float: right;
-		padding-left: @margin-default;
-		width: 50%;
 
-		@media @s-only {
-			float: none;
-			padding-left: 0;
-			width: 100%;
+		@media @m {
+			float: right;
+			padding-left: @margin-default;
+			width: 50%;
 		}
 	}
 }

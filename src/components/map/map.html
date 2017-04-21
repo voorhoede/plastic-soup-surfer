@@ -2,28 +2,35 @@
 
 <section>
 	<div class="centered-column">
-		<h2>Route</h2>
+	    <h2>Route</h2>
 
-		<div id="live-map" class="map">
-			<img class="map__overlay" src="/assets/images/map-overlay.png" style="position:absolute;left: -355px; top: -30px;pointer-events:none;">
+	    <div id="live-map" class="map">
+	        <img class="map__overlay" src="/assets/images/map-overlay.png" style="position:absolute;left: -355px; top: -30px;pointer-events:none;">
 
-			{% set cardContent = {
-				"title": "The Awareness Warrant",
-				"body": "The Plastic Soup Surfer will boldly confront the companies behind the plastic waste he finds in the Rhine. He will issue judicial notifications to the top executives, questioning their corporate social responsibility and thus forcing them to a statement.",
-				"imageUrl": "http://placehold.it/250x130",
-				"social": {
-					"label": "Twitter",
-					"icon": "/assets/icons/twitter-icon.svg",
-					"url": "#"
-				},
-				"call_to_action": {
-					"label": "Donate",
-					"url": "/exploot"
-				}
-			} %}
+	        <div class="map__info-panel" id="map-info-panel" hidden>
 
-			{{ socialCard(cardContent) }}
-		</div>
+			</div>
+	    </div>
+
+		<script type="text/template" id="map-info-panel-template">
+			<% if(image) { %>
+				<div class="map__info-panel-image" style="background-image: url('<%- image %>');">
+					<% if(type === "highlighted-post") { %>
+					<div class="map__info-panel-social">
+						<a href="#"><img src="/assets/icons/twitter-icon.svg" alt="Twitter"></a>
+					</div>
+					<% } %>
+				</div>
+			<% } %>
+
+			<% if(type === "event") { %>
+			<h3><%- title %></h3>
+			<% } %>
+
+			<p><%- message %></p>
+
+			<a href="/exploot" class="button button--primary button--full-width">Donate</a>
+		</script>
 
 		{% include "components/progress/progress.html" %}
 	</div>

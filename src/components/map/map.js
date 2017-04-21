@@ -14,8 +14,8 @@ import Marker from './marker';
  
 //constants  
 const zoom = 6;
-const center = {lat: 50.23784910180976, lng : 10.799029296875009};
-const mapSize = [960, 544]; //map size at desktop
+const center = {lat: 50.251900786108095, lng : 10.425494140625009};
+const mapSize = [928, 544]; //map size at desktop
 const liveMapElement = document.getElementById("live-map");
 
 let contentMarkers = [];

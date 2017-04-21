@@ -19,6 +19,82 @@ It is not commited to the repo!
 
 Visit the site at [localhost:8080](http://localhost:8080)
 
+# Plastic Soup Surfer site
+
+Running this project also requires a **.env** file!
+This file contains passwords and keys for all the required service and might be different for each environment. 
+It is not commited to the repo!
+(Please ask Bas or Remco to send you the .env file)
+
+## Dev environment
+
+    - npm install
+    - npm run build
+    - npm run start:dev
+
+Visit the site at [localhost:8080](http://localhost:8080)
+
+## Production environment
+
+The production server is (currently) at [37.139.20.118](http://37.139.20.118)
+
+    - npm install
+    - npm run build
+    - npm start
+
+## Deploy
+
+If you want to deploy a new version you can use the `deploy.sh` tool in the tools folder.
+This tool will:
+- login to the server using ssh
+- pull the latest code from the master (using a github deployment key)
+- npm install
+- npm run build
+- pm2 reload server
+
+To deploy you need to have the `digital_ocean` ssh keys in the keys folder in the root of the repo
+
+## Style
+
+We use less for styling the plastic soup site. Nothing special...
+
+## JS
+
+We use buble and rollup to build our js in de modular way. 
+Each component folder has a js with the name of the folder (so the folder header has header.js).
+These "component js files" are the entry points of the rollup process. Other js files can be imported using es6 imports.
+
+## GPS
+
+During his travels the plastic soup surfer periodically sends gps signals to the webhook at `/api/webhook/gps`.
+This webhook saves the gps locations to the contentful cms. This causes the contentful cms to trigger a webhook at `/api/webhook/contentful` which will cache the latest contentful data.
+
+## CMS 
+
+TODO document cms
+
+## NPM scripts
+
+`start` | starts the production server
+`start:dev` | starts the development server and watches files for changes
+`server:dev` | only starts the development server
+`watch` | only watches the assets
+`build` | builds the js and style, copies the fonts to the destination folder and compresses the images
+`copy`  | copies the fonts to the destination folder
+`images` | compresses the images
+`style:watch` | watches the styles
+`style` | builds the styles,
+`script:watch` | watches the script files
+`script` | compiles the script files
+
+## Tools
+
+The tools contains a couple of scripts to the test the gps and webhook functionality.
+
+`test_gps.sh` | tests the gps webhook. The payload in the test should match the payload which is being send from the gps device. The response should be: `{"status" : "ok"}`
+
+`test_webhook.sh` | test the contentful webhook. This will cache the latest contentful data. **During development this webhook should be called everytime you change something in the cms!**
+
 # Requirements
 
 - Node >= 7.6

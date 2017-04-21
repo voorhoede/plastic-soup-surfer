@@ -19,9 +19,11 @@ module.exports = function (router, {liveStream}) {
     const gpsSignalInterval = 5000;
 
     router.post('/webhook/gps', body(), json(), async (ctx) => {
-        console.log(`${(new Date()).toJSON()} - Got incoming gps request: ${ctx.request.body}`);
+        const logTime = (new Date()).toJSON();
 
-        let {lat, lng, user, passwd} = ctx.request.body || {};
+        console.log(`${logTime} - Got incoming gps request: ${JSON.stringify(ctx.request.body)}`);
+
+        let {rawData, user, passwd} = ctx.request.body || {};
 
         if(user !== process.env.WEBHOOK_USER || passwd !== process.env.WEBHOOK_PASS) {
             ctx.status = 401;
@@ -29,17 +31,50 @@ module.exports = function (router, {liveStream}) {
             return;
         }
 
+        if(!rawData) {
+            console.log(`${logTime} - rawData missing`);
+            ctx.status = 400;
+            ctx.body = "rawData missing";
+            return;
+        }
+
+        //grab the individual values
+        const rawDataValues = rawData.split(",");
+
+        //FIX: strip empty value at the end
+        if(rawDataValues[rawDataValues.length-1] === "") {
+            rawDataValues.pop();
+        }
+
+        console.log(`${logTime} - Got raw data values: ${rawDataValues}`);
+
+        if(rawDataValues.length === 0 || (rawDataValues.length % 3) !== 0) {
+            console.log(`${logTime} - rawData wrong length`);
+            ctx.status = 400;
+            ctx.body = "rawData wrong length";
+            return;
+        }
+
+        console.log(`Got raw data values: ${rawDataValues}`);
+
+        //currently we assume that the last 3 values are the latest measurements
+        let [timestamp, lat, lng] = rawDataValues.slice(-3);
+
         lat = parseFloat(lat);
         lng = parseFloat(lng);
 
         if(isNaN(lat) || isNaN(lng)) {
-            throw new Error('Invalid lat or lng');
+            console.log(`${logTime} - Invalid lat or lng`);
+            ctx.status = 400;
+            ctx.body = 'Invalid lat or lng';
+            return;
         }
-
-        //TODO activate this to 
-        // if(typeof lastGPSSignal !== "undefined" && lastGPSSignal+gpsSignalInterval > Date.now()) {
-        //     return;
-        // }
+ 
+        //throttle requests
+        if(typeof lastGPSSignal !== "undefined" && lastGPSSignal+gpsSignalInterval > Date.now()) {
+            console.log(`${logTime} - Ignoring request because of throttling`);
+            return;
+        }
 
         lastGPSSignal = Date.now();
 

@@ -22,6 +22,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/paddle-board.png' : [
+                {
+                    width:600
+                }
+            ],
+
             'assets/images/logo.png' : [
                 {   
                     width : 127,

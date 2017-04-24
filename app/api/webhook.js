@@ -63,7 +63,7 @@ module.exports = function (router, {liveStream}) {
         lat = parseFloat(lat);
         lng = parseFloat(lng);
 
-        if(isNaN(lat) || isNaN(lng)) {
+        if((lat === -1 && lng === -1) || isNaN(lat) || isNaN(lng)) {
             console.log(`${logTime} - Invalid lat or lng`);
             ctx.status = 400;
             ctx.body = 'Invalid lat or lng';

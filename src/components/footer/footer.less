@@ -1,22 +1,40 @@
 .footer {
 	.clearfix();
-	padding: 14rem 0 @margin-double*2 0;
+	padding: 25% 0 @margin-default 0;
 	background: url('/assets/icons/footer-wave.svg') top center no-repeat @brand-blue;
-	background-size: 105% auto;
+	background-size: 200% auto;
 	color: @white;
 
+	@media @m {
+		padding: 15% 0 @margin-double*2 0;
+		background-size: 105% auto;
+	}
+
 	.two-columns {
-		display: flex;
+		display: block;
 
 		.left-column {
-			width: 70%;
+			width: 100%;
 			.light-text-on-dark-background();
 		}
 
 		.right-column {
+			padding-left: 0;
+			width: 100%;
+		}
+
+		@media @m {
 			display: flex;
-			flex-wrap: wrap;
-			width: 30%;
+
+			.left-column {
+				width: 70%;
+			}
+
+			.right-column {
+				display: flex;
+				flex-wrap: wrap;
+				width: 30%;
+			}
 		}
 	}
 
@@ -28,9 +46,15 @@
 			margin-bottom: 0;
 		}
 
-		&.social-media-icons li {
-			display: inline-block;
-			margin-right: @margin-default;
+		&.social-media-icons {
+			li {
+				display: inline-block;
+				margin-right: @margin-half;
+
+				@media @m {
+					margin-right: @margin-default;
+				}
+			}
 		}
 	}
 
@@ -41,11 +65,21 @@
 
 	&__buttons {
 		margin-top: @margin-double;
+		width: 100%;
+
+		@media @m {
+			width: auto;
+		}
 
 		.button {
 			display: block;
 			margin-bottom: @margin-default;
+			max-width: 10rem;
 			text-align: center;
+
+			@media @m {
+				max-width: auto;
+			}
 		}
 	}
 

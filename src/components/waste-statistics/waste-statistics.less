@@ -1,7 +1,11 @@
 .waste-statistics {
-	padding: @margin-double;
+	padding: @margin-default 0;
 	background: @grey-light;
-	text-align: center;
+
+	@media @m {
+		padding: @margin-double;
+		text-align: center;
+	}
 
 	em {
 		font-style: normal;
@@ -10,26 +14,59 @@
 
 	.statistics-sheet {
 		.clearfix();
+		display: flex;
+		flex-wrap: wrap;
 		padding: @margin-double 0 @margin-default 0;
 
 		&__statistic {
-			float: left;
-			margin-bottom: @margin-double;
-			width: 25%;
+			margin-bottom: @margin-double*2;
+			width: 100%;
+			text-align: center;
+
+			@media @m {
+				float: left;
+				margin-bottom: @margin-double;
+				width: 25%;
+			}
 		}
 
 		&__statistic--half-width {
-			float: left;
-			margin: @margin-double 0 @margin-default 0;
-			width: 50%;
+			margin-bottom: @margin-double*2;
+			width: 100%;
+			text-align: center;
+			
+
+			@media @m {
+				float: left;
+				margin: @margin-double 0 @margin-default 0;
+				width: 50%;
+			}
 		}
 
 		&__number {
 			.text-shadow();
 			display: block;
 			font-family: @font-header;
-			font-size: @text-size-heading*2;
+			font-size: 20vw;
 			line-height: 1;
+
+			img {
+				width: 50%;
+				height: auto;
+			}
+
+			@media @m {
+				font-size: 7vw;
+
+				img {
+					width: 75%;
+					height: auto;
+				}
+			}
+
+			@media @l {
+				font-size: @text-size-heading*1.7;
+			}
 		}
 
 		&__unit {

@@ -20,7 +20,11 @@ body {
 
 main > section,
 main > section.centered-column {
-    margin-bottom: @margin-double*2;
+    margin-bottom: @margin-double;
+
+    @media @m {
+        margin-bottom: @margin-double*2;
+    }
 }
 
 .centered-column {
@@ -132,6 +136,18 @@ p {
     }
     &:after {
         clear: both;
+    }
+}
+
+.mobile-hidden {
+    @media @s-only {
+        display: none!important;
+    }
+}
+
+.desktop-hidden {
+    @media @m {
+        display: none!important;
     }
 }
 

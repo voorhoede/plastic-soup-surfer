@@ -1,6 +1,6 @@
 {% from "components/quote/quote.html" import quote %}
 
-<section class="hero hero--plastic-surfer" style="background: url('/assets/icons/expedition-wave.svg') center bottom / 100% auto no-repeat, url('/assets/images/merijn.png') right 20% bottom 45% / 400px auto no-repeat #fff;">
+<section class="hero hero--plastic-surfer">
 	<div class="centered-column">
 		<div class="hero__content">
 			<h2>The Plastic Soup Surfer</h2>
@@ -9,7 +9,13 @@
 
 			<p>Plastic Soup Surfer (44y) is a biologist and visual artist who has been surfing since he was eight.</p>
 
-			{{ quote("Plastic waste should not exist at all, it should be regarded as a resource") }}
+			{{ quote("Plastic waste should not exist at all, it should be regarded as a resource", mobileHidden=true) }}
 		</div>
+
+		<div class="hero__image">
+			<img src="/assets/images/merijn.png" alt="" class="desktop-hidden">
+		</div>
+
+		<div class="hero__wave"></div>
 	</div>
 </section>

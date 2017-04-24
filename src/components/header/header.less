@@ -28,7 +28,12 @@
 
     &__logo {
         float:left;
-        margin-right:@margin-default;
+        width: 7rem;
+
+        @media @l {
+            margin-right:@margin-default;
+            width: 8rem;
+        }
     }
 
     &__s2s {
@@ -68,10 +73,14 @@
     }
 
     &__item {
-        margin-right:@margin-double;
+        margin-right:@margin-default;
         text-decoration: none;
         color:inherit;
         padding-bottom:3px;
+
+        @media @l {
+            margin-right: @margin-double;
+        }
 
         li:last-child & {
             margin-right:0;

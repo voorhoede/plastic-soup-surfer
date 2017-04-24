@@ -1,5 +1,5 @@
-{% macro quote(quote, quotee='') %}
-<blockquote class="quote centered-column">
+{% macro quote(quote, quotee='', mobileHidden=false) %}
+<blockquote class="quote centered-column {% if mobileHidden %}mobile-hidden{% endif %}">
 	<p>{{ quote }}</p>
 
 	{% if quotee %}

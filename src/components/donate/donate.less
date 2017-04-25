@@ -2,6 +2,27 @@
 	padding: @margin-default 0;
 	background-color: @grey-light;
 
+	@media @m {
+		padding: @margin-default*4 0;
+
+		.centered-column {
+			.two-columns;
+			position: relative;
+		}
+	}
+
+	&__description {
+		@media @m {
+			.two-columns .left-column;
+			padding-right: @margin-default*4;
+			width: 55%;
+		}
+
+		@media @m-l {
+			width: 60%;
+		}
+	}
+
 	&__box {
 		padding: @margin-default;
 		background: @white;
@@ -35,6 +56,15 @@
 			font-size: @text-size-bigger;
 			color: @brand-pink;
 		}
+
+		@media @m {
+			.two-columns .right-column;
+			width: 45%;
+		}
+
+		@media @m-l {
+			width: 40%;
+		}
 	}
 
 	&__label {
@@ -66,5 +96,20 @@
 
 	&__error {
 		color: @brand-pink;
+	}
+
+	&__mascot {
+		position: absolute;
+		left: 0;
+		bottom: -7.25rem;
+		width: 25rem;
+		height: 25rem;
+		background: url('/assets/icons/mascot.svg') center / cover no-repeat;
+
+		@media @m-l {
+			bottom: -7.85rem;
+			width: 30rem;
+			height: 30rem;
+		}
 	}
 }

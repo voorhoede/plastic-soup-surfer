@@ -16,6 +16,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/header-s.jpg' : [
+                {
+                    width:768
+                }
+            ],
+
             'assets/images/merijn.png' : [
                 {
                     width:700

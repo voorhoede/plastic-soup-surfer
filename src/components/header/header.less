@@ -2,14 +2,19 @@
 @import (reference) "core";
 
 @header-height: 88px;
+@header-height-mobile: 70px;
 @header-border-size: 4px;
 
 .site-header {
     z-index: 1;
     position: relative;
-    height:@header-height;
+    height:@header-height-mobile;
     box-shadow: 0 @header-border-size 0 0 rgba(0,0,0,0.15);
     text-align: center;
+
+    @media @m {
+        height: @header-height;
+    }
 
     .centered-column {
         .valign-center;
@@ -28,7 +33,13 @@
 
     &__logo {
         float:left;
-        width: 7rem;
+        margin: .4rem @margin-half .4rem .4rem;
+        width: 3.6rem;
+
+        @media @m {
+            margin: 0;
+            width: 7rem;
+        }
 
         @media @l {
             margin-right:@margin-default;
@@ -40,9 +51,15 @@
         display:inline-block; 
         vertical-align: middle;
         margin:0; 
-        line-height:@header-height;
+        line-height:@header-height-mobile;
         font-size:@text-size-bigger;
+        text-shadow: 1px 1px 0 @brand-pink;
         .header;
+
+        @media @m {
+            line-height: @header-height;
+            text-shadow: none;
+        }
     }
 
     &__right {
@@ -61,10 +78,6 @@
         display:inline-block;
         font-size:@text-size-bigger;
         font-weight:bold;
-
-        ul {
-            .flat-list();
-        }
 
         li {
             display:inline;
@@ -119,5 +132,38 @@
         height:100%;
         background-color:@brand-highlight;
         border-radius:@progress-bar-height;
+    }
+
+    &__mobile-menu-toggle {
+        .hide-text();
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+        width: 1.5rem;
+        height: 1.1rem;
+        border: none;
+        background: data-uri('/assets/icons/hamburger-menu.svg') center / cover no-repeat;
+    }
+
+    &__mobile-menu {
+        // display: none;
+        position: absolute;
+        padding-bottom: @margin-default;
+        left: 0;
+        top: @header-height-mobile;
+        width: 100%;
+        background: @white;
+        box-shadow: 0 @header-border-size 0 0 rgba(0,0,0,0.15);
+    }
+
+    &__mobile-nav {
+        margin-bottom: @margin-default;
+        font-size: @text-size-bigger;
+        font-weight: bold;
+        line-height: 2.5;
+
+        .site-header__item {
+            margin: 0;
+        }
     }
 }

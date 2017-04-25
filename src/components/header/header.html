@@ -10,7 +10,7 @@
         </figure>
 
         <nav class="site-header__nav">
-            <ul>
+            <ul class="flat-list">
                 <li>
                     <a href="/" class="site-header__item {{ 'site-header__item--active' if page == 'index' }}">Home</a>
                 </li>  
@@ -23,7 +23,7 @@
                 <li>
                     <a href="/about" class="site-header__item {{ 'site-header__item--active' if page == 'about' }}">About</a>
                 </li>
-            </ul> 
+            </ul>
         </nav>
 
         <div class="site-header__right">
@@ -35,6 +35,48 @@
                 <div class="site-header__progressbar">
                     <div class="site-header__progress" style="width:{{ donatedProgress*100 }}%"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="desktop-hidden">
+        <h1 class="a11y-sr-only">Plastic Soup Surfer</h1>
+        <figure class="site-header__left">
+            <a href="/">
+                <img src="/assets/images/logo.png" srcset="/assets/images/logo.png 1x, /assets/images/logo@2x.png 2x" class="site-header__logo" alt="">
+            </a>
+
+            <figcaption class="site-header__s2s">#Source2Sea</figcaption>
+        </figure>
+
+        <button class="site-header__mobile-menu-toggle">Show menu</button>
+    </div>
+
+    <div class="site-header__mobile-menu">
+        <nav class="site-header__mobile-nav">
+            <ul class="flat-list">
+                <li>
+                    <a href="/" class="site-header__item {{ 'site-header__item--active' if page == 'index' }}">Home</a>
+                </li>  
+                <li>
+                    <a href="/expedition" class="site-header__item {{ 'site-header__item--active' if page == 'expedition' }}">Expedition</a>
+                </li>
+                <li>
+                    <a href="/exploot" class="site-header__item {{ 'site-header__item--active' if page == 'exploot' }}">Exploot</a>
+                </li>
+                <li>
+                    <a href="/about" class="site-header__item {{ 'site-header__item--active' if page == 'about' }}">About</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="site-header__right-content">
+            <a href="" class="site-header__btn-donate button button--primary">Donate now</a>
+
+            <span class="site-header__progressvalue">{{ donatedProgress*100 }}%</span>
+
+            <div class="site-header__progressbar">
+                <div class="site-header__progress" style="width:{{ donatedProgress*100 }}%"></div>
             </div>
         </div>
     </div>

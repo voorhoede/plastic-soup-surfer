@@ -1,13 +1,13 @@
 .hero--plastic-surfer {
-	padding: 0;
+	padding-top: @margin-default;
+
+	.video-player ~ & {
+		padding-top: 0;
+	}	
 
 	@media @m {
 		position: relative;
-		padding-top: 6rem;
-
-		.video-player ~ & {
-			padding-top: 0;
-		}		
+		padding-top: 6rem;		
 	}
 
 	.centered-column {

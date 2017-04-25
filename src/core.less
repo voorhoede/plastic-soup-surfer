@@ -79,7 +79,6 @@ main > section.centered-column {
 }
 
 .button {
-    appearance: none;
     display:inline-block;
     padding:@margin-default @margin-double @margin-default @margin-double;
     border: none;
@@ -102,6 +101,10 @@ main > section.centered-column {
         width: 100%;
         text-align: center;
     }
+}
+
+input {
+    appearance: none;
 }
 
 h1, h2, h3, h4 {
@@ -131,6 +134,15 @@ h4 {
 p {
     margin: 0 0 @margin-default 0;
     line-height: 1.8;
+}
+
+strong {
+    font-weight: bold;
+    color: @brand-pink;
+}
+
+em {
+    font-style: italic;
 }
 
 .clearfix() {

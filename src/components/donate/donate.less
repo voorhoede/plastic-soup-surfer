@@ -1,0 +1,70 @@
+.donate {
+	padding: @margin-default 0;
+	background-color: @grey-light;
+
+	&__box {
+		padding: @margin-default;
+		background: @white;
+		box-shadow: 3px 3px 0 0 @grey-lighter;
+		border-radius: 2px;
+
+		h3 {
+			font-family: @font-body;
+			font-weight: normal;
+			text-transform: none;
+		}
+
+		dt,
+		dd {
+			margin-bottom: @margin-default;
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+
+		dt {
+			display: inline-block;
+			width: 69%;
+		}
+
+		dd {
+			display: inline-block;
+			margin-left: 0;
+			width: 29%;
+			font-size: @text-size-bigger;
+			color: @brand-pink;
+		}
+	}
+
+	&__label {
+		.extra-info {
+			display: block;
+			font-size: @text-size-small;
+		}
+	}
+
+	&__input {
+		padding: @margin-half;
+		width: 4rem;
+		background: @grey-light;
+		border: none;
+		border-radius: 2px;
+		font-size: @text-size-default;
+		color: @black;
+	}
+
+	&__total {
+		padding-top: @margin-default;
+		margin-bottom: @margin-double;
+		background: linear-gradient(to right, @brand-pink 33%, rgba(255,255,255,0) 0%) top / 15px 2px repeat-x;
+	}
+
+	&__fine-print {
+		font-size: @text-size-smaller;
+	}
+
+	&__error {
+		color: @brand-pink;
+	}
+}

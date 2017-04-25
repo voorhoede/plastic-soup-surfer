@@ -108,12 +108,15 @@
         display:block;
         clear:both;
         margin-bottom:@margin-half;
-        padding-left: .5rem;
-        padding-right: .5rem;
+
+        @media @m {
+            padding-left: @margin-half;
+            padding-right: @margin-half;
+        }
 
         @media @m-l {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
+            padding-left: @margin-default*1.5;
+            padding-right: @margin-default*1.5;
         }
     }
 

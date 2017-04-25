@@ -28,6 +28,18 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/plastic-soup.jpg' : [
+                {
+                    width:1024
+                }
+            ],
+
+            'assets/images/plastic-soup-s.jpg' : [
+                {
+                    width:768
+                }
+            ],
+
             'assets/images/logo.png' : [
                 {   
                     width : 127,

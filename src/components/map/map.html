@@ -4,12 +4,14 @@
 	<div class="centered-column">
 	    <h2>Route</h2>
 
+		{% if phase == "may" %}
+			
+		{% endif %}
+
 	    <div id="live-map" class="map">
 	        <img class="map__overlay" src="/assets/images/map-overlay.png" style="position:absolute;left: -355px; top: -30px;pointer-events:none;">
 
-	        <div class="map__info-panel" id="map-info-panel" hidden>
-
-			</div>
+	        <div class="map__info-panel" id="map-info-panel" hidden></div>
 	    </div>
 
 		<script type="text/template" id="map-info-panel-template">

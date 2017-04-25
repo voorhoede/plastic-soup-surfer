@@ -26,6 +26,9 @@ let livePositionMarker = null;
 
 //debug(liveMapElement, {zoom, center});
 
+/**
+ * Load the map data
+ */
 function loadMapData() {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -40,6 +43,10 @@ function loadMapData() {
     });
 }
 
+/**
+ * Creates the map instance (currently only has one method: addMarker)
+ * @param {DOMElement} el 
+ */
 function createMap(el) {
     const projector = new FlatMercatorViewport({
         tileSize : 256,
@@ -59,12 +66,23 @@ function createMap(el) {
     });
 }
 
+/**
+ * Display the info panel with given marker data
+ * @param {*} data 
+ */
 function displayInfoPanel(data) {
     mapInfoPanel.innerHTML = mapInfoPanelTemplate(data);
     mapInfoPanel.hidden = false;
 }
 
+/**
+ * Adds the markers to the given map instance
+ * @param {*} map 
+ * @param {*} mapData 
+ */
 function addMapMarkers(map, mapData) {
+
+    //the content markers (highlighted post & events)
     contentMarkers = mapData.items.map(data => {
         return map.addMarker(Object.assign(
             data.loc, 
@@ -76,10 +94,14 @@ function addMapMarkers(map, mapData) {
         ));
     });
 
+    //adds the live marker
     const {lat, lng} = mapData.currentLocation;
     livePositionMarker = map.addMarker({extraClassName : "map__marker--current", lat, lng});
 }
 
+/**
+ * Init the live feed connection
+ */
 function initLiveFeed() {
     //TODO load polyfill for live data
     if(!window.EventSource) {
@@ -89,7 +111,7 @@ function initLiveFeed() {
     const sse = new EventSource('/api/map/live');
     sse.addEventListener("live_position", ({data}) => {
         data = JSON.parse(data);
-        console.log(data);
+        //console.log(data);
 
         livePositionMarker.location = data;
     }, false);

@@ -1,19 +1,17 @@
 {%- extends "views/_base/layout.html" -%}
 
 {%- block content -%}
-        <h2>Wat zijn exploots</h2>
+	{% include "components/hero-exploot/hero-exploot.html" %}
+	
+	{% set exploot = exploot[0] %}
 
-        {% set exploot = exploot[0] %}
+	{{ exploot.fields.intro }}
 
-        {{ exploot.fields.intro }}
+	<form action="/api/donations/add" method="POST">
+		{{error}}<br><br>
 
-        <h2>Doe een donatie</h2>
+		&euro;10,- + <input type="number" min="0" name="extra">
+		<input type="submit">
+	</form>
 
-        <form action="/api/donations/add" method="POST">
-            {{error}}<br><br>
-
-            &euro;10,- + <input type="number" min="0" name="extra">
-            <input type="submit">   
-        </form>  
- 
 {%- endblock -%}

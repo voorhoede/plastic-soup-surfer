@@ -16,6 +16,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/header-s.jpg' : [
+                {
+                    width:768
+                }
+            ],
+
             'assets/images/merijn.png' : [
                 {
                     width:700
@@ -25,6 +31,18 @@ gulp.task('images', function() {
             'assets/images/paddle-board.png' : [
                 {
                     width:600
+                }
+            ],
+
+            'assets/images/plastic-soup.jpg' : [
+                {
+                    width:1024
+                }
+            ],
+
+            'assets/images/plastic-soup-s.jpg' : [
+                {
+                    width:768
                 }
             ],
 

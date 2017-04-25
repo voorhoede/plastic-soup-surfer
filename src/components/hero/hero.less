@@ -1,9 +1,20 @@
 .hero {
-	padding: @margin-double*4 0;
+	@media @m {
+		padding: @margin-double*4 0;
+		background: url('/assets/icons/header-wave.svg') bottom center / 100% auto no-repeat,
+					url('/assets/images/header.jpg') center / cover no-repeat;
+	}
 
-	&__content {
-		width: 45%;
+	.hero__image {
+		margin: 0 -@margin-default @margin-default -@margin-default;
 
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.hero__content {
 		h2 {
 			color: @brand-blue;
 		}
@@ -12,6 +23,15 @@
 			margin-bottom: @margin-double;
 			font-weight: bold;
 			line-height: 1.8;
+		}
+
+		@media @m {
+			width: 45%;
+
+			h2 {
+				color: @brand-pink;
+				text-shadow: 3px 3px 0 @brand-blue;
+			}
 		}
 	}
 }

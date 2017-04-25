@@ -1,0 +1,24 @@
+.hero--exploot {
+	@media @m {
+		padding: 3rem 0 5rem 0;
+		background: url('/assets/icons/header-wave.svg') bottom center / 100% auto no-repeat,
+					url('/assets/images/plastic-soup.jpg') center / cover no-repeat;
+	}
+
+	.hero__content {
+		p {
+			margin-bottom: @margin-default;
+		}
+
+		@media @m {
+			width: 75%;
+			color: @white;
+
+			h2 {
+				.light-text-on-dark-background;
+				text-shadow: 3px 3px 0 @brand-pink;
+				color: @white;
+			}
+		}
+	}
+}

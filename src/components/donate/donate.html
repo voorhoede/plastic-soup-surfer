@@ -1,0 +1,55 @@
+<section class="donate">
+	<div class="centered-column">
+		<div class="donate__description">
+			<h2>Buy a share!</h2>
+
+			<p>Our ‘awareness warrants’ will be addressed to the chief executives of the top ten companies who’s plastic is found in and along the riverbanks of the Rhine. We need 100 people to deliver one warrant. Buy a share and be part of the movement!</p>
+		 
+			<p>An ‘Awareness Warrant’ (Dutch: desbewustheids exploot) is a Dutch judicial notice delivered by a bailiff (Dutch: deurwaarder).</p>
+		</div>
+
+		<div class="donate__box">
+			<h3><strong>YES,</strong> I want to confront the plastic producing CEO! I am buying <strong>one share</strong> of a warrant!</h3>
+
+			<form action="/api/donations/add" method="POST">
+				{% set exploot = exploot[0] %}
+
+				<div class="donate__error">{{error}}</div>
+
+				<dl class="donate__items">
+					<dt>One share</dt>
+					<dd>€ 5,-</dd>
+					<dt>
+						<label class="donate__label" for="extra">
+							Extra optional donation
+							<span class="extra-info">for the Plastic Soup Surfer expeditions</span>
+						</label>
+					</dt>
+					<dd>
+						€ <input class="donate__input"
+								 type="number"
+								 min="0"
+								 name="extra"
+								 id="extra"
+								 placeholder="0,00">
+					</dd>
+				</dl>
+
+				<dl class="donate__total">
+					<dt>Total</dt>
+					<dd>€ 5,-</dd>
+				</dl>
+
+				<div class="donate__fine-print">
+					<p><em>100 shares make up one warrant. You can only buy one share per transaction. Warrants are to be delivered in September by a bailiff.</em></p>
+
+					<p>By pressing 'donate' you will be redirected to the payment area where payment options can be selected. You will be sent back to this website afterwards.</p>
+				</div>
+
+				<input class="button button--primary button--full-width" type="submit" value="Donate">
+			</form>
+		</div>
+
+		<div class="donate__mascot mobile-hidden"></div>
+	</div>
+</section>

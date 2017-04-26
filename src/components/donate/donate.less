@@ -1,0 +1,116 @@
+.donate {
+	padding: @margin-default 0;
+	background-color: @grey-light;
+
+	@media @m {
+		padding: @margin-default*4 0;
+
+		.centered-column {
+			.two-columns;
+			position: relative;
+		}
+	}
+
+	&__description {
+		@media @m {
+			.two-columns .left-column;
+			padding-right: @margin-default*4;
+			width: 55%;
+		}
+
+		@media @m-l {
+			width: 60%;
+		}
+	}
+
+	&__box {
+		padding: @margin-default;
+		background: @white;
+		box-shadow: 3px 3px 0 0 @grey-lighter;
+		border-radius: 2px;
+
+		h3 {
+			font-family: @font-body;
+			font-weight: normal;
+			text-transform: none;
+		}
+
+		dt,
+		dd {
+			margin-bottom: @margin-default;
+
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+
+		dt {
+			display: inline-block;
+			width: 69%;
+		}
+
+		dd {
+			display: inline-block;
+			margin-left: 0;
+			width: 29%;
+			font-size: @text-size-bigger;
+			color: @brand-pink;
+		}
+
+		@media @m {
+			.two-columns .right-column;
+			width: 45%;
+		}
+
+		@media @l {
+			width: 40%;
+		}
+	}
+
+	&__label {
+		.extra-info {
+			display: block;
+			font-size: @text-size-small;
+		}
+	}
+
+	&__input {
+		padding: @margin-half;
+		width: 4rem;
+		background: @grey-light;
+		border: none;
+		border-radius: 2px;
+		font-size: @text-size-default;
+		color: @black;
+	}
+
+	&__total {
+		padding-top: @margin-default;
+		margin-bottom: @margin-double;
+		background: linear-gradient(to right, @brand-pink 33%, rgba(255,255,255,0) 0%) top / 15px 2px repeat-x;
+	}
+
+	&__fine-print {
+		font-size: @text-size-smaller;
+	}
+
+	&__error {
+		color: @brand-pink;
+	}
+
+	&__mascot {
+		position: absolute;
+		left: 3rem;
+		bottom: -6.4rem;
+		width: 19rem;
+		height: 19rem;
+		background: url('/assets/icons/mascot.svg') center / cover no-repeat;
+
+		@media @m-l {
+			left: 0;
+			bottom: -7.85rem;
+			width: 30rem;
+			height: 30rem;
+		}
+	}
+}

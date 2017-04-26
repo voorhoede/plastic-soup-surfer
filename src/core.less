@@ -80,23 +80,31 @@ main > section.centered-column {
 
 .button {
     display:inline-block;
-    padding:@margin-half*1.2 @margin-default*1.5 @margin-half @margin-default*1.5;
+    padding:@margin-default @margin-double @margin-default @margin-double;
+    border: none;
     border-radius:2px;
+    font-size: inherit;
     color:@white;
     text-decoration: none;
     text-transform: uppercase;
     line-height:1;
+
+    @media @m {
+        padding:@margin-half*1.2 @margin-default*1.5 @margin-half @margin-default*1.5;
+    }
 
     &--primary {
         background-color:@brand-pink;
     }
 
     &--full-width {
-        padding-left: 0;
-        padding-right: 0;
         width: 100%;
         text-align: center;
     }
+}
+
+input {
+    appearance: none;
 }
 
 h1, h2, h3, h4 {
@@ -126,6 +134,15 @@ h4 {
 p {
     margin: 0 0 @margin-default 0;
     line-height: 1.8;
+}
+
+strong {
+    font-weight: bold;
+    color: @brand-pink;
+}
+
+em {
+    font-style: italic;
 }
 
 .clearfix() {

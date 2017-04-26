@@ -35,6 +35,13 @@ gulp.task('script', function () {
             moduleName : 'app',
             dest : process.env.DIST_DIR + '/assets/js/all.js'
         });
+    }).then(() => {
+        if(environment === "production") {
+            const result = UglifyJS.minify([process.env.DIST_DIR + '/all.js']);
+
+            fs.writeFileSync(process.env.DIST_DIR + '/all.js', result.code);
+            fs.writeFileSync(process.env.DIST_DIR + '/all.js.map', result.map);
+        }
     });
 });
 

@@ -1,0 +1,55 @@
+{% from "components/social-card/social-card.html" import socialCard %}
+
+<div class="social-media-carousel">
+	<div class="centered-column">
+		<h2>Social</h2>
+
+		{% set cardContent = {
+			"body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque elementum ligula.",
+			"imageUrl": "http://placehold.it/250x130",
+			"social": {
+				"title": "Twitter",
+				"icon": "/assets/icons/twitter-icon.svg",
+				"url": "#"
+			}
+		} %}
+
+		<div class="carousel" data-flickity='{ "cellAlign": "left", "contain": true, "pageDots": false, "groupCells": true }'>
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+
+			<div class="carousel__cell">
+				{{ socialCard(cardContent) }}
+			</div>
+		</div>
+	</div>
+</div>

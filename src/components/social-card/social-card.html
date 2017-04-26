@@ -1,0 +1,25 @@
+{% macro socialCard(content) %}
+<div class="social-card">
+	{% if content.imageUrl %}
+		<div class="social-card__panel-image" style="background-image: url('{{ content.imageUrl }}');">
+			{% if content.social %}
+				<div class="social-card__panel-social">
+					<a href="{{ content.social.url }}"><img src="{{ content.social.icon }}" alt="{{ content.social.label }}"></a>
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+
+	{% if content.title %}
+		<h3>{{ content.title }}</h3>
+	{% endif %}
+
+	{% if content.body %}
+		<p>{{ content.body }}</p>
+	{% endif %}
+
+	{% if content.call_to_action %}
+		<a href="{{ content.call_to_action.url }}" class="button button--primary button--full-width">{{ content.call_to_action.label }}</a>
+	{% endif %}
+</div>
+{% endmacro %}

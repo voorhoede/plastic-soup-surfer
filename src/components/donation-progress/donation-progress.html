@@ -13,36 +13,19 @@
 
 	<div class="donation-progress__progress-indicator">
 		<ul class="donation-progress__visual flat-list">
+			{% for i in range(0, 10) %}
 			<li class="progress-item">
-				<img src="/assets/icons/warrant--empty.svg" alt="">
+				<img src="
+					{%- if donatedProgress // 10 > i -%}
+						/assets/icons/warrant--finished.svg
+					{%- elif donatedProgress // 10 < i -%}
+						/assets/icons/warrant--empty.svg
+					{%- else -%}
+						/assets/icons/warrant--progress.svg
+					{%- endif -%}
+				" alt="">
 			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--empty.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--empty.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--empty.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--progress.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--finished.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--finished.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--finished.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--finished.svg" alt="">
-			</li>
-			<li class="progress-item">
-				<img src="/assets/icons/warrant--finished.svg" alt="">
-			</li>
+			{% endfor %}
 		</ul>
 
 		<h2>Total sold <span class="donation-progress__number">{{ donatedProgress }}%</span></h2>

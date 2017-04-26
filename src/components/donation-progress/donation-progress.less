@@ -1,0 +1,84 @@
+.donation-progress {
+	@media @m {
+		text-align: center;
+
+		&__description {
+			position: relative;
+			margin: 0 auto @margin-default*4 auto;
+			width: 70%;
+		}
+	}
+
+	&__progress-indicator {
+		margin-bottom: @margin-double;
+
+		@media @m {
+			background: url('/assets/icons/progress-line.svg') top 100px center / 910px 962px no-repeat;
+		}
+	}
+
+	&__visual {
+		margin-bottom: @margin-double;
+
+		.progress-item {
+			display: inline-block;
+			margin-right: @margin-default;
+			width: calc(~'49% - ' @margin-half);
+
+			&:nth-child(even) {
+				margin-right: 0;
+			}
+
+			@media @m {
+				display: inline;
+				margin: 0 @margin-half/2;
+				width: auto;
+
+				&:nth-child(even) {
+					margin: 0 @margin-default;
+				}
+
+				&:nth-child(1):after,
+				&:nth-child(3):after,
+				&:nth-child(6):after {
+					content: '\A';
+					white-space: pre;
+				}
+			}
+
+			@media @m-l {
+				margin: 0 @margin-default;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+
+				@media @m {
+					width: 150px;
+				}
+			}
+		}
+	}
+
+	&__number {
+		font-size: @text-size-heading*1.5;
+
+		@media @m {
+			font-size: @text-size-heading*2;
+		}
+	}
+
+	&__bailiff {
+		margin: 0 auto;
+		padding-bottom: 130%;
+		width: 100%;
+		height: 0;
+		background: url('/assets/icons/bailiff.svg') center / auto 100% no-repeat;
+
+		@media @m {
+			padding-bottom: 95%;
+			width: 70%;
+		}
+	}
+}

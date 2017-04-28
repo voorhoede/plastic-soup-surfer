@@ -1,0 +1,29 @@
+{% macro socialCard(content) %}
+<div class="social-card">
+	{% 
+		set icons = {
+			'Twitter' : '/assets/icons/twitter-icon.svg',
+			'Facebook' : '/assets/icons/facebook-icon.svg',
+			'YouTube' : '/assets/icons/youtube-icon.svg'
+		} 
+	%}
+
+	{% if content.imageUrl %}
+		<div class="social-card__panel-image" style="background-image: url('{{ content.imageUrl }}');">
+			{% if content.social %}
+				<div class="social-card__panel-social">
+					<a href="{{ content.social.url }}"><img src="{{ icons[content.social.type] }}" alt="{{ content.social.type }}"></a>
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+
+	{% if content.body %}
+		<p class="social-card__panel-text">{{ content.body | safe }}</p>
+	{% endif %}
+
+	{% if content.call_to_action %}
+		<a href="{{ content.call_to_action.url }}" class="button button--primary button--full-width">{{ content.call_to_action.label }}</a>
+	{% endif %}
+</div>
+{% endmacro %}

@@ -1,0 +1,15 @@
+{% from "components/social-card/social-card.html" import socialCard %}
+
+<div class="social-media-carousel">
+	<div class="centered-column">
+		<h2>Social</h2>
+
+		<div class="carousel" data-carousel data-carousel-next="{{ socialFeed.next }}">
+			{% for feedItem in socialFeed.posts %}
+				<div class="carousel__cell">
+					{{ socialCard(feedItem) }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

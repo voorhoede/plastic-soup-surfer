@@ -1,12 +1,9 @@
-const nunjucks = require('nunjucks');
 const bluebird = require('bluebird');
 const contentfulCache = require('./lib/contentful-cache');
+const getSocialFeed = require('./lib/get-social-feed');
 const moment = require('moment');
 
-module.exports = function (router, {constants}) {
-    const env = nunjucks.configure("./src", {
-        noCache : process.env.NODE_ENV === "development"
-    });
+module.exports = function (router, {constants, nunjucksEnv}) {
 
     function parseDate(date) {
         let [year, month, day] = date.split("-");
@@ -18,6 +15,31 @@ module.exports = function (router, {constants}) {
         return Date.UTC(year, month-1, day);
     }
 
+    function getGroupedEvents(eventList) {
+        const now = Date.now();
+
+        const upcomingEvents = eventList
+            .filter(event => {
+                return new Date(event.fields.date) > now;
+            })
+            .map(event => {
+                return Object.assign({}, event.fields, {
+                    date : moment(event.fields.date).format("MMMM Do - YYYY")
+                });
+            });
+
+        const pastEvents = eventList
+            .filter(event => {
+                return now > new Date(event.fields.date);
+            })
+            .map(event => {
+                return Object.assign({}, event.fields, {
+                    date : moment(event.fields.date).format("MMMM Do - YYYY")
+                });
+            });
+
+        return {upcomingEvents, pastEvents};
+    }
 
     router.use(async (ctx, next) => {
         const {siteStatus} = ctx.state.baseTemplateData = await contentfulCache.get();
@@ -41,40 +63,20 @@ module.exports = function (router, {constants}) {
         await next();
     });
 
-    router.get('/', ctx => {
-        const {event : eventList} = ctx.state.baseTemplateData;
+    router.get('/', async (ctx) => {
+        const {upcomingEvents, pastEvents} = getGroupedEvents(ctx.state.baseTemplateData.event);
+        const socialFeed = await getSocialFeed(0, 12);
 
-        const now = Date.now();
-
-        const upcomingEvents = eventList
-            .filter(event => {
-                return new Date(event.fields.date) > now;
-            })
-            .map(event => {
-                return Object.assign({}, event.fields, {
-                    date : moment(event.fields.date).format("MMMM Do - YYYY")
-                });
-            });
-
-        const pastEvents = eventList
-            .filter(event => {
-                return now > new Date(event.fields.date);
-            })
-            .map(event => {
-                return Object.assign({}, event.fields, {
-                    date : moment(event.fields.date).format("MMMM Do - YYYY")
-                });
-            });
-
-        ctx.body = env.render('views/index/index.html', Object.assign(ctx.state.baseTemplateData, {
+        ctx.body = nunjucksEnv.render('views/index/index.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'index',
             pastEvents,
-            upcomingEvents
+            upcomingEvents,
+            socialFeed
         }));
     });
 
     router.get('about', ctx => {
-        ctx.body = env.render('views/about/about.html', Object.assign(ctx.state.baseTemplateData, {
+        ctx.body = nunjucksEnv.render('views/about/about.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'about'
         }));
     });
@@ -82,14 +84,14 @@ module.exports = function (router, {constants}) {
     router.get('exploot', ctx => {
         const {error = null} = ctx.flash.get() || {};
 
-        ctx.body = env.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
+        ctx.body = nunjucksEnv.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'exploot',
             error
         }));
     });
 
     router.get('expedition', ctx => {
-        ctx.body = env.render('views/expedition/expedition.html', Object.assign(ctx.state.baseTemplateData, {
+        ctx.body = nunjucksEnv.render('views/expedition/expedition.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'expedition'
         }));
     });

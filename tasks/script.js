@@ -8,6 +8,7 @@ const buble = require('rollup-plugin-buble');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const multiEntry = require('rollup-plugin-multi-entry');
+const nunjucks = require('./lib/rollup-compile-nunjucks');
 const through = require('through2');
 const path = require('path');
 
@@ -18,6 +19,7 @@ gulp.task('script', function () {
         entry : process.env.SRC_DIR + "/**/*.js",
 
         plugins : [
+            nunjucks(),
             multiEntry(),
             resolve({
                 jsnext: true,

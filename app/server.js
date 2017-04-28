@@ -11,6 +11,7 @@ const assert = require('assert');
 const xhr = require('./lib/koa-xhr');
 const contentfulCache = require('./lib/contentful-cache');
 const juicerCache = require('./lib/juicer-cache');
+const nunjucks = require('nunjucks');
 
 juicerCache.startPeriodicUpdate();
 
@@ -20,7 +21,10 @@ const app = new Koa();
 
 const appCtxt = {
     liveStream : require('./lib/koa-sse-stream')(),
-    constants : require('./constants')
+    constants : require('./constants'),
+    nunjucksEnv : nunjucks.configure("./src", {
+        noCache : process.env.NODE_ENV === "development"
+    })
 }
 
 const mainRouter = new Router();
@@ -29,6 +33,7 @@ const apiRouter = new Router();
 require('./api/donations')(apiRouter, appCtxt);
 require('./api/map')(apiRouter, appCtxt);
 require('./api/webhook')(apiRouter, appCtxt);
+require('./api/social-feed')(apiRouter, appCtxt);
 mainRouter.use("/api", apiRouter.routes());
 
 const pagesRouter = new Router();

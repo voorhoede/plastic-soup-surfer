@@ -1,14 +1,17 @@
 .social-card {
 	padding: @margin-default;
 	background: @white;
+	display: block;
 
-	p {
+	&__panel-text {
 		line-height: 1.5;
+		height: 45%;
+		overflow: hidden;
 	}
 
 	&__panel-image {
 		margin: -@margin-default -@margin-default @margin-default -@margin-default;
-		padding-bottom: 52%;
+		padding-bottom: 43%; //made the image slightly less high to have more space for the text
 		height: 0;
 		background-position: center;
 		background-size: cover;

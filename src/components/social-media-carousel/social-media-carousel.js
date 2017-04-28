@@ -41,7 +41,7 @@ function loadNextItems() {
 
     loading = true;
 
-    loadCarouselData(nextId, 12)
+    loadCarouselData(nextId, 24)
         .then(data => {
             nextId = data.next;
             appendNewPosts(data.posts);
@@ -59,7 +59,7 @@ carousel.on('settle', () => {
 
 carousel.on('scroll', progress => {
     const itemIndex = progress * carousel.cells.length;
-    if(itemIndex >= carousel.cells.length - 6 && !loading) {
+    if(itemIndex >= carousel.cells.length - 12 && !loading) {
         //console.log('load');
         loadNextItems();
     }

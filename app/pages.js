@@ -65,7 +65,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
 
     router.get('/', async (ctx) => {
         const {upcomingEvents, pastEvents} = getGroupedEvents(ctx.state.baseTemplateData.event);
-        const socialFeed = await getSocialFeed(0, 12);
+        const socialFeed = await getSocialFeed(0, 24);
 
         ctx.body = nunjucksEnv.render('views/index/index.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'index',

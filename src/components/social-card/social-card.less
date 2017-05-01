@@ -11,10 +11,16 @@
 
 	&__panel-image {
 		margin: -@margin-default -@margin-default @margin-default -@margin-default;
-		padding-bottom: 43%; //made the image slightly less high to have more space for the text
+		padding-bottom: 7rem;
 		height: 0;
 		background-position: center;
 		background-size: cover;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+
+		@media @m {
+			padding-bottom: 43%; //made the image slightly less high to have more space for the text
+		}
 	}
 
 	&__panel-social {

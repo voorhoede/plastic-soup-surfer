@@ -114,13 +114,21 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size:@text-size-heading;
+    font-size:@text-size-heading*.8;
+
+    @media @m {
+        font-size:@text-size-heading;
+    }
 }
 
 h2 {
-    font-size:@text-size-heading;
+    font-size:@text-size-heading*.8;
     color:@brand-pink;
     line-height: 1;
+
+    @media @m {
+        font-size:@text-size-heading;
+    }
 }
 
 h3 {

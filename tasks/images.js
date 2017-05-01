@@ -22,6 +22,18 @@ gulp.task('images', function() {
                 }
             ],
 
+						'assets/images/about-me.jpg' : [
+                {
+                    width:1440
+                }
+            ],
+
+            'assets/images/about-me-s.jpg' : [
+                {
+                    width:768
+                }
+            ],
+
             'assets/images/merijn.png' : [
                 {
                     width:700
@@ -47,7 +59,7 @@ gulp.task('images', function() {
             ],
 
             'assets/images/logo.png' : [
-                {   
+                {
                     width : 127,
                     height : 123
                 },

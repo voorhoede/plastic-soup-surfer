@@ -1,7 +1,12 @@
 .social-media-carousel {
 	margin-bottom: @margin-default*4;
-	padding: 6rem 0 15rem 0;
-	background: url('/assets/icons/social-wave.svg') center top / 100% auto no-repeat;
+	padding: 10rem 0;
+	background: url('/assets/icons/social-wave.svg') center top / cover no-repeat;
+
+	@media @l {
+		background-image: url('/assets/icons/social-wave--no-aspect-ratio.svg');
+		background-size: 100% 100%;
+	}
 
 	.carousel {
 		position: relative;
@@ -52,35 +57,40 @@ http://flickity.metafizzy.co
 }
 
 .flickity-prev-next-button {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	width: @margin-double*1.5;
-	height: @margin-double*1.5;
-	border: none;
-	border-radius: @margin-default*1.5;
-	background: @white;
-	box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.10);
-	cursor: pointer;
+	display: none;
 
-	&:disabled {
-		display: none;
-	}
+	@media @l {
+		display: block;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: @margin-double*1.5;
+		height: @margin-double*1.5;
+		border: none;
+		border-radius: @margin-default*1.5;
+		background: @white;
+		box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.10);
+		cursor: pointer;
 
-	svg {
-		width: 75%;
-		height: auto;
-	}
+		&:disabled {
+			display: none;
+		}
 
-	& .arrow {
-		fill: @brand-pink;
-	}
+		svg {
+			width: 75%;
+			height: auto;
+		}
 
-	&.previous {
-		left: -@margin-double*2;
-	}
+		& .arrow {
+			fill: @brand-pink;
+		}
 
-	&.next {
-		right: -@margin-double*2;
+		&.previous {
+			left: -@margin-double*2;
+		}
+
+		&.next {
+			right: -@margin-double*2;
+		}
 	}
 }

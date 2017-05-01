@@ -84,11 +84,12 @@ module.exports = function (router, {constants, nunjucksEnv}) {
     });
 
     router.get('exploot', ctx => {
-        const {error = null} = ctx.flash.get() || {};
+        const {error = null, donationState = constants.donationState.NOT_STARTED} = ctx.flash.get() || {};
 
         ctx.body = nunjucksEnv.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'exploot',
-            error
+            error,
+            donationState
         }));
     });
 

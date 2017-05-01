@@ -1,6 +1,10 @@
 {%- extends "views/_base/layout.html" -%}
 
 {%- block content -%}
+	{% if donationState == "success" %}
+		Betaling voltooid!
+	{% endif %}
+
 	{% include "components/hero-exploot/hero-exploot.html" %}
 
 	{% include "components/donate/donate.html" %}

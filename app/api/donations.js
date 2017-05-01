@@ -4,7 +4,7 @@ const body = require('koa-body');
 const json = require('koa-json');
 const error = require('../lib/koa-error-response');
 
-module.exports = function (router) {
+module.exports = function (router, {constants}) {
     const contentfulClient = contentfulManagement.createClient({
         accessToken : process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     });
@@ -12,13 +12,15 @@ module.exports = function (router) {
     const mollieClient = new Mollie.API.Client;
     mollieClient.setApiKey(process.env.MOLLIE_API_KEY);
 
+
     function createPaymentInMollie(ctx, amount = 0) {
         return new Promise((resolve, reject) => {
+
             const requestBody = {
                 amount,
                 description: "Plastic Soup Donation",
-                redirectUrl: ctx.request.host + "/api/donations/done",
-                webhookUrl: ctx.request.host + "/api/donations/report"
+                redirectUrl: ctx.request.protocol + "://" + ctx.request.host + "/api/donations/done",
+                webhookUrl: ctx.request.protocol + "://" + ctx.request.host + "/api/donations/report"
             };
 
             mollieClient.payments.create(requestBody, payment => {
@@ -53,7 +55,7 @@ module.exports = function (router) {
             throw new error.UserError("Ingevulde bonuswaarde is ongeldig");
         }
 
-        const amount = 10 + parseInt(extra, 10);
+        const amount = constants.donationCost + parseInt(extra, 10);
 
         let payment;
         try {
@@ -90,7 +92,7 @@ module.exports = function (router) {
             throw new error.UserError(`Invalid payment id ${id}`);
         }
 
-        console.log(`Succesfull payment reported by mollie: ${savedPayment}`);
+        console.log('Succesful payment reported by mollie');
 
         //abort early when the status was not paid
         if(savedPayment.status !== "paid") {
@@ -119,8 +121,8 @@ module.exports = function (router) {
      * Todo show the thank you page (it should just redirect to the exploot page with a flash message)
      */
     router.get('/donations/done', body(), ctx => {
-        console.log(ctx.request.body);
-        ctx.body = "bedankt!";
+        ctx.flash.set({donationState : constants.donationState.SUCCESS});
+        return ctx.redirect('/exploot');
     });
 
 }

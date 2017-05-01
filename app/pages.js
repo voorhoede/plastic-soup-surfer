@@ -53,11 +53,13 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         const dayInMilliseconds = 86400000;
         const daysDiff = Date.now() - parseDate(siteStatus[0].fields.startDay);
         const day = Math.floor( daysDiff / dayInMilliseconds ) || 1;
+        const distance = siteStatus[0].fields.distance;
 
         Object.assign(ctx.state.baseTemplateData, {
             explootProgress, 
             donatedProgress,
-            day
+            day,
+            distance
         });
 
         await next();

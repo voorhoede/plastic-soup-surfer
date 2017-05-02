@@ -10,7 +10,6 @@
         margin: 0 -@margin-default @margin-default -@margin-default;
 
         @media @m {
-            max-height: 100%;
             margin: 0 0 0 @margin-double;
         }
 
@@ -32,23 +31,17 @@
         padding-right: 0;
     }
 
-    .left-column{
+    .right-column{
         @media @m {
-            float: right
+            float: right;
+            width: 40%;
         }
     }
 
-    &.two-third{
-        .left-column{
-            @media @m {
-                width: 40%;
-            }
-        }
-
-        .right-column{
-            @media @m {
-                width: calc(~'60% -' @margin-double);
-            }
+    .left-column{
+        @media @m {
+            float: left;
+            width: calc(~'60% -' @margin-double);
         }
     }
 }

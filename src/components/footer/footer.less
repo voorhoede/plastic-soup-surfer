@@ -1,17 +1,36 @@
 .footer {
-	.clearfix();
-	padding: 25% 0 @margin-default 0;
-	background: url('/assets/icons/footer-wave.svg') top center no-repeat @brand-blue;
-	background-size: 200% auto;
 	color: @white;
-
-	@media @m {
-		padding: 15% 0 @margin-double*2 0;
-		background-size: 105% auto;
-	}
 
 	.menu-active & {
 		opacity: .5;
+	}
+
+	.footer__wave {
+		overflow: hidden;
+
+		img {
+			display: block;
+			margin-left: -50%;
+			width: 200%;
+			height: auto;
+		}
+
+		@media @m {
+			img {
+				margin-left: 0;
+				width: 100%;
+			}
+		}
+	}
+
+	.footer__content {
+		margin-top: -5px; // prevents white line from appearing when resizing the browser
+		padding: @margin-double 0;
+		background: @brand-blue;
+
+		@media @m {
+			padding: @margin-double*2 0;
+		}
 	}
 
 	.two-columns {

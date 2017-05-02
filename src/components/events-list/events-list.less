@@ -1,65 +1,100 @@
 .events-list {
 	margin-bottom: @margin-double;
 
-	.left-column {
-		@border-width: 3px;
+	.two-columns{
+		display: block;
 
-		width: calc(~'50% -' @border-width ~'-' @margin-default);
-		border-right: @border-width dashed @brand-pink;
-	}
-}
+		@media @m {
+			display: flex;
+		}
 
-.event {
-	.clearfix();
-	margin-bottom: @margin-default;
-	background: @grey-light;
-	
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	@image-width: 150px;
-
-	&--image {
-		float: left;
-		width: @image-width;
-
-		& > span {
-			display: block;
-			padding-top: 63.33%;
+		.left-column{
 			width: 100%;
-			height: 0;
+			margin-bottom: @margin-double;
+			padding-right: 0;
+
+			@media @m {
+				@border-width: 3px;
+
+				margin-bottom: 0;
+				padding-right: @margin-default;
+				width: calc(~'52% -' @border-width ~'-' @margin-default);
+				border-right: @border-width dashed @brand-pink;
+			}
+		}
+
+		.right-column{
+			width: 100%;
+			padding-left: 0rem;
+
+			@media @m {
+				padding-left: @margin-default;
+				width: 48%;
+			}
 		}
 	}
 
-	&--content {
-		margin-left: @image-width;
-		padding: @margin-default;
-	}
+	.event {
+		.clearfix();
+		margin-bottom: @margin-default;
+		background: @grey-light;
 
-	&--meta {
-		overflow: auto;
-		margin-bottom: @margin-half;
-	}
+		&:last-child {
+			margin-bottom: 0;
+		}
 
-	&--title {
-		.truncate-text();
-		float: left;
-		margin-bottom: 0;
-		width: 55%;
-		font-size: @text-size-smaller;
-	}
+		@image-width: 150px;
 
-	&--date {
-		.truncate-text();
-		float: right;
-		margin-top: .2rem;
-		width: 43%;
-		font-size: @text-size-small;
-		text-align: right;
-	}
+		&--image {
+			float: left;
+			width: @image-width;
 
-	&--description {
-		font-size: @text-size-smaller;
+			& > span {
+				display: block;
+				padding-top: 63.33%;
+				width: 100%;
+				height: 0;
+			}
+		}
+
+		&--content {
+			padding: @margin-default;
+
+			@media @m {
+				margin-left: @image-width;
+			}
+		}
+
+		&--meta {
+			overflow: auto;
+			margin-bottom: @margin-half;
+		}
+
+		&--title {
+			.truncate-text();
+			margin-bottom: 0;
+			font-size: @text-size-smaller;
+
+			@media @m {
+				width: 55%;
+				float: left;
+			}
+		}
+
+		&--date {
+			.truncate-text();
+			margin-top: .2rem;
+			width: 43%;
+			font-size: @text-size-small;
+			text-align: right;
+
+			@media @m {
+				float: right;
+			}
+		}
+
+		&--description {
+			font-size: @text-size-smaller;
+		}
 	}
 }

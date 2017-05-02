@@ -1,4 +1,12 @@
 .hero--exploot {
+	.notification + & {
+		padding-top: 3rem;
+
+		@media @m {
+			padding-top: calc(~'4rem + 3rem');
+		}
+	}
+
 	@media @m {
 		margin-bottom: 0;
 		padding: 3rem 0 5rem 0;

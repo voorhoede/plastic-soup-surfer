@@ -1,0 +1,33 @@
+.nominees {
+	p {
+		text-align: center;
+	}
+
+	.nominees__list {
+		display: flex;
+		flex-wrap: wrap;
+		margin-bottom: @margin-default;
+		text-align: center;
+	}
+
+	.nominee {
+		padding: @margin-default;
+		width: 50%;
+
+		@media @m {
+			width: 25%;
+		}
+	}
+
+	.nominee__image {
+		width: 75%;
+		height: auto;
+	}
+
+	.nominee__title {
+		font-size: @text-size-bigger;
+		font-weight: bold;
+		line-height: 1.2;
+		color: @brand-pink;
+	}
+}

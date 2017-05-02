@@ -1,72 +1,74 @@
 .team {
-    background-color: @grey-lighter;
+    background-color: @grey-light;
     padding: @margin-double 0;
-}
 
-.team-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
-
-    @media @m {
-        flex-direction: row;
-    }
-
-    @media @l {
-        justify-content: space-between;
-    }
-
-    .team-list-item {
-        text-align: center;
-        list-style: none;
-        margin-bottom: @margin-double;
-
+    .team-list {
         @media @m {
-            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            flex-direction: row;
         }
 
         @media @l {
-            width: 25%;
+            justify-content: space-between;
         }
 
-        .team-list-picture {
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto;
-
-            width: 15em;
-            height: 15em;
+        .team-list-item {
+            text-align: center;
+            list-style: none;
+            margin-bottom: @margin-double;
 
             @media @m {
-                width: 12em;
-                height: 12em;
+                width: 50%;
+                display: flex;
+                flex-wrap: wrap;
             }
 
-            img {
-                max-height: 100%;
+            @media @l {
+                width: 12rem;
             }
-        }
 
-        h3 {
-            margin: @margin-half 0;
-        }
+            .team-list-picture {
+                border-radius: 50%;
+                margin: 0 auto;
+                width: 15rem;
+                height: 15rem;
 
-        p {
-            display: block;
-            margin: 0 auto @margin-half;
+                @media @m {
+                    width: 12rem;
+                    height: 12rem;
+                }
 
-            @media @m {
-              width: 80%;
+                @media @l {
+                    margin: 0;
+                }
             }
-        }
 
-        a {
-            display: block;
-            color: @brand-highlight;
-            text-decoration: none;
+            h3 {
+                margin: @margin-default 0 0;
+                width: 100%;
+                font-size: @text-size-default;
+            }
+
+            p {
+                display: block;
+                margin: @margin-default auto;
+                font-size: @text-size-smaller;
+                line-height: 1;
+
+                @media @m {
+                  width: 80%;
+                  height: 20px;
+                }
+            }
+
+            a {
+                display: block;
+                width: 100%;
+                color: @brand-highlight;
+                text-decoration: none;
+            }
         }
     }
 }

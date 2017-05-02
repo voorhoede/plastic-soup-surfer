@@ -1,0 +1,33 @@
+.past-adventures {
+	h2 {
+		margin-bottom: @margin-double;
+	}
+
+	.adventures {
+		@media @m {
+			display: flex;
+			margin: 0 -@margin-half;
+		}
+	}
+
+	.adventure {
+		margin-bottom: @margin-double;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		img {
+			margin-bottom: @margin-default;
+			width: 100%;
+			height: auto;
+			border-radius: 3px;
+		}
+
+		@media @m {
+			margin-bottom: 0;
+			padding: 0 @margin-half;
+			width: calc(~'100% / 3');
+		}
+	}
+}

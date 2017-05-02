@@ -1,4 +1,6 @@
 .progress {
+	flex-wrap: wrap;
+
 	.map ~ & {
 		margin-top: @margin-double;
 	}
@@ -6,7 +8,13 @@
 	.left-column {
 		display: flex;
 		align-items: center;
-		width: 45%;
+		margin-bottom: @margin-default;
+		width: 100%;
+
+		@media @m {
+			margin-bottom: 0;
+			width: 45%;
+		}
 
 		.progress {
 			.clearfix();
@@ -21,18 +29,28 @@
 				float: left;
 				display: block;
 				margin-right: @margin-half*1.5;
-				width: 50px;
-				height: 50px;
+				width: 25px;
+				height: 25px;
+
+				@media @m {
+					width: 50px;
+					height: 50px;
+				}
 			}
 
 			&__title {
+				margin-left: 30px;
 				margin-bottom: @margin-half/2;
 				color: @grey;
+			}
+
+			&__content {
+				margin-left: 36px;
 			}
 		}
 
 		.progress--days:before {
-			background: url('/assets/icons/calendar.svg') center no-repeat;
+			background: url('/assets/icons/calendar.svg') center / cover no-repeat;
 		}
 
 		.progress--distance:before {
@@ -43,14 +61,21 @@
 	.right-column {
 		display: flex;
 		justify-content: space-between;
-		padding: @margin-default*1.5 @margin-double*1.5;
-		width: 55%;
+		flex-wrap: wrap;
+		padding: @margin-default;
+		width: 100%;
 		background: @grey-light;
 		font-size: @text-size-bigger;
 
+		@media @m {
+			padding: @margin-default*1.5 @margin-double*1.5;
+			width: 55%;
+		}
+
 		.call-to-action {
 			float: left;
-			
+			margin: @margin-half 0;
+
 			p {
 				margin: 0;
 				line-height: 1.2;

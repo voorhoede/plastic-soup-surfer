@@ -34,6 +34,12 @@ gulp.task('images', function() {
                 }
             ],
 
+						'assets/images/team.jpg' : [
+                {
+                    width:500
+                }
+            ],
+
             'assets/images/merijn.png' : [
                 {
                     width:700

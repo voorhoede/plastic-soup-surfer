@@ -22,7 +22,7 @@ gulp.task('images', function() {
                 }
             ],
 
-						'assets/images/about-me.jpg' : [
+			'assets/images/about-me.jpg' : [
                 {
                     width:1440
                 }

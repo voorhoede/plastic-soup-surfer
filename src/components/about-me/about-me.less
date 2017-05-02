@@ -1,56 +1,47 @@
 .about-me{
-  @media @m {
-    margin-top: @margin-quadruple;
-  }
-
-  &--header{
-    overflow: hidden;
-    max-height: 250px;
-    margin: 0 -1rem 1rem -1rem;
-
     @media @m {
-      max-height: 100%;
-      margin: 0 0 0 @margin-double;
+        padding-top: @margin-default*4;
     }
-    img{
-      width: 100%;
-      height: auto;
-      position: relative;
-      transform: translateY(-20%);
 
-      @media @m {
-        transform: translateY(0%);
-      }
+    &--header{
+        overflow: hidden;
+        height: 0;
+        padding-bottom: 60%;
+        margin: 0 -@margin-default @margin-default -@margin-default;
+
+        @media @m {
+            margin: 0 0 0 @margin-double;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+        }
     }
-  }
 }
 
 .about-me.two-columns{
-  display: block;
-  .left-column,
-  .right-column{
-    float: none;
-    width: auto;
-    padding: 0;
-  }
+    display: block;
 
-  .left-column{
-    @media @m {
-      float: right
-    }
-  }
-
-  &.two-third{
-    .left-column{
-      @media @m {
-        width: 40%;
-      }
+    .left-column,
+    .right-column{
+        float: none;
+        width: auto;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .right-column{
-      @media @m {
-        width: calc(~'60% -' @margin-double);
-      }
+        @media @m {
+            float: right;
+            width: 40%;
+        }
     }
-  }
+
+    .left-column{
+        @media @m {
+            float: left;
+            width: calc(~'60% -' @margin-double);
+        }
+    }
 }

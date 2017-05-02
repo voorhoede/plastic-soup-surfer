@@ -6,14 +6,25 @@
 		padding: @margin-default*4 0;
 
 		.centered-column {
-			.two-columns;
 			position: relative;
+		}
+	}
+
+	.two-columns {
+		display: block;
+
+		.left-column,
+		.right-column {
+			width: 100%;
+		}
+
+		@media @m {
+			display: flex;
 		}
 	}
 
 	&__description {
 		@media @m {
-			.two-columns .left-column;
 			padding-right: @margin-default*4;
 			width: 55%;
 		}
@@ -58,7 +69,6 @@
 		}
 
 		@media @m {
-			.two-columns .right-column;
 			width: 45%;
 		}
 
@@ -94,23 +104,25 @@
 		font-size: @text-size-smaller;
 	}
 
-	&__error {
-		color: @brand-pink;
-	}
-
 	&__mascot {
 		position: absolute;
 		left: 3rem;
 		bottom: -6.4rem;
-		width: 19rem;
+		width: 15rem;
 		height: 19rem;
 		background: url('/assets/icons/mascot.svg') center / cover no-repeat;
 
 		@media @m-l {
 			left: 0;
-			bottom: -7.85rem;
-			width: 30rem;
-			height: 30rem;
+			bottom: -6.75rem;
+			width: 21rem;
+			height: 21rem;
+		}
+
+		@media @l {
+			bottom: -7.25rem;
+			width: 25rem;
+			height: 25rem;
 		}
 	}
 }

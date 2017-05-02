@@ -7,7 +7,7 @@
 
 			{% for event in upcomingEvents %}
 			<article class="event">
-				<div class="event--image">
+				<div class="event--image mobile-hidden">
 					<span style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');"></span>
 				</div>
 
@@ -30,7 +30,7 @@
 
 			{% for event in pastEvents %}
 			<article class="event">
-				<div class="event--image">
+				<div class="event--image mobile-hidden">
 					<span style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');"></span>
 				</div>
 

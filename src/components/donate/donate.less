@@ -20,17 +20,27 @@
 
 		@media @m {
 			display: flex;
-		}
-	}
 
-	&__description {
-		@media @m {
-			padding-right: @margin-default*4;
-			width: 55%;
+			.left-column {
+				padding-right: @margin-default*4;
+				flex: 1 1 55%;
+			}
+
+			.right-column {
+				width: 45%;
+				flex: 1 1 45%;
+			}
 		}
 
-		@media @m-l {
-			width: 60%;
+		@media @l {
+			.left-column {
+				flex: 1 1 60%;
+			}
+
+			.right-column {
+				width: 45%;
+				flex: 1 1 40%;
+			}
 		}
 	}
 
@@ -67,14 +77,6 @@
 			font-size: @text-size-bigger;
 			color: @brand-pink;
 		}
-
-		@media @m {
-			width: 45%;
-		}
-
-		@media @l {
-			width: 40%;
-		}
 	}
 
 	&__label {
@@ -107,22 +109,22 @@
 	&__mascot {
 		position: absolute;
 		left: 3rem;
-		bottom: -6.4rem;
-		width: 15rem;
-		height: 19rem;
+		bottom: -6.45rem;
+		width: 18rem;
+		height: 18rem;
 		background: url('/assets/icons/mascot.svg') center / cover no-repeat;
 
 		@media @m-l {
 			left: 0;
-			bottom: -6.75rem;
-			width: 21rem;
-			height: 21rem;
-		}
-
-		@media @l {
 			bottom: -7.25rem;
 			width: 25rem;
 			height: 25rem;
+		}
+
+		@media @l {
+			bottom: -7.75rem;
+			width: 29rem;
+			height: 29rem;
 		}
 	}
 }

@@ -1,8 +1,11 @@
 {%- extends "views/_base/layout.html" -%}
+{% from "components/notification/notification.html" import notification %}
 
 {%- block content -%}
 	{% if donationState == "success" %}
-		Betaling voltooid!
+		{{ notification('Your donation was successful. Thank you!') }}
+	{% elif error %}
+		{{ notification(error) }}
 	{% endif %}
 
 	{% include "components/hero-exploot/hero-exploot.html" %}

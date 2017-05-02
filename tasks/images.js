@@ -42,7 +42,7 @@ gulp.task('images', function() {
 
 			'assets/images/about-stichting.jpg' : [
                 {
-                    width:768
+                    width:500
                 }
             ],
 

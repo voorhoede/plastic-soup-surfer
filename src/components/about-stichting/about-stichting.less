@@ -1,37 +1,54 @@
-.about-stichting{
+.about-stichting {
+    display: flex;
+    flex-direction: column;
+
+    @media @m {
+        flex-direction: row;
+    }
 
     .stichting,
-    .stichting--foto{
+    .stichting--foto {
         border-radius: 3px;
     }
 
-    .stichting{
+    .stichting {
         background-color: @brand-highlight;
         padding: @margin-default;
         margin-bottom: @margin-default;
 
-        h2, p{
+        @media @m {
+            order: 1;
+            margin-bottom: 0;
+        }
+
+        h2, p {
             color: @white;
         }
 
-        .button{
-            width: 100%;
-            text-align: center;
-
+        .button-bottom {
             @media @m {
-                width: auto;
-                text-align: left;
+                display: flex;
+                height: 100%;
+                align-items: flex-end;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+
+                @media @m {
+                    width: auto;
+                    text-align: left;
+                }
             }
         }
     }
 
-    .stichting--foto{
-        overflow: hidden;
+    .stichting--foto {
         width: 100%;
         height: auto;
-        img{
-            width: 100%;
-            height: auto;
+        @media @m {
+            margin-right: @margin-default;
         }
     }
 }

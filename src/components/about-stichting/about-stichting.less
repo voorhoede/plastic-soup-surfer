@@ -1,0 +1,37 @@
+.about-stichting{
+
+    .stichting,
+    .stichting--foto{
+        border-radius: 3px;
+    }
+
+    .stichting{
+        background-color: @brand-highlight;
+        padding: @margin-default;
+        margin-bottom: @margin-default;
+
+        h2, p{
+            color: @white;
+        }
+
+        .button{
+            width: 100%;
+            text-align: center;
+
+            @media @m {
+                width: auto;
+                text-align: left;
+            }
+        }
+    }
+
+    .stichting--foto{
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}

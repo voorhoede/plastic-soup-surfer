@@ -4,9 +4,15 @@
 
     .team-list {
         @media @m {
+            .clearfix();
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            margin: 0 -@margin-default;
+        }
+
+        @media @m-l {
+            margin: 0 -@margin-double;
         }
 
         .team-list-item {
@@ -15,24 +21,26 @@
             margin-bottom: @margin-double;
 
             @media @m {
+                float: left;
                 display: flex;
                 flex-direction: column;
+                padding: 0 @margin-default;
+                width: 25%;
             }
 
-            @media @m {
-                width: 24%;
+            @media @m-l {
+                padding: 0 @margin-double;
             }
 
             .team-list-picture {
                 border-radius: 50%;
                 margin: 0 auto @margin-default;
-                width: 15rem;
-                height: 15rem;
+                width: 100%;
+                max-width: 15rem;
+                height: auto;
 
                 @media @m {
-                    max-width: 12rem;
-                    width: 100%;
-                    height: auto;
+                    
                     flex: 0 0 auto;
                 }
             }

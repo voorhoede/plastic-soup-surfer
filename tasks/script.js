@@ -32,6 +32,8 @@ gulp.task('script', function () {
                 uglify()
             );
         }
+
+        return plugins;
     }
 
     rollup({

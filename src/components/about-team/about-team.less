@@ -6,11 +6,6 @@
         @media @m {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
-            flex-direction: row;
-        }
-
-        @media @l {
             justify-content: space-between;
         }
 
@@ -20,54 +15,46 @@
             margin-bottom: @margin-double;
 
             @media @m {
-                width: 50%;
                 display: flex;
-                flex-wrap: wrap;
+                flex-direction: column;
             }
 
-            @media @l {
-                width: 12rem;
+            @media @m {
+                width: 24%;
             }
 
             .team-list-picture {
                 border-radius: 50%;
-                margin: 0 auto;
+                margin: 0 auto @margin-default;
                 width: 15rem;
                 height: 15rem;
 
                 @media @m {
-                    width: 12rem;
-                    height: 12rem;
-                }
-
-                @media @l {
-                    margin: 0;
+                    max-width: 12rem;
+                    width: 100%;
+                    height: auto;
+                    flex: 0 0 auto;
                 }
             }
 
             h3 {
-                margin: @margin-default 0 0;
                 width: 100%;
                 font-size: @text-size-default;
             }
 
             p {
                 display: block;
-                margin: @margin-default auto;
                 font-size: @text-size-smaller;
                 line-height: 1;
 
                 @media @m {
-                  width: 80%;
-                  height: 20px;
+                    flex: 1 1 auto;
                 }
             }
 
             a {
                 display: block;
                 width: 100%;
-                color: @brand-highlight;
-                text-decoration: none;
             }
         }
     }

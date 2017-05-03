@@ -70,6 +70,24 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/adventure--message-on-a-bottle.jpg' : [
+                {
+                    width:660
+                }
+            ],
+
+            'assets/images/adventure--plastic-hunters.jpg' : [
+                {
+                    width:660
+                }
+            ],
+
+            'assets/images/adventure--plastic-soup-board.jpg' : [
+                {
+                    width:660
+                }
+            ],
+
             'assets/images/logo.png' : [
                 {
                     width : 127,

@@ -11,7 +11,7 @@
 	}
 
 	.adventure {
-		margin-bottom: @margin-double;
+		margin-bottom: @margin-default*3;
 
 		&:last-child {
 			margin-bottom: 0;
@@ -24,10 +24,22 @@
 			border-radius: 3px;
 		}
 
+		a {
+			word-break: break-all;
+		}
+
 		@media @m {
 			margin-bottom: 0;
 			padding: 0 @margin-half;
 			width: calc(~'100% / 3');
+
+			h3 {
+				height: @margin-default*3;
+			}
 		}
+	}
+
+	.adventure__date {
+		font-weight: normal;
 	}
 }

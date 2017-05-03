@@ -1,6 +1,6 @@
 {% macro quote(quote, quotee='', mobileHidden=false) %}
 <blockquote class="quote centered-column {% if mobileHidden %}mobile-hidden{% endif %}">
-	<p>{{ quote }}</p>
+	<p class="quote__content">{{ quote }}</p>
 
 	{% if quotee %}
 	<footer>

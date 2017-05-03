@@ -2,12 +2,12 @@
 	margin-bottom: @margin-double*2;
 	text-align: center;
 
-	p {
+	.quote__content {
 		position: relative;
 		color: @brand-pink;
 		font-size: @text-size-big;
 		font-style: italic;
-		line-height: 1.3;
+		line-height: 1.5;
 
 		&:before,
 		&:after {
@@ -15,12 +15,23 @@
 		}
 
 		&:before {
-			content: '“';
-			
+			content: '';
+			display: inline-block;
+			margin-right: .5rem;
+			width: 2.5rem;
+			height: 2rem;
+			background: url('/assets/icons/quote-icon-left.svg') top left / auto 100% no-repeat;
+			vertical-align: super;
 		}
 
 		&:after {
-			content: '„';
+			content: '';
+			display: inline-block;
+			margin: 0 0 -1rem 1rem;
+			width: 2.5rem;
+			height: 2rem;
+			background: url('/assets/icons/quote-icon-right.svg') top left / auto 100% no-repeat;
+			vertical-align: sub;
 		}
 	}
 

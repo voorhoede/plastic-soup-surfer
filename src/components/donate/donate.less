@@ -6,20 +6,41 @@
 		padding: @margin-default*4 0;
 
 		.centered-column {
-			.two-columns;
 			position: relative;
 		}
 	}
 
-	&__description {
-		@media @m {
-			.two-columns .left-column;
-			padding-right: @margin-default*4;
-			width: 55%;
+	.two-columns {
+		display: block;
+
+		.left-column,
+		.right-column {
+			width: 100%;
 		}
 
-		@media @m-l {
-			width: 60%;
+		@media @m {
+			display: flex;
+
+			.left-column {
+				padding-right: @margin-default*4;
+				flex: 1 1 55%;
+			}
+
+			.right-column {
+				width: 45%;
+				flex: 1 1 45%;
+			}
+		}
+
+		@media @l {
+			.left-column {
+				flex: 1 1 60%;
+			}
+
+			.right-column {
+				width: 45%;
+				flex: 1 1 40%;
+			}
 		}
 	}
 
@@ -56,15 +77,6 @@
 			font-size: @text-size-bigger;
 			color: @brand-pink;
 		}
-
-		@media @m {
-			.two-columns .right-column;
-			width: 45%;
-		}
-
-		@media @l {
-			width: 40%;
-		}
 	}
 
 	&__label {
@@ -94,23 +106,25 @@
 		font-size: @text-size-smaller;
 	}
 
-	&__error {
-		color: @brand-pink;
-	}
-
 	&__mascot {
 		position: absolute;
 		left: 3rem;
-		bottom: -6.4rem;
-		width: 19rem;
-		height: 19rem;
+		bottom: -6.45rem;
+		width: 18rem;
+		height: 18rem;
 		background: url('/assets/icons/mascot.svg') center / cover no-repeat;
 
 		@media @m-l {
 			left: 0;
-			bottom: -7.85rem;
-			width: 30rem;
-			height: 30rem;
+			bottom: -7.25rem;
+			width: 25rem;
+			height: 25rem;
+		}
+
+		@media @l {
+			bottom: -7.75rem;
+			width: 29rem;
+			height: 29rem;
 		}
 	}
 }

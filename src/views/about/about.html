@@ -2,6 +2,12 @@
 
 {%- block content -%}
 
-	[about]
+	{% include "components/about-me/about-me.html" %}
 
-{%- endblock -%}   
+	{% include "components/past-adventures/past-adventures.html" %}
+
+	{% include "components/about-team/about-team.html" %}
+
+	{% include "components/about-stichting/about-stichting.html" %}
+
+{%- endblock -%}

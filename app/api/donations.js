@@ -62,7 +62,7 @@ module.exports = function (router, {constants}) {
         }
         catch(e) {
             console.log(`payment error: ${e.message.toString()}`);
-            throw new error.InternalError("Betaling kon niet worden aangemaakt!");
+            throw new error.InternalError("Your payment couldn't be processed.");
         }
 
         console.log(`Created payment ${payment.id} with amount ${amount}`);

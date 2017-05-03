@@ -22,6 +22,30 @@ gulp.task('images', function() {
                 }
             ],
 
+			'assets/images/about-me.jpg' : [
+                {
+                    width:1440
+                }
+            ],
+
+            'assets/images/about-me-s.jpg' : [
+                {
+                    width:768
+                }
+            ],
+
+			'assets/images/team.jpg' : [
+                {
+                    width:500
+                }
+            ],
+
+			'assets/images/about-stichting.jpg' : [
+                {
+                    width:768
+                }
+            ],
+
             'assets/images/merijn.png' : [
                 {
                     width:700
@@ -46,8 +70,26 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/adventure--message-on-a-bottle.jpg' : [
+                {
+                    width:660
+                }
+            ],
+
+            'assets/images/adventure--plastic-hunters.jpg' : [
+                {
+                    width:660
+                }
+            ],
+
+            'assets/images/adventure--plastic-soup-board.jpg' : [
+                {
+                    width:660
+                }
+            ],
+
             'assets/images/logo.png' : [
-                {   
+                {
                     width : 127,
                     height : 123
                 },

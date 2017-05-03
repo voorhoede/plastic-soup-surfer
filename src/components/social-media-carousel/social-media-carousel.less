@@ -57,9 +57,12 @@ http://flickity.metafizzy.co
 }
 
 .flickity-prev-next-button {
-	.mobile-hidden;
+	@media only screen and (max-width: 1035px) {
+		display: none;
+	}
 	
-	@media @l {
+	@media only screen and (min-width: 1036px) {
+		display: block;
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -85,11 +88,11 @@ http://flickity.metafizzy.co
 		}
 
 		&.previous {
-			left: -@margin-double*2;
+			left: -@margin-default*3;
 		}
 
 		&.next {
-			right: -@margin-double*2;
+			right: -@margin-default*3;
 		}
 	}
 }

@@ -40,9 +40,9 @@ gulp.task('images', function() {
                 }
             ],
 
-			'assets/images/about-stichting.jpg' : [
+			'assets/images/about-stichting-wide.jpg' : [
                 {
-                    width:500
+                    width:768
                 }
             ],
 

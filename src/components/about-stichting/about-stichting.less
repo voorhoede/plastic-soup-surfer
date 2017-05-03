@@ -1,9 +1,8 @@
 .about-stichting {
-    display: flex;
-    flex-direction: column;
-
     @media @m {
+        display: flex;
         flex-direction: row;
+        align-items: stretch;
     }
 
     .stichting,
@@ -19,36 +18,38 @@
         @media @m {
             order: 1;
             margin-bottom: 0;
+            padding: @margin-double;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-self: stretch;
+            width: 60%;
         }
 
         h2, p {
             color: @white;
         }
 
-        .button-bottom {
+        .button {
+            width: 100%;
+            text-align: center;
+
             @media @m {
-                display: flex;
-                height: 100%;
-                align-items: flex-end;
-            }
-
-            .button {
-                width: 100%;
-                text-align: center;
-
-                @media @m {
-                    width: auto;
-                    text-align: left;
-                }
+                width: auto;
+                text-align: left;
             }
         }
     }
 
     .stichting--foto {
         width: 100%;
-        height: auto;
+        padding-bottom: 100%;
+        background: url('/assets/images/about-stichting-wide.jpg') center / cover;
+
         @media @m {
+            width: 40%;
             margin-right: @margin-default;
+            padding-bottom: 0%;
         }
     }
 }

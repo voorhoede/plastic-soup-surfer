@@ -1,0 +1,56 @@
+.about-foundation {
+    display: block;
+    @media @m {
+        display: flex;
+    }
+
+    .foundation,
+    .foundation--picture {
+        border-radius: 3px;
+        width: 100%;
+
+        @media @m {
+            width: inherit;
+        }
+    }
+
+    .foundation {
+        background-color: @brand-highlight;
+        padding: @margin-default;
+        margin-bottom: @margin-default;
+
+        @media @m {
+            order: 1;
+            margin-bottom: 0;
+            padding: @margin-double;
+            // display: flex;
+            // flex-wrap: wrap;
+            // align-items: flex-start;
+            // align-self: stretch;
+            width: calc(~"60%" - @margin-half);
+        }
+
+        h2, p {
+            color: @white;
+        }
+
+        .button {
+            @media @m {
+                width: auto;
+                text-align: left;
+            }
+        }
+    }
+
+    .foundation--picture {
+        width: 100%;
+        padding: 0 0 100% 0;
+        background: url('/assets/images/about-stichting-wide.jpg') center / cover;
+
+        @media @m {
+            width: calc(~"40%" - @margin-half);
+            margin-right: @margin-default;
+            padding-bottom: 30%;
+        }
+    }
+}

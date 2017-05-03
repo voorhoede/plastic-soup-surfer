@@ -1,6 +1,7 @@
 const bluebird = require('bluebird');
 const contentfulCache = require('./lib/contentful-cache');
 const getSocialFeed = require('./lib/get-social-feed');
+const paymentApi = require('./lib/payment-api');
 const moment = require('moment');
 
 module.exports = function (router, {constants, nunjucksEnv}) {
@@ -84,7 +85,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
     });
 
     router.get('exploot', ctx => {
-        const {error = null, donationState = constants.donationState.NOT_STARTED} = ctx.flash.get() || {};
+        const {error = null, donationState = paymentApi.states.NOT_STARTED} = ctx.flash.get() || {};
 
         ctx.body = nunjucksEnv.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'exploot',

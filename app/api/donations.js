@@ -12,7 +12,6 @@ module.exports = function (router, {constants}) {
     const mollieClient = new Mollie.API.Client;
     mollieClient.setApiKey(process.env.MOLLIE_API_KEY);
 
-
     function createPaymentInMollie(ctx, amount = 0) {
         return new Promise((resolve, reject) => {
 
@@ -59,7 +58,7 @@ module.exports = function (router, {constants}) {
 
         let payment;
         try {
-            payment = await createPaymentInMollie(ctx, amount);
+            payment = await createPaymentInMollie(ctx, amount); //todo add metadata in mollie payload
         }
         catch(e) {
             console.log(`payment error: ${e.message.toString()}`);
@@ -103,8 +102,8 @@ module.exports = function (router, {constants}) {
 
         const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
 
-        //get the entry from the contentful space
-        let entry = await space.getEntry('R6yIE4OKKOUGuWWMsaGUa');
+        //get the siteStatus entry from the contentful space
+        let entry = await space.getEntry(constants.siteStatusEntryId);
 
         //increments the number of donations by 1
         entry.fields.donated['en-EU'] = parseInt(entry.fields.donated['en-EU'], 10) + 1;
@@ -112,6 +111,14 @@ module.exports = function (router, {constants}) {
         //update the value and publish it
         entry = await entry.update();
         await entry.publish();
+
+        /*
+            Add the payment to the cms?
+            Or add payment to some db?
+            Or just keep payment status in memory
+            Dangers:
+                - On restart the payment status is lost
+        */
 
         ctx.status = 200;
         ctx.body = "ok";

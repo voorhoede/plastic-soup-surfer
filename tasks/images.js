@@ -34,9 +34,15 @@ gulp.task('images', function() {
                 }
             ],
 
-						'assets/images/team.jpg' : [
+			'assets/images/team.jpg' : [
                 {
                     width:500
+                }
+            ],
+
+			'assets/images/about-stichting.jpg' : [
+                {
+                    width:768
                 }
             ],
 

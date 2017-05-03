@@ -1,11 +1,12 @@
 .about-foundation {
     display: block;
+
     @media @m {
         display: flex;
     }
 
     .foundation,
-    .foundation--picture {
+    .foundation__picture {
         border-radius: 3px;
         width: 100%;
 
@@ -18,20 +19,13 @@
         background-color: @brand-highlight;
         padding: @margin-default;
         margin-bottom: @margin-default;
+        color: @white;
 
         @media @m {
             order: 1;
             margin-bottom: 0;
             padding: @margin-double;
-            // display: flex;
-            // flex-wrap: wrap;
-            // align-items: flex-start;
-            // align-self: stretch;
-            width: calc(~"60%" - @margin-half);
-        }
-
-        h2, p {
-            color: @white;
+            width: calc(~'60%' - @margin-half);
         }
 
         .button {
@@ -42,13 +36,13 @@
         }
     }
 
-    .foundation--picture {
+    .foundation__picture {
         width: 100%;
         padding: 0 0 100% 0;
-        background: url('/assets/images/about-stichting-wide.jpg') center / cover;
+        background: url('/assets/images/about-stichting.jpg') center / cover;
 
         @media @m {
-            width: calc(~"40%" - @margin-half);
+            width: calc(~'40%' - @margin-half);
             margin-right: @margin-default;
             padding-bottom: 30%;
         }

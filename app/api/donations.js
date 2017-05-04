@@ -3,44 +3,31 @@ const contentfulManagement = require('contentful-management');
 const body = require('koa-body');
 const json = require('koa-json');
 const error = require('../lib/koa-error-response');
+const paymentApi = require('../lib/payment-api');
 
 module.exports = function (router, {constants}) {
     const contentfulClient = contentfulManagement.createClient({
         accessToken : process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN
     });
 
-    const mollieClient = new Mollie.API.Client;
-    mollieClient.setApiKey(process.env.MOLLIE_API_KEY);
+    const paymentApiClient = paymentApi({
+        stateRestoreFile : process.env.DATA_DIR + "/payment-states"
+    });
 
+    async function incrementDonationsInContentFul() {
+        const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
 
-    function createPaymentInMollie(ctx, amount = 0) {
-        return new Promise((resolve, reject) => {
+        //get the siteStatus entry from the contentful space
+        let entry = await space.getEntry(constants.siteStatusEntryId);
 
-            const requestBody = {
-                amount,
-                description: "Plastic Soup Donation",
-                redirectUrl: ctx.request.protocol + "://" + ctx.request.host + "/api/donations/done",
-                webhookUrl: ctx.request.protocol + "://" + ctx.request.host + "/api/donations/report"
-            };
+        //increments the number of donations by 1
+        entry.fields.donated['en-EU'] = parseInt(entry.fields.donated['en-EU'], 10) + 1;
 
-            mollieClient.payments.create(requestBody, payment => {
-                if(payment.error) {
-                    reject(payment.error);
-                }
-                resolve(payment);
-            });
-        });
-    }
+        //update the value and publish it
+        entry = await entry.update();
+        await entry.publish();
 
-    function getPaymentFromMollie(id) {
-        return new Promise((resolve, reject) => {
-            mollieClient.payments.get(id, payment => {
-                if(payment.error) {
-                    reject(payment.error);
-                }
-                resolve(payment);
-            });
-        });
+        //profit!
     }
 
     router.post('/donations/add', body(), json(), error.middleware(), async (ctx) => {
@@ -50,19 +37,33 @@ module.exports = function (router, {constants}) {
             extra = "0";
         }
 
-        //simple check for rounded numbers only
-        if(!extra.match(/^[0-9]+$/)) {
-            throw new error.UserError("Ingevulde bonuswaarde is ongeldig");
+        //simple check for decimal numbers. Does not accept negative numbers
+        if(!extra.match(/^[0-9]+([\.\,][0-9]+)?$/)) {
+            throw new error.UserError("Optional donation is a invalid value");
         }
 
-        const amount = constants.donationCost + parseInt(extra, 10);
+        let amount = constants.donationCost + parseFloat(extra.replace(',', '.'));
 
-        let payment;
+        //don't allow more then 2 decimals
+        amount = amount.toFixed(2);
+
+        let storeId, payment;
+
         try {
-            payment = await createPaymentInMollie(ctx, amount);
+            //register the payment in the local store (no need to save any payment info here, we just use it for keeping state)
+            storeId = await paymentApiClient.store.create();
+
+            console.log(`Created store id ${storeId}`);
+
+            //create the payment in mollie
+            payment = await paymentApiClient.mollie.create(ctx.request, storeId, amount);
         }
         catch(e) {
             console.log(`payment error: ${e.message.toString()}`);
+        
+            //remove the payment from the local store
+            paymentApiClient.store.remove(storeId);
+            
             throw new error.InternalError("Your payment couldn't be processed.");
         }
 
@@ -84,34 +85,40 @@ module.exports = function (router, {constants}) {
             return;
         }
 
-        let savedPayment;
+        //we have the mollie id here so we can request the payment status with mollie
+        let payment;
         try {
-            savedPayment = await getPaymentFromMollie(id);
+            payment = await paymentApiClient.mollie.get(id);
         }
         catch(e) {
             throw new error.UserError(`Invalid payment id ${id}`);
         }
 
-        console.log('Succesful payment reported by mollie');
+        //get the storeId from the payment metadata
+        const {storeId} = payment.metadata;
+
+        console.log(`Got mollie payment status ${payment.status} for ${storeId}`);
 
         //abort early when the status was not paid
-        if(savedPayment.status !== "paid") {
+        if(payment.status !== "paid") {
+            paymentApiClient.store.update(storeId, paymentApi.states.CANCELED);
+
             ctx.status = 200;
             ctx.body = "ok";
             return;
         }
 
-        const space = await contentfulClient.getSpace(process.env.CONTENTFUL_SPACE);
-
-        //get the entry from the contentful space
-        let entry = await space.getEntry('R6yIE4OKKOUGuWWMsaGUa');
-
-        //increments the number of donations by 1
-        entry.fields.donated['en-EU'] = parseInt(entry.fields.donated['en-EU'], 10) + 1;
-
-        //update the value and publish it
-        entry = await entry.update();
-        await entry.publish();
+        //incrementing the donation count is important then updating the store so lets do that first
+        try {
+            await Promise.all([
+                incrementDonationsInContentFul(),
+                paymentApiClient.store.update(storeId, paymentApi.states.SUCCESS)
+            ]);
+        }
+        catch(e) {
+            console.log('Payment not registered correctly with store or contentful');
+            throw new error.InternalError(`Payment not registered correctly with store or contentful`);
+        }
 
         ctx.status = 200;
         ctx.body = "ok";
@@ -120,8 +127,34 @@ module.exports = function (router, {constants}) {
     /**
      * Todo show the thank you page (it should just redirect to the exploot page with a flash message)
      */
-    router.get('/donations/done', body(), ctx => {
-        ctx.flash.set({donationState : constants.donationState.SUCCESS});
+    router.get('/donations/done/:storeId', body(), error.middleware(), async (ctx) => {
+        const storeId = ctx.params.storeId;
+
+        console.log('done called');
+
+        if(!storeId) {
+            throw new error.UserError(`Invalid store id ${storeId}`);
+        }
+        
+        let paymentState;
+        try {
+            paymentState = await paymentApiClient.store.get(storeId);
+        }
+        catch(e) {
+            console.log(`Could not retrieve payment state for storeId ${storeId} (was happened?)`);
+            return ctx.redirect('/exploot');
+        }
+
+        //lets cleanup then delete the store state
+        try {
+            await paymentApiClient.store.remove(storeId);
+        }
+        catch(e) {
+            console.log(`Could not remove payment state for storeId ${storeId}`);
+        }
+
+        ctx.flash.set({donationState : paymentState});
+
         return ctx.redirect('/exploot');
     });
 

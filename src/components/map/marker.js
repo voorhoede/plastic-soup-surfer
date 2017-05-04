@@ -1,11 +1,17 @@
 import FlatMercatorViewport from './flat-mercator-viewport';
 
 export default class Marker {
-    constructor(projector, {lat, lng, extraClassName = ""}) {
+    constructor(projector, {lat, lng, extraClassName = "", clickHandler = null}) {
         this.projector = projector;
 
         this.el = document.createElement("div");
         this.el.className = "map__marker " + extraClassName;
+        
+        if(clickHandler) {
+            this.el.addEventListener("click", () => {
+                clickHandler(this);
+            });
+        }
 
         this.location = {lat, lng};
     }

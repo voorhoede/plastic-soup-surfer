@@ -12,6 +12,7 @@
 	&__progress-indicator {
 		margin-bottom: @margin-double;
 		text-align: center;
+		background: url('/assets/icons/progress-line.svg') top 30px center / 340px 360px no-repeat;
 
 		@media @m {
 			background: url('/assets/icons/progress-line.svg') top 100px center / 910px 962px no-repeat;
@@ -31,12 +32,12 @@
 		}
 
 		.progress-item {
-			display: inline-block;
-			margin-right: @margin-default;
-			width: calc(~'49% - ' @margin-half);
+			display: inline;
+			margin: 0 @margin-half/2;
+			width: auto;
 
 			&:nth-child(even) {
-				margin-right: 0;
+				margin: 0 @margin-default;
 			}
 
 			.transition-delay(@counter) when (@counter > 0) {
@@ -51,21 +52,11 @@
 
 			.transition-delay(10);
 
-			@media @m {
-				display: inline;
-				margin: 0 @margin-half/2;
-				width: auto;
-
-				&:nth-child(even) {
-					margin: 0 @margin-default;
-				}
-
-				&:nth-child(1):after,
-				&:nth-child(3):after,
-				&:nth-child(6):after {
-					content: '\A';
-					white-space: pre;
-				}
+			&:nth-child(1):after,
+			&:nth-child(3):after,
+			&:nth-child(6):after {
+				content: '\A';
+				white-space: pre;
 			}
 
 			@media @m-l {
@@ -73,7 +64,7 @@
 			}
 
 			img {
-				width: 100%;
+				width: 53px;
 				height: auto;
 
 				@media @m {

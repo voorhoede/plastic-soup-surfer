@@ -10,7 +10,9 @@ module.exports = function (router, {nunjucksEnv}) {
 
         ctx.body = {
             next,
-            posts : nunjucksEnv.render('components/social-media-carousel/social-media-carousel.api.html', {posts})
+            posts : posts.map(post => {
+                return nunjucksEnv.render('components/social-card/social-card.api.html', {feedItem : post});
+            })
         }
     });
 }

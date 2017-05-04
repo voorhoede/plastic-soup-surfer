@@ -3,6 +3,7 @@ node_modules/
 .env
 .contentful_cache
 .juicer_cache
+payment-states
 keys/
 .vscode/
 dist/

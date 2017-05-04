@@ -53,7 +53,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
 
         const dayInMilliseconds = 86400000;
         const daysDiff = Date.now() - parseDate(siteStatus[0].fields.startDay);
-        const day = Math.floor( daysDiff / dayInMilliseconds ) || 1;
+        const day = Math.max( Math.floor( daysDiff / dayInMilliseconds ), 1) || 1;
         const distance = siteStatus[0].fields.distance;
         const phase = siteStatus[0].fields.phase;
 

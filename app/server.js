@@ -5,6 +5,7 @@ const Router = require('koa-router');
 const static = require('koa-static');
 const flash = require('koa-flash-simple');
 const session = require('koa-session');
+const send = require('koa-send');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
@@ -18,6 +19,14 @@ juicerCache.startPeriodicUpdate();
 const port = parseInt(process.env.PORT, 10) || 8080;
 
 const app = new Koa();
+
+//lets encrypt support
+app.use(async (ctx) => {
+    if(ctx.path.startsWith('/.well-known')) {
+        const p = ctx.path.substr(('/.well-known').length);
+        await send(ctx, p || 'index.html', {root : process.env.LETSENCRYPT_DIR});
+    }
+});
 
 const appCtxt = {
     liveStream : require('./lib/koa-sse-stream')(),

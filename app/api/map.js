@@ -30,7 +30,7 @@ module.exports = function (router, {liveStream, constants, nunjucksEnv}) {
             imageUrl : fields.image.fields.file.url + "?" + query,
             title    : fields.title,
             social   : null,
-            body     : "<p>" + fields.description + "</p>"
+            body     : fields.description
         };
     }
 

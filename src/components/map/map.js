@@ -69,8 +69,10 @@ function createMap(el) {
  * @param {*} data 
  */
 function displayInfoPanel(data) {
-    if(mapInfoPanel) {
-        liveMapElement.removeChild(mapInfoPanel);
+    const currentInfoPanel = document.querySelector('.social-card');
+
+    if(currentInfoPanel) {
+        liveMapElement.removeChild(currentInfoPanel);
     }
 
     const temp = document.createElement("div");

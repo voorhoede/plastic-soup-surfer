@@ -6,7 +6,7 @@ if (donationProgressVisual) {
     const donationProgressVisualTop = donationProgressVisual.offsetTop,
           documentHeight = window.innerHeight;
 
-    if (window.innerWidth >= 768) {
+    // if (window.innerWidth >= 768) {
       window.addEventListener('scroll', function() {
           if(donationProgressVisual.classList.contains('open')) return
           let scrollFromTop = document.body.scrollTop || document.documentElement.scrollTop
@@ -15,5 +15,5 @@ if (donationProgressVisual) {
               donationProgressVisual.classList.add('open')
           }
       })
-    }
+    // }
 }

@@ -1,4 +1,101 @@
+@keyframes smokeLeft {
+	0% {
+		transform:rotate(0deg);
+		opacity: 1;
+	}
+	20% {
+		transform: rotate(-25deg);
+		opacity: 0;
+	}
+	21%{
+		transform:rotate(0deg);
+	}
+	22% {
+		opacity: 1;
+	}
+	31% {}
+	60% {
+		transform: rotate(-25deg);
+		opacity: 0;
+	}
+	61%{
+		transform:rotate(0deg);
+	}
+	62% {
+		opacity: 1;
+	}
+	75% {
+		transform: rotate(-25deg);
+		opacity: 0;
+	}
+	76% {
+		transform:rotate(0deg);
+	}
+	77% {
+		opacity: 1;
+	}
+	98% {
+		transform: rotate(-25deg);
+		opacity: 0;
+	}
+	99% {
+		transform:rotate(0deg);
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes smokeRight {
+	0% {
+		// transform:rotate(0deg);
+		opacity: 1;
+	}
+	20% {
+		transform: rotate(25deg);
+		opacity: 0;
+	}
+	21%{
+		transform:rotate(0deg);
+	}
+	22% {
+		opacity: 1;
+	}
+	31% {}
+	60% {
+		transform: rotate(25deg);
+		opacity: 0;
+	}
+	61%{
+		transform:rotate(0deg);
+	}
+	62% {
+		opacity: 1;
+	}
+	75% {
+		transform: rotate(25deg);
+		opacity: 0;
+	}
+	76% {
+		transform:rotate(0deg);
+	}
+	77% {
+		opacity: 1;
+	}
+	98% {
+		transform: rotate(25deg);
+		opacity: 0;
+	}
+	99% {
+		transform:rotate(0deg);
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .nominees {
+
 	p {
 		text-align: center;
 	}
@@ -13,9 +110,63 @@
 	.nominee {
 		padding: @margin-default;
 		width: 50%;
+		position: relative;
 
 		@media @m {
 			width: 25%;
+		}
+
+		.random-delay(@count) when (@count > 0) {
+			.random-delay(@count - 1);
+			@s: 's';
+			&:nth-of-type(@{count}) {
+				&::before {
+					animation-delay: ~'`Math.random()`s';
+				}
+				&::after {
+					animation-delay: ~'`Math.random()`s';
+				}
+			}
+		}
+
+		.random-delay(4);
+
+		&::before {
+			content: '';
+			display: block;
+			position:absolute;
+			left: 42%;
+			top: 9%;
+			z-index: -1;
+
+			width: 7%;
+			height: 0;
+			padding-bottom: 7%;
+			border-radius: 50%;
+			background-color: rgba(209, 209, 209, 0.7);
+
+			transform-origin: -700% 0%;
+			animation: 5s infinite forwards smokeLeft;
+			animation-duration: 7.5s, 7s, 6.5s;
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			position:absolute;
+			left: 42%;
+			top: 9%;
+			z-index: -1;
+
+			width: 7%;
+			height: 0;
+			padding-bottom: 7%;
+			border-radius: 50%;
+			background-color: rgba(209, 209, 209, 0.7);
+
+			transform-origin: 700% 0%;
+			animation: 5s infinite forwards smokeRight;
+			animation-duration: 6.5s, 7s, 7.5s;
 		}
 	}
 

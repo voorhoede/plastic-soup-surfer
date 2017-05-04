@@ -22,13 +22,9 @@
 	&__visual {
 		margin-bottom: @margin-double;
 
-		&.open {
-			.progress-item img {
-				@media @m {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
+		&.open .progress-item img {
+			opacity: 1;
+			transform: translateY(0);
 		}
 
 		.progress-item {
@@ -66,12 +62,12 @@
 			img {
 				width: 53px;
 				height: auto;
+				opacity: 0;
+				transform: translateY(20px);
+				transition: transform 0.3s ease, opacity 0.3s ease;
 
 				@media @m {
 					width: 150px;
-					opacity: 0;
-					transform: translateY(20px);
-					transition: transform 0.3s ease, opacity 0.3s ease;
 				}
 			}
 		}

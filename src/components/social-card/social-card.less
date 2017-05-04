@@ -4,9 +4,12 @@
 	display: block;
 
 	&__panel-text {
-		line-height: 1.5;
 		height: 45%;
 		overflow: hidden;
+
+		p {
+			line-height: 1.4;
+		}
 	}
 
 	&__panel-image {
@@ -19,23 +22,19 @@
 		border-top-right-radius: 3px;
 
 		@media @m {
-			padding-bottom: 43%; //made the image slightly less high to have more space for the text
+			padding-bottom: 43%;
 		}
 	}
 
 	&__panel-social {
-		position: absolute;
-		left: @margin-default;
-		top: @margin-default;
-		width: 2.5rem;
-		height: 2.5rem;
-		border-radius: 2.5rem;
-		background: @white;
-		text-align: center;
-		line-height: 3.5rem;
+		float: left;
+		margin: .1rem @margin-default 0 0;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 2rem;
 
 		img {
-			width: 1.5rem;
+			width: 100%;
 			height: auto;
 		}
 	}

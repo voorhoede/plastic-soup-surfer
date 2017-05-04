@@ -4,22 +4,26 @@
 		set icons = {
 			'Twitter' : '/assets/icons/twitter-icon.svg',
 			'Facebook' : '/assets/icons/facebook-icon.svg',
-			'YouTube' : '/assets/icons/youtube-icon.svg'
+			'YouTube' : '/assets/icons/youtube-icon.svg',
+			'Vimeo' : '/assets/icons/vimeo-icon.svg'
 		} 
 	%}
 
 	{% if content.imageUrl %}
 		<div class="social-card__panel-image" style="background-image: url('{{ content.imageUrl }}');">
+		</div>
+	{% endif %}
+
+	{% if content.body %}
+		<div class="social-card__panel-text">
 			{% if content.social %}
 				<div class="social-card__panel-social">
 					<a href="{{ content.social.url }}"><img src="{{ icons[content.social.type] }}" alt="{{ content.social.type }}"></a>
 				</div>
 			{% endif %}
-		</div>
-	{% endif %}
 
-	{% if content.body %}
-		<p class="social-card__panel-text">{{ content.body | safe }}</p>
+			<p>{{ content.body | safe }}</p>
+		</div>
 	{% endif %}
 
 	{% if content.call_to_action %}

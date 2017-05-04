@@ -4,11 +4,36 @@ const juicerCache = require('../lib/juicer-cache');
 const json = require('koa-json');
 const {URL, URLSearchParams} = require('url');
 
-function fixContentfulLocation({lat, lon}) {
-    return {lat, lng : lon};
-}
+module.exports = function (router, {liveStream, constants, nunjucksEnv}) {
+    function fixContentfulLocation({lat, lon}) {
+        return {lat, lng : lon};
+    }
 
-module.exports = function (router, {liveStream, constants}) {
+    function mapJuicerItemToSocialCard(juicerItem) {
+        return {
+            imageUrl : juicerItem.image,
+            title : null,
+            social : {
+                type : juicerItem.source.source,
+                url : juicerItem.full_url
+            },
+            body : juicerItem.message
+        };
+    }
+
+    function mapEventToSocialCard({fields}) {
+        const query = new URLSearchParams();
+        query.append('fit', 'fill');
+        query.append('w', constants.mapOverlayImageWidth);
+
+        return {
+            imageUrl : fields.image.fields.file.url + "?" + query,
+            title    : fields.title,
+            social   : null,
+            body     : "<p>" + fields.description + "</p>"
+        };
+    }
+
     router.get('/map/live', liveStream.middleware());
 
     router.get('/map/data', json(), async (ctx) => {
@@ -29,15 +54,15 @@ module.exports = function (router, {liveStream, constants}) {
             const postUrl = post.fields.url;
 
             //match by url (this should work fine)
-            const feedItem = juicerFeedItems.find(item => item.full_url === postUrl);
+            const juicerItem = juicerFeedItems.find(item => item.full_url === postUrl);
 
-            if(feedItem) {
+            if(juicerItem) {
                 mapData.items.push({
                     type    : 'highlighted-post',
-                    source  : feedItem.source.source,
-                    message : feedItem.unformatted_message,
-                    image   : feedItem.image,
-                    date    : new Date(feedItem.external_created_at),
+                    html    : nunjucksEnv.render('components/social-card/social-card.api.html', {
+                        feedItem : mapJuicerItemToSocialCard(juicerItem)
+                    }),
+                    date    : new Date(juicerItem.external_created_at),
                     loc     : fixContentfulLocation(post.fields.location)
                 });
             }
@@ -52,19 +77,13 @@ module.exports = function (router, {liveStream, constants}) {
 
             mapData.items = mapData.items.concat(
                 eventsOnMap.map(event => {
-                    let {description : message, title, image : imageData, location} = event.fields;
-
-                    const query = new URLSearchParams();
-                    query.append('fit', 'fill');
-                    query.append('w', constants.mapItemImageWidth);
-
                     return {
                         type : "event",
-                        message, 
-                        title,
-                        image : imageData.fields.file.url + "?" + query, 
+                        html : nunjucksEnv.render('components/social-card/social-card.api.html', {
+                            feedItem : mapEventToSocialCard(event)
+                        }),
                         date  : new Date(event.sys.createdAt),
-                        loc   : fixContentfulLocation(location)
+                        loc : fixContentfulLocation(event.fields.location)
                     };
                 })
             );

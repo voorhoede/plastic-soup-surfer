@@ -4,5 +4,5 @@ module.exports = {
     exploots : 10,
     donationCost : 5,
     siteStatusEntryId : 'R6yIE4OKKOUGuWWMsaGUa',
-    mapItemImageWidth : 300
+    mapOverlayImageWidth : 250
 }

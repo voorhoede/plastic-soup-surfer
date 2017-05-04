@@ -11,15 +11,13 @@ import FlatMercatorViewport from './flat-mercator-viewport';
 import Promise from 'promise-polyfill';
 import debug from './mapDebug';
 import Marker from './marker';
-import ejs from 'ejs/ejs.js';
  
 //constants  
 const zoom = 6;
 const center = {lat: 50.251900786108095, lng : 10.425494140625009};
 const mapSize = [928, 544]; //map size at desktop
 const liveMapElement = document.getElementById("live-map");
-const mapInfoPanel = document.getElementById("map-info-panel");
-const mapInfoPanelTemplate = ejs.compile( document.getElementById("map-info-panel-template").textContent );
+let mapInfoPanel;
 
 let contentMarkers = [];
 let livePositionMarker = null;
@@ -71,8 +69,16 @@ function createMap(el) {
  * @param {*} data 
  */
 function displayInfoPanel(data) {
-    mapInfoPanel.innerHTML = mapInfoPanelTemplate(data);
-    mapInfoPanel.hidden = false;
+    if(mapInfoPanel) {
+        liveMapElement.removeChild(mapInfoPanel);
+    }
+
+    const temp = document.createElement("div");
+    temp.innerHTML = data.html;
+
+    mapInfoPanel = temp.firstElementChild;
+
+    liveMapElement.appendChild(mapInfoPanel);
 }
 
 /**

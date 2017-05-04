@@ -47,8 +47,8 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         //how many exploots have been filled. This number is not rounded so you can get 3.5
         const explootProgress = siteStatus[0].fields.donated / constants.donationsPerExploot;
 
-        //the total progress (displayed in the header)
-        const donatedProgress = explootProgress / constants.exploots;
+        //the total progress (displayed in the header & exploot page)
+        const donatedProgress = Math.floor((explootProgress / constants.exploots) * 100);
 
         const dayInMilliseconds = 86400000;
         const daysDiff = Date.now() - parseDate(siteStatus[0].fields.startDay);

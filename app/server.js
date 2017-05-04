@@ -1,5 +1,7 @@
 require('dotenv').config(__dirname + "/..");
 
+const http = require('http');
+const https = require('https');
 const Koa = require('koa');
 const Router = require('koa-router');
 const static = require('koa-static');
@@ -19,17 +21,6 @@ juicerCache.startPeriodicUpdate();
 const port = parseInt(process.env.PORT, 10) || 8080;
 
 const app = new Koa();
-
-//lets encrypt support
-app.use(async (ctx, next) => {
-    if(ctx.path.startsWith('/.well-known')) {
-        const p = ctx.path.substr(('/.well-known').length);
-        await send(ctx, p || 'index.html', {root : process.env.LETSENCRYPT_DIR});
-    }
-    else {
-        await next();
-    }
-});
 
 const appCtxt = {
     liveStream : require('./lib/koa-sse-stream')(),
@@ -59,7 +50,8 @@ app.use( flash() );
 app.use( mainRouter.routes() );
 app.use( static(__dirname + "/../dist") );
 
-app.listen(port, function () {
+const httpServer = http.createServer(app.callback());
+httpServer.listen(80, function () {
     if(process.env.NODE_ENV === "development") {
         const browserSync = require('browser-sync');
 
@@ -74,3 +66,12 @@ app.listen(port, function () {
         });
     }
 });
+
+if(process.env.NODE_ENV !== "development") {
+    const httpsServer = https.createServer({
+            key : fs.readFileSync(path.join(process.env.SSL_PATH, 'privkey.pem')),
+            cert: fs.readFileSync(path.join(process.env.SSL_PATH, 'fullchain.pem'))
+    }, app.callback());
+
+    httpsServer.listen(443);
+}

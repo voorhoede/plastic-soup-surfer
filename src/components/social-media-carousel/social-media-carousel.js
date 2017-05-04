@@ -24,9 +24,12 @@ function initializeCarousel() {
     }
 
     function appendNewPosts(posts) {
-        const postContainer = document.createElement("div");
-        postContainer.innerHTML = posts;
-        newPosts = postContainer.children;
+        newPosts = posts.map(post => {
+            const el = document.createElement('div');
+            el.className = "carousel__cell";
+            el.innerHTML = post;
+            return el;
+        });
     }
 
     function loadNextItems() {
@@ -52,7 +55,6 @@ function initializeCarousel() {
 
     carousel.on('settle', () => {
         if(newPosts) {
-            //console.log('append');
             carousel.append(newPosts);
             newPosts = null;
             loading = false;
@@ -62,7 +64,6 @@ function initializeCarousel() {
     carousel.on('scroll', progress => {
         const itemIndex = progress * carousel.cells.length;
         if(itemIndex >= carousel.cells.length - LOAD_THRESHOLD && !loading) {
-            //console.log('load');
             loadNextItems();
         }
     })

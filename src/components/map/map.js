@@ -17,12 +17,16 @@ const zoom = 6;
 const center = {lat: 50.251900786108095, lng : 10.425494140625009};
 const mapSize = [928, 544]; //map size at desktop
 const liveMapElement = document.getElementById("live-map");
+let mapInfoPanel;
 
 let contentMarkers = [];
 let livePositionMarker = null;
 
 //debug(liveMapElement, {zoom, center});
 
+/**
+ * Load the map data
+ */
 function loadMapData() {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -37,6 +41,10 @@ function loadMapData() {
     });
 }
 
+/**
+ * Creates the map instance (currently only has one method: addMarker)
+ * @param {DOMElement} el 
+ */
 function createMap(el) {
     const projector = new FlatMercatorViewport({
         tileSize : 256,
@@ -56,13 +64,50 @@ function createMap(el) {
     });
 }
 
-function addMapMarkers(map, mapData) {
-    contentMarkers = mapData.items.map(data => map.addMarker(data.loc));
+/**
+ * Display the info panel with given marker data
+ * @param {*} data 
+ */
+function displayInfoPanel(data) {
+    if(mapInfoPanel) {
+        liveMapElement.removeChild(mapInfoPanel);
+    }
 
+    const temp = document.createElement("div");
+    temp.innerHTML = data.html;
+
+    mapInfoPanel = temp.firstElementChild;
+
+    liveMapElement.appendChild(mapInfoPanel);
+}
+
+/**
+ * Adds the markers to the given map instance
+ * @param {*} map 
+ * @param {*} mapData 
+ */
+function addMapMarkers(map, mapData) {
+
+    //the content markers (highlighted post & events)
+    contentMarkers = mapData.items.map(data => {
+        return map.addMarker(Object.assign(
+            data.loc, 
+            {
+                clickHandler : marker => {
+                    displayInfoPanel(data);
+                }
+            }
+        ));
+    });
+
+    //adds the live marker
     const {lat, lng} = mapData.currentLocation;
     livePositionMarker = map.addMarker({extraClassName : "map__marker--current", lat, lng});
 }
 
+/**
+ * Init the live feed connection
+ */
 function initLiveFeed() {
     //TODO load polyfill for live data
     if(!window.EventSource) {
@@ -72,7 +117,7 @@ function initLiveFeed() {
     const sse = new EventSource('/api/map/live');
     sse.addEventListener("live_position", ({data}) => {
         data = JSON.parse(data);
-        console.log(data);
+        //console.log(data);
 
         livePositionMarker.location = data;
     }, false);

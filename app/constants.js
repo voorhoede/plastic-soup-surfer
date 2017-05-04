@@ -1,11 +1,8 @@
 
 module.exports = {
-    donationsPerExploot : 50,
+    donationsPerExploot : 100,
     exploots : 10,
     donationCost : 5,
-
-    donationState : {
-        NOT_STARTED : 'not_started',
-        SUCCESS     : 'success'
-    }
+    siteStatusEntryId : 'R6yIE4OKKOUGuWWMsaGUa',
+    mapOverlayImageWidth : 250
 }

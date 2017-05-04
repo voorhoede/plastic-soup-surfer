@@ -1,6 +1,7 @@
 const bluebird = require('bluebird');
 const contentfulCache = require('./lib/contentful-cache');
 const getSocialFeed = require('./lib/get-social-feed');
+const paymentApi = require('./lib/payment-api');
 const moment = require('moment');
 
 module.exports = function (router, {constants, nunjucksEnv}) {
@@ -54,12 +55,14 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         const daysDiff = Date.now() - parseDate(siteStatus[0].fields.startDay);
         const day = Math.floor( daysDiff / dayInMilliseconds ) || 1;
         const distance = siteStatus[0].fields.distance;
+        const phase = siteStatus[0].fields.phase;
 
         Object.assign(ctx.state.baseTemplateData, {
             explootProgress, 
             donatedProgress,
             day,
-            distance
+            distance,
+            phase
         });
 
         await next();
@@ -84,7 +87,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
     });
 
     router.get('exploot', ctx => {
-        const {error = null, donationState = constants.donationState.NOT_STARTED} = ctx.flash.get() || {};
+        const {error = null, donationState = paymentApi.states.NOT_STARTED} = ctx.flash.get() || {};
 
         ctx.body = nunjucksEnv.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
             page : 'exploot',

@@ -4,14 +4,12 @@
 	<div class="centered-column">
 	    <h2>Route</h2>
 
-		{% if phase == "may" %}
-			
-
-			
-		{% endif %}
-
-	    <div id="live-map" class="map">
+	    <div id="live-map" class="map">	
 	        <img class="map__overlay" src="/assets/images/map-overlay.png" style="position:absolute;left: -355px; top: -30px;pointer-events:none;">
+
+	        <div class="map__marker map__marker--start"></div>
+
+	        <div class="map__marker map__marker--finish"></div>
 	    </div>
 
 		{% include "components/progress/progress.html" %}

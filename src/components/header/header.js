@@ -31,15 +31,10 @@ if (!String.prototype.includes) {
 // document.referrer (check if previous location was same site)
 // performance.nacigation.type is to check if the page was reloaded or not (1 being reloaded and 0 a different page)
 if (!document.referrer.includes(window.location.hostname) && performance.navigation.type != 1 && window.innerWidth >= 768) {
-	console.log('new on site');
 	animateProgressbar(progressBar)
-	animateNumber(progressnumber, '%')
-} else {
-	console.log('not new');
+	animateNumber(progressnumber, 500, '%')
 }
 
-animateProgressbar(progressBar)
-animateNumber(progressnumber, '%')
 
 function animateProgressbar(bar) {
 	let parent = bar.parentNode,
@@ -56,26 +51,21 @@ function animateProgressbar(bar) {
 	}, 0);
 }
 
-function animateNumber(numText, append) {
+function animateNumber(numText, ms, append = '') {
 	let num = parseInt(numText.innerHTML),
-	decimal = num % 1 != 0,
+	// let num = 100,
 	counter = 0;
 
-	console.log(num);
+	let interval = setInterval(function () {
 
-	// let interval = setInterval(function () {
-	//
-	// 	numText.innerHTML = counter;
-	// 	// console.log(counter);
-	//
-	// 	// If original number has a decimal then count per decimal
-	// 	counter +=  1;
-	// 	console.log(counter);
-	// 	console.log(num);
-	// 	console.log(counter == num);
-	// 	if (counter == num) {
-	// 		console.log("clear");
-	// 		clearInterval(interval);
-	// 	}
-	// }, (num*10) * 10);
+		numText.innerHTML = counter + append;
+
+		if (counter == num) {
+			console.log("clear");
+			clearInterval(interval);
+		}
+
+		counter +=  1;
+
+	}, ms/num);
 }

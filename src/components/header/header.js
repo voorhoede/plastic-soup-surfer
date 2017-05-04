@@ -1,3 +1,4 @@
+
 const MOBILE_MENU_ATTR = '[data-mobile-menu]';
 const MOBILE_MENU_TRIGGER_ATTR = '[data-mobile-menu-toggle]';
 

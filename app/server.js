@@ -21,10 +21,13 @@ const port = parseInt(process.env.PORT, 10) || 8080;
 const app = new Koa();
 
 //lets encrypt support
-app.use(async (ctx) => {
+app.use(async (ctx, next) => {
     if(ctx.path.startsWith('/.well-known')) {
         const p = ctx.path.substr(('/.well-known').length);
         await send(ctx, p || 'index.html', {root : process.env.LETSENCRYPT_DIR});
+    }
+    else {
+        await next();
     }
 });
 

@@ -13,7 +13,7 @@
             <ul class="flat-list">
                 <li>
                     <a href="/" class="site-header__item {{ 'site-header__item--active' if page == 'index' }}">Home</a>
-                </li>  
+                </li>
                 <li>
                     <a href="/expedition" class="site-header__item {{ 'site-header__item--active' if page == 'expedition' }}">Expedition</a>
                 </li>
@@ -30,10 +30,10 @@
             <div class="site-header__right-content">
                 <a href="/exploot" class="site-header__btn-donate button button--primary">Donate now</a>
 
-                <span class="site-header__progressvalue">{{ donatedProgress }}%</span>
+                <span class="site-header__progressvalue" data-progressnumber>{{ donatedProgress }}%</span>
 
                 <div class="site-header__progressbar">
-                    <div class="site-header__progress" style="width:{{ donatedProgress }}%"></div>
+                    <div class="site-header__progress" data-progressbar style="width:{{ donatedProgress }}%"></div>
                 </div>
             </div>
         </div>
@@ -49,7 +49,13 @@
             <figcaption class="site-header__s2s">#Source2Sea</figcaption>
         </figure>
 
-        <button class="site-header__mobile-menu-toggle" data-mobile-menu-toggle>Show menu</button>
+        <button class="site-header__mobile-menu-toggle" data-mobile-menu-toggle>
+            <!-- Show menu -->
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
     </div>
 
     <div class="site-header__mobile-menu hidden" data-mobile-menu>
@@ -57,7 +63,7 @@
             <ul class="flat-list">
                 <li>
                     <a href="/" class="site-header__item {{ 'site-header__item--active' if page == 'index' }}">Home</a>
-                </li>  
+                </li>
                 <li>
                     <a href="/expedition" class="site-header__item {{ 'site-header__item--active' if page == 'expedition' }}">Expedition</a>
                 </li>

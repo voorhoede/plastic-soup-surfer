@@ -18,6 +18,12 @@ body {
     color:@brand-blue;
 }
 
+main {
+    @media @s-only {
+        transition: opacity 0.3s ease;
+    }
+}
+
 main > section,
 main > section.centered-column {
     margin-bottom: @margin-double;
@@ -95,6 +101,10 @@ main > section.centered-column {
 
     &--primary {
         background-color:@brand-pink;
+        transition: background-color 0.3s ease;
+        &:hover {
+            background-color:@brand-pink-light;
+        }
     }
 
     &--full-width {

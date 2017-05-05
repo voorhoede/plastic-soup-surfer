@@ -4,7 +4,9 @@
 
 	{% include "components/hero/hero.html" %}
 
-	{% include "components/video-player/video-player.html" %}
+	{% if phase == "june" %}
+		{% include "components/video-player/video-player.html" %}
+	{% endif %}
     
     {% include "components/map/map.html" %}
 

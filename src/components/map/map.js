@@ -75,8 +75,10 @@ function createMap(el) {
 function displayInfoPanel(data) {
     const currentInfoPanel = document.querySelector('.social-card');
 
+    const infoPanelParent = currentInfoPanel.parentNode;
+
     if(currentInfoPanel) {
-        liveMapElement.removeChild(currentInfoPanel);
+        infoPanelParent.removeChild(currentInfoPanel);
     }
 
     const temp = document.createElement("div");
@@ -84,7 +86,7 @@ function displayInfoPanel(data) {
 
     mapInfoPanel = temp.firstElementChild;
 
-    liveMapElement.appendChild(mapInfoPanel);
+    infoPanelParent.appendChild(mapInfoPanel);
 }
 
 /**

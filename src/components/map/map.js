@@ -46,6 +46,10 @@ function loadMapData() {
  * @param {DOMElement} el 
  */
 function createMap(el) {
+    const markerContainer = document.createElement('div');
+    markerContainer.className = "map__marker-container";
+    el.appendChild(markerContainer);
+
     const projector = new FlatMercatorViewport({
         tileSize : 256,
         longitude : center.lng,
@@ -58,7 +62,7 @@ function createMap(el) {
     return Promise.resolve({
         addMarker(opts) {
             const marker = new Marker(projector, opts);
-            marker.appendTo(el);
+            marker.appendTo(markerContainer);
             return marker;
         }
     });
@@ -95,6 +99,7 @@ function addMapMarkers(map, mapData) {
         return map.addMarker(Object.assign(
             data.loc, 
             {
+                mapSize,
                 extraClassName : "map__marker--" + data.type,
                 clickHandler : marker => {
                     displayInfoPanel(data);
@@ -106,7 +111,7 @@ function addMapMarkers(map, mapData) {
     //adds the live marker only when phase === june
     if(window.PHASE === "june") {
         const {lat, lng} = mapData.currentLocation;
-        livePositionMarker = map.addMarker({extraClassName : "map__marker--current", lat, lng});
+        livePositionMarker = map.addMarker({extraClassName : "map__marker--current", mapSize, lat, lng});
     }
 }
 

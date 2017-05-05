@@ -4,9 +4,22 @@ const responsive = require('gulp-responsive');
 gulp.task('images', function() {
 	return gulp.src(process.env.SRC_DIR + '/**/*.{png,jpg,jpeg}', {base: process.env.SRC_DIR})
 		.pipe(responsive({
-            'assets/images/map-overlay.png' : [
+            'assets/images/map-overlay-s.jpg' : [
                 {
-                    width:1860
+                    rename : 'assets/images/map-overlay-s@2x.jpg',
+                    width  : 750
+                },
+
+                {
+                    rename : 'assets/images/map-overlay-s.jpg',
+                    width  : 375
+                }
+            ],
+
+            'assets/images/map-overlay-l.jpg' : [
+                {
+                    rename : 'assets/images/map-overlay-l.jpg',
+                    width  : 928
                 }
             ],
 

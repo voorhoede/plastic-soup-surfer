@@ -1,4 +1,6 @@
 .donation-progress {
+	overflow: hidden;
+
 	@media @m {
 		text-align: center;
 
@@ -12,10 +14,42 @@
 	&__progress-indicator {
 		margin-bottom: @margin-double;
 		text-align: center;
-		background: url('/assets/icons/progress-line.svg') top 30px center / 340px 360px no-repeat;
+		position: relative;
+
+		&.open {
+			.progress-item img {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.donation-progress__dashed-line__line {
+				stroke-dashoffset: 5050px;
+			}
+		}
+	}
+
+	&__dashed-line {
+		position:absolute;
+		left: 50%;
+		top: 30px;
+		width: 340px;
+		transform: translateX(-50%);
 
 		@media @m {
-			background: url('/assets/icons/progress-line.svg') top 100px center / 910px 962px no-repeat;
+			top: 100px;
+			width: 910px;
+		}
+
+		&__dash {
+			stroke-dasharray: 2, 13;
+		}
+
+		&__line {
+			stroke-dasharray: 5000;
+			stroke-dashoffset: 0px;
+			stroke: @white;
+			stroke-width: 10;
+			transition: stroke 3s ease, stroke-dashoffset 3s ease;
 		}
 	}
 
@@ -31,6 +65,18 @@
 				margin: 0 @margin-default;
 			}
 
+			.transition-delay(@counter) when (@counter > 0) {
+				.transition-delay(@counter - 1);
+
+				&:nth-of-type(@{counter}) {
+					img {
+						transition-delay: (0.07s * @counter);
+					}
+				}
+			}
+
+			.transition-delay(10);
+
 			&:nth-child(1):after,
 			&:nth-child(3):after,
 			&:nth-child(6):after {
@@ -45,6 +91,9 @@
 			img {
 				width: 53px;
 				height: auto;
+				opacity: 0;
+				transform: translateY(20px);
+				transition: transform 0.3s ease, opacity 0.3s ease;
 
 				@media @m {
 					width: 150px;
@@ -72,5 +121,16 @@
 			padding-bottom: 95%;
 			width: 70%;
 		}
+	}
+}
+
+.no-js {
+	.donation-progress__visual .progress-item img{
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.donation-progress__dashed-line__line {
+		animation: dash 3s linear forwards;
 	}
 }

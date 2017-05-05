@@ -7,6 +7,11 @@ const moment = require('moment');
 module.exports = function (router, {constants, nunjucksEnv}) {
     const devMode = process.env.NODE_ENV === "development";
 
+    let manifest; 
+    if(!devMode) {
+        manifest = require(process.env.DIST_DIR + "/rev-manifest.json");
+    }
+
     function parseDate(date) {
         let [year, month, day] = date.split("-");
 

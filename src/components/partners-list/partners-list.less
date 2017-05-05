@@ -2,22 +2,24 @@
 	.clearfix();
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
 
 	&__item {
 		float: left;
-		margin: 0 @margin-default @margin-default*1.5 @margin-default;
+		padding-right: @margin-default;
+		width: 50%;
 
 		@media @m {
-			margin: 0 @margin-double @margin-double @margin-double;
+			padding-right: @margin-double;
+			width: calc(100% / 3);
+		}
+
+		@media @l {
+			width: calc(25%);
 		}
 	}
 
 	&__company-logo	{
-		@logo-size: 100px;
-
-		width: @logo-size;
-		height: @logo-size;
-		border-radius: @logo-size;
+		width: 100%;
+		height: auto;
 	}
 }

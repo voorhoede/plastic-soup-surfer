@@ -37,6 +37,8 @@ module.exports = function (router, {liveStream, constants, nunjucksEnv}) {
     router.get('/map/live', liveStream.middleware());
 
     router.get('/map/data', json(), async (ctx) => {
+        ctx.set('Cache-Control', 'no-cache');
+
         const [juicerFeed, cache] = await Promise.all([
             juicerCache.get(),
             contentfulCache.get()
@@ -49,22 +51,24 @@ module.exports = function (router, {liveStream, constants, nunjucksEnv}) {
             currentLocation : fixContentfulLocation(cache.siteStatus[0].fields.currentLocation)
         };
 
-        //lookup the highlighted posts from contentful and check if a similar post exists in juicer
-        for(let post of cache.highlightedPost) {
-            const postUrl = post.fields.url;
+        if(cache.highlightedPost) {
+            //lookup the highlighted posts from contentful and check if a similar post exists in juicer
+            for(let post of cache.highlightedPost) {
+                const postUrl = post.fields.url;
 
-            //match by url (this should work fine)
-            const juicerItem = juicerFeedItems.find(item => item.full_url === postUrl);
+                //match by url (this should work fine)
+                const juicerItem = juicerFeedItems.find(item => item.full_url === postUrl);
 
-            if(juicerItem) {
-                mapData.items.push({
-                    type    : 'highlighted-post',
-                    html    : nunjucksEnv.render('components/social-card/social-card.api.html', {
-                        feedItem : mapJuicerItemToSocialCard(juicerItem)
-                    }),
-                    date    : new Date(juicerItem.external_created_at),
-                    loc     : fixContentfulLocation(post.fields.location)
-                });
+                if(juicerItem) {
+                    mapData.items.push({
+                        type    : 'highlighted-post',
+                        html    : nunjucksEnv.render('components/social-card/social-card.api.html', {
+                            feedItem : mapJuicerItemToSocialCard(juicerItem)
+                        }),
+                        date    : new Date(juicerItem.external_created_at),
+                        loc     : fixContentfulLocation(post.fields.location)
+                    });
+                }
             }
         }
 

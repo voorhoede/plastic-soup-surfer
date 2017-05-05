@@ -5,16 +5,16 @@
 
 	.video-player ~ & {
 		padding-top: 0;
-	}	
+	}
 
 	@media @m {
-		padding-top: 6rem;		
+		padding-top: 6rem;
 	}
 
 	.centered-column {
 		.clearfix();
 		position: relative;
-		
+
 		@media @m {
 			position: static;
 			display: flex;
@@ -42,10 +42,14 @@
 	.hero__image {
 		margin: 0;
 		text-align: center;
+		overflow: hidden;
 
 		img {
 			width: 75%;
 			height: auto;
+			transform: translateY(10%);
+			opacity: 0;
+			transition: transform 0.3s ease, opacity 0.3s ease;
 
 			@media @m {
 				width: 100%;
@@ -57,6 +61,13 @@
 			align-items: flex-end;
 			float: right;
 			width: 50%;
+		}
+
+		&.open {
+			img {
+				transform: translateY(0);
+				opacity: 1;
+			}
 		}
 	}
 
@@ -77,4 +88,9 @@
 			background: url('/assets/icons/expedition-wave--no-aspect-ratio.svg') center / 100% 100% no-repeat;
 		}
 	}
+}
+
+.no-js .hero__image img {
+	transform: translateY(0);
+	opacity: 1;
 }

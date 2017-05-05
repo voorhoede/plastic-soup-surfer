@@ -1,11 +1,14 @@
 require('dotenv').config(__dirname + "/..");
 
+const http = require('http');
+const https = require('https');
 const Koa = require('koa');
 const Router = require('koa-router');
 const static = require('koa-static');
 const flash = require('koa-flash-simple');
 const session = require('koa-session');
 const send = require('koa-send');
+const compress = require('koa-compress');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
@@ -19,17 +22,6 @@ juicerCache.startPeriodicUpdate();
 const port = parseInt(process.env.PORT, 10) || 8080;
 
 const app = new Koa();
-
-//lets encrypt support
-app.use(async (ctx, next) => {
-    if(ctx.path.startsWith('/.well-known')) {
-        const p = ctx.path.substr(('/.well-known').length);
-        await send(ctx, p || 'index.html', {root : process.env.LETSENCRYPT_DIR});
-    }
-    else {
-        await next();
-    }
-});
 
 const appCtxt = {
     liveStream : require('./lib/koa-sse-stream')(),
@@ -53,13 +45,21 @@ require('./pages')(pagesRouter, appCtxt);
 mainRouter.use("/", pagesRouter.routes());
 
 app.keys = ['9aDxBtRqBaZ7gKBu'];
+app.use( compress({
+    filter: function (content_type) {
+        return /text/i.test(content_type) || /javascript/.test(content_type);
+    },
+    threshold: 2048,
+    flush: require('zlib').Z_SYNC_FLUSH
+}) );
 app.use( xhr() );
 app.use( session(app) );
 app.use( flash() );
 app.use( mainRouter.routes() );
 app.use( static(__dirname + "/../dist") );
 
-app.listen(port, function () {
+const httpServer = http.createServer(app.callback());
+httpServer.listen(port, function () {
     if(process.env.NODE_ENV === "development") {
         const browserSync = require('browser-sync');
 
@@ -74,3 +74,12 @@ app.listen(port, function () {
         });
     }
 });
+
+if(process.env.NODE_ENV !== "development") {
+    const httpsServer = https.createServer({
+            key : fs.readFileSync(path.join(process.env.SSL_PATH, 'privkey.pem')),
+            cert: fs.readFileSync(path.join(process.env.SSL_PATH, 'fullchain.pem'))
+    }, app.callback());
+
+    httpsServer.listen(443);
+}

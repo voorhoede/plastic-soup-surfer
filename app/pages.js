@@ -5,6 +5,7 @@ const paymentApi = require('./lib/payment-api');
 const moment = require('moment');
 
 module.exports = function (router, {constants, nunjucksEnv}) {
+    const devMode = process.env.NODE_ENV === "development";
 
     function parseDate(date) {
         let [year, month, day] = date.split("-");
@@ -62,7 +63,9 @@ module.exports = function (router, {constants, nunjucksEnv}) {
             donatedProgress,
             day,
             distance,
-            phase
+            phase,
+            mainCSS : devMode ? "/assets/css/main.css" : manifest['assets/css/main.css'],
+            allJS : devMode ? "/assets/js/all.js" : manifest['assets/js/all.js']
         });
 
         await next();

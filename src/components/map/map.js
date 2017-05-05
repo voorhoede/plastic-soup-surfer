@@ -46,6 +46,10 @@ function loadMapData() {
  * @param {DOMElement} el 
  */
 function createMap(el) {
+    const markerContainer = document.createElement('div');
+    markerContainer.className = "map__marker-container";
+    el.appendChild(markerContainer);
+
     const projector = new FlatMercatorViewport({
         tileSize : 256,
         longitude : center.lng,
@@ -58,7 +62,7 @@ function createMap(el) {
     return Promise.resolve({
         addMarker(opts) {
             const marker = new Marker(projector, opts);
-            marker.appendTo(el);
+            marker.appendTo(markerContainer);
             return marker;
         }
     });
@@ -69,8 +73,12 @@ function createMap(el) {
  * @param {*} data 
  */
 function displayInfoPanel(data) {
-    if(mapInfoPanel) {
-        liveMapElement.removeChild(mapInfoPanel);
+    const currentInfoPanel = document.querySelector('.social-card');
+
+    const infoPanelParent = currentInfoPanel.parentNode;
+
+    if(currentInfoPanel) {
+        infoPanelParent.removeChild(currentInfoPanel);
     }
 
     const temp = document.createElement("div");
@@ -78,7 +86,7 @@ function displayInfoPanel(data) {
 
     mapInfoPanel = temp.firstElementChild;
 
-    liveMapElement.appendChild(mapInfoPanel);
+    infoPanelParent.appendChild(mapInfoPanel);
 }
 
 /**
@@ -93,6 +101,8 @@ function addMapMarkers(map, mapData) {
         return map.addMarker(Object.assign(
             data.loc, 
             {
+                mapSize,
+                extraClassName : "map__marker--" + data.type,
                 clickHandler : marker => {
                     displayInfoPanel(data);
                 }
@@ -100,9 +110,11 @@ function addMapMarkers(map, mapData) {
         ));
     });
 
-    //adds the live marker
-    const {lat, lng} = mapData.currentLocation;
-    livePositionMarker = map.addMarker({extraClassName : "map__marker--current", lat, lng});
+    //adds the live marker only when phase === june
+    if(window.PHASE === "june") {
+        const {lat, lng} = mapData.currentLocation;
+        livePositionMarker = map.addMarker({extraClassName : "map__marker--current", mapSize, lat, lng});
+    }
 }
 
 /**
@@ -127,6 +139,10 @@ if(liveMapElement) {
     Promise.all([createMap(liveMapElement), loadMapData()])
         .then(([map, mapData]) => {
             addMapMarkers(map, mapData);
-            initLiveFeed(); 
+
+            //only start live feed when merijn starts supping
+            if(window.PHASE === "june") {
+                initLiveFeed(); 
+            }
         });
 }

@@ -4,11 +4,7 @@ const donationProgressVisual = document.querySelector(DONATION_PROGRESS__VISUAL)
 
 if (donationProgressVisual) {
     const donationProgressVisualTop = donationProgressVisual.offsetTop,
-            toppie = donationProgressVisual.scrollTop,
           documentHeight = window.innerHeight;
-
-        //   alert(donationProgressVisualTop);
-        //   alert(toppie);
 
     window.addEventListener('scroll', showWarrants)
 

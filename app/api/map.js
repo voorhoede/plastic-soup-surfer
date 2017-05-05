@@ -37,6 +37,8 @@ module.exports = function (router, {liveStream, constants, nunjucksEnv}) {
     router.get('/map/live', liveStream.middleware());
 
     router.get('/map/data', json(), async (ctx) => {
+        ctx.set('Cache-Control', 'no-cache');
+
         const [juicerFeed, cache] = await Promise.all([
             juicerCache.get(),
             contentfulCache.get()

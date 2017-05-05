@@ -4,7 +4,7 @@ const responsive = require('gulp-responsive');
 gulp.task('images', function() {
 	return gulp.src(process.env.SRC_DIR + '/**/*.{png,jpg,jpeg}', {base: process.env.SRC_DIR})
 		.pipe(responsive({
-            'assets/images/map-overlay-s.jpg' : [
+            'assets/images/map-overlay-s.png' : [
                 {
                     rename : 'assets/images/map-overlay-s@2x.jpg',
                     width  : 750
@@ -16,10 +16,11 @@ gulp.task('images', function() {
                 }
             ],
 
-            'assets/images/map-overlay-l.jpg' : [
+            'assets/images/map-overlay-l.png' : [
                 {
                     rename : 'assets/images/map-overlay-l.jpg',
-                    width  : 928
+                    width  : 928,
+                    quality : 90
                 }
             ],
 

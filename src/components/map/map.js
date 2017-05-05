@@ -95,6 +95,7 @@ function addMapMarkers(map, mapData) {
         return map.addMarker(Object.assign(
             data.loc, 
             {
+                extraClassName : "map__marker--" + data.type,
                 clickHandler : marker => {
                     displayInfoPanel(data);
                 }
@@ -102,9 +103,11 @@ function addMapMarkers(map, mapData) {
         ));
     });
 
-    //adds the live marker
-    const {lat, lng} = mapData.currentLocation;
-    livePositionMarker = map.addMarker({extraClassName : "map__marker--current", lat, lng});
+    //adds the live marker only when phase === june
+    if(window.PHASE === "june") {
+        const {lat, lng} = mapData.currentLocation;
+        livePositionMarker = map.addMarker({extraClassName : "map__marker--current", lat, lng});
+    }
 }
 
 /**
@@ -129,6 +132,10 @@ if(liveMapElement) {
     Promise.all([createMap(liveMapElement), loadMapData()])
         .then(([map, mapData]) => {
             addMapMarkers(map, mapData);
-            initLiveFeed(); 
+
+            //only start live feed when merijn starts supping
+            if(window.PHASE === "june") {
+                initLiveFeed(); 
+            }
         });
 }

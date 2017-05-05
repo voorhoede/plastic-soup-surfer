@@ -14,10 +14,6 @@
     }
 
     &__marker {
-        border-radius:50%;
-        width:20px;
-        height:20px;
-        background:@white;
         position:absolute;
         transform:translate(-50%, -50%);
 
@@ -39,6 +35,19 @@
             width: 70px;
             height: 70px;
             background: url('/assets/icons/map-marker-finish.svg') center / auto 100% no-repeat transparent;
+        }
+
+        &--highlighted-post {
+            background: @white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+        }
+
+        &--event {
+            background: url('/assets/icons/map-marker-event.svg') center / auto 100% no-repeat transparent;
+            width: 20px;
+            height: 20px;
         }
     }
 

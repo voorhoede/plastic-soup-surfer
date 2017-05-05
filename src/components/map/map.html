@@ -24,6 +24,8 @@
 			<div class="map__marker map__marker--finish"></div>
 		</div>
 
-		{% include "components/progress/progress.html" %}
+		{% if phase == "june" %}
+			{% include "components/progress/progress.html" %}
+		{% endif %}
 	</div>
 </section>

@@ -1,4 +1,6 @@
 .donation-progress {
+	overflow: hidden;
+
 	@media @m {
 		text-align: center;
 
@@ -12,20 +14,47 @@
 	&__progress-indicator {
 		margin-bottom: @margin-double;
 		text-align: center;
-		background: url('/assets/icons/progress-line.svg') top 30px center / 340px 360px no-repeat;
+		position: relative;
+
+		&.open {
+			.progress-item img {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.donation-progress__dashed-line__line {
+				stroke-dashoffset: 5050px;
+			}
+		}
+	}
+
+	&__dashed-line {
+		position:absolute;
+		left: 50%;
+		top: 30px;
+		width: 340px;
+		transform: translateX(-50%);
 
 		@media @m {
-			background: url('/assets/icons/progress-line.svg') top 100px center / 910px 962px no-repeat;
+			top: 100px;
+			width: 910px;
+		}
+
+		&__dash {
+			stroke-dasharray: 2, 13;
+		}
+
+		&__line {
+			stroke-dasharray: 5000;
+			stroke-dashoffset: 0px;
+			stroke: @white;
+			stroke-width: 10;
+			transition: stroke 3s ease, stroke-dashoffset 3s ease;
 		}
 	}
 
 	&__visual {
 		margin-bottom: @margin-double;
-
-		&.open .progress-item img {
-			opacity: 1;
-			transform: translateY(0);
-		}
 
 		.progress-item {
 			display: inline;
@@ -95,7 +124,13 @@
 	}
 }
 
-.no-js .donation-progress__visual .progress-item img{
-	opacity: 1;
-	transform: translateY(0);
+.no-js {
+	.donation-progress__visual .progress-item img{
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.donation-progress__dashed-line__line {
+		animation: dash 3s linear forwards;
+	}
 }

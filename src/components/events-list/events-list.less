@@ -38,6 +38,7 @@
 		.clearfix();
 		margin-bottom: @margin-default;
 		background: @grey-light;
+		display: flex;
 
 		&:last-child {
 			margin-bottom: 0;
@@ -48,6 +49,10 @@
 		&--image {
 			float: left;
 			width: @image-width;
+			display: block;
+			padding-top: 30%;
+			background-size: cover;
+			flex: 1 1 auto;
 
 			& > span {
 				display: block;
@@ -59,9 +64,11 @@
 
 		&--content {
 			padding: @margin-default;
+			width: calc(~'100% - '@image-width);
+			flex: 0 0 auto;
 
 			@media @m {
-				margin-left: @image-width;
+				float: right;
 			}
 		}
 
@@ -80,7 +87,7 @@
 
 		&--description {
 			font-size: @text-size-smaller;
-			word-break: break-word;
+			word-break: break-all;
 		}
 	}
 }

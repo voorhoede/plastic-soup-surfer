@@ -23,11 +23,6 @@
 			margin-bottom: @margin-double;
 			font-weight: bold;
 			line-height: 1.8;
-
-			@media @m {
-				color: @white;
-    			text-shadow: 1px 1px 0 @brand-blue;
-			}
 		}
 
 		@media @m {
@@ -36,6 +31,15 @@
 			.title {
 				color: @brand-pink;
 				text-shadow: 3px 3px 0 @brand-blue;
+			}
+		}
+	}
+
+	&-home {
+		.hero__content .text {
+			@media @m {
+				color: @white;
+    			text-shadow: 1px 1px 0 @brand-blue;
 			}
 		}
 	}

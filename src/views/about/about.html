@@ -1,8 +1,11 @@
 {%- extends "views/_base/layout.html" -%}
+{% from "components/quote/quote.html" import quote %}
 
 {%- block content -%}
 
 	{% include "components/about-me/about-me.html" %}
+
+	{{ quote('I am not accusing plastic, I am accusing our attitude toward plastic', 'Merijn Tinga') }}
 
 	{% include "components/past-adventures/past-adventures.html" %}
 

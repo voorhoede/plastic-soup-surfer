@@ -48,9 +48,9 @@ gulp.task('images', function() {
                 }
             ],
 
-			'assets/images/team.jpg' : [
+			'assets/images/about-team-merijn.jpg' : [
                 {
-                    width:400
+                    width:360
                 }
             ],
 

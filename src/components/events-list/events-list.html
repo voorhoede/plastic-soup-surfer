@@ -7,9 +7,7 @@
 
 			{% for event in upcomingEvents %}
 			<article class="event">
-				<div class="event--image mobile-hidden" style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');">
-					<!-- <span style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');"></span> -->
-				</div>
+				<div class="event--image mobile-hidden" style="background-image: url('{{ event.image.fields.file.url }}?w=200&h=200&fit=fill');"></div>
 
 				<div class="event--content">
 					<h4 class="event--title">{{ event.title }}</h4>
@@ -28,9 +26,7 @@
 
 			{% for event in pastEvents %}
 			<article class="event">
-				<div class="event--image mobile-hidden" style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');">
-					<!-- <span style="background-image: url('{{ event.image.fields.file.url }}?w=150&h=95&fit=fill');"></span> -->
-				</div>
+				<div class="event--image mobile-hidden" style="background-image: url('{{ event.image.fields.file.url }}?w=200&h=200&fit=fill');"></div>
 
 				<div class="event--content">
 					<h4 class="event--title">{{ event.title }}</h4>

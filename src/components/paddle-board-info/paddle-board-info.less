@@ -8,8 +8,20 @@
 		margin-bottom: @margin-double*3;
 	}
 
+	&.open {
+		.paddle-board__image,
+		.paddle-board__description {
+			transform: translateX(0%);
+			opacity: 1;
+		}
+	}
+
 	&__image {
 		text-align: center;
+		position: relative;
+		transform: translateX(-10%);
+		opacity: 0;
+		transition: transform 0.3s ease, opacity 0.3s ease;
 
 		img {
 			width: 80%;
@@ -24,11 +36,23 @@
 
 	&__description {
 		float: right;
+		position: relative;
+		transform: translateX(10%);
+		opacity: 0;
+		transition: transform 0.3s ease, opacity 0.3s ease;
 
 		@media @m {
 			float: right;
 			padding-left: @margin-default;
 			width: 50%;
 		}
+	}
+}
+
+.no-js .paddle-board {
+	.paddle-board__image,
+	.paddle-board__description {
+		transform: translateX(0%);
+		opacity: 1;
 	}
 }

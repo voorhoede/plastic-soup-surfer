@@ -60,13 +60,13 @@ gulp.task('images', function() {
                 }
             ],
 
-            'assets/images/merijn.png' : [
+            'assets/images/merijn.jpg' : [
                 {
                     width:700
                 }
             ],
 
-            'assets/images/paddle-board.png' : [
+            'assets/images/paddle-board.jpg' : [
                 {
                     width:600
                 }

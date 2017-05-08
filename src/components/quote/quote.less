@@ -1,14 +1,23 @@
 .quote {
 	margin-bottom: @margin-double*2;
-	width: 50%;
+	width: 90%;
+	max-width: 50rem;
 	text-align: center;
+
+	@media @m {
+		width: 50%;
+	}
 
 	.quote__content {
 		position: relative;
 		color: @brand-pink;
-		font-size: @text-size-big;
+		font-size: @text-size-bigger;
 		font-style: italic;
 		line-height: 1.5;
+
+		@media @m {
+			font-size: @text-size-big;
+		}
 
 		&:before,
 		&:after {
@@ -37,8 +46,12 @@
 	}
 
 	cite {
-		font-size: @text-size-bigger;
+		font-size: @text-size-default;
 		font-style: normal;
+
+		@media @m {
+			font-size: @text-size-bigger;
+		}
 
 		&:before,
 		&:after {

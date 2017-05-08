@@ -1,7 +1,11 @@
 .partners-list {
-	.clearfix();
 	display: flex;
 	flex-wrap: wrap;
+
+	&::after {
+		content: '';
+		clear: both;
+	}
 
 	&__item {
 		float: left;

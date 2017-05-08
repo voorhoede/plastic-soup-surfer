@@ -5,6 +5,7 @@
     .team-list {
         @media @m {
             .clearfix();
+            display: flex;
             margin: 0 -@margin-default;
         }
 
@@ -35,15 +36,15 @@
                 width: 100%;
                 max-width: 15rem;
                 height: auto;
-
-                @media @m {
-                    flex: 0 0 auto;
-                }
             }
 
             h3 {
                 width: 100%;
                 font-size: @text-size-default;
+
+                @media @m {
+                    flex: 1 1 auto;
+                }
             }
 
             p {

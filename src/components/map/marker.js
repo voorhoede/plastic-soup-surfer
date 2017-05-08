@@ -1,7 +1,8 @@
 import FlatMercatorViewport from './flat-mercator-viewport';
 
 export default class Marker {
-    constructor(projector, {lat, lng, extraClassName = "", clickHandler = null}) {
+    constructor(projector, {lat, lng, mapSize, extraClassName = "", clickHandler = null}) {
+        this.mapSize = mapSize;
         this.projector = projector;
 
         this.el = document.createElement("div");
@@ -23,9 +24,10 @@ export default class Marker {
     set location({lat, lng}) {
         this._location = {lat, lng};
 
+        const [mapWidth, mapHeight] = this.mapSize;
         const [x,y] = this.projector.project([lng, lat]);
-        this.el.style.left = x + "px";
-        this.el.style.top = y + "px";
+        this.el.style.left = ((x/mapWidth) * 100) + "%";
+        this.el.style.top = ((y/mapHeight) * 100) + "%";
     }
 
     appendTo(el) {

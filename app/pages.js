@@ -5,6 +5,12 @@ const paymentApi = require('./lib/payment-api');
 const moment = require('moment');
 
 module.exports = function (router, {constants, nunjucksEnv}) {
+    const devMode = process.env.NODE_ENV === "development";
+
+    let manifest; 
+    if(!devMode) {
+        manifest = require(process.env.DIST_DIR + "/rev-manifest.json");
+    }
 
     function parseDate(date) {
         let [year, month, day] = date.split("-");
@@ -53,7 +59,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
 
         const dayInMilliseconds = 86400000;
         const daysDiff = Date.now() - parseDate(siteStatus[0].fields.startDay);
-        const day = Math.floor( daysDiff / dayInMilliseconds ) || 1;
+        const day = Math.max( Math.floor( daysDiff / dayInMilliseconds ), 1) || 1;
         const distance = siteStatus[0].fields.distance;
         const phase = siteStatus[0].fields.phase;
 
@@ -62,7 +68,9 @@ module.exports = function (router, {constants, nunjucksEnv}) {
             donatedProgress,
             day,
             distance,
-            phase
+            phase,
+            mainCSS : devMode ? "/assets/css/main.css" : manifest['assets/css/main.css'],
+            allJS : devMode ? "/assets/js/all.js" : manifest['assets/js/all.js']
         });
 
         await next();

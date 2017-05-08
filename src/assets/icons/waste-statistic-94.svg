@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#C1E7EF;}
+	.st1{fill:#231F20;}
+	.st2{font-family:'ArialMT';}
+	.st3{font-size:24px;}
+	.st4{fill:#36AFC5;}
+	.st5{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+</style>
+<g>
+	<path class="st0" d="M75,150c-41.4,0-75-33.6-75-75S33.6,0,75,0s75,33.6,75,75S116.4,150,75,150z M75,120c25,0,45-20,45-45
+		s-20-45-45-45S30,50,30,75S50,120,75,120z"/>
+	<text transform="matrix(1 0 0 1 52 84)" class="st1 st2 st3">94%</text>
+	<path class="st4" d="M235,0c-41.4,0-75,33.6-75,75s33.6,75,75,75s75-33.6,75-75S276.4,0,235,0z M235,120c-24.9,0-45-20.1-45-45
+		s20.1-45,45-45s45,20.1,45,45S259.9,120,235,120z"/>
+	<polygon class="st5" points="235,75 235,163.3 260.7,156 	"/>
+	<path class="st4" d="M75,0C33.6,0,0,33.6,0,75s33.6,75,75,75v-30c-24.9,0-45-20.1-45-45s20.1-45,45-45s45,20.1,45,45
+		c0,20.1-13.2,37.1-31.4,42.9l9.1,28.6c30.3-9.6,52.3-38,52.3-71.5C150,33.6,116.4,0,75,0z"/>
+</g>
+</svg>

@@ -4,9 +4,23 @@ const responsive = require('gulp-responsive');
 gulp.task('images', function() {
 	return gulp.src(process.env.SRC_DIR + '/**/*.{png,jpg,jpeg}', {base: process.env.SRC_DIR})
 		.pipe(responsive({
-            'assets/images/map-overlay.png' : [
+            'assets/images/map-overlay-s.png' : [
                 {
-                    width:1860
+                    rename : 'assets/images/map-overlay-s@2x.jpg',
+                    width  : 750
+                },
+
+                {
+                    rename : 'assets/images/map-overlay-s.jpg',
+                    width  : 375
+                }
+            ],
+
+            'assets/images/map-overlay-l.png' : [
+                {
+                    rename : 'assets/images/map-overlay-l.jpg',
+                    width  : 928,
+                    quality : 90
                 }
             ],
 
@@ -36,7 +50,25 @@ gulp.task('images', function() {
 
 			'assets/images/team.jpg' : [
                 {
-                    width:500
+                    width:400
+                }
+            ],
+
+			'assets/images/about-team-eelkedekker.jpg' : [
+                {
+                    width:400
+                }
+            ],
+
+			'assets/images/about-team-kimvandenanker.jpeg' : [
+                {
+                    width:400
+                }
+            ],
+
+			'assets/images/about-team-martine.jpg' : [
+                {
+                    width:400
                 }
             ],
 
@@ -46,13 +78,13 @@ gulp.task('images', function() {
                 }
             ],
 
-            'assets/images/merijn.png' : [
+            'assets/images/merijn.jpg' : [
                 {
                     width:700
                 }
             ],
 
-            'assets/images/paddle-board.png' : [
+            'assets/images/paddle-board.jpg' : [
                 {
                     width:600
                 }
@@ -85,6 +117,114 @@ gulp.task('images', function() {
             'assets/images/adventure--plastic-soup-board.jpg' : [
                 {
                     width:660
+                }
+            ],
+
+            'assets/logos/canoe.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/deutsche-umwelthilfe.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/diezijnvaardig.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/edosmid.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/horchner.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/ivn.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/plasticsoup.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/sciencedelft.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/starboard.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/surfrider.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/tomra.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/vaude.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/watersportverbond.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/zwerfinator.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/stichting-de-noordzee.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/unitid.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/de-voorhoede.png' : [
+                {
+                    width:200
+                }
+            ],
+
+            'assets/logos/bebr.png' : [
+                {
+                    width:200
                 }
             ],
 

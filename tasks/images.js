@@ -222,6 +222,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/logos/bebr.png' : [
+                {
+                    width:200
+                }
+            ],
+
             'assets/images/logo.png' : [
                 {
                     width : 127,

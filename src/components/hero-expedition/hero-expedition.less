@@ -46,18 +46,18 @@
 	.hero__image {
 		margin: 0;
 		text-align: center;
-		overflow: hidden;
 
 		img {
 			width: 75%;
 			height: auto;
-			transform: translateY(10%);
+			transform: translateY(0%);
 			opacity: 0;
 			transition: transform 0.3s ease, opacity 0.3s ease;
 
 			@media @m {
 				margin-bottom: -5%;
 				width: 100%;
+				transform: translateY(10%);
 			}
 		}
 
@@ -70,8 +70,12 @@
 
 		&.open {
 			img {
-				transform: translateY(0);
+				transform: translateY(-3%);
 				opacity: 1;
+
+				@media @m {
+					transform: translateY(0);
+				}
 			}
 		}
 	}
@@ -96,6 +100,10 @@
 }
 
 .no-js .hero__image img {
-	transform: translateY(0);
+	transform: translateY(-3%);
 	opacity: 1;
+
+	@media @m {
+		transform: translateY(0);
+	}
 }

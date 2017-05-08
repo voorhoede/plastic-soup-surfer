@@ -50,7 +50,25 @@ gulp.task('images', function() {
 
 			'assets/images/team.jpg' : [
                 {
-                    width:500
+                    width:400
+                }
+            ],
+
+			'assets/images/about-team-eelkedekker.jpg' : [
+                {
+                    width:400
+                }
+            ],
+
+			'assets/images/about-team-kimvandenanker.jpeg' : [
+                {
+                    width:400
+                }
+            ],
+
+			'assets/images/about-team-martine.jpg' : [
+                {
+                    width:400
                 }
             ],
 

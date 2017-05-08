@@ -65,32 +65,17 @@
 			}
 		}
 
-		&--meta {
-			overflow: auto;
-			margin-bottom: @margin-half;
-		}
-
 		&--title {
 			.truncate-text();
-			margin-bottom: 0;
 			font-size: @text-size-smaller;
-
-			@media @m {
-				width: 55%;
-				float: left;
-			}
+			margin-bottom: .2rem;
 		}
 
 		&--date {
 			.truncate-text();
-			margin-top: .2rem;
-			width: 43%;
 			font-size: @text-size-small;
 			text-align: right;
-
-			@media @m {
-				float: right;
-			}
+			display: inline-block;
 		}
 
 		&--description {

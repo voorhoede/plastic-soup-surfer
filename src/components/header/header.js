@@ -33,7 +33,7 @@ if (!String.prototype.includes) {
 // performance.nacigation.type is to check if the page was reloaded or not (1 being reloaded and 0 a different page)
 if (!document.referrer.includes(window.location.hostname) && performance.navigation.type != 1 && window.innerWidth >= 768) {
 	animateProgressbar(progressBar)
-	animateNumber(progressnumber, 500, '%')
+	animateNumber(progressnumber, 500, true, '%')
 }
 
 
@@ -52,21 +52,23 @@ function animateProgressbar(bar) {
 	}, 0);
 }
 
-function animateNumber(numText, ms, append = '') {
+function animateNumber(numText, ms, decimal, append = '') {
 	let num = parseInt(numText.innerHTML),
 	// let num = 100,
+	countNum = decimal ? 0.1 : 1,
+	toFixe = decimal ? 1 : 0,
 	counter = 0;
 
 	let interval = setInterval(function () {
 
-		numText.innerHTML = counter + append;
+		numText.innerHTML = counter.toFixed(toFixe) + append;
 
-		if (counter == num) {
+		if (counter.toFixed(toFixe) == num) {
 			console.log("clear");
 			clearInterval(interval);
 		}
 
-		counter +=  1;
+		counter = counter + countNum;
 
 	}, ms/num);
 }

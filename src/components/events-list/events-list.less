@@ -87,7 +87,8 @@
 
 		&--description {
 			font-size: @text-size-smaller;
-			word-break: break-all;
+			word-break: break-all; // Fallback for IE11
+			word-break: break-word;
 		}
 	}
 }

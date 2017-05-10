@@ -14,13 +14,14 @@
 
 	.carousel__cell {
 		@box-shadow-size: 3px;
-
-		width: 100%;
 		height: 250px;
+		width: 90%;
+		margin-right: 2.5%;
 
 		@media @m {
-			padding: 0 @margin-default @margin-default 0;
+			padding: 0 @margin-half @margin-default @margin-half;
 			width: calc(~'100% / 3');
+			margin-right: 0;
 		}
 
 		.social-card {
@@ -57,7 +58,7 @@ http://flickity.metafizzy.co
 	@media only screen and (max-width: 1070px) {
 		display: none;
 	}
-	
+
 	@media only screen and (min-width: 1071px) {
 		display: block;
 		position: absolute;

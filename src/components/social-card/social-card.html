@@ -1,24 +1,30 @@
 {% macro socialCard(content) %}
 <div class="social-card">
-	{% 
+	{%
 		set icons = {
 			'Twitter' : '/assets/icons/twitter-icon.svg',
 			'Facebook' : '/assets/icons/facebook-icon.svg',
 			'YouTube' : '/assets/icons/youtube-icon.svg',
 			'Vimeo' : '/assets/icons/vimeo-icon.svg'
-		} 
+		}
 	%}
 
-	{% if content.imageUrl %}
-		<div class="social-card__panel-image" style="background-image: url('{{ content.imageUrl }}');">
-		</div>
+	{% if not content.noThumbnail %}
+		{% if content.imageUrl %}
+			<a class="social-card__panel-image" href="{{ content.social.url }}" style="background-image: url('{{ content.imageUrl }}');"></a>
+		{% else %}
+			<a class="social-card__panel-image fallback" href="{{ content.social.url }}"></a>
+		{% endif %}
 	{% endif %}
+
 
 	{% if content.body %}
 		<div class="social-card__panel-text">
 			{% if content.social %}
 				<div class="social-card__panel-social">
-					<a href="{{ content.social.url }}"><img src="{{ icons[content.social.type] }}" alt="{{ content.social.type }}"></a>
+					<a href="{{ content.social.url }}">
+						<img src="{{ icons[content.social.type] }}" alt="{{ content.social.type }}">
+					</a>
 				</div>
 			{% endif %}
 

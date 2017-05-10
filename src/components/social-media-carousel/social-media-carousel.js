@@ -46,11 +46,10 @@ function initializeCarousel() {
             });
     }
 
-    const carousel = new Flickity(carouselElement, { 
-        "cellAlign": "left", 
-        "contain": true, 
-        "pageDots": false, 
-        "groupCells": true 
+    const carousel = new Flickity(carouselElement, {
+        "contain": true,
+        "pageDots": false,
+        "groupCells": true
     });
 
     carousel.on('settle', () => {
@@ -72,5 +71,5 @@ function initializeCarousel() {
 const carouselElement = document.querySelector('[data-carousel]');
 
 if(carouselElement) {
-    initializeCarousel();    
+    initializeCarousel();
 }

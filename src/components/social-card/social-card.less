@@ -25,6 +25,7 @@
 	&__panel-image {
 		margin: -@margin-default -@margin-default @margin-default -@margin-default;
 		padding-bottom: 7rem;
+		display: block;
 		height: 0;
 		background-position: center;
 		background-size: cover;
@@ -33,6 +34,10 @@
 
 		@media @m {
 			padding-bottom: 43%;
+		}
+
+		&.fallback {
+			background-image: url('/assets/images/logo-large.png');
 		}
 	}
 

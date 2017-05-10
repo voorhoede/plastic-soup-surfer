@@ -238,7 +238,13 @@ gulp.task('images', function() {
                     width : 127 * 2,
                     height : 123 * 2,
                     rename : 'assets/images/logo@2x.png'
-                }
+                },
+
+				{
+					width : 127 * 5,
+                    height : 123 * 5,
+					rename : 'assets/images/logo-large.png'
+				}
             ]
         }))
 		.pipe(gulp.dest(process.env.DIST_DIR));

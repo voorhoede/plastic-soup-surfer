@@ -64,10 +64,11 @@
 
 		&--content {
 			padding: @margin-default;
-			width: calc(~'100% - '@image-width);
 			flex: 0 0 auto;
+			width: 100%;
 
 			@media @m {
+				width: calc(~'100% - '@image-width);
 				float: right;
 			}
 		}

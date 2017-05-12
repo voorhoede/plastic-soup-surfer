@@ -1,0 +1,10 @@
+{% macro message(title, text, showButton=false) %}
+<section class="centered-column message">
+    <h3>{{title}}</h3>
+    {{text}}
+    <br><br>
+    {% if showButton %}
+    <a href="/" class="button button--primary">Go back to home</a>
+    {% endif %}
+</section>
+{% endmacro %}

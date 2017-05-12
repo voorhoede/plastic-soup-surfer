@@ -76,7 +76,17 @@ module.exports = function (router, {constants, nunjucksEnv}) {
             allJS : devMode ? "/assets/js/all.js" : manifest['assets/js/all.js']
         });
 
-        await next();
+        try {
+            await next();
+        }
+        catch(e) {
+            console.log(e.message); //keep this so we can see the cause of the errors
+
+            ctx.status = 500;
+            ctx.body = nunjucksEnv.render('views/500/500.html', Object.assign(ctx.state.baseTemplateData, {
+                page : '500'
+            })); 
+        }
     });
 
     router.get('/', async (ctx) => {
@@ -112,4 +122,11 @@ module.exports = function (router, {constants, nunjucksEnv}) {
             page : 'expedition'
         }));
     });
+
+    router.get('*', ctx => {
+        ctx.body = nunjucksEnv.render('views/404/404.html', Object.assign(ctx.state.baseTemplateData, {
+            page : '404'
+        })); 
+    });
+
 }

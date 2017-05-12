@@ -108,7 +108,7 @@ module.exports = function (router, {constants}) {
             return;
         }
 
-        //incrementing the donation count is important then updating the store so lets do that first
+        //incrementing the donation count is more important then updating the store so lets do that first
         try {
             await Promise.all([
                 incrementDonationsInContentFul(),

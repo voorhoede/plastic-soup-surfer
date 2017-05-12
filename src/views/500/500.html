@@ -1,0 +1,8 @@
+{%- extends "views/_base/layout.html" -%}
+{% from "components/message/message.html" import message %}
+
+{%- block content -%}
+
+    {{ message('Oops something went wrong', 'The page could not be loaded. Please try again in a few minutes.') }}
+
+{%- endblock -%}

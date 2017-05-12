@@ -44,7 +44,7 @@ mainRouter.use("/api", apiRouter.routes());
 //register the page router
 const pagesRouter = new Router();
 require('./pages')(pagesRouter, appCtxt);
-mainRouter.use("/", pagesRouter.routes());
+mainRouter.use('/', pagesRouter.routes());
 
 //compress the text/html text/css and javascript/application mimetypes using gzip
 app.use( compress({
@@ -62,9 +62,8 @@ app.use( session(app) );
 app.keys = ['9aDxBtRqBaZ7gKBu'];
 app.use( flash() );
 
-app.use( mainRouter.routes() );
 app.use( static(__dirname + "/../dist") );
-
+app.use( mainRouter.routes() );
 
 const httpPort = parseInt(process.env.PORT, 10) || 8080;
 const httpServer = http.createServer(app.callback());

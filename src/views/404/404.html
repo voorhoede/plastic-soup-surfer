@@ -1,0 +1,8 @@
+{%- extends "views/_base/layout.html" -%}
+{% from "components/message/message.html" import message %}
+
+{%- block content -%}
+
+    {{ message('Oops something went wrong', 'The page you were looking for could not be found', showButton=true) }}
+
+{%- endblock -%}

@@ -4,10 +4,8 @@ const http = require('http');
 const https = require('https');
 const Koa = require('koa');
 const Router = require('koa-router');
-const static = require('koa-static');
 const flash = require('koa-flash-simple');
 const session = require('koa-session');
-const compress = require('koa-compress');
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');
@@ -45,15 +43,6 @@ const pagesRouter = new Router();
 require('./pages')(pagesRouter, appCtxt);
 mainRouter.use('/', pagesRouter.routes());
 
-//compress the text/html text/css and javascript/application mimetypes using gzip
-app.use( compress({
-    filter: function (content_type) {
-        return /text/i.test(content_type) || /javascript/.test(content_type);
-    },
-    threshold: 2048,
-    flush: require('zlib').Z_SYNC_FLUSH
-}) );
-
 app.use( xhr() ); //adds ctx.xhr
 
 //flash cookie is a cookie which can only be used by the next request (mostly used for error messages)
@@ -61,13 +50,8 @@ app.use( session(app) );
 app.keys = ['9aDxBtRqBaZ7gKBu'];
 app.use( flash() );
 
-app.use( static(__dirname + "/../dist", {
-    setHeaders(res, path, stats) {
-        if(/.*-[0-9a-f]{10}\..*/.test(path)) {
-            res.setHeader('Cache-Control', 'max-age=31536000');
-        }
-    }
-}) );
+require('./static')(app);
+
 app.use( mainRouter.routes() );
 
 const httpPort = parseInt(process.env.PORT, 10) || 8080;

@@ -52,7 +52,9 @@ This tool will:
 - npm run build
 - pm2 reload server
 
-To deploy you need to have the `digital_ocean` ssh keys in the keys folder in the root of the repo
+To deploy you need to have the `digital_ocean` ssh keys in the keys folder in the root of the repo.
+
+Unfortunately the image task does not seem to work correctly through ssh.
 
 ## Style
 

@@ -5,6 +5,7 @@ const axios = require('axios');
 
 const cachePath = process.env.DATA_DIR + "/.juicer_cache";
 const juicerEndPoint = 'https://www.juicer.io/api/feeds/plastic-soup';
+const updateInterval = 5 * 60 * 1000; //every 5 minutes
 
 let cache = null;
 
@@ -14,7 +15,7 @@ exports.startPeriodicUpdate = function () {
             .catch(e => {
                 console.log('Error when updating juicer feed');
             });
-    }, 10000).unref();
+    }, updateInterval).unref();
 }
 
 exports.update = function () {

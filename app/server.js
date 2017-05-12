@@ -17,9 +17,9 @@ const contentfulCache = require('./lib/contentful-cache');
 const juicerCache = require('./lib/juicer-cache');
 const nunjucks = require('nunjucks');
 
+//we cache the juicer feed periodically (every 5 minutes) because juicer tends to be down a lot :-( 
+//and caching the feed makes sure that we always have something to display (even though it might be a older feed)
 juicerCache.startPeriodicUpdate();
-
-const port = parseInt(process.env.PORT, 10) || 8080;
 
 const app = new Koa();
 
@@ -33,6 +33,7 @@ const appCtxt = {
 
 const mainRouter = new Router();
 
+//register all the api routers
 const apiRouter = new Router();
 require('./api/donations')(apiRouter, appCtxt);
 require('./api/map')(apiRouter, appCtxt);
@@ -40,11 +41,12 @@ require('./api/webhook')(apiRouter, appCtxt);
 require('./api/social-feed')(apiRouter, appCtxt);
 mainRouter.use("/api", apiRouter.routes());
 
+//register the page router
 const pagesRouter = new Router();
 require('./pages')(pagesRouter, appCtxt);
 mainRouter.use("/", pagesRouter.routes());
 
-app.keys = ['9aDxBtRqBaZ7gKBu'];
+//compress the text/html text/css and javascript/application mimetypes using gzip
 app.use( compress({
     filter: function (content_type) {
         return /text/i.test(content_type) || /javascript/.test(content_type);
@@ -52,14 +54,21 @@ app.use( compress({
     threshold: 2048,
     flush: require('zlib').Z_SYNC_FLUSH
 }) );
-app.use( xhr() );
+
+app.use( xhr() ); //adds ctx.xhr
+
+//flash cookie is a cookie which can only be used by the next request (mostly used for error messages)
 app.use( session(app) );
+app.keys = ['9aDxBtRqBaZ7gKBu'];
 app.use( flash() );
+
 app.use( mainRouter.routes() );
 app.use( static(__dirname + "/../dist") );
 
+
+const httpPort = parseInt(process.env.PORT, 10) || 8080;
 const httpServer = http.createServer(app.callback());
-httpServer.listen(port, function () {
+httpServer.listen(httpPort, function () {
     if(process.env.NODE_ENV === "development") {
         const browserSync = require('browser-sync');
 
@@ -68,8 +77,8 @@ httpServer.listen(port, function () {
             files: ['src/**/*.{html}', 'dist/**/*.{js,css}'],
             online: false,
             open: false,
-            port: port + 1,
-            proxy: 'localhost:' + port,
+            port: httpPort + 1,
+            proxy: 'localhost:' + httpPort,
             ui: false
         });
     }

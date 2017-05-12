@@ -1,3 +1,20 @@
+/**
+ * Simple middleware to support sse events
+ * 
+ * Usage:
+ * 
+ * const sse = require('koa-sse-stream');
+ * 
+ * const stream = sse.stream();
+ * 
+ * app.get('/stream', stream.middleware());
+ * 
+ * stream.publishJSON({
+ *     message : "yo"
+ * })
+ * 
+ */
+
 const through = require('through2');
 
 module.exports = function () {
@@ -21,12 +38,18 @@ module.exports = function () {
     let streams = new Set();
 
     return {
+        /**
+         * Publish the given data to all registered streams
+         */
         publish(data, {id = null, event = null} = {}) {
             for (let stream of streams) {
                 stream.write({data, id, event});
             }
         },
 
+        /**
+         * Same as publish only calls JSON.stringify before publishing
+         */
         publishJSON(data, {id = null, event = null} = {}) {
             this.publish(JSON.stringify(data), {id, event});
         },

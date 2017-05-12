@@ -64,6 +64,7 @@ module.exports = function ({stateRestoreFile}) {
     }
 
     process.on('SIGINT', () => {
+        console.log('backing up payment info!');
         controller.flush();
         process.exit(0);
     });

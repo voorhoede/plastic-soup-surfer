@@ -15,7 +15,7 @@ function offsetIdToIndex(posts, offsetId) {
 function mapPost(post) {
     return {
         id : post.id,
-        body : post.unformatted_message,
+        body : post.message,
         imageUrl : post.image,
         social : {
             type : post.source.source,

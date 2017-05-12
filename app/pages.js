@@ -2,9 +2,12 @@ const bluebird = require('bluebird');
 const contentfulCache = require('./lib/contentful-cache');
 const getSocialFeed = require('./lib/get-social-feed');
 const paymentApi = require('./lib/payment-api');
+const nunjucksMarkdown = require('./lib/nunjucks-markdown');
 const moment = require('moment');
 
 module.exports = function (router, {constants, nunjucksEnv}) {
+    nunjucksMarkdown(nunjucksEnv);
+
     const devMode = process.env.NODE_ENV === "development";
 
     let manifest; 

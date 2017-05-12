@@ -7,7 +7,6 @@ const Router = require('koa-router');
 const static = require('koa-static');
 const flash = require('koa-flash-simple');
 const session = require('koa-session');
-const send = require('koa-send');
 const compress = require('koa-compress');
 const fs = require('fs');
 const path = require('path');
@@ -62,7 +61,13 @@ app.use( session(app) );
 app.keys = ['9aDxBtRqBaZ7gKBu'];
 app.use( flash() );
 
-app.use( static(__dirname + "/../dist") );
+app.use( static(__dirname + "/../dist", {
+    setHeaders(res, path, stats) {
+        if(/.*-[0-9a-f]{10}\..*/.test(path)) {
+            res.setHeader('Cache-Control', 'max-age=31536000');
+        }
+    }
+}) );
 app.use( mainRouter.routes() );
 
 const httpPort = parseInt(process.env.PORT, 10) || 8080;

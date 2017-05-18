@@ -17,7 +17,6 @@ const zoom = 6;
 const center = {lat: 50.251900786108095, lng : 10.425494140625009};
 const mapSize = [928, 544]; //map size at desktop
 const liveMapElement = document.getElementById("live-map");
-let mapInfoPanel;
 
 let contentMarkers = [];
 let livePositionMarker = null;
@@ -68,25 +67,37 @@ function createMap(el) {
     });
 }
 
+let timeout;
+
 /**
  * Display the info panel with given marker data
  * @param {*} data 
  */
 function displayInfoPanel(data) {
-    const currentInfoPanel = document.querySelector('.social-card');
+    const infoPanelParent = document.querySelector(".map-wrapper");
 
-    const infoPanelParent = currentInfoPanel.parentNode;
-
+    //hide the old panel
+    const currentInfoPanel = infoPanelParent.querySelector('.social-card');
     if(currentInfoPanel) {
-        infoPanelParent.removeChild(currentInfoPanel);
+        currentInfoPanel.classList.add('social-card--hide');
     }
 
+    //create the new one
     const temp = document.createElement("div");
     temp.innerHTML = data.html;
+    const newInfoPanel = temp.firstElementChild;
 
-    mapInfoPanel = temp.firstElementChild;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        //remove the old panel from the dom
+        if(currentInfoPanel) {
+            infoPanelParent.removeChild(currentInfoPanel);
+        }
 
-    infoPanelParent.appendChild(mapInfoPanel);
+        //fade in the new panel
+        newInfoPanel.classList.add('social-card--show');
+        infoPanelParent.appendChild(newInfoPanel);
+    }, 200);
 }
 
 /**

@@ -4,8 +4,9 @@ const fs = bluebird.promisifyAll(require('fs'));
 const axios = require('axios');
 
 const cachePath = process.env.DATA_DIR + "/.juicer_cache";
-const juicerEndPoint = 'https://www.juicer.io/api/feeds/plastic-soup';
-const updateInterval = 5 * 60 * 1000; //every 5 minutes
+const juicerEndPoint = 'https://www.juicer.io/api/feeds';
+//const updateInterval = 5 * 60 * 1000; //every 5 minutes
+const updateInterval = 5000
 
 let cache = null;
 
@@ -19,7 +20,7 @@ exports.startPeriodicUpdate = function () {
 }
 
 exports.update = function () {
-    return axios.get(juicerEndPoint)
+    return axios.get(juicerEndPoint + "/" + process.env.JUICER_FEED)
         .then(res => {
             cache = res.data;
             return writeAtomic(cachePath, JSON.stringify(cache));

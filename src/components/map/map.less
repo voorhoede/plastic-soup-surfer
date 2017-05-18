@@ -107,12 +107,30 @@
 .map-wrapper {
     position: relative;
 
+    @keyframes show {
+        0% {opacity: 0; transform: translateY(30px);}
+        100% {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes hide {
+        0% {opacity: 1; transform: translateY(0);}
+        100% {opacity: 0; transform: translateY(30px);}
+    }
+
     .social-card {
         position: absolute;
         top: @margin-double;
         right: @margin-double;
         max-width: 290px;
         z-index: 1;
+
+        &--show {
+            animation: show .3s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        &--hide {
+            animation: hide .2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s 1 normal both;
+        }
 
         @media @s-only {
             position: relative;

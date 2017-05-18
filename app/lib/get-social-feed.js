@@ -19,7 +19,7 @@ function mapPost(post) {
         imageUrl : post.image,
         social : {
             type : post.source.source,
-            url  : post.external
+            url  : post.full_url || post.video
         }
     }
 }

@@ -5,8 +5,7 @@ const axios = require('axios');
 
 const cachePath = process.env.DATA_DIR + "/.juicer_cache";
 const juicerEndPoint = 'https://www.juicer.io/api/feeds';
-//const updateInterval = 5 * 60 * 1000; //every 5 minutes
-const updateInterval = 5000
+const updateInterval = 5 * 60 * 1000; //every 5 minutes
 
 let cache = null;
 

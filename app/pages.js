@@ -28,26 +28,20 @@ module.exports = function (router, {constants, nunjucksEnv}) {
     function getGroupedEvents(eventList) {
         const now = Date.now();
 
-        const upcomingEvents = eventList
-            .filter(event => {
-                return new Date(event.fields.date) > now;
-            })
-            .map(event => {
-                return Object.assign({}, event.fields, {
-                    date : moment(event.fields.date).format("MMMM Do - YYYY")
-                });
+        eventList = eventList.map(event => {
+            return Object.assign({}, event.fields, {
+                timestamp : moment(event.fields.date),
+                date      : moment(event.fields.date).format("MMMM Do - YYYY")
             });
+        });
 
-        const pastEvents = eventList
-            .filter(event => {
-                return now > new Date(event.fields.date);
-            })
-            .map(event => {
-                return Object.assign({}, event.fields, {
-                    date : moment(event.fields.date).format("MMMM Do - YYYY")
-                });
-            });
+        eventList.sort((a,b) => {
+            return a.timestamp.valueOf() - b.timestamp.valueOf();
+        });
 
+        const upcomingEvents = eventList.filter(event => event.timestamp > now);
+        const pastEvents = eventList.filter(event => now > event.timestamp);
+        
         return {upcomingEvents, pastEvents};
     }
 

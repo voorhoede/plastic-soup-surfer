@@ -53,7 +53,7 @@ function animateProgressbar(bar) {
 }
 
 function animateNumber(numText, ms, decimal, append = '') {
-	let num = parseInt(numText.innerHTML),
+	let num = parseFloat(numText.innerHTML),
 	// let num = 100,
 	countNum = decimal ? 0.1 : 1,
 	toFixe = decimal ? 1 : 0,

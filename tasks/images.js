@@ -245,6 +245,48 @@ gulp.task('images', function() {
                     height : 123 * 5,
 					rename : 'assets/images/logo-large.png'
 				}
+            ],
+
+			'assets/logos/fujitsu-red-jpg-rgb_tcm127-1146712.png' : [
+                {
+                    width:200
+                }
+            ],
+
+			'assets/logos/logo-Technolyt-payoff-RGB.png' : [
+                {
+                    width:200
+                }
+            ],
+
+			'assets/logos/adessium.png' : [
+                {
+                    width:200
+                }
+            ],
+
+			'assets/logos/entropy-resins.png' : [
+                {
+                    width:200
+                }
+            ],
+
+			'assets/logos/recycling-netwerk-vierkant_400x400.png' : [
+                {
+                    width:200
+                }
+            ],
+
+			'assets/logos/garmin-logo.png' : [
+                {
+                    width:200
+                }
+            ],
+
+			'assets/logos/WR-Logo.png' : [
+                {
+                    width:200
+                }
             ]
         }))
 		.pipe(gulp.dest(process.env.DIST_DIR));

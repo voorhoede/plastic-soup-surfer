@@ -56,6 +56,9 @@
 
         &--current {
             background: @brand-pink;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
         }
 
         &--start {
@@ -106,6 +109,7 @@
 
 .map-wrapper {
     position: relative;
+    margin-bottom: @margin-double;
 
     @keyframes show {
         0% {opacity: 0; transform: translateY(30px);}
@@ -134,6 +138,8 @@
 
         @media @s-only {
             position: relative;
+            padding-left: 0;
+            padding-right: 0;
             right: auto;
             top: auto;
             max-width: none;

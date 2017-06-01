@@ -228,6 +228,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/logos/mollie.png' : [
+                {
+                    width:200
+                }
+            ],
+
             'assets/images/logo.png' : [
                 {
                     width : 127,

@@ -54,7 +54,13 @@ This tool will:
 
 To deploy you need to have the `digital_ocean` ssh keys in the keys folder in the root of the repo.
 
-Unfortunately the image task does not seem to work correctly through ssh.
+Unfortunately the image task does not seem to work correctly through ssh. 
+So after deploying YOU WILL HAVE MISSING IMAGES.
+To fix this:
+
+- ssh -i keys/digital_ocean root@37.139.20.118
+- cd /usr/src/app
+- npm run images
 
 ## Style
 

@@ -55,24 +55,25 @@
         transform: translate(-50%, -50%);
 
         &--current {
-            background: @brand-pink;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: pulse 1s linear infinite;
+            display: none;
+            // background: @brand-pink;
+            // border-radius: 50%;
+            // width: 20px;
+            // height: 20px;
+            // animation: pulse 1s linear infinite;
         }
 
-        @keyframes "pulse" {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.5);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
+        // @keyframes "pulse" {
+        //     0% {
+        //         transform: scale(1);
+        //     }
+        //     50% {
+        //         transform: scale(1.5);
+        //     }
+        //     100% {
+        //         transform: scale(1);
+        //     }
+        // }
 
         &--start {
             left: 400px;
@@ -106,7 +107,7 @@
         }
 
         &--highlighted-post {
-            background: @white;
+            background: url('/assets/icons/play-arrow.svg') .35rem center / .65rem .65rem no-repeat @white;
             border-radius: 50%;
             width: 20px;
             height: 20px;

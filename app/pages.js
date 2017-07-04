@@ -36,7 +36,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         });
 
         eventList.sort((a,b) => {
-            return a.timestamp.valueOf() - b.timestamp.valueOf();
+            return b.timestamp.valueOf() - a.timestamp.valueOf();
         });
 
         const upcomingEvents = eventList.filter(event => event.timestamp > now);

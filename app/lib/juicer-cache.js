@@ -19,9 +19,34 @@ exports.startPeriodicUpdate = function () {
 }
 
 exports.update = function () {
-    return axios.get(juicerEndPoint + "/" + process.env.JUICER_FEED)
-        .then(res => {
-            cache = res.data;
+
+    function retrieveAllPages() {
+        let pageNum = 1, juicerFeed;
+
+        function retrieveNextPage() {
+            return axios.get(juicerEndPoint + "/" + process.env.JUICER_FEED + "?page=" + (pageNum++))
+                .then(({data}) => {
+                    if(!juicerFeed) {
+                        juicerFeed = data;
+                    }
+                    else if(data.posts.items.length) {
+                        juicerFeed.posts.items = juicerFeed.posts.items.concat( data.posts.items );
+                    }
+
+                    if(data.posts.items.length) {
+                        return retrieveNextPage();
+                    }
+
+                    return juicerFeed;
+                }); 
+        }
+
+        return retrieveNextPage();
+    }
+
+    return retrieveAllPages()
+        .then(data => {
+            cache = data;
             return writeAtomic(cachePath, JSON.stringify(cache));
         })
         .then(() => cache);

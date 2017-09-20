@@ -54,21 +54,15 @@ function animateProgressbar(bar) {
 
 function animateNumber(numText, ms, decimal, append = '') {
 	let num = parseFloat(numText.innerHTML),
-	// let num = 100,
-	countNum = decimal ? 0.1 : 1,
-	toFixe = decimal ? 1 : 0,
 	counter = 0;
 
 	let interval = setInterval(function () {
+		numText.innerHTML = counter + append;
 
-		numText.innerHTML = counter.toFixed(toFixe) + append;
-
-		if (counter.toFixed(toFixe) == num) {
-			console.log("clear");
+		if (counter == num) {
 			clearInterval(interval);
 		}
 
-		counter = counter + countNum;
-
+		counter++;
 	}, ms/num);
 }

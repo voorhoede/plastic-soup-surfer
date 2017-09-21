@@ -9,29 +9,53 @@
 		<p>The bailiff (deurwaarder) will be sent in batches of ten. Our aim is to speed up change through dialogue.</p>
 	</div>
 
-	<div class="donation-progress__progress-indicator" data-donation-progress--visual>
-		<svg class="donation-progress__dashed-line" viewBox="0 0 910 962" xmlns="http://www.w3.org/2000/svg">
-			<path class="donation-progress__dashed-line__dash" d="M146 960S-86.2 897.5 38.4 733.3C163 569 637.4 882.3 830 739c192.6-143.3 9-324-329-261S89 377 214.3 286.3C339.8 195.5 535 317 716 248S801-63 460 18" stroke="#F26F69" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-dasharray="2,13"/>
-			<path class="donation-progress__dashed-line__line" d="M146 960S-86.2 897.5 38.4 733.3C163 569 637.4 882.3 830 739c192.6-143.3 9-324-329-261S89 377 214.3 286.3C339.8 195.5 535 317 716 248S801-63 460 18" stroke="#F26F69" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-dasharray="2,13"/>
-		</svg>
-		<ul class="donation-progress__visual flat-list">
-			{% for i in range(0, 10) %}
-			<li class="progress-item">
-				<img src="
-					{%- if donatedProgress // 10 > i -%}
-						/assets/icons/warrant--finished.svg
-					{%- elif donatedProgress // 10 < i -%}
-						/assets/icons/warrant--empty.svg
-					{%- else -%}
-						/assets/icons/warrant--progress.svg
-					{%- endif -%}
-				" alt="">
-			</li>
-			{% endfor %}
-		</ul>
+	<div class="donation-progress__progress-indicator">
+		<div class="donation-progress__old-progress">
+			<h3>Phase 1 <span class="phase-month">- June</span></h3>
+			<p>We sent our first 10 bailiffs</p>
 
-		<h2>Total sold <span class="donation-progress__number">{{ donatedProgress }}%</span></h2>
+			<div class="progress-item">
+				<img src="assets/icons/bailiff-june.svg" alt="">
+			</div>
+		</div>
+
+		<div class="donation-progress__current-progress">
+			<h3>Phase 2 <span class="phase-month">- September</span></h3>
+			<p>Let’s send 30 more!</p>
+
+			<div class="progress-items">
+				<div class="progress-item">
+					<img src="assets/icons/bailiff-september-1.svg" alt="">
+
+					<div class="progress-bar"></div>
+
+					<div class="progress-value">
+						78%
+					</div>
+				</div>
+				<div class="progress-item">
+					<img src="assets/icons/bailiff-september-2.svg" alt="">
+
+					<div class="progress-bar"></div>
+
+					<div class="progress-value">
+						78%
+					</div>
+				</div>
+				<div class="progress-item">
+					<img src="assets/icons/bailiff-september-3.svg" alt="">
+
+					<div class="progress-bar"></div>
+
+					<div class="progress-value">
+						78%
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<h2>Total sold <span class="donation-progress__number">{{ donatedProgress }}%</span></h2>
 
 	<div class="donation-progress__bailiff hide-text">
 		This autumn we're sending a bailiff (deurwaarder).

@@ -1,9 +1,8 @@
 .donation-progress {
 	overflow: hidden;
+	text-align: center;
 
 	@media @m {
-		text-align: center;
-
 		&__description {
 			position: relative;
 			margin: 0 auto @margin-default*4 auto;
@@ -12,93 +11,78 @@
 	}
 
 	&__progress-indicator {
-		margin-bottom: @margin-double;
-		text-align: center;
-		position: relative;
+		margin-bottom: @margin-default*4;
 
-		&.open {
-			.progress-item img {
-				opacity: 1;
-				transform: translateY(0);
-			}
-
-			.donation-progress__dashed-line__line {
-				stroke-dashoffset: 5050px;
-			}
-		}
-	}
-
-	&__dashed-line {
-		position:absolute;
-		left: 50%;
-		top: 30px;
-		width: 340px;
-		transform: translateX(-50%);
-
-		@media @m {
-			top: 100px;
-			width: 910px;
+		h3 {
+			margin-bottom: @margin-half;
 		}
 
-		&__dash {
-			stroke-dasharray: 2, 13;
+		.phase-month {
+			font-weight: normal;
+			font-size: @text-size-bigger;
+			text-transform: lowercase;
 		}
 
-		&__line {
-			stroke-dasharray: 5000;
-			stroke-dashoffset: 0px;
-			stroke: @white;
-			stroke-width: 10;
-			transition: stroke 3s ease, stroke-dashoffset 3s ease;
+		p {
+			font-family: @font-header;
+			color: @brand-pink;
 		}
-	}
-
-	&__visual {
-		margin-bottom: @margin-double;
 
 		.progress-item {
-			display: inline;
-			margin: 0 @margin-half/2;
-			width: auto;
+			position: relative;
+			margin: 0 auto;
+			width: 288px;
+			background-color: @white;
 
-			&:nth-child(even) {
-				margin: 0 @margin-default;
+			@media @m {
+				margin: 0;
 			}
+		}
 
-			.transition-delay(@counter) when (@counter > 0) {
-				.transition-delay(@counter - 1);
+		.progress-value {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			left: 58px;
+			bottom: 32px;
+			width: 167px;
+			height: 90px;
+			font-family: @font-header;
+			font-size: 1.6rem;
+			font-weight: bold;
+			color: @white;
+		}
 
-				&:nth-of-type(@{counter}) {
-					img {
-						transition-delay: (0.07s * @counter);
-					}
-				}
-			}
+		.progress-bar {
+			position: absolute;
+			left: 58px;
+			bottom: 32px;
+			width: 167px;
+			height: 90px;
+			background-color: #d85555;
+			background-image: repeating-linear-gradient(45deg, transparent, transparent 7px, rgba(255, 255, 255, 0.2) 7px, rgba(255, 255, 255, 0.2) 10px);
+			border-radius: 2px;
+		}
+	}
 
-			.transition-delay(10);
+	&__current-progress {
+		width: 100%;
 
-			&:nth-child(1):after,
-			&:nth-child(3):after,
-			&:nth-child(6):after {
-				content: '\A';
-				white-space: pre;
-			}
+		@media @m {
+			width: 288px;
+			padding-left: @margin-default;
+		}
+	}
 
-			@media @m-l {
-				margin: 0 @margin-default;
-			}
+	&__old-progress {
+		padding-bottom: @margin-double;
+		width: 100%;
 
-			img {
-				width: 53px;
-				height: auto;
-				opacity: 0;
-				transform: translateY(20px);
-				transition: transform 0.3s ease, opacity 0.3s ease;
-
-				@media @m {
-					width: 150px;
-				}
-			}
+		@media @m {
+			padding-right: @margin-default;
+			padding-bottom: 0;
+			width: 288px;
 		}
 	}
 
@@ -121,16 +105,5 @@
 			padding-bottom: 95%;
 			width: 70%;
 		}
-	}
-}
-
-.no-js {
-	.donation-progress__visual .progress-item img{
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	.donation-progress__dashed-line__line {
-		stroke-dashoffset: 5050px;
 	}
 }

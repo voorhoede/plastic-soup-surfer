@@ -1,8 +1,16 @@
 .donation-progress {
+	@donation-breakpoint: 600px;
+	@progress-item-width-mobile: 288px;
+	@progress-item-width-desktop: 225px;
+	@progress-bar-width: 122px;
+	@progress-bar-height: 67px;
+	@progress-bar-left: 42px;
+	@progress-bar-bottom: 24px;
+
 	overflow: hidden;
 	text-align: center;
 
-	@media @m {
+	@media only screen and (min-width: @donation-breakpoint) {
 		&__description {
 			position: relative;
 			margin: 0 auto @margin-default*4 auto;
@@ -12,6 +20,11 @@
 
 	&__progress-indicator {
 		margin-bottom: @margin-default*4;
+
+		@media only screen and (min-width: @donation-breakpoint) {
+			display: flex;
+			text-align: left;
+		}
 
 		h3 {
 			margin-bottom: @margin-half;
@@ -28,14 +41,24 @@
 			color: @brand-pink;
 		}
 
+		.progress-items {
+			@media only screen and (min-width: @donation-breakpoint) {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+			}
+		}
+
 		.progress-item {
 			position: relative;
 			margin: 0 auto;
-			width: 288px;
+			width: @progress-item-width-mobile;
 			background-color: @white;
 
-			@media @m {
+			@media only screen and (min-width: @donation-breakpoint) {
 				margin: 0;
+				padding-right: @margin-default;
+				width: @progress-item-width-desktop;
 			}
 		}
 
@@ -44,22 +67,22 @@
 			justify-content: center;
 			align-items: center;
 			position: absolute;
-			left: 58px;
-			bottom: 32px;
-			width: 167px;
-			height: 90px;
+			left: @progress-bar-left;
+			bottom: @progress-bar-bottom;
+			width: @progress-bar-width;
+			height: @progress-bar-height;
 			font-family: @font-header;
-			font-size: 1.6rem;
+			font-size: 1.4rem;
 			font-weight: bold;
 			color: @white;
 		}
 
 		.progress-bar {
 			position: absolute;
-			left: 58px;
-			bottom: 32px;
-			width: 167px;
-			height: 90px;
+			left: @progress-bar-left;
+			bottom: @progress-bar-bottom;
+			width: @progress-bar-width;
+			height: @progress-bar-height;
 			background-color: #d85555;
 			background-image: repeating-linear-gradient(45deg, transparent, transparent 7px, rgba(255, 255, 255, 0.2) 7px, rgba(255, 255, 255, 0.2) 10px);
 			border-radius: 2px;
@@ -69,8 +92,8 @@
 	&__current-progress {
 		width: 100%;
 
-		@media @m {
-			width: 288px;
+		@media only screen and (min-width: @donation-breakpoint) {
+			width: 800px;
 			padding-left: @margin-default;
 		}
 	}
@@ -79,17 +102,23 @@
 		padding-bottom: @margin-double;
 		width: 100%;
 
-		@media @m {
+		@media only screen and (min-width: @donation-breakpoint) {
 			padding-right: @margin-default;
 			padding-bottom: 0;
-			width: 288px;
+			width: @progress-item-width-desktop;
+			border-right: 3px dashed @brand-pink;
+
+			.progress-item {
+				padding-right: 0;
+				width: 209px;
+			}
 		}
 	}
 
 	&__number {
 		font-size: @text-size-heading*1.5;
 
-		@media @m {
+		@media only screen and (min-width: @donation-breakpoint) {
 			font-size: @text-size-heading*2;
 		}
 	}
@@ -101,7 +130,7 @@
 		height: 0;
 		background: url('/assets/icons/bailiff.svg') center / auto 100% no-repeat;
 
-		@media @m {
+		@media only screen and (min-width: @donation-breakpoint) {
 			padding-bottom: 95%;
 			width: 70%;
 		}

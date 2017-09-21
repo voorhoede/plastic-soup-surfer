@@ -27,28 +27,76 @@
 				<div class="progress-item">
 					<img src="assets/icons/bailiff-september-1.svg" alt="">
 
-					<div class="progress-bar"></div>
+					{%- set progress1 = (donatedProgress - 100) / 100 * 67 -%}
+
+					{%- if progress1 > 0 and progress1 < 67 -%}
+						{%- set progressBarHeight1 = progress1 -%}
+					{%- elif progress1 >= 67 -%}
+						{%- set progressBarHeight1 = 67 -%}
+					{%- else -%}
+						{%- set progressBarHeight1 = 0 -%}
+					{%- endif -%}
+
+					<div class="progress-bar" style="height: {{progressBarHeight1}}px;"></div>
 
 					<div class="progress-value">
-						78%
+						{%- if donatedProgress - 100 < 100 -%}
+							{{donatedProgress - 100}}%
+						{%- elif donatedProgress - 100 >= 100 -%}
+							100%
+						{%- else -%}
+							0%
+						{%- endif -%}
 					</div>
 				</div>
 				<div class="progress-item">
 					<img src="assets/icons/bailiff-september-2.svg" alt="">
 
-					<div class="progress-bar"></div>
+					{%- set progress2 = (donatedProgress - 200) / 100 * 67 -%}
+
+					{%- if progress2 > 0 and progress2 < 67 -%}
+						{%- set progressBarHeight2 = progress2 -%}
+					{%- elif progress2 >= 67 -%}
+						{%- set progressBarHeight2 = 67 -%}
+					{%- else -%}
+						{%- set progressBarHeight2 = 0 -%}
+					{%- endif -%}
+
+					<div class="progress-bar" style="height: {{progressBarHeight2}}px;"></div>
 
 					<div class="progress-value">
-						78%
+						{%- if (donatedProgress - 200 < 100) and (donatedProgress - 200 > 0) -%}
+							{{donatedProgress - 200}}%
+						{%- elif donatedProgress - 200 >= 100 -%}
+							100%
+						{%- else -%}
+							0%
+						{%- endif -%}
 					</div>
 				</div>
 				<div class="progress-item">
 					<img src="assets/icons/bailiff-september-3.svg" alt="">
 
-					<div class="progress-bar"></div>
+					{%- set progress3 = (donatedProgress - 300) / 100 * 67 -%}
+
+					{%- if progress3 > 0 and progress3 < 67 -%}
+						{%- set progressBarHeight3 = progress3 -%}
+					{%- elif progress3 >= 67 -%}
+						{%- set progressBarHeight3 = 67 -%}
+					{%- else -%}
+						{%- set progressBarHeight3 = 0 -%}
+					{%- endif -%}
+
+					<div class="progress-bar" style="height: {{progressBarHeight3}}px;"></div>
 
 					<div class="progress-value">
-						78%
+						{%- if (donatedProgress - 300 < 100) and (donatedProgress - 300 > 0) -%}
+							{{donatedProgress - 300}}%
+						{%- elif donatedProgress - 300 >= 100 -%}
+							100%
+						{%- else -%}
+							0%
+						{%- endif -%}
 					</div>
 				</div>
 			</div>

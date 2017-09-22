@@ -1,7 +1,6 @@
 .donation-progress {
 	@donation-breakpoint: 600px;
-	@progress-item-width-mobile: 288px;
-	@progress-item-width-desktop: 225px;
+	@progress-item-width: 225px;
 	@progress-bar-width: 122px;
 	@progress-bar-height: 67px;
 	@progress-bar-left: 42px;
@@ -23,7 +22,18 @@
 
 		@media only screen and (min-width: @donation-breakpoint) {
 			display: flex;
+			margin-left: auto;
+			margin-right: auto;
+			width: 450px;
 			text-align: left;
+		}
+
+		@media @m-l {
+			width: 695px;
+		}
+
+		@media @l {
+			width: 100%;
 		}
 
 		h3 {
@@ -42,24 +52,33 @@
 		}
 
 		.progress-items {
-			@media only screen and (min-width: @donation-breakpoint) {
-				display: flex;
-				flex-wrap: wrap;
-				width: 100%;
-			}
+			.clearfix();
 		}
 
 		.progress-item {
 			position: relative;
 			margin: 0 auto;
-			width: @progress-item-width-mobile;
+			width: calc(@progress-item-width ~' - ' @margin-default);
 			background-color: @white;
 
 			@media only screen and (min-width: @donation-breakpoint) {
+				float: left;
 				margin: 0;
 				padding-right: @margin-default;
-				width: @progress-item-width-desktop;
+				width: @progress-item-width;
 			}
+		}
+
+		.progress-background {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			left: @progress-bar-left;
+			bottom: @progress-bar-bottom;
+			width: @progress-bar-width;
+			height: @progress-bar-height;
+			background-color: #6E3C32;
 		}
 
 		.progress-value {
@@ -105,7 +124,7 @@
 		@media only screen and (min-width: @donation-breakpoint) {
 			padding-right: @margin-default;
 			padding-bottom: 0;
-			width: @progress-item-width-desktop;
+			width: @progress-item-width;
 			border-right: 3px dashed @brand-pink;
 
 			.progress-item {

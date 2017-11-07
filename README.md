@@ -79,7 +79,7 @@ This webhook saves the gps locations to the contentful cms. This causes the cont
 
 ## CMS 
 
-The CMS we use is [Contentful](https://www.contentful.com). Ask Remco for the log in credentials.
+The CMS we use is [Contentful](https://www.contentful.com). Ask Remco for the log in credentials or check LastPass.
 
 ## NPM scripts
 

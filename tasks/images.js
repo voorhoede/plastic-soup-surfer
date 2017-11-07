@@ -293,6 +293,12 @@ gulp.task('images', function() {
                 {
                     width:200
                 }
+            ],
+
+            'assets/logos/ggn.png' : [
+                {
+                    width:200
+                }
             ]
         }))
 		.pipe(gulp.dest(process.env.DIST_DIR));

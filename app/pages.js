@@ -35,12 +35,12 @@ module.exports = function (router, {constants, nunjucksEnv}) {
             });
         });
 
-        eventList.sort((a,b) => {
+        const upcomingEvents = eventList.filter(event => event.timestamp > now).sort((a,b) => {
+            return a.timestamp.valueOf() - b.timestamp.valueOf();
+        });
+        const pastEvents = eventList.filter(event => now > event.timestamp).sort((a,b) => {
             return b.timestamp.valueOf() - a.timestamp.valueOf();
         });
-
-        const upcomingEvents = eventList.filter(event => event.timestamp > now);
-        const pastEvents = eventList.filter(event => now > event.timestamp);
         
         return {upcomingEvents, pastEvents};
     }

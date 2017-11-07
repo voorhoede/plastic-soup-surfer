@@ -88,7 +88,7 @@ module.exports = function (router, {liveStream, constants, nunjucksEnv}) {
         query.append('w', constants.mapOverlayImageWidth);
 
         return {
-            imageUrl : fields.image ? fields.image.fields.file.url + "?" + query : null,
+            imageUrl : fields.image.fields ? fields.image.fields.file.url + "?" + query : null,
             title    : fields.title,
             social   : null,
             body     : fields.description

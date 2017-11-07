@@ -53,7 +53,12 @@
     &__marker {
         position: absolute;
         transform: translate(-50%, -50%);
+        transition: transform .1s linear;
         cursor: pointer;
+
+        &:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+        }
 
         &--current {
             display: none;
@@ -123,7 +128,7 @@
         position: absolute;
         top: @margin-double;
         right: @margin-double;
-        max-width: 290px;
+        width: 290px;
         z-index: 1;
 
         &--show {

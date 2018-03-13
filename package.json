@@ -18,7 +18,7 @@
     "build:assets": "gulp copy",
     "clean": "gulp clean",
     "dev": "run-p start:dev watch",
-    "start": "npm run start",
+    "start": "npm run start:prod",
     "start:dev": "nodemon --inspect --watch app --watch lib app/server.js",
     "start:prod": "pm2 start app/server.js",
     "watch": "run-p watch:*",

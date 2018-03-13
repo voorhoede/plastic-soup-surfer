@@ -68,17 +68,11 @@ The CMS we use is [Contentful](https://www.contentful.com). Ask Remco for the lo
 
 `npm run ...` | Description
 --- | ---
-`start` | starts the production server
-`start:dev` | starts the development server and watches files for changes
-`server:dev` | only starts the development server
-`watch` | only watches the assets
 `build` | builds the js and style, copies the fonts to the destination folder and compresses the images
-`copy`  | copies the fonts to the destination folder
-`images` | compresses the images
-`style:watch` | watches the styles
-`style` | builds the styles,
-`script:watch` | watches the script files
-`script` | compiles the script files
+`dev` | starts the development server and watches files for changes (`start:dev` & `watch`)
+`start` | starts the production server
+`start:dev` | only starts the development server
+`watch` | only watches the assets
 
 ## Tools
 

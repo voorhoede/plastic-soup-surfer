@@ -1,6 +1,7 @@
 {
   "name": "soupsurfer",
   "author": "Remco",
+  "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -10,7 +11,7 @@
   "scripts": {
     "start": "pm2 start app/server.js",
     "start:dev": "npm-run-all --parallel server:dev watch",
-    "server:dev": "nodemon --debug --watch app --watch lib app/server.js",
+    "server:dev": "nodemon --inspect --watch app --watch lib app/server.js",
     "watch": "npm-run-all clean style script images copy --parallel style:watch script:watch copy:watch",
     "build": "npm-run-all clean style script images copy revision",
     "copy": "gulp copy",
@@ -63,7 +64,7 @@
     "nunjucks": "^3.0.0",
     "pm2": "^2.4.2",
     "promise-polyfill": "^6.0.2",
-    "rollup": "^0.41.6",
+    "rollup": "",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-multi-entry": "^2.0.1",

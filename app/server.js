@@ -18,7 +18,7 @@ const nunjucks = require('nunjucks');
 //and caching the feed makes sure that we always have something to display (even though it might be a older feed)
 juicerCache.startPeriodicUpdate();
 
-const app = new Koa();
+const app = new Koa(); 
 
 const appCtxt = {
     liveStream : require('./lib/koa-sse-stream')(),

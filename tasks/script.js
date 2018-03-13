@@ -37,14 +37,14 @@ gulp.task('script', function () {
     }
 
     rollup({
-        entry : process.env.SRC_DIR + "/**/*.js",
+        input : process.env.SRC_DIR + "/**/*.js",
         plugins : getPlugins()
     }).then(bundle => {
         return bundle.write({
             format : 'iife',
-            sourceMap : true,
-            moduleName : 'app',
-            dest : process.env.DIST_DIR + '/assets/js/all.js'
+            sourcemap : true,
+            name : 'app',
+            file : process.env.DIST_DIR + '/assets/js/all.js'
         });
     });
 });

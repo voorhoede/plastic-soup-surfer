@@ -8,14 +8,12 @@
   
   {% include "components/introduction-text/introduction-text.html" %}
 
-  {% include "components/statiegeld/statiegeld.html" %}
+  {% include "components/exploot-block/exploot-block.html" %}
 
-	{% if phase == "may" %}
-		{% include "components/video-player/video-player.html" %}
-	{% endif %}
+  {# {% include "components/statiegeld/statiegeld.html" %} #}
 
-    {% include "components/social-media-carousel/social-media-carousel.html" %}
+  {% include "components/social-media-carousel/social-media-carousel.html" %}
 
-    {% include "components/events-list/events-list.html" %} 
+  {% include "components/events-list/events-list.html" %}
 
 {%- endblock -%}   

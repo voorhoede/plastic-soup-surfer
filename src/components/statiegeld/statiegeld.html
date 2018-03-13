@@ -1,0 +1,26 @@
+{% from "components/video-player/video-player.html" import videoPlayer %}
+{% from "components/quote/quote.html" import quote %}
+
+<section class="statiegeld centered-column">
+  {{ videoPlayer('https://www.youtube-nocookie.com/embed/ulFHQgP5l-A') }}
+  
+  <div class="grid">
+    
+    <div class="grid__item">
+      <img src="/assets/icons/statiegeld.svg" alt="">
+    </div>
+    
+    <div class="grid__item">
+      <h2>Statiegeld Law Passed!</h2>
+      <p class="text">
+        the first steps have been made! March 15 the Tweede Kamer extended the statiegeld law 
+        to put statiegeld on small bottles and cans.
+        This will give a kick in the butt to plastic waste. 
+      </p>
+    </div>
+    
+  </div>
+
+  {{ quote('15 March the Dutch government voted YES to statiegeld on small nottles and cans.') }}
+
+</section>

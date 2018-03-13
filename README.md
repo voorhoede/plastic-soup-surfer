@@ -1,25 +1,8 @@
 # Plastic Soup Surfer site
 
-Running this project also requires a **.env** file!
-This file contains passwords and keys for all the required service and might be different for each environment. 
-It is not commited to the repo!
-(Please ask Bas or Remco to send you the .env file)
+Live at [www.plasticsoupsurfer.org](https://www.plasticsoupsurfer.org/).
 
-## Dev environment
-
-    - npm install
-    - npm run build
-    - npm run start:dev
-
-## Production environment
-
-    - npm install
-    - npm run build
-    - npm start
-
-Visit the site at [localhost:8080](http://localhost:8080)
-
-# Plastic Soup Surfer site
+## Getting started
 
 Running this project also requires a **.env** file!
 This file contains passwords and keys for all the required service and might be different for each environment. 
@@ -36,11 +19,11 @@ Visit the site at [localhost:8080](http://localhost:8080)
 
 ## Production environment
 
-The production server is (currently) at [37.139.20.118](http://37.139.20.118)
-
     - npm install
     - npm run build
     - npm start
+
+Visit the site at [localhost:8080](http://localhost:8080)
 
 ## Deploy
 
@@ -83,6 +66,8 @@ The CMS we use is [Contentful](https://www.contentful.com). Ask Remco for the lo
 
 ## NPM scripts
 
+`npm run ...` | Description
+--- | ---
 `start` | starts the production server
 `start:dev` | starts the development server and watches files for changes
 `server:dev` | only starts the development server

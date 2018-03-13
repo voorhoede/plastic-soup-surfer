@@ -36,6 +36,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/header-home.png' : [
+              {
+                  width:1440
+              }
+            ],
+
 			'assets/images/about-me.jpg' : [
                 {
                     width:1440

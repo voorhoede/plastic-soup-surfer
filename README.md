@@ -13,7 +13,7 @@ It is not commited to the repo!
 
     - npm install
     - npm run build
-    - npm run start:dev
+    - npm run dev
 
 Visit the site at [localhost:8080](http://localhost:8080)
 

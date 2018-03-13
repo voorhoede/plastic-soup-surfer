@@ -1,5 +1,7 @@
+{% macro videoPlayer(src) %}
 <section class="centered-column video-player">
-	<div class="video-player__player">
-		<iframe class="video-player__player--embed" src="https://www.youtube-nocookie.com/embed/uDI1fD0_ma8?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-	</div>
+  <div class="video-player__player">
+    <iframe class="video-player__player--embed" src="{{ src }}" frameborder="0" allowfullscreen></iframe>
+  </div>
 </section>
+{% endmacro %}

@@ -1,0 +1,19 @@
+@import (reference) "variables";
+
+.grid {
+  display: flex;
+  flex-direction: column;
+
+  @media @m {
+    flex-direction: row;
+  }
+}
+
+.grid__item {
+  padding: @margin-default;
+  width: 100%;
+
+  @media @m {
+    width: 50%;
+  }
+}

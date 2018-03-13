@@ -1,6 +1,8 @@
 {%- extends "views/_base/layout.html" -%}
 {% from "components/notification/notification.html" import notification %}
 
+{% block title %}Back me up!{% endblock %}
+
 {%- block content -%}
 	{% if donationState == "success" %}
 		{{ notification('Your donation was successful. Thank you!') }}

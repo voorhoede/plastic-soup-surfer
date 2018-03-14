@@ -11,17 +11,21 @@ It is not commited to the repo!
 
 ## Dev environment
 
-    - npm install
-    - npm run build
-    - npm run dev
+```bash
+npm install
+npm run build
+npm run dev
+```
 
 Visit the site at [localhost:8080](http://localhost:8080)
 
 ## Production environment
 
-    - npm install
-    - npm run build
-    - npm start
+```bash
+npm install
+npm run build
+npm start
+```
 
 Visit the site at [localhost:8080](http://localhost:8080)
 
@@ -31,9 +35,9 @@ If you want to deploy a new version you can use the `deploy.sh` tool in the tool
 This tool will:
 - login to the server using ssh
 - pull the latest code from the master (using a github deployment key)
-- npm install
-- npm run build
-- pm2 reload server
+- `npm install`
+- `npm run build`
+- `pm2 reload server`
 
 To deploy you need to have the `digital_ocean` ssh keys in the keys folder in the root of the repo.
 
@@ -41,9 +45,9 @@ Unfortunately the image task does not seem to work correctly through ssh.
 So after deploying YOU WILL HAVE MISSING IMAGES.
 To fix this:
 
-- ssh -i keys/digital_ocean root@37.139.20.118
-- cd /usr/src/app
-- npm run images
+- `ssh -i keys/digital_ocean root@37.139.20.118`
+- `cd /usr/src/app`
+- `npm run build:images`
 
 ## Style
 

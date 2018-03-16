@@ -80,6 +80,7 @@
   "devDependencies": {
     "browser-sync": "^2.18.8",
     "gulp-watch": "^4.3.11",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "uglifyjs-webpack-plugin": "^1.2.3"
   }
 }

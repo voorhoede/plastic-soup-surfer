@@ -1,0 +1,46 @@
+.mascotte {
+  display: none;
+
+  @media @m {
+    padding-top: @margin-default;
+    display: block;
+    position: relative;
+    bottom: -42px;
+  }
+}
+
+.mascotte > svg {
+  height:400px;
+}
+
+.whats-next__item--left {
+  padding-right: @margin-quadruple;
+  padding-bottom: 4rem;
+
+  @media @m {
+    padding-bottom: 0;
+  }
+}
+
+.whats-next__item--right {
+  padding-left: @margin-quadruple; 
+}
+
+.statiegeld {
+  background-color: #F7F7F9;
+  position: relative;
+}
+
+.statiegeld::after {
+  content: '';
+  background-image: url('/assets/icons/whats-next-wave.svg');
+  background-size: 100% 40px;
+  background-repeat: no-repeat;
+  background-color: #F7F7F9;
+  width: 100%;
+  height:40px;
+  position: absolute;
+  top: -40px;
+  left: 0;
+  transform: rotate(180deg);
+}

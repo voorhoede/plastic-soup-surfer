@@ -126,6 +126,12 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/timeline.png' : [
+              {
+                  width:660
+              }
+            ],
+
             'assets/logos/canoe.png' : [
                 {
                     width:200

@@ -14,16 +14,37 @@
 }
 
 .whats-next__item--left {
-  padding-right: @margin-quadruple;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 
   @media @m {
+    padding-right: @margin-quadruple;
     padding-bottom: 0;
   }
 }
 
-.whats-next__item--right {
-  padding-left: @margin-quadruple; 
+@media @m {
+  .whats-next__item--right {
+    padding-left: @margin-quadruple;
+  }
+}
+
+.whats-next__item--right-small {
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.whats-next__item--right-large {
+  display: none;
+}
+
+@media @m {
+  .whats-next__item--right-small {
+    display: none;
+  }
+
+  .whats-next__item--right-large {
+    display: block;
+  }
 }
 
 .statiegeld {

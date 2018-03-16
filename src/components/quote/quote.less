@@ -5,7 +5,9 @@
 	text-align: center;
 
 	@media @m {
-		width: 50%;
+		&:not(.quote--wide) {
+			width: 50%;
+		}
 	}
 
 	.quote__content {

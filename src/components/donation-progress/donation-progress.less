@@ -1,10 +1,10 @@
 .donation-progress {
 	@donation-breakpoint: 600px;
 	@progress-item-width: 225px;
-	@progress-bar-width: 122px;
-	@progress-bar-height: 67px;
-	@progress-bar-left: 42px;
-	@progress-bar-bottom: 24px;
+	@progress-bar-width: 260px;
+	@progress-bar-height: 145px;
+	@progress-bar-left: 82px;
+	@progress-bar-bottom: 40px;
 
 	overflow: hidden;
 	text-align: center;
@@ -14,97 +14,6 @@
 			position: relative;
 			margin: 0 auto @margin-default*4 auto;
 			width: 70%;
-		}
-	}
-
-	&__progress-indicator {
-		margin-bottom: @margin-default*4;
-
-		@media only screen and (min-width: @donation-breakpoint) {
-			display: flex;
-			margin-left: auto;
-			margin-right: auto;
-			width: 450px;
-			text-align: left;
-		}
-
-		@media @m-l {
-			width: 695px;
-		}
-
-		@media @l {
-			width: 100%;
-		}
-
-		h3 {
-			margin-bottom: @margin-half;
-		}
-
-		.phase-month {
-			font-weight: normal;
-			font-size: @text-size-bigger;
-			text-transform: lowercase;
-		}
-
-		p {
-			font-family: @font-header;
-			color: @brand-pink;
-		}
-
-		.progress-items {
-			.clearfix();
-		}
-
-		.progress-item {
-			position: relative;
-			margin: 0 auto;
-			width: calc(@progress-item-width ~' - ' @margin-default);
-			background-color: @white;
-
-			@media only screen and (min-width: @donation-breakpoint) {
-				float: left;
-				margin: 0;
-				padding-right: @margin-default;
-				width: @progress-item-width;
-			}
-		}
-
-		.progress-background {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			position: absolute;
-			left: @progress-bar-left;
-			bottom: @progress-bar-bottom;
-			width: @progress-bar-width;
-			height: @progress-bar-height;
-			background-color: #6E3C32;
-		}
-
-		.progress-value {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			position: absolute;
-			left: @progress-bar-left;
-			bottom: @progress-bar-bottom;
-			width: @progress-bar-width;
-			height: @progress-bar-height;
-			font-family: @font-header;
-			font-size: 1.4rem;
-			font-weight: bold;
-			color: @white;
-		}
-
-		.progress-bar {
-			position: absolute;
-			left: @progress-bar-left;
-			bottom: @progress-bar-bottom;
-			width: @progress-bar-width;
-			height: @progress-bar-height;
-			background-color: #d85555;
-			background-image: repeating-linear-gradient(45deg, transparent, transparent 7px, rgba(255, 255, 255, 0.2) 7px, rgba(255, 255, 255, 0.2) 10px);
-			border-radius: 2px;
 		}
 	}
 

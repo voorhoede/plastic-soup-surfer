@@ -1,113 +1,18 @@
+{% from '../quote/quote.html' import quote %}
+{% from '../ten-more/ten-more.html' import tenMore %}
+
 <section class="donation-progress centered-column">
 	<div class="donation-progress__description">
-		<h2>Let the CEO know!</h2>
+		<h2>Goal</h2>
 
-		<p>We need to decrease the amount of plastic waste in the ocean and we need to do it now. There is a direct relation between the plastic products of big companies and its effects on the environment, sea life and eventually, us human beings.</p>
+		<p>There is a direct relation between the plastic products of these companies and the effects it has on the environment, sea life and eventually us human beings. Once a CEO is made aware of this through the warrant, it morally implies he has to take corporate responsibility and minimize the effects for example through product design, logistics and communication.</p>
 
-		<p>By sending CEO’s a bailiff with an official notice, I ask them to take responsibility for polluting the oceans and look for alternatives. These people are able to make a decisive impact straight away. We’re taking on a big goal: generate attention and discussion to raise awareness among consumers and legislators.</p>
+		<p>By targeting the CEOs of the top ten companies we aim to start a movement towards a plastic pollution free society. And these ten powerful CEOs can make a decisive impact straight away. The high profile nature of the campaign and the discussion arising from it will automatically raise awareness among consumers and legislators. The problems arising from plastic pollution are urgent and we need to tackle these together.</p>
 
-		<p>The bailiff (deurwaarder) will be sent in batches of ten. Our aim is to speed up change through dialogue.</p>
+		{{ quote('Consumers, legislators and producers all have a shared responsibility to bring about this behavioral change', wide=true) }}
 	</div>
 
-	<div class="donation-progress__progress-indicator">
-		<div class="donation-progress__old-progress">
-			<h3>Phase 1 <span class="phase-month">- June</span></h3>
-			<p>We sent our first 10 bailiffs</p>
-
-			<div class="progress-item">
-				<img src="assets/icons/bailiff-june.svg" alt="">
-			</div>
-		</div>
-
-		<div class="donation-progress__current-progress">
-			<h3>Phase 2 <span class="phase-month">- September</span></h3>
-			<p>Let’s send 30 more!</p>
-
-			<div class="progress-items">
-				<div class="progress-item">
-					<img src="assets/icons/bailiff-september-1.svg" alt="">
-
-					{%- set progress1 = (donatedProgress - 100) / 100 * 67 -%}
-
-					{%- if progress1 > 0 and progress1 < 67 -%}
-						{%- set progressBarHeight1 = progress1 -%}
-					{%- elif progress1 >= 67 -%}
-						{%- set progressBarHeight1 = 67 -%}
-					{%- else -%}
-						{%- set progressBarHeight1 = 0 -%}
-					{%- endif -%}
-
-					<div class="progress-background"></div>
-
-					<div class="progress-bar" style="height: {{progressBarHeight1}}px;"></div>
-
-					<div class="progress-value">
-						{%- if donatedProgress - 100 < 100 -%}
-							{{donatedProgress - 100}}%
-						{%- elif donatedProgress - 100 >= 100 -%}
-							100%
-						{%- else -%}
-							0%
-						{%- endif -%}
-					</div>
-				</div>
-				<div class="progress-item">
-					<img src="assets/icons/bailiff-september-2.svg" alt="">
-
-					{%- set progress2 = (donatedProgress - 200) / 100 * 67 -%}
-
-					{%- if progress2 > 0 and progress2 < 67 -%}
-						{%- set progressBarHeight2 = progress2 -%}
-					{%- elif progress2 >= 67 -%}
-						{%- set progressBarHeight2 = 67 -%}
-					{%- else -%}
-						{%- set progressBarHeight2 = 0 -%}
-					{%- endif -%}
-
-					<div class="progress-background"></div>
-
-					<div class="progress-bar" style="height: {{progressBarHeight2}}px;"></div>
-
-					<div class="progress-value">
-						{%- if (donatedProgress - 200 < 100) and (donatedProgress - 200 > 0) -%}
-							{{donatedProgress - 200}}%
-						{%- elif donatedProgress - 200 >= 100 -%}
-							100%
-						{%- else -%}
-							0%
-						{%- endif -%}
-					</div>
-				</div>
-				<div class="progress-item">
-					<img src="assets/icons/bailiff-september-3.svg" alt="">
-
-					{%- set progress3 = (donatedProgress - 300) / 100 * 67 -%}
-
-					{%- if progress3 > 0 and progress3 < 67 -%}
-						{%- set progressBarHeight3 = progress3 -%}
-					{%- elif progress3 >= 67 -%}
-						{%- set progressBarHeight3 = 67 -%}
-					{%- else -%}
-						{%- set progressBarHeight3 = 0 -%}
-					{%- endif -%}
-
-					<div class="progress-background"></div>
-
-					<div class="progress-bar" style="height: {{progressBarHeight3}}px;"></div>
-
-					<div class="progress-value">
-						{%- if (donatedProgress - 300 < 100) and (donatedProgress - 300 > 0) -%}
-							{{donatedProgress - 300}}%
-						{%- elif donatedProgress - 300 >= 100 -%}
-							100%
-						{%- else -%}
-							0%
-						{%- endif -%}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{ tenMore(donatedProgress) }}
 
 	<h2>Total sold <span class="donation-progress__number">{{ donatedProgress }}%</span></h2>
 

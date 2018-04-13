@@ -57,6 +57,12 @@
 	<path fill="#4f2f22" d="M89 117s35-8 63 0l1 1H87z"/>
 	<path fill="#e5b798" d="M196.68 199l2-17-7-1-2.85 14.67-9.15 9.33-21.68 1 4.68 4-.43 3h30.1l4.33-14z"/>
 
+	<!-- 
+		The calculation to set the location of the filled bar in the case.
+		The full case has a height of 71,5 and it's y point starts at 271,5.
+		You need to invert the location from bottom to top because otherwise the empty part is the bottom part.
+		So when the height of the bar increases the 'y' location needs to decrease.
+	-->
 	{% set totalHeight = 71.5 %}
 	{% set height = 71.5 * (donatedProgress / 100) %}
 	{% set emptyY = 200.76 %}

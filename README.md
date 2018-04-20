@@ -5,7 +5,7 @@ Live at [www.plasticsoupsurfer.org](https://www.plasticsoupsurfer.org/).
 ## Getting started
 
 Running this project also requires a **.env** file!
-This file contains passwords and keys for all the required service and might be different for each environment. 
+This file contains passwords and keys for all the required service and might be different for each environment.
 It is not commited to the repo!
 (Please ask Bas or Remco to send you the .env file)
 
@@ -22,6 +22,7 @@ Visit the site at [localhost:8080](http://localhost:8080)
 ## Production environment
 
 ```bash
+set NODE_ENV production
 npm install
 npm run build
 npm start
@@ -30,24 +31,7 @@ npm start
 Visit the site at [localhost:8080](http://localhost:8080)
 
 ## Deploy
-
-If you want to deploy a new version you can use the `deploy.sh` tool in the tools folder.
-This tool will:
-- login to the server using ssh
-- pull the latest code from the master (using a github deployment key)
-- `npm install`
-- `npm run build`
-- `pm2 reload server`
-
-To deploy you need to have the `digital_ocean` ssh keys in the keys folder in the root of the repo.
-
-Unfortunately the image task does not seem to work correctly through ssh. 
-So after deploying YOU WILL HAVE MISSING IMAGES.
-To fix this:
-
-- `ssh -i keys/digital_ocean root@37.139.20.118`
-- `cd /usr/src/app`
-- `npm run build:images`
+To deploy run `npm run deploy`, this runs the [Now CLI](https://github.com/zeit/now-cli). Make sure Now is configured to run under `devoorhoede` team.
 
 ## Style
 
@@ -55,7 +39,7 @@ We use less for styling the plastic soup site. Nothing special...
 
 ## JS
 
-We use buble and rollup to build our js in de modular way. 
+We use buble and rollup to build our js in de modular way.
 Each component folder has a js with the name of the folder (so the folder header has header.js).
 These "component js files" are the entry points of the rollup process. Other js files can be imported using es6 imports.
 
@@ -64,7 +48,7 @@ These "component js files" are the entry points of the rollup process. Other js 
 During his travels the plastic soup surfer periodically sends gps signals to the webhook at `/api/webhook/gps`.
 This webhook saves the gps locations to the contentful cms. This causes the contentful cms to trigger a webhook at `/api/webhook/contentful` which will cache the latest contentful data.
 
-## CMS 
+## CMS
 
 The CMS we use is [Contentful](https://www.contentful.com). Ask Remco for the log in credentials or check LastPass.
 

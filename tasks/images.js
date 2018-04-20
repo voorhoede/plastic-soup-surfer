@@ -222,7 +222,7 @@ gulp.task('images', function() {
                 }
             ],
 
-            'assets/logos/unitid.png' : [
+            'assets/logos/hike-one.png' : [
                 {
                     width:200
                 }

@@ -1,0 +1,16 @@
+{
+    "public": false,
+    "env": {
+        "NODE_ENV": "production",
+        "JUICER_FEED": "plastic-soup",
+        "SRC_DIR": "src",
+        "DIST_DIR": "dist",
+        "DATA_DIR": "/tmp",
+        "CONTENTFUL_SPACE": "@plastic_soup_contentful_space",
+        "CONTENTFUL_DELIVERY_ACCESS_TOKEN": "@plastic_soup_contentful_delivery",
+        "CONTENTFUL_MANAGEMENT_ACCESS_TOKEN": "@plastic_soup_contentful_management",
+        "WEBHOOK_USER": "@plastic_soup_webhook_user",
+        "WEBHOOK_PASS": "@plastic_soup_webhook_pass",
+        "MOLLIE_API_KEY": "@plastic_soup_mollie"
+    }
+}

@@ -4,15 +4,18 @@ const getSocialFeed = require('./lib/get-social-feed');
 const paymentApi = require('./lib/payment-api');
 const nunjucksMarkdown = require('./lib/nunjucks-markdown');
 const moment = require('moment');
+const path = require('path');
 
 module.exports = function (router, {constants, nunjucksEnv}) {
     nunjucksMarkdown(nunjucksEnv);
 
     const devMode = process.env.NODE_ENV === "development";
 
-    let manifest; 
+    let manifest;
     if(!devMode) {
-        manifest = require(process.env.DIST_DIR + "/rev-manifest.json");
+        manifest = require(
+            path.join("..", process.env.DIST_DIR, "rev-manifest.json")
+        )
     }
 
     function parseDate(date) {
@@ -41,7 +44,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         const pastEvents = eventList.filter(event => now > event.timestamp).sort((a,b) => {
             return b.timestamp.valueOf() - a.timestamp.valueOf();
         });
-        
+
         return {upcomingEvents, pastEvents};
     }
 
@@ -65,7 +68,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         const phase = siteStatus[0].fields.phase;
 
         Object.assign(ctx.state.baseTemplateData, {
-            explootProgress, 
+            explootProgress,
             donatedProgress,
             day,
             distance,
@@ -83,7 +86,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
             ctx.status = 500;
             ctx.body = nunjucksEnv.render('views/500/500.html', Object.assign(ctx.state.baseTemplateData, {
                 page : '500'
-            })); 
+            }));
         }
     });
 
@@ -124,7 +127,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
     router.get('*', ctx => {
         ctx.body = nunjucksEnv.render('views/404/404.html', Object.assign(ctx.state.baseTemplateData, {
             page : '404'
-        })); 
+        }));
     });
 
 }

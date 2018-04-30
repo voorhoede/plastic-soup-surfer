@@ -23,4 +23,4 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'
+      - run: npx plek now -- '--team devoorhoede' 'now.plasticsoupsurfer.org' 'plastic-soup-surfer'

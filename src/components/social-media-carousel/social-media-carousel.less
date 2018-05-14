@@ -14,14 +14,14 @@
 
 	.carousel__cell {
 		@box-shadow-size: 3px;
-		height: 320px;
 		width: 90%;
+		height: 320px;
 		margin-right: 2.5%;
 
 		@media @m {
-			padding: 0 @margin-half @margin-default @margin-half;
 			width: calc(~'100% / 3');
 			margin-right: 0;
+			padding: 0 @margin-half @margin-default @margin-half;
 		}
 
 		.social-card {
@@ -43,9 +43,9 @@ http://flickity.metafizzy.co
 }
 
 .flickity-viewport {
-	overflow: hidden;
 	position: relative;
 	height: 100%;
+	overflow: hidden;
 }
 
 .flickity-slider {
@@ -63,9 +63,9 @@ http://flickity.metafizzy.co
 		display: block;
 		position: absolute;
 		top: 50%;
-		transform: translateY(-50%);
 		width: @margin-double*1.5;
 		height: @margin-double*1.5;
+		transform: translateY(-50%);
 		border: none;
 		border-radius: @margin-default*1.5;
 		background: @white;

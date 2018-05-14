@@ -1,3 +1,4 @@
+const cssDeclarationSorter = require('css-declaration-sorter');
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
@@ -5,6 +6,8 @@ const less = require('gulp-less');
 const plumber = require('gulp-plumber');
 const cleanCSS = require('gulp-clean-css');
 const gulpif = require('gulp-if');
+const postcss = require('gulp-postcss');
+const postcssLess = require('postcss-less');
 
 function buildStyle() {
     const environment = process.env.NODE_ENV;
@@ -26,6 +29,12 @@ function buildStyle() {
 }
 
 gulp.task('style', buildStyle);
+
+gulp.task('style:format', function () {
+      return gulp.src(process.env.SRC_DIR + '/**/*.less', { base: './' })
+        .pipe(postcss([cssDeclarationSorter({order: 'smacss'})], { syntax: postcssLess }))
+        .pipe(gulp.dest('.'));
+});
 
 if(process.env.NODE_ENV === 'development') {
     const watch = require('gulp-watch');

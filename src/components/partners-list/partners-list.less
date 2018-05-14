@@ -3,18 +3,18 @@
 	flex-wrap: wrap;
 
 	&::after {
-		content: '';
 		clear: both;
+		content: '';
 	}
 
 	&__item {
-		float: left;
-		padding-right: @margin-default;
 		width: 50%;
+		padding-right: @margin-default;
+		float: left;
 
 		@media @m {
-			padding-right: @margin-double;
 			width: calc(100% / 3);
+			padding-right: @margin-double;
 		}
 
 		@media @l {

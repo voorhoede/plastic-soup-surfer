@@ -8,48 +8,48 @@
 	}
 
 	em {
-		font-style: normal;
 		color: @brand-pink;
+		font-style: normal;
 	}
 
 	.statistics-sheet {
-		.clearfix();
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 		padding: @margin-double 0 @margin-default 0;
+		.clearfix();
 
 		&__statistic {
-			margin-bottom: @margin-double*2;
 			width: 100%;
+			margin-bottom: @margin-double*2;
 			text-align: center;
 
 			@media @m {
-				float: left;
-				margin-bottom: @margin-double;
 				width: 24%;
+				margin-bottom: @margin-double;
+				float: left;
 			}
 		}
 
 		&__statistic--half-width {
-			margin-bottom: @margin-double*2;
 			width: 100%;
+			margin-bottom: @margin-double*2;
 			text-align: center;
 
 
 			@media @m {
-				float: left;
-				margin: @margin-double 0 @margin-default 0;
 				width: 50%;
+				margin: @margin-double 0 @margin-default 0;
+				float: left;
 			}
 		}
 
 		&__number {
-			.text-shadow();
 			display: block;
 			font-family: @font-header;
 			font-size: 20vw;
 			line-height: 1;
+			.text-shadow();
 
 			img {
 				width: 50%;

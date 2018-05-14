@@ -1,9 +1,7 @@
+dist/
 node_modules/
-.DS_Store
-.env
+
 .contentful_cache
+.env
 .juicer_cache
 payment-states
-keys/
-.vscode/
-dist/

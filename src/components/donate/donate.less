@@ -23,13 +23,13 @@
 			padding-bottom: 5em;
 
 			.left-column {
-				padding-right: @margin-default*4;
 				flex: 1 1 55%;
+				padding-right: @margin-default*4;
 			}
 
 			.right-column {
-				width: 45%;
 				flex: 1 1 45%;
+				width: 45%;
 			}
 		}
 
@@ -39,17 +39,17 @@
 			}
 
 			.right-column {
-				width: 45%;
 				flex: 1 1 40%;
+				width: 45%;
 			}
 		}
 	}
 
 	&__box {
 		padding: @margin-default;
+		border-radius: 2px;
 		background: @white;
 		box-shadow: 3px 3px 0 0 @grey-lighter;
-		border-radius: 2px;
 
 		h3 {
 			font-family: @font-body;
@@ -73,10 +73,10 @@
 
 		dd {
 			display: inline-block;
-			margin-left: 0;
 			width: 29%;
-			font-size: @text-size-bigger;
+			margin-left: 0;
 			color: @brand-pink;
+			font-size: @text-size-bigger;
 		}
 	}
 
@@ -88,18 +88,18 @@
 	}
 
 	&__input {
-		padding: @margin-half;
 		width: 4rem;
-		background: @grey-light;
+		padding: @margin-half;
 		border: none;
 		border-radius: 2px;
-		font-size: @text-size-default;
+		background: @grey-light;
 		color: @black;
+		font-size: @text-size-default;
 	}
 
 	&__total {
-		padding-top: @margin-default;
 		margin-bottom: @margin-double;
+		padding-top: @margin-default;
 		background: linear-gradient(to right, @brand-pink 33%, rgba(255,255,255,0) 0%) top / 15px 2px repeat-x;
 	}
 
@@ -109,15 +109,15 @@
 
 	&__mascot {
 		position: absolute;
-		left: 3rem;
 		bottom: -6.45rem;
+		left: 3rem;
 		width: 18rem;
 		height: 18rem;
 		background: url('/assets/icons/mascot.svg') center / cover no-repeat;
 
 		@media @m-l {
-			left: 0;
 			bottom: -7.25rem;
+			left: 0;
 			width: 25rem;
 			height: 25rem;
 		}

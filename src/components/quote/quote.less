@@ -1,7 +1,7 @@
 .quote {
-	margin-bottom: @margin-double*2;
 	width: 90%;
 	max-width: 50rem;
+	margin-bottom: @margin-double*2;
 	text-align: center;
 
 	@media @m {
@@ -27,23 +27,23 @@
 		}
 
 		&:before {
-			content: '';
 			display: inline-block;
-			margin-right: .5rem;
 			width: 2.5rem;
 			height: 2rem;
+			margin-right: .5rem;
 			background: url('/assets/icons/quote-icon-left.svg') top left / auto 100% no-repeat;
 			vertical-align: super;
+			content: '';
 		}
 
 		&:after {
-			content: '';
 			display: inline-block;
-			margin: 0 0 -1rem 1rem;
 			width: 2.5rem;
 			height: 2rem;
+			margin: 0 0 -1rem 1rem;
 			background: url('/assets/icons/quote-icon-right.svg') top left / auto 100% no-repeat;
 			vertical-align: sub;
+			content: '';
 		}
 	}
 
@@ -57,8 +57,8 @@
 
 		&:before,
 		&:after {
-			content: '-';
 			margin: 0 .2rem;
+			content: '-';
 		}
 	}
 }

@@ -25,7 +25,8 @@
         "watch:js": "gulp script:watch",
         "watch:assets": "gulp copy:watch",
         "revision": "gulp revision",
-        "deploy": "now deploy"
+        "deploy": "now deploy",
+        "format": "gulp style:format"
     },
     "dependencies": {
         "axios": "^0.18.0",
@@ -57,6 +58,7 @@
     },
     "devDependencies": {
         "browser-sync": "^2.18.8",
+        "css-declaration-sorter": "^3.0.1",
         "del": "^3.0.0",
         "gulp": "^3.9.1",
         "gulp-autoprefixer": "^5.0.0",
@@ -64,20 +66,28 @@
         "gulp-if": "^2.0.2",
         "gulp-less": "^4.0.0",
         "gulp-plumber": "^1.1.0",
+        "gulp-postcss": "^7.0.1",
         "gulp-responsive": "^2.10.0",
         "gulp-rev": "^8.1.1",
         "gulp-rev-delete-original": "^0.2.3",
         "gulp-sourcemaps": "^2.4.1",
         "gulp-watch": "^5.0.0",
+        "husky": "^1.0.0-rc.4",
         "nodemon": "^1.11.0",
         "now": "^11.1.7",
         "npm-run-all": "^4.1.2",
         "plek": "^0.1.0",
+        "postcss-less": "^1.1.5",
         "rollup": "^0.58.2",
         "rollup-plugin-buble": "^0.19.2",
         "rollup-plugin-commonjs": "^9.1.0",
         "rollup-plugin-multi-entry": "^2.0.1",
         "rollup-plugin-node-resolve": "^3.3.0",
         "rollup-plugin-uglify": "^3.0.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run format"
+        }
     }
 }

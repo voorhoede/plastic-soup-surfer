@@ -18,9 +18,9 @@ jobs:
 
       - run: yarn install
 
+      - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'

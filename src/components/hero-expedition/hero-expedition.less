@@ -16,12 +16,12 @@
 	}
 
 	.centered-column {
-		.clearfix();
 		position: relative;
+		.clearfix();
 
 		@media @m {
-			position: static;
 			display: flex;
+			position: static;
 		}
 	}
 
@@ -38,8 +38,8 @@
 		}
 
 		@media @m {
-			float: left;
 			width: 50%;
+			float: left;
 
 			.text {
 				color: @black;
@@ -60,8 +60,8 @@
 			transition: transform 0.3s ease, opacity 0.3s ease;
 
 			@media @m {
-				margin-bottom: -5%;
 				width: 100%;
+				margin-bottom: -5%;
 				transform: translateY(10%);
 			}
 		}
@@ -69,8 +69,8 @@
 		@media @m {
 			display: flex;
 			align-items: flex-end;
-			float: right;
 			width: 50%;
+			float: right;
 		}
 
 		&.open {
@@ -87,18 +87,18 @@
 
 	.hero__wave {
 		position: absolute;
-		margin: 0 -@margin-default;
-		left: 0;
 		bottom: 0;
+		left: 0;
 		width: calc(~'100% +' @margin-default);
 		height: 10%;
+		margin: 0 -@margin-default;
 		background: url('/assets/icons/expedition-wave.svg') center / cover no-repeat;
 
 		@media @m {
-			margin: 0;
 			bottom: -3%;
 			width: 100%;
 			height: 15%;
+			margin: 0;
 			background: url('/assets/icons/expedition-wave--no-aspect-ratio.svg') center / 100% 100% no-repeat;
 		}
 	}

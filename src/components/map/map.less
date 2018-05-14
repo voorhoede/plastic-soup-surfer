@@ -1,12 +1,12 @@
 #live-map {
+    position: relative;
     width: 100%;
     height: @map-height;
     overflow: hidden;
-    position: relative;
 
     @media @s-only {
-        padding-top: 141%;
         height: auto;
+        padding-top: 141%;
         overflow: visible;
         overflow: hidden; // quicke mobile fix
     }
@@ -35,26 +35,26 @@
     }
 
     &__marker-container {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: @map-width;
         height: @map-height;
-        position: absolute;
-        left: 0;
-        top: 0;
 
         @media @s-only {
             position: absolute;
-            width: 227%;
-            height: 100%;
             top: -2%;
             left: -23%;
+            width: 227%;
+            height: 100%;
         }
     }
 
     &__marker {
         position: absolute;
         transform: translate(-50%, -50%);
-        transition: transform .1s linear;
         cursor: pointer;
+        transition: transform .1s linear;
 
         &:hover {
             transform: translate(-50%, -50%) scale(1.3);
@@ -65,47 +65,47 @@
         }
 
         &--start {
-            left: 400px;
             top: 495px;
+            left: 400px;
             width: 70px;
             height: 70px;
             background: url('/assets/icons/map-marker-start.svg') center / auto 100% no-repeat transparent;
 
             @media @s-only {
-                left: auto;
                 top: auto;
                 right: 10%;
                 bottom: 3%;
+                left: auto;
                 transform: none;
             }
         }
 
         &--finish {
-            left: 165px;
             top: 120px;
+            left: 165px;
             width: 70px;
             height: 70px;
             background: url('/assets/icons/map-marker-finish.svg') center / auto 100% no-repeat transparent;
 
             @media @s-only {
-                left: 5%;
                 top: auto;
                 bottom: 74%;
+                left: 5%;
                 transform: none;
             }
         }
 
         &--highlighted-post {
-            background: url('/assets/icons/play-arrow.svg') .35rem center / .65rem .65rem no-repeat @white;
-            border-radius: 50%;
             width: 20px;
             height: 20px;
+            border-radius: 50%;
+            background: url('/assets/icons/play-arrow.svg') .35rem center / .65rem .65rem no-repeat @white;
         }
 
         &--event {
-            background: url('/assets/icons/map-marker-event.svg') center / auto 100% no-repeat transparent;
             width: 20px;
             height: 20px;
+            background: url('/assets/icons/map-marker-event.svg') center / auto 100% no-repeat transparent;
         }
     }
 }
@@ -115,21 +115,21 @@
     margin-bottom: @margin-double;
 
     @keyframes show {
-        0% {opacity: 0; transform: translateY(30px);}
-        100% {opacity: 1; transform: translateY(0);}
+        0% { transform: translateY(30px);opacity: 0;}
+        100% { transform: translateY(0);opacity: 1;}
     }
 
     @keyframes hide {
-        0% {opacity: 1; transform: translateY(0);}
-        100% {opacity: 0; transform: translateY(30px);}
+        0% { transform: translateY(0);opacity: 1;}
+        100% { transform: translateY(30px);opacity: 0;}
     }
 
     .social-card {
+        z-index: 1;
         position: absolute;
         top: @margin-double;
         right: @margin-double;
         width: 290px;
-        z-index: 1;
 
         &--show {
             animation: show .3s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -141,11 +141,11 @@
 
         @media @s-only {
             position: relative;
-            padding-left: 0;
-            padding-right: 0;
-            right: auto;
             top: auto;
+            right: auto;
             max-width: none;
+            padding-right: 0;
+            padding-left: 0;
             box-shadow: none;
         }
     }

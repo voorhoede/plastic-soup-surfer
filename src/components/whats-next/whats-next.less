@@ -2,10 +2,10 @@
   display: none;
 
   @media @m {
-    padding-top: @margin-default;
     display: block;
     position: relative;
     bottom: -42px;
+    padding-top: @margin-default;
   }
 }
 
@@ -48,20 +48,20 @@
 }
 
 .whats-next {
-  background-color: #F7F7F9;
   position: relative;
+  background-color: #F7F7F9;
 }
 
 .whats-next::after {
-  content: '';
-  background-image: url('/assets/icons/whats-next-wave.svg');
-  background-size: 100% 40px;
-  background-repeat: no-repeat;
-  background-color: #F7F7F9;
-  width: 100%;
-  height:40px;
   position: absolute;
   top: -40px;
   left: 0;
+  width: 100%;
+  height:40px;
   transform: rotate(180deg);
+  background-color: #F7F7F9;
+  background-image: url('/assets/icons/whats-next-wave.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 40px;
+  content: '';
 }

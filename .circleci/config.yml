@@ -18,6 +18,8 @@ jobs:
 
       - run: yarn install
 
+      - run: ls node_modules/.bin
+
       - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'
 
       - save_cache:

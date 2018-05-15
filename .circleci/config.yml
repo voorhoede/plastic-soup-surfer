@@ -16,9 +16,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm ci
-      
+      - run: npm install
+
       - run: ls node_modules/.bin
+      
+      - run: npm -v && node -v
 
       - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'
 

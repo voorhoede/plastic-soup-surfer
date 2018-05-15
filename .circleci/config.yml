@@ -17,6 +17,8 @@ jobs:
           - v1-dependencies-
 
       - run: yarn install
+      
+      - run: ls node_modules/.bin
 
       - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'
 

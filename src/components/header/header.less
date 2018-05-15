@@ -9,7 +9,6 @@
     z-index: 1;
     position: relative;
     height:@header-height-mobile;
-    box-shadow: 0 @header-border-size 0 0 rgba(0,0,0,0.15);
     text-align: center;
 
     @media @m {
@@ -17,50 +16,43 @@
     }
 
     .centered-column {
-        .valign-center;
         height:100%;
+        .valign-center;
     }
 
     &__mobileheader {
-        .clearfix();
-        position: relative;
         z-index: 1;
+        position: relative;
         background-color: @white;
-    }
-
-    &__left {
-        float:left;
-        margin:0;
-
-        figcaption {
-            text-transform:uppercase;
-            color:@black;
-        }
+        .clearfix();
     }
 
     &__logo {
-        float:left;
-        margin: .4rem @margin-half .4rem .4rem;
+        position: absolute;
+        left: 0;
+        top: calc(@header-height / 4);
         width: 3.6rem;
+        margin: .4rem @margin-half .4rem @margin-default;
+        float:left;
+        filter: drop-shadow(0 5px 1px rgba(0,0,0,0.4));
 
         @media @m {
-            margin: 0;
             width: 7rem;
         }
 
         @media @l {
-            margin-right:@margin-default;
             width: 8rem;
+            margin-right:@margin-default;
         }
     }
 
     &__s2s {
         display:inline-block;
-        vertical-align: middle;
         margin:0;
-        line-height:@header-height-mobile;
         font-size:@text-size-bigger;
+        line-height:@header-height-mobile;
         text-shadow: 1px 1px 0 @brand-pink;
+        vertical-align: middle;
         .header;
 
         @media @m {
@@ -70,15 +62,15 @@
     }
 
     &__right {
+        height:100%;
         float:right;
         .valign-center;
-        height:100%;
     }
 
     &__right-content {
         display:inline-block;
-        vertical-align: middle;
         text-align: right;
+        vertical-align: middle;
     }
 
     &__nav {
@@ -93,10 +85,10 @@
     }
 
     &__item {
-        margin-right:@margin-half;
-        text-decoration: none;
-        color:inherit;
+        margin-right:@margin-default;
         padding-bottom:3px;
+        color:inherit;
+        text-decoration: none;
 
         @media @l {
             margin-right: @margin-double;
@@ -107,23 +99,23 @@
         }
 
         &--active {
-            border-bottom:5px solid @brand-pink;
+            border-bottom:5px solid @brand-highlight;
         }
     }
 
     &__btn-donate {
         display:block;
-        clear:both;
         margin-bottom:@margin-half;
+        clear:both;
 
         @media @m {
-            padding-left: @margin-half;
             padding-right: @margin-half;
+            padding-left: @margin-half;
         }
 
         @media @m-l {
-            padding-left: @margin-default*1.5;
             padding-right: @margin-default*1.5;
+            padding-left: @margin-default*1.5;
         }
     }
 
@@ -133,16 +125,16 @@
         right: .6rem;
         width: 3rem;
         height: 3rem;
-        border: none;
-        cursor: pointer;
-        background-color: transparent;
         padding: 12px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
 
         div {
+            position:absolute;
             width: 1.5625rem;
             height: 2px;
-            background-color: @brand-pink;
-            position:absolute;
+            background-color: @brand-highlight;
 
             &:nth-of-type(1),
             &:nth-of-type(2) {
@@ -170,22 +162,22 @@
     }
 
     &__mobile-menu {
+        z-index: -1;
         position: absolute;
-        padding-bottom: @margin-default;
-        left: 0;
         top: @header-height-mobile;
+        left: 0;
         width: 100%;
-        background: @white;
-        box-shadow: 0 @header-border-size 0 0 rgba(0,0,0,0.15);
+        padding-bottom: @margin-default;
 
         transform: translateY(0%);
-        z-index: -1;
+        background: @white;
+        box-shadow: 0 @header-border-size 0 0 rgba(0,0,0,0.15);
         opacity: 1;
         transition: transform 0.3s ease, opacity 0.1s ease;
 
         &.hidden {
-            opacity: 0;
             transform: translateY(-110%);
+            opacity: 0;
             pointer-events: none;
         }
     }

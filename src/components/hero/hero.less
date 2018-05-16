@@ -1,42 +1,82 @@
 .hero-home {
-	@media @m {
-		padding: @margin-double*4 0;
-		background: url('/assets/icons/header-wave.svg') bottom center / 100% auto no-repeat,
-					url('/assets/images/header-home.png') top center / cover no-repeat;
-	}
+    position: relative;
+    padding-bottom: @margin-double;
 
-	.hero__image {
-		margin: 0 -@margin-default @margin-default -@margin-default;
 
-		img {
-			width: 100%;
-			height: auto;
-		}
-	}
+    &::after {
+        display: block;
+        width: calc(100% - @margin-double);
+        margin: 0 auto;
+        padding-top: @margin-double;
+        border-bottom: 2px solid @grey;
+        content: "";
+    }
 
-	.hero__content {
-		.title {
-			color: @brand-blue;
-		}
+    @media @m {
+        padding-bottom: 0;
 
-		.text {
-			margin-bottom: @margin-double;
-			font-weight: bold;
-			line-height: 1.8;
-		}
+        &::after {
+            display: none;
+        }
+    }
 
-		@media @m {
-			width: 45%;
+    .hero__image {
+        display: flex;
+        position: relative;
+        margin-bottom: @margin-double;
 
-			.title {
-				color: @brand-pink;
-				text-shadow: 3px 3px 0 @brand-blue;
-			}
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url("/assets/icons/header-wave.svg") bottom left / 150% auto no-repeat;
+            content: '';
+        }
 
-			.text {
-				color: @white;
-				text-shadow: 0 1px 1px @black;
-			}
-		}
-	}
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media @m {
+            height: 25rem;
+
+            &::after {
+                background: url("/assets/icons/header-wave.svg") bottom left / 150% auto no-repeat, rgba(0,0,0,0.2);
+            }
+        }
+    }
+
+    .hero__content {
+        .title, .subtitle {
+            color: @brand-blue;
+        }
+
+        .text {
+            margin-bottom: @margin-double;
+            font-size: calc(17/16rem);
+            line-height: 1.8;
+        }
+
+        @media @m {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+
+            .subtitle,
+            .text,
+            .title {
+                color: @white;
+            }
+
+            .button {
+                width: auto;
+            }
+        }
+    }
 }

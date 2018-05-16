@@ -16,6 +16,7 @@
     }
 
     .centered-column {
+        position: relative;
         height:100%;
         .valign-center;
     }
@@ -29,15 +30,16 @@
 
     &__logo {
         position: absolute;
-        left: 0;
         top: calc(@header-height / 4);
-        width: 3.6rem;
+        left: 0;
         margin: .4rem @margin-half .4rem @margin-default;
         float:left;
         filter: drop-shadow(0 5px 1px rgba(0,0,0,0.4));
 
         @media @m {
-            width: 7rem;
+            top: 0;
+            width: unset;
+            height: unset;
         }
 
         @media @l {

@@ -242,19 +242,19 @@ gulp.task('images', function() {
 
             'assets/images/logo.png' : [
                 {
-                    width : 127,
-                    height : 123
+                    width : 115,
+                    height : 113
                 },
 
                 {
-                    width : 127 * 2,
-                    height : 123 * 2,
+                    width : 115 * 2,
+                    height : 113 * 2,
                     rename : 'assets/images/logo@2x.png'
                 },
 
 				{
-					width : 127 * 5,
-                    height : 123 * 5,
+					width : 115 * 5,
+                    height : 113 * 5,
 					rename : 'assets/images/logo-large.png'
 				}
             ],

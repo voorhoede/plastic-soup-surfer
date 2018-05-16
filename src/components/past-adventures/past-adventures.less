@@ -1,8 +1,6 @@
 .past-adventures {
-	h2 {
-		margin-bottom: @margin-double;
-	}
-
+	margin-bottom: @margin-double;
+	
 	.adventures {
 		@media @m {
 			display: flex;
@@ -10,36 +8,62 @@
 		}
 	}
 
-	.adventure {
-		margin-bottom: @margin-default*3;
+    &__header {
+        margin-bottom: @margin-default;
+    }
+    
+    &__details-link {
+		display: block;
+		width: 100%;
+        color: @brand-blue;
+		text-align: right;
+        
+        &::after {
+            content: ' >';
+        }
+    }
+}
 
-		&:last-child {
-			margin-bottom: 0;
-		}
+.adventure {
+    position: relative;
+    margin-bottom: @margin-double;
 
-		img {
-			margin-bottom: @margin-default;
-			width: 100%;
-			height: auto;
-			border-radius: 3px;
-		}
+    &__head {
+        position: relative;
+        margin-bottom: @margin-narrow;
+    }
 
-		a {
-			word-break: break-all;
-		}
+    img {
+        width: 100%;
+        border-radius: 6px;
+    }
 
-		@media @m {
-			margin-bottom: 0;
-			padding: 0 @margin-half;
-			width: calc(~'100% / 3');
+    &__title {
+        position: absolute;
+        bottom: 0;
+        left: @margin-narrow;
+        color: @white;
+        text-shadow: 2px 2px 0 @brand-blue;
+        text-transform: uppercase;
+    }
+    
+    &__details-link {
+        color: @brand-pink;
+        text-transform: uppercase;
+        white-space: nowrap;
+        
+        &::after {
+            content: ' >';
+        }
+    }
 
-			h3 {
-				height: @margin-default*3;
-			}
-		}
-	}
+    @media @m {
+        width: calc(~'100% / 3');
+        margin-bottom: 0;
+        padding: 0 @margin-half;
+    }
+}
 
-	.adventure__date {
-		font-weight: normal;
-	}
+.adventure__date {
+    font-weight: normal;
 }

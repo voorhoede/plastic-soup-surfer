@@ -32,7 +32,7 @@ const mainRouter = new Router();
 
 //register all the api routers
 const apiRouter = new Router();
-require('./api/donations')(apiRouter, appCtxt);
+const { paymentApiClient } = require('./api/donations')(apiRouter, appCtxt);
 require('./api/map')(apiRouter, appCtxt);
 require('./api/webhook')(apiRouter, appCtxt);
 require('./api/social-feed')(apiRouter, appCtxt);
@@ -54,26 +54,27 @@ require('./static')(app);
 
 app.use(mainRouter.routes());
 
-const httpPort = parseInt(process.env.PORT, 10) || 8080;
-const httpServer = http.createServer(app.callback());
-httpServer.listen(httpPort, function() {
+const server = app.listen(0, () => {
+    const serverAddress = `http://localhost:${server.address().port}`;
+    console.info(`Server launched at ${serverAddress}`);
+
     if (process.env.NODE_ENV === 'development') {
         const browserSync = require('browser-sync');
 
-        // https://ponyfoo.com/articles/a-browsersync-primer#inside-a-node-application
         browserSync({
             files: ['src/**/*.{html}', 'dist/**/*.{js,css}'],
             online: false,
             open: false,
-            port: httpPort + 1,
-            proxy: 'localhost:' + httpPort,
+            proxy: serverAddress,
             ui: false,
         });
-    } else {
-        const instance = app.listen(0, () => {
-            console.info(
-                `Server launched at http://localhost:${instance.address().port}`
-            );
-        });
     }
+});
+
+['SIGINT', 'SIGTERM'].forEach(function(signal) {
+    process.on(signal, function() {
+        console.info('Closing server');
+        paymentApiClient.store.flush();
+        server.close(process.exit);
+    });
 });

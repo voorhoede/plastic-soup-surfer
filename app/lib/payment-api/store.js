@@ -4,7 +4,7 @@ const states = require('./states');
 
 module.exports = function ({stateRestoreFile}) {
     let paymentStates;
-    
+
     try {
         const contents = fs.readFileSync(stateRestoreFile, 'utf8');
         paymentStates = JSON.parse(contents);
@@ -17,8 +17,8 @@ module.exports = function ({stateRestoreFile}) {
 
         /**
          * status for id. When the id could not be found an reject promise is returned
-         * 
-         * @param {*} id 
+         *
+         * @param {*} id
          */
         get(id) {
             if(!paymentStates.hasOwnProperty(id)) {
@@ -29,8 +29,8 @@ module.exports = function ({stateRestoreFile}) {
 
         /**
          * update the status for the given id
-         * @param {*} id 
-         * @param {*} newState 
+         * @param {*} id
+         * @param {*} newState
          */
         update(id, newState) {
             paymentStates[id] = newState;
@@ -39,13 +39,13 @@ module.exports = function ({stateRestoreFile}) {
 
         /**
          * remove the payment status because it is done and no one cares anymore
-         * @param {*} id 
+         * @param {*} id
          */
-        remove(id) { 
+        remove(id) {
             delete paymentStates[id];
             return Promise.resolve();
         },
-        
+
         /**
          * Writes all the current payment states to a file (poor mans backup)
          */
@@ -62,17 +62,6 @@ module.exports = function ({stateRestoreFile}) {
             return Promise.resolve( id );
         }
     }
-
-    process.on('SIGINT', () => {
-        console.log('backing up payment info!');
-        controller.flush();
-        process.exit(0);
-    });
-
-    process.on('SIGTERM', () => {
-        console.log('backing up payment info!');
-        controller.flush();
-    });
 
     return controller;
 }

@@ -60,10 +60,10 @@ module.exports = function (router, {constants}) {
         }
         catch(e) {
             console.log(`payment error: ${e.message.toString()}`);
-        
+
             //remove the payment from the local store
             paymentApiClient.store.remove(storeId);
-            
+
             throw new error.InternalError("Your payment couldn't be processed.");
         }
 
@@ -135,7 +135,7 @@ module.exports = function (router, {constants}) {
         if(!storeId) {
             throw new error.UserError(`Invalid store id ${storeId}`);
         }
-        
+
         let paymentState;
         try {
             paymentState = await paymentApiClient.store.get(storeId);
@@ -158,4 +158,6 @@ module.exports = function (router, {constants}) {
         return ctx.redirect('/exploot');
     });
 
+
+    return { paymentApiClient };
 }

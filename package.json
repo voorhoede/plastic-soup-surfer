@@ -19,7 +19,7 @@
         "clean": "gulp clean",
         "dev": "run-p start:dev watch",
         "start": "node $npm_package_main",
-        "start:dev": "nodemon --inspect --watch app --watch lib $npm_package_main",
+        "start:dev": "nodemon --watch 'app lib' --inspect $npm_package_main",
         "watch": "run-p watch:*",
         "watch:css": "gulp style:watch",
         "watch:js": "gulp script:watch",

@@ -1,13 +1,7 @@
 @import (reference) "variables";
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
 html {
-    box-sizing: border-box;
-    height: 100%;
-    font-size:@text-size-default;
+    font-size: @text-size-default;
 }
 
 body {
@@ -80,14 +74,16 @@ main {
     padding: @margin-narrow @margin-double;
     border: none;
     border-radius:2px;
-    color:@white;
-    font-size: inherit;
+    color: @white;
     line-height:1;
     text-decoration: none;
     text-transform: uppercase;
 
     @media @m {
-        padding:@margin-half*1.2 @margin-default*1.5 @margin-half @margin-default*1.5;
+        padding-top: @margin-half * 1.2;
+        padding-right: @margin-default * 1.5;
+        padding-bottom: @margin-half;
+        padding-left: @margin-default * 1.5;
     }
 
     &--primary {
@@ -135,7 +131,8 @@ h2,
     }
 }
 
-h3 {
+h3,
+.h3 {
     margin-bottom: @margin-half;
     color: @brand-highlight;
     font-size:@text-size-bigger;
@@ -179,13 +176,13 @@ em {
 
 .mobile-hidden {
     @media @s-only {
-        display: none!important;
+        display: none;
     }
 }
 
 .desktop-hidden {
     @media @m {
-        display: none!important;
+        display: none;
     }
 }
 

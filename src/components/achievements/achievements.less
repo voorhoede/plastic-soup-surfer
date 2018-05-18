@@ -1,0 +1,49 @@
+.achievements {
+    z-index: 0;
+    position: relative;
+    padding-top: @margin-double;
+    padding-bottom: @margin-double;
+    overflow-x: hidden;
+    background-color: @brand-highlight-white;
+
+    &__header-wave {
+        z-index: -1;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        overflow-x: hidden;
+        transform-origin: bottom;
+    }
+    
+    &__header-wave--top {
+        transform: scale(2, 4);
+        opacity: 0.3;
+    }
+
+    &__header-wave--bottom {
+        transform: scaleY(2);
+    }
+}
+
+.header-wave {
+    width: 100%;
+}
+
+.achievements__content {
+    display: flex;
+    flex-wrap: wrap;
+
+    p {
+        z-index: 1;
+        max-width: 27.5rem;
+    }
+}
+
+.achievements__timeline {
+    width: 100%;
+    max-width: 20rem;
+
+    @media @m {
+        margin-left: @margin-quadruple;
+    }
+}

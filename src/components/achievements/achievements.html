@@ -1,0 +1,26 @@
+{% from '../wave/wave.html' import wave %}
+{% set fadingWave = wave(gradient='
+    <stop offset="5%" stop-color="#d3f0f5"></stop>
+    <stop offset="95%" stop-color="#a8dde7"></stop>
+') %}
+
+<section class="achievements">
+    <div class="achievements__content centered-column">
+        <div>
+            <h2>Achievements</h2>
+            <p>
+                We are not done yet! I am confronting the CEO’s of the packaging industry and cosmetics industry with the effects of ‘their’ plastic pollution. We use a bailiff* to do so. I need your support for the preparation of the ‘formal notice’ and the use of bailiff.
+                For €5 you can make a difference. Together we can make a change.
+            </p>
+        </div>
+        <div class="achievements__timeline">
+            {% include "assets/icons/timeline-s.svg" %}
+        </div>
+    </div>
+    <div class="achievements__header-wave achievements__header-wave--top">
+        {{ fadingWave }}
+    </div>
+    <div class="achievements__header-wave achievements__header-wave--bottom">
+        {{ fadingWave }}
+    </div>
+</section>

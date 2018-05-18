@@ -25,14 +25,20 @@
         position: relative;
         margin-bottom: @margin-double;
 
-        &::after {
+        &__wave {
             position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
             left: 0;
-            background: url("/assets/icons/header-wave.svg") bottom left / 150% auto no-repeat;
-            content: '';
+            overflow-x: hidden;
+            
+            svg {
+                position: absolute;
+                bottom: 0;
+                width: 140%;
+                height: auto;
+            }
         }
 
         img {
@@ -44,8 +50,12 @@
         @media @m {
             height: 25rem;
 
-            &::after {
-                background: url("/assets/icons/header-wave.svg") bottom left / 150% auto no-repeat, rgba(0,0,0,0.2);
+            &__wave {
+                background: rgba(0,0,0,0.2);
+                
+                svg {
+                    width: 100%;
+                }
             }
         }
     }

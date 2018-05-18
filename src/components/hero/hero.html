@@ -1,6 +1,11 @@
+{% from '../wave/wave.html' import wave %}
+
 <section class="hero hero-home">
     <div class="hero__image">
         <img src="/assets/images/header-home.png" alt="">
+        <div class="hero__image__wave">
+            {{ wave(fillColor='#fff') }}
+        </div>
     </div>
 
     <div class="hero__content centered-column">

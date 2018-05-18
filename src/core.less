@@ -5,11 +5,11 @@ html {
 }
 
 body {
-    margin:0;
-    padding:0;
-    color:@brand-blue;
-    font-family:@font-body;
-    line-height:1.3;
+    margin: 0;
+    padding: 0;
+    color: @brand-blue;
+    font-family: @font-body;
+    line-height: 1.3;
 }
 
 main {
@@ -44,8 +44,8 @@ main {
 
 .valign-center {
     &:before {
-        display:inline-block;
-        height:100%;
+        display: inline-block;
+        height: 100%;
         vertical-align: middle;
         content:"";
     }
@@ -64,18 +64,18 @@ main {
 }
 
 .header {
-    font-family:@font-header;
-    font-weight:bold;
+    font-family: @font-header;
+    font-weight: bold;
     letter-spacing:.03em;
 }
 
 .button {
-    display:inline-block;
+    display: inline-block;
     padding: @margin-narrow @margin-double;
     border: none;
-    border-radius:2px;
+    border-radius: 2px;
     color: @white;
-    line-height:1;
+    line-height: 1;
     text-decoration: none;
     text-transform: uppercase;
 
@@ -87,11 +87,11 @@ main {
     }
 
     &--primary {
-        background-color:@brand-pink;
+        background-color: @brand-pink;
         font-size: @text-size-bigger;
         transition: background-color 0.3s ease;
         &:hover {
-            background-color:@brand-pink-light;
+            background-color: @brand-pink-light;
         }
     }
 
@@ -106,28 +106,28 @@ input {
 }
 
 h1, h2, h3, h4 {
-    margin-top:0;
-    margin-bottom:@margin-default;
+    margin-top: 0;
+    margin-bottom: @margin-default;
     .header;
 }
 
 h1 {
-    font-size:@text-size-heading*.8;
+    font-size: @text-size-heading*.8;
 
     @media @m {
-        font-size:@text-size-heading;
+        font-size: @text-size-heading;
     }
 }
 
 h2,
 .h2 {
-    color:@brand-pink;
-    font-size:@text-size-heading*.8;
+    color: @brand-highlight;
+    font-size: @text-size-heading*.8;
     line-height: 1;
     text-transform: uppercase;
 
     @media @m {
-        font-size:@text-size-heading;
+        font-size: @text-size-heading;
     }
 }
 
@@ -135,12 +135,12 @@ h3,
 .h3 {
     margin-bottom: @margin-half;
     color: @brand-highlight;
-    font-size:@text-size-bigger;
+    font-size: @text-size-bigger;
 
 }
 
 h4 {
-    font-size:@text-size-default;
+    font-size: @text-size-default;
 }
 
 p {

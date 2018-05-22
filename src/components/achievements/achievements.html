@@ -1,12 +1,14 @@
 {% from '../wave/wave.html' import wave %}
-{% set fadingWave = wave(gradient='
-    <stop offset="5%" stop-color="#d3f0f5"></stop>
-    <stop offset="95%" stop-color="#a8dde7"></stop>
-') %}
+{% set fadingWaveGradients = '
+    <stop offset="20%" stop-color="#d3f0f5"></stop>
+    <stop offset="80%" stop-color="#a8dde7"></stop>
+' %}
+{% set fadingWaveTop = wave(gradient=fadingWaveGradients, id='top') %}
+{% set fadingWaveBottom = wave(gradient=fadingWaveGradients, id='bottom') %}
 
 <section class="achievements">
     <div class="achievements__content centered-column">
-        <div>
+        <div class="achievements__explanation">
             <h2>Achievements</h2>
             <p>
                 We are not done yet! I am confronting the CEO’s of the packaging industry and cosmetics industry with the effects of ‘their’ plastic pollution. We use a bailiff* to do so. I need your support for the preparation of the ‘formal notice’ and the use of bailiff.
@@ -18,9 +20,9 @@
         </div>
     </div>
     <div class="achievements__header-wave achievements__header-wave--top">
-        {{ fadingWave }}
+        {{ fadingWaveTop }}
     </div>
     <div class="achievements__header-wave achievements__header-wave--bottom">
-        {{ fadingWave }}
+        {{ fadingWaveBottom }}
     </div>
 </section>

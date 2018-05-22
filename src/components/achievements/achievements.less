@@ -14,19 +14,32 @@
         overflow-x: hidden;
         transform-origin: bottom;
     }
-    
+
     &__header-wave--top {
-        transform: scale(2, 4);
+        height: 35%;
+        transform: scale(6, 2);
         opacity: 0.3;
+
+        @media @m {
+            height: 50%;
+            transform: scale(1, 1);
+        }
     }
 
     &__header-wave--bottom {
-        transform: scaleY(2);
+        height: 25%;
+        transform: scale(4, 1);
+
+        @media @m {
+            height: 35%;
+            transform: scale(1.5, 1);
+        }
     }
 }
 
 .header-wave {
     width: 100%;
+    height: 100%;
 }
 
 .achievements__content {
@@ -35,15 +48,21 @@
 
     p {
         z-index: 1;
-        max-width: 27.5rem;
+        margin-bottom: @margin-double;
+
+        @media @m {
+            max-width: 27.5rem;
+        }
+    }
+}
+
+.achievements__explanation {
+    @media @m {
+        margin-right: @margin-quadruple;
     }
 }
 
 .achievements__timeline {
     width: 100%;
     max-width: 20rem;
-
-    @media @m {
-        margin-left: @margin-quadruple;
-    }
 }

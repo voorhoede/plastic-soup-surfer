@@ -124,9 +124,6 @@ module.exports = function (router, {constants}) {
         ctx.body = "ok";
     });
 
-    /**
-     * Todo show the thank you page (it should just redirect to the exploot page with a flash message)
-     */
     router.get('/donations/done/:storeId', body(), error.middleware(), async (ctx) => {
         const storeId = ctx.params.storeId;
 
@@ -142,7 +139,7 @@ module.exports = function (router, {constants}) {
         }
         catch(e) {
             console.log(`Could not retrieve payment state for storeId ${storeId} (was happened?)`);
-            return ctx.redirect('/exploot');
+            return ctx.redirect('/donate');
         }
 
         //lets cleanup then delete the store state
@@ -155,7 +152,7 @@ module.exports = function (router, {constants}) {
 
         ctx.flash.set({donationState : paymentState});
 
-        return ctx.redirect('/exploot');
+        return ctx.redirect('/donate');
     });
 
 

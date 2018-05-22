@@ -108,11 +108,11 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         }));
     });
 
-    router.get('exploot', ctx => {
+    router.get('donate', ctx => {
         const {error = null, donationState = paymentApi.states.NOT_STARTED} = ctx.flash.get() || {};
 
-        ctx.body = nunjucksEnv.render('views/exploot/exploot.html', Object.assign(ctx.state.baseTemplateData, {
-            page : 'exploot',
+        ctx.body = nunjucksEnv.render('views/donate/donate.html', Object.assign(ctx.state.baseTemplateData, {
+            page : 'donate',
             error,
             donationState
         }));

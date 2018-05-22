@@ -1,0 +1,16 @@
+.call-to-donate {
+    display: flex;
+    flex-direction: column;
+    
+    @media @m {
+        flex-direction: row;
+        
+        &__illustration, &__content {
+            width: 50%;
+        }
+        
+        &__content button {
+            width: auto;
+        }
+    }
+}

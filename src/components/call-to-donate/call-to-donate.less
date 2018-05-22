@@ -1,15 +1,18 @@
 .call-to-donate {
     display: flex;
     flex-direction: column;
-    
+
     @media @m {
         flex-direction: row;
-        
-        &__illustration, &__content {
-            width: 50%;
+        margin-bottom: -5rem;
+
+        &__illustration {
+            width: 100%;
+            max-width: @text-max-width;
+            margin-right: @margin-quadruple;
         }
-        
-        &__content button {
+
+        &__content a {
             width: auto;
         }
     }

@@ -10,20 +10,19 @@
         subtitle='My current adventure:',
         description="This is the ‘data-revolution’ that gives us the power to confront policy makers and companies. New innovations in photo recognition make it easy, we make it fun. Picking up litter is now a call for change!",
         image='/assets/images/header-home.jpg',
-        url='/adventures/pick-up-10',
-        call='Join the movement!'
+        button={url: '/adventures/pickup10', text: 'Join the movement!'}
     ) }}
 
-  {% include "components/introduction-text/introduction-text.html" %}
+    {% include "components/introduction-text/introduction-text.html" %}
 
-  {% include "components/past-adventures/past-adventures.html" %}
+    {% include "components/past-adventures/past-adventures.html" %}
 
-  {% include "components/achievements/achievements.html" %}
+    {% include "components/achievements/achievements.html" %}
 
-  {% include "components/call-to-donate/call-to-donate.html" %}
+    {% include "components/call-to-donate/call-to-donate.html" %}
 
-  {% include "components/social-media-carousel/social-media-carousel.html" %}
+    {% include "components/social-media-carousel/social-media-carousel.html" %}
 
-  {% include "components/events-list/events-list.html" %}
+    {% include "components/events-list/events-list.html" %}
 
 {%- endblock -%}

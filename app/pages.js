@@ -118,10 +118,21 @@ module.exports = function (router, {constants, nunjucksEnv}) {
         }));
     });
 
-    router.get('expedition', ctx => {
-        ctx.body = nunjucksEnv.render('views/expedition/expedition.html', Object.assign(ctx.state.baseTemplateData, {
-            page : 'expedition'
-        }));
+    router.get('adventures', ctx => {
+        ctx.body = nunjucksEnv.render(
+            'views/adventures/overview.html',
+            {
+                ...ctx.state.baseTemplateData,
+                page: 'adventures',
+            }
+        );
+    });
+
+    router.get('adventures/:name', ctx => {
+        ctx.body = nunjucksEnv.render(
+            `views/adventures/${ctx.params.name}.html`,
+            ctx.state.baseTemplateData
+        );
     });
 
     router.get('*', ctx => {

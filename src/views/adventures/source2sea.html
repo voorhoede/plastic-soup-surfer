@@ -1,0 +1,28 @@
+{%- extends "views/_base/layout.html" -%}
+{% from "components/quote/quote.html" import quote %}
+{% from "components/video-player/video-player.html" import videoPlayer %}
+
+{% block title %}Source 2 Sea Expedition{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='#source2sea',
+        description="Paddling down the entire river Rhine on a board made from plastic waste: from its pristine source in Switzerland to where it empties into the North Sea after 1200 kilometres. Along with all the plastic waste it has gathered.",
+        image='/assets/images/header.jpg'
+    ) }}
+
+    {{ videoPlayer('https://www.youtube-nocookie.com/embed/uDI1fD0_ma8?rel=0&showinfo=0') }}
+
+    {% include "components/map/map.html" %}
+
+    {% include "components/paddle-board-info/paddle-board-info.html" %}
+
+    {% include "components/waste-statistics/waste-statistics.html" %}
+
+    {{ quote('Changes in design and legislation should be acted upon with priority wherever there is risk of plastic litter ending up in a river, lake or sea', 'Merijn Tinga') }}
+
+    {% include "components/partners-list/partners-list.html" %}
+
+{%- endblock -%}

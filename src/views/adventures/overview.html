@@ -1,0 +1,18 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Adventures{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Pick up 10',
+        subtitle='My current adventure:',
+        description="Pers presentatie 'Pick Up 10'. De 'monitoring revolutie' met partners Google & Litterati Vrijdag 10u Rijnsburgstraat 11 Amsterdam Aanmelden via site enzo.",
+        image='/assets/images/plastic-soup.jpg',
+        button={url: '/adventures/pickup10', text: 'Join the movement!'}
+    ) }}
+
+    {% include "components/past-adventures/past-adventures.html" %}
+
+{%- endblock -%}

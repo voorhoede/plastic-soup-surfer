@@ -1,131 +1,108 @@
 .donate {
-	padding: @margin-default 0;
-	background-color: @grey-light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: @margin-double;
+    margin-bottom: -@margin-quadruple;
+    background-color: @grey-light;
 
-	@media @m {
-		padding: @margin-default*4 0;
+    @media @m {
+        flex-direction: row;
+        margin-top: 0;
+        padding: @margin-quadruple @margin-double;
 
-		.centered-column {
-			position: relative;
-		}
-	}
+        .centered-column {
+            position: relative;
+        }
+    }
 
-	.two-columns {
-		display: block;
+    &__box {
+        margin: @margin-default;
+        padding: @margin-default;
+        border-radius: 2px;
+        background-color: @white;
+        box-shadow: 3px 3px 0 0 @grey-lighter;
+        
+        @media @m {
+            width: @text-max-width;
+        }
 
-		.left-column,
-		.right-column {
-			width: 100%;
-		}
+        h3 {
+            font-family: @font-body;
+            font-weight: normal;
+            text-transform: none;
+        }
 
-		@media @m {
-			display: flex;
-			padding-bottom: 5em;
+        dd,
+        dt {
+            margin-bottom: @margin-default;
 
-			.left-column {
-				padding-right: @margin-default*4;
-				flex: 1 1 55%;
-			}
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
 
-			.right-column {
-				width: 45%;
-				flex: 1 1 45%;
-			}
-		}
+        dt {
+            display: inline-block;
+            width: 69%;
+        }
 
-		@media @l {
-			.left-column {
-				flex: 1 1 60%;
-			}
+        dd {
+            display: inline-block;
+            width: 29%;
+            margin-left: 0;
+            color: @brand-pink;
+            font-size: @text-size-bigger;
+        }
+    }
 
-			.right-column {
-				width: 45%;
-				flex: 1 1 40%;
-			}
-		}
-	}
+    &__description {
+        
+        margin-bottom: @margin-default;
+        margin-left: 0;
+        background: @white;
+        
+        @media @m {
+            margin-right: @margin-quadruple;
+            background: transparent;
+        }
+    }
 
-	&__box {
-		padding: @margin-default;
-		background: @white;
-		box-shadow: 3px 3px 0 0 @grey-lighter;
-		border-radius: 2px;
+    &__label {
+        .extra-info {
+            display: block;
+            font-size: @text-size-small;
+        }
+    }
 
-		h3 {
-			font-family: @font-body;
-			font-weight: normal;
-			text-transform: none;
-		}
+    &__input {
+        width: 4rem;
+        padding: @margin-half;
+        border: none;
+        border-radius: 2px;
+        background: @grey-light;
+        color: @black;
+        font-size: @text-size-default;
+    }
+    
+    &__items {
+        margin-bottom: @margin-default;
+    }
 
-		dt,
-		dd {
-			margin-bottom: @margin-default;
+    &__total {
+        margin-bottom: @margin-double;
+        padding-top: @margin-default;
+        background: linear-gradient(to right, @brand-pink 33%, rgba(255,255,255,0) 0%) top / 15px 2px repeat-x;
+    }
 
-			&:last-of-type {
-				margin-bottom: 0;
-			}
-		}
+    &__fine-print {
+        font-size: @text-size-smaller;
+    }
 
-		dt {
-			display: inline-block;
-			width: 69%;
-		}
-
-		dd {
-			display: inline-block;
-			margin-left: 0;
-			width: 29%;
-			font-size: @text-size-bigger;
-			color: @brand-pink;
-		}
-	}
-
-	&__label {
-		.extra-info {
-			display: block;
-			font-size: @text-size-small;
-		}
-	}
-
-	&__input {
-		padding: @margin-half;
-		width: 4rem;
-		background: @grey-light;
-		border: none;
-		border-radius: 2px;
-		font-size: @text-size-default;
-		color: @black;
-	}
-
-	&__total {
-		padding-top: @margin-default;
-		margin-bottom: @margin-double;
-		background: linear-gradient(to right, @brand-pink 33%, rgba(255,255,255,0) 0%) top / 15px 2px repeat-x;
-	}
-
-	&__fine-print {
-		font-size: @text-size-smaller;
-	}
-
-	&__mascot {
-		position: absolute;
-		left: 3rem;
-		bottom: -6.45rem;
-		width: 18rem;
-		height: 18rem;
-		background: url('/assets/icons/mascot.svg') center / cover no-repeat;
-
-		@media @m-l {
-			left: 0;
-			bottom: -7.25rem;
-			width: 25rem;
-			height: 25rem;
-		}
-
-		@media @l {
-			bottom: -7.75rem;
-			width: 29rem;
-			height: 29rem;
-		}
-	}
+    &__mascot {
+        position: relative;
+        top: 0.93rem;
+        left: 1rem;
+        width: 85%;
+    }
 }

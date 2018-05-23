@@ -31,20 +31,13 @@
     &__logo {
         position: absolute;
         top: calc(@header-height / 4);
-        left: 0;
-        margin: .4rem @margin-half .4rem @margin-default;
-        float:left;
+        left: @margin-default;
         filter: drop-shadow(0 5px 1px rgba(0,0,0,0.4));
 
         @media @m {
-            top: 0;
+            top: @margin-half;
             width: unset;
             height: unset;
-        }
-
-        @media @l {
-            width: 8rem;
-            margin-right:@margin-default;
         }
     }
 

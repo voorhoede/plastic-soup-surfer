@@ -1,11 +1,11 @@
 {% macro quote(quote, quotee='', mobileHidden=false, wide=false) %}
 <blockquote class="quote centered-column {% if mobileHidden %}mobile-hidden{% endif %} {% if wide %}quote--wide{% endif %}">
-	<p class="quote__content">{{ quote }}</p>
+    <p class="quote__content">{{ quote }}</p>
 
-	{% if quotee %}
-	<footer>
-		<cite>{{ quotee }}</cite>
-	</footer>
-	{% endif %}
+    {% if quotee %}
+        <footer>
+            <cite>{{ quotee }}</cite>
+        </footer>
+    {% endif %}
 </blockquote>
 {% endmacro %}

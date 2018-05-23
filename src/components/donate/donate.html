@@ -1,50 +1,44 @@
 <section class="donate" id="donate">
-	<div class="centered-column two-columns">
-		<div class="donate__description left-column">
-			<h2>Donate</h2>
+    <div class="donate__description centered-column">
+        <h2>Donate</h2>
+        <p>
+            The preparation of the formal notice and arrangements with the bailiff and the CEOs take a lot of time and effort. Although the bialiffs are sponsored by GGN gerechtsdeurwaarders we estimate the costs at €500,- for every formal notice / bailiff / CEO.
+            Support us in our mission. Lets make those in power formally aware! Buy a share and donate now!
+        </p>
+    </div>
 
-			<p>The preparation of the formal notice and arrangements with the bailiff and the CEOs take a lot of time and effort. Although the bialiffs are sponsored by GGN gerechtsdeurwaarders we estimate the costs at €500,- for every formal notice / bailiff / CEO. Support us in our mission. Lets make those in power formally aware! Buy a share and donate now!</p>
-		</div>
+    <div class="donate__box">
+        <h3><strong>YES,</strong> I want to confront the plastic producing CEO! I am buying <strong>one share</strong> of a formal notice!</h3>
 
-		<div class="donate__box right-column">
-			<h3><strong>YES,</strong> I want to confront the plastic producing CEO! I am buying <strong>one share</strong> of a formal notice!</h3>
+        <form data-donate-form action="/api/donations/add" method="POST">
+            {% set exploot = exploot[0] %}
 
-			<form data-donate-form action="/api/donations/add" method="POST">
-				{% set exploot = exploot[0] %}
+            <dl class="donate__items">
+                <dt>One share</dt>
+                <dd>€ 5,-</dd>
+                <dt>
+                            <label class="donate__label" for="extra">
+                                Extra optional donation
+                                <span class="extra-info">for the Plastic Soup Surfer expeditions</span>
+                            </label>
+                        </dt>
+                <dd>
+                    € <input class="donate__input" type="number" min="0" name="extra" id="extra" step="0.01" placeholder="0,00">
+                </dd>
+            </dl>
 
-				<dl class="donate__items">
-					<dt>One share</dt>
-					<dd>€ 5,-</dd>
-					<dt>
-						<label class="donate__label" for="extra">
-							Extra optional donation
-							<span class="extra-info">for the Plastic Soup Surfer expeditions</span>
-						</label>
-					</dt>
-					<dd>
-						€ <input class="donate__input"
-								 type="number"
-								 min="0"
-								 name="extra"
-								 id="extra"
-								 step="0.01"
-								 placeholder="0,00">
-					</dd>
-				</dl>
+            <dl class="donate__total">
+                <dt>Total</dt>
+                <dd data-total>€ 5,-</dd>
+            </dl>
 
-				<dl class="donate__total">
-					<dt>Total</dt>
-					<dd data-total>€ 5,-</dd>
-				</dl>
+            <div class="donate__fine-print">
+                <p>By pressing 'donate' you will be redirected to the payment area where payment options can be selected. You will be sent back to this website afterwards.</p>
+            </div>
 
-				<div class="donate__fine-print">
-					<p>By pressing 'donate' you will be redirected to the payment area where payment options can be selected. You will be sent back to this website afterwards.</p>
-				</div>
+            <input class="button button--primary button--full-width" type="submit" value="Donate">
+        </form>
+    </div>
 
-				<input class="button button--primary button--full-width" type="submit" value="Donate">
-			</form>
-		</div>
-
-		<div class="donate__mascot mobile-hidden"></div>
-	</div>
+    <img src="/assets/icons/mascot-next.svg" class="donate__mascot desktop-hidden" alt="">
 </section>

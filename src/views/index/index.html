@@ -4,7 +4,14 @@
 
 {%- block content -%}
 
-  {% include "components/hero/hero.html" %}
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Pick up 10',
+        subtitle='My current adventure:',
+        description="Pers presentatie 'Pick Up 10'. De 'monitoring revolutie' met partners Google & Litterati Vrijdag 10u Rijnsburgstraat 11 Amsterdam Aanmelden via site enzo.",
+        image='/assets/images/header-home.jpg',
+        url='#'
+    ) }}
 
   {% include "components/introduction-text/introduction-text.html" %}
 

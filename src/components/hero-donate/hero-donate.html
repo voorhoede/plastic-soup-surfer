@@ -1,13 +1,9 @@
-{% from '../quote/quote.html' import quote %}
-
-<section class="hero hero--donate mobile-hidden">
-	<div class="centered-column">
-		<div class="hero__content">
-			{{ quote(
-                "The needless and superfluous plastic packaging must be put to an halt wherever there are risks of littering.",
-                wide=true,
-                quotee='Merijn Tinga'
-            ) }}
-		</div>
-	</div>
+<section class="hero-donate mobile-hidden">
+    <div class="centered-column">
+        {% from '../quote/quote.html' import quote %}
+        {{ quote(
+            "The needless and superfluous plastic packaging must be put to an halt wherever there are risks of littering.",
+            wide=true, quotee='Merijn Tinga'
+        ) }}
+    </div>
 </section>

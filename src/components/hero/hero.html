@@ -1,19 +1,20 @@
-{% from '../wave/wave.html' import wave %}
-
-<section class="hero hero-home">
-    <div class="hero__image">
-        <img src="/assets/images/header-home.png" alt="">
-        <div class="hero__image__wave">
-            {{ wave(fillColor='#fff') }}
+{% macro hero(title, subtitle, description, image, url) %}
+    <section class="hero">
+        <div class="hero__image">
+            <img src="{{ image }}" alt="">
+            <div class="hero__image__wave">
+                {% from '../wave/wave.html' import wave %}
+                {{ wave(fillColor='#fff') }}
+            </div>
         </div>
-    </div>
 
-    <div class="hero__content centered-column">
-        <h3 class="subtitle">My current adventure:</h3>
-        <h2 class="title">Pick Up 10</h2>
-        <p class="text">
-            Pers presentatie 'Pick Up 10'. De 'monitoring revolutie' met partners Google & Litterati Vrijdag 10u Rijnsburgstraat 11 Amsterdam Aanmelden via site enzo.
-        </p>
-        <a href="#" class="button button--primary button--full-width">Read more</a>
-    </div>
-</section>
+        <div class="hero__content centered-column">
+            <h3 class="subtitle">{{ subtitle }}</h3>
+            <h2 class="title">{{ title }}</h2>
+            <p class="description">
+                {{ description }}
+            </p>
+            <a href="{{ url }}" class="button button--primary button--full-width">Read more</a>
+        </div>
+    </section>
+{% endmacro %}

@@ -1,8 +1,8 @@
-.hero-home {
+.hero {
     position: relative;
     padding-bottom: @margin-double;
 
-
+    // Non-full width 'fake' border
     &::after {
         display: block;
         width: calc(100% - @margin-double);
@@ -32,7 +32,7 @@
             bottom: 0;
             left: 0;
             overflow-x: hidden;
-            
+
             svg {
                 position: absolute;
                 bottom: 0;
@@ -53,7 +53,7 @@
 
             &__wave {
                 background: rgba(0,0,0,0.2);
-                
+
                 svg {
                     width: 100%;
                 }
@@ -66,7 +66,7 @@
             color: @brand-blue;
         }
 
-        .text {
+        .description {
             margin-bottom: @margin-double;
             font-size: calc(17/16rem);
             line-height: 1.8;
@@ -80,7 +80,7 @@
             transform: translate(-50%, -50%);
 
             .subtitle,
-            .text,
+            .description,
             .title {
                 color: @white;
             }

@@ -1,4 +1,4 @@
-{% macro hero(title, subtitle, description, image, url) %}
+{% macro hero(title, subtitle, description, image, url, call) %}
     <section class="hero">
         <div class="hero__image">
             <img src="{{ image }}" alt="">
@@ -14,7 +14,7 @@
             <p class="description">
                 {{ description }}
             </p>
-            <a href="{{ url }}" class="button button--primary button--full-width">Read more</a>
+            <a href="{{ url }}" class="button button--primary button--full-width">{{ call }}</a>
         </div>
     </section>
 {% endmacro %}

@@ -36,7 +36,7 @@ gulp.task('images', function() {
                 }
             ],
 
-            'assets/images/header-home.png' : [
+            'assets/images/header-home.jpg' : [
               {
                   width:1440
               }

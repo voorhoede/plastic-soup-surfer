@@ -8,30 +8,30 @@
 	.left-column {
 		display: flex;
 		align-items: center;
-		margin-bottom: @margin-default;
 		width: 100%;
+		margin-bottom: @margin-default;
 
 		@media @m {
 			flex: 1;
-			margin-bottom: 0;
 			width: 45%;
+			margin-bottom: 0;
 		}
 
 		.progress {
-			.clearfix();
-			float: left;
 			width: 50%;
+			float: left;
 			font-family: @font-header;
 			font-size: @text-size-bigger;
 			font-weight: bold;
+			.clearfix();
 
 			&:before {
-				content: '';
-				float: left;
 				display: block;
-				margin-right: @margin-half*1.5;
 				width: 25px;
 				height: 25px;
+				margin-right: @margin-half*1.5;
+				float: left;
+				content: '';
 
 				@media @m {
 					width: 50px;
@@ -40,8 +40,8 @@
 			}
 
 			&__title {
-				margin-left: 30px;
 				margin-bottom: @margin-half/2;
+				margin-left: 30px;
 				color: @grey;
 			}
 
@@ -61,22 +61,22 @@
 
 	.right-column {
 		display: flex;
-		justify-content: space-between;
 		flex-wrap: wrap;
-		padding: @margin-default;
+		justify-content: space-between;
 		width: 100%;
+		padding: @margin-default;
 		background: @grey-light;
 		font-size: @text-size-bigger;
 
 		@media @m {
 			flex: 1;
-			padding: @margin-default*1.5 @margin-double*1.5;
 			width: 55%;
+			padding: @margin-default*1.5 @margin-double*1.5;
 		}
 
 		.call-to-action {
-			float: left;
 			margin: @margin-half 0;
+			float: left;
 
 			p {
 				margin: 0;
@@ -85,10 +85,10 @@
 		}
 
 		.button {
-			float: right;
 			align-self: center;
-			padding-left: @margin-double;
 			padding-right: @margin-double;
+			padding-left: @margin-double;
+			float: right;
 		}
 	}
 }

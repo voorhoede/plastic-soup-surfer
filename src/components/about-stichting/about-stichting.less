@@ -7,8 +7,8 @@
 
     .foundation,
     .foundation__picture {
-        border-radius: 3px;
         width: 100%;
+        border-radius: 3px;
 
         @media @m {
             width: inherit;
@@ -16,16 +16,16 @@
     }
 
     .foundation {
-        background-color: @brand-highlight-light;
-        padding: @margin-default;
         margin-bottom: @margin-default;
+        padding: @margin-default;
+        background-color: @brand-highlight-light;
         color: @white;
 
         @media @m {
             order: 1;
+            width: calc(~'60%' - @margin-half);
             margin-bottom: 0;
             padding: @margin-double;
-            width: calc(~'60%' - @margin-half);
         }
 
         h2 {

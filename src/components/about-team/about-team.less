@@ -1,12 +1,12 @@
 .team {
-    background-color: @grey-light;
     padding: @margin-double 0;
+    background-color: @grey-light;
 
     .team-list {
         @media @m {
-            .clearfix();
             display: flex;
             margin: 0 -@margin-default;
+            .clearfix();
         }
 
         @media @m-l {
@@ -14,16 +14,16 @@
         }
 
         .team-list-item {
-            text-align: center;
-            list-style: none;
             margin-bottom: @margin-double;
+            list-style: none;
+            text-align: center;
 
             @media @m {
-                float: left;
                 display: flex;
                 flex-direction: column;
-                padding: 0 @margin-default;
                 width: 25%;
+                padding: 0 @margin-default;
+                float: left;
             }
 
             @media @m-l {
@@ -31,11 +31,11 @@
             }
 
             .team-list-picture {
-                border-radius: 50%;
-                margin: 0 auto @margin-default;
                 width: 100%;
                 max-width: 15rem;
                 height: auto;
+                margin: 0 auto @margin-default;
+                border-radius: 50%;
             }
 
             h3 {

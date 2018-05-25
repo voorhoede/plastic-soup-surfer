@@ -12,5 +12,11 @@
         "WEBHOOK_USER": "@plastic_soup_webhook_user",
         "WEBHOOK_PASS": "@plastic_soup_webhook_pass",
         "MOLLIE_API_KEY": "@plastic_soup_mollie"
+    },
+    "scale": {
+        "bru1": {
+            "min": 0,
+            "max": 2
+        }
     }
 }

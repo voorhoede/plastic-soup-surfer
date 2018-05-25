@@ -14,9 +14,6 @@
         "MOLLIE_API_KEY": "@plastic_soup_mollie"
     },
     "scale": {
-        "bru1": {
-            "min": "auto",
-            "max": "auto"
-        }
+        "bru1": {}
     }
 }

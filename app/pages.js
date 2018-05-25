@@ -73,8 +73,8 @@ module.exports = function (router, {constants, nunjucksEnv}) {
             day,
             distance,
             phase,
-            mainCSS : devMode ? "/assets/css/main.css" : manifest['assets/css/main.css'],
-            allJS : devMode ? "/assets/js/all.js" : manifest['assets/js/all.js']
+            mainCSS : devMode ? 'assets/css/main.css' : manifest['assets/css/main.css'],
+            allJS : devMode ? 'assets/js/all.js' : manifest['assets/js/all.js']
         });
 
         try {

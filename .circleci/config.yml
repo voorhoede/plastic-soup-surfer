@@ -18,7 +18,11 @@ jobs:
 
       - run: npm install
 
-      - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'
+      - run: ls node_modules/.bin
+      
+      - run: npm -v && node -v
+
+      - run: ./node_modules/.bin/now --token=$NOW_TOKEN deploy --team devoorhoede
 
       - save_cache:
           paths:

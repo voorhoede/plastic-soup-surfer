@@ -9,11 +9,11 @@
     <path fill="#FFF" d="M37.804 40.406l-5.656 5.656-14.14-14.14 5.656-5.656z"/>
     <path fill="#FFF" d="M54.068 24.143L32.151 46.059l-5.656-5.655 21.917-21.918z"/>
     <path stroke="#7ED321" stroke-linecap="round" stroke-width="3" d="M31.5 59.5v218" vector-effect="non-scaling-stroke"/>
-    <text fill="#2b2f47" font-family="Open Sans" font-size="20" font-weight="700" transform="translate(85 37.759)">
+    <text fill="#2b2f47" font-size="21" font-weight="700" transform="translate(85 37.759)">
       10 BAILIFF VISIT COMPANIES
     </text>
     <path fill="#7ED321" d="M4 126c0-16.557 13.443-30 30-30 16.557 0 30 13.443 30 30 0 16.557-13.443 30-30 30-16.557 0-30-13.443-30-30z"/>
-    <text fill="#2b2f47" font-family="Open Sans" font-size="20" font-weight="700" transform="translate(85 133.759)">
+    <text fill="#2b2f47" font-size="21" font-weight="700" transform="translate(85 133.759)">
       DEPOSIT FEE POLICY
     </text>
     <path fill="#7ED321" d="M62.7 283.8c0 16.7-13.3 30.2-29.7 30.2S3.4 300.5 3.4 283.8s13.2-30.2 29.6-30.2c16.4 0 29.7 13.5 29.7 30.2z"/>
@@ -36,7 +36,7 @@
     </g>
     <path fill="#7ED321" d="M22 210.5c0-5.243 4.257-9.5 9.5-9.5s9.5 4.257 9.5 9.5-4.257 9.5-9.5 9.5-9.5-4.257-9.5-9.5z"/>
     <g>
-      <text fill="#2b2f47" font-family="Open Sans" font-size="20" font-weight="700" transform="translate(85 291.559)">
+      <text fill="#2b2f47" font-size="21" font-weight="700" transform="translate(85 291.559)">
         A PLASTIC FREE OCEAN!
       </text>
     </g>

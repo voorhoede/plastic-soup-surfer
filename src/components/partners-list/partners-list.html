@@ -1,141 +1,162 @@
-<section class="centered-column">
-	<h2>Partners</h2>
+{% macro partnersList(partners) %}
+    <section class="centered-column">
+        <h2>Partners</h2>
 
-	<ul class="partners-list flat-list">
-		<li class="partners-list__item">
-			<a href="https://star-board.com/">
-				<img class="partners-list__company-logo" src="/assets/logos/starboard.png" alt="Starboard">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://hike.one/">
-				<img class="partners-list__company-logo" src="/assets/logos/hike-one.png" alt="Hike One">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.voorhoede.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/de-voorhoede.png" alt="De Voorhoede">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.adessium.org/">
-				<img class="partners-list__company-logo" src="/assets/logos/adessium.png" alt="Adessium">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.tomra.com/en/">
-				<img class="partners-list__company-logo" src="/assets/logos/tomra.png" alt="Tomra">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://sciencecentre.tudelft.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/sciencedelft.png" alt="Science Centre Delft">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://waterranger.com/en/">
-				<img class="partners-list__company-logo" src="/assets/logos/WR-Logo.png" alt="Water Ranger">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.vaude.com/en-NL/">
-				<img class="partners-list__company-logo" src="/assets/logos/vaude.png" alt="Vaude">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.wintertaling.nl/team/edo-smid/">
-				<img class="partners-list__company-logo" src="/assets/logos/edosmid.png" alt="Edo Smid">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.horchneradvocaten.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/horchner.png" alt="Hörchner">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://recyclingnetwerk.org/">
-				<img class="partners-list__company-logo" src="/assets/logos/recycling-netwerk-vierkant_400x400.png" alt="Recycling Netwerk">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.watersportverbond.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/watersportverbond.png" alt="Koninklijke Watersportverbond">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.plasticsoupfoundation.org/en/">
-				<img class="partners-list__company-logo" src="/assets/logos/plasticsoup.png" alt="Plastic Soup Foundation">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://entropyresins.com/">
-				<img class="partners-list__company-logo" src="/assets/logos/entropy-resins.png" alt="Entropy Resins">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.duh.de/">
-				<img class="partners-list__company-logo" src="/assets/logos/deutsche-umwelthilfe.png" alt="Deutsche Umwelthilfe">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.ivn.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/ivn.png" alt="IVN">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.technolyt.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/logo-Technolyt-payoff-RGB.png" alt="Technolyt">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.noordzee.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/stichting-de-noordzee.png" alt="Stichting De Noordzee">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.canoeicf.com/">
-				<img class="partners-list__company-logo" src="/assets/logos/canoe.png" alt="International Canoe Federation">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://surfriderfoundation.de/">
-				<img class="partners-list__company-logo" src="/assets/logos/surfrider.png" alt="Surfrider Foundation Europe North Germany">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://www.fujitsu.com/nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/fujitsu-red-jpg-rgb_tcm127-1146712.png" alt="Fujitsu">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="http://zwerfinator.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/zwerfinator.png" alt="Zwerfinator">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.facebook.com/diezijnvaardig/">
-				<img class="partners-list__company-logo" src="/assets/logos/diezijnvaardig.png" alt="Diezijnvaardig">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://bebr.nl/">
-				<img class="partners-list__company-logo" src="/assets/logos/bebr.png" alt="BEBR">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.garmin.com/nl-NL">
-				<img class="partners-list__company-logo" src="/assets/logos/garmin-logo.png" alt="Garmin">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.mollie.com">
-				<img class="partners-list__company-logo" src="/assets/logos/mollie.png" alt="Mollie">
-			</a>
-		</li>
-		<li class="partners-list__item">
-			<a href="https://www.ggn.nl">
-				<img class="partners-list__company-logo" src="/assets/logos/ggn.png" alt="GGN">
-			</a>
-		</li>
-	</ul>
-</section>
+        <ul class="partners-list flat-list">
+            {% for partnerName in partners %}
+                {{ partnerItem( partnersData[partnerName] ) }}
+            {% endfor %}
+        </ul>
+    </section>
+{% endmacro %}
+
+{% macro partnerItem(partner) %}
+    <li class="partners-list__item">
+        <a href="{{ partner.url }}">
+            <img class="partners-list__company-logo" src="/assets/logos/{{ partner.logo }}.png" alt="{{ partner.name }}">
+        </a>
+    </li>
+{% endmacro %}
+
+{% set partnersData = {
+    starboard: {
+        name: 'Starboard',
+        url: 'https://star-board.com/',
+        logo: 'starboard'
+    },
+    hikeOne: {
+        name: 'Hike One',
+        url: 'https://hike.one/',
+        logo: 'hike-one'
+    },
+    deVoorhoede: {
+        name: 'De Voorhoede',
+        url: 'https://www.voorhoede.nl/',
+        logo: 'de-voorhoede'
+    },
+    tomra: {
+        name: 'Tomra',
+        url: 'https://www.tomra.com/en/',
+        logo: 'tomra'
+    },
+    adessium: {
+        name: 'Adessium',
+        url: 'http://www.adessium.org/',
+        logo: 'adessium'
+    },
+    sciencedelft: {
+        name: 'Science Centre Delft',
+        url: 'http://sciencecentre.tudelft.nl/',
+        logo: 'sciencedelft'
+    },
+    waterRanger: {
+        name: 'Water Ranger',
+        url: 'http://waterranger.com/en/',
+        logo: 'WR-Logo'
+    },
+    vaude: {
+        name: 'Vaude',
+        url: 'https://www.vaude.com/en-NL/',
+        logo: 'vaude'
+    },
+    edoSmid: {
+        name: 'Edo Smid',
+        url: 'http://www.wintertaling.nl/team/edo-smid/',
+        logo: 'edosmid'
+    },
+    horchner: {
+        name: 'Hörchner',
+        url: 'http://www.horchneradvocaten.nl/',
+        logo: 'horchner'
+    },
+    recyclingNetwerk: {
+        name: 'Recycling Netwerk',
+        url: 'http://recyclingnetwerk.org/',
+        logo: 'recycling-netwerk-vierkant_400x400'
+    },
+    watersportverbond: {
+        name: 'Koninklijke Watersportverbond',
+        url: 'http://www.watersportverbond.nl/',
+        logo: 'watersportverbond'
+    },
+    plasticsoup: {
+        name: 'Plastic Soup Foundation',
+        url: 'http://www.plasticsoupfoundation.org/en/',
+        logo: 'plasticsoup'
+    },
+    entropyResins: {
+        name: 'Entropy Resins',
+        url: 'https://entropyresins.com/',
+        logo: 'entropy-resins'
+    },
+    deutscheUmwelthilfe: {
+        name: 'Deutsche Umwelthilfe',
+        url: 'http://www.duh.de/',
+        logo: 'deutsche-umwelthilfe'
+    },
+    ivn: {
+        name: 'IVN',
+        url: 'https://www.ivn.nl/',
+        logo: 'ivn'
+    },
+    technolyt: {
+        name: 'Technolyt',
+        url: 'http://www.technolyt.nl/',
+        logo: 'logo-Technolyt-payoff-RGB'
+    },
+    deNoordzee: {
+        name: 'Stichting De Noordzee',
+        url: 'https://www.noordzee.nl/',
+        logo: 'stichting-de-noordzee'
+    },
+    canoeDederation: {
+        name: 'International Canoe Federation',
+        url: 'http://www.canoeicf.com/',
+        logo: 'canoe'
+    },
+    surfriderFoundation: {
+        name: 'Surfrider Foundation Europe North Germany',
+        url: 'http://surfriderfoundation.de/',
+        logo: 'surfrider'
+    },
+    fujitsu: {
+        name: 'Fujitsu',
+        url: 'http://www.fujitsu.com/nl/',
+        logo: 'fujitsu-red-jpg-rgb_tcm127-1146712'
+    },
+    zwerfinator: {
+        name: 'Zwerfinator',
+        url: 'http://zwerfinator.nl/',
+        logo: 'zwerfinator'
+    },
+    diezijnvaardig: {
+        name: 'Diezijnvaardig',
+        url: 'https://www.facebook.com/diezijnvaardig/',
+        logo: 'diezijnvaardig'
+    },
+    bebr: {
+        name: 'BEBR',
+        url: 'https://bebr.nl/',
+        logo: 'bebr'
+    },
+    garmin: {
+        name: 'Garmin',
+        url: 'https://www.garmin.com/nl-NL',
+        logo: 'garmin-logo'
+    },
+    mollie: {
+        name: 'Mollie',
+        url: 'https://www.mollie.com',
+        logo: 'mollie'
+    },
+    ggn: {
+        name: 'GGN',
+        url: 'https://www.ggn.nl',
+        logo: 'ggn'
+    },
+    nationalGeographic: {
+        name: 'National Geographic',
+        url: 'https://nationalgeographic.com/',
+        logo: 'national-geographic'
+    }
+} %}

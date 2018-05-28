@@ -1,29 +1,27 @@
 .partners-list {
-	display: flex;
-	flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 
-	&::after {
-		clear: both;
-		content: '';
-	}
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 8rem;
+        padding-right: @margin-default;
 
-	&__item {
-		width: 50%;
-		padding-right: @margin-default;
-		float: left;
+        @media @m {
+            width: calc(100% / 3);
+            padding-right: @margin-double;
+        }
 
-		@media @m {
-			width: calc(100% / 3);
-			padding-right: @margin-double;
-		}
+        @media @l {
+            width: calc(25%);
+        }
+    }
 
-		@media @l {
-			width: calc(25%);
-		}
-	}
-
-	&__company-logo	{
-		width: 100%;
-		height: auto;
-	}
+    &__company-logo {
+        width: 100%;
+        height: auto;
+    }
 }

@@ -96,6 +96,8 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/images/pickup10-app-hand.png' : [{ width: 300 }],
+
             'assets/images/plastic-soup.jpg' : [
                 {
                     width:1024
@@ -240,6 +242,8 @@ gulp.task('images', function() {
                 }
             ],
 
+            'assets/logos/national-geographic.png' : [{ width: 200 }],
+
             'assets/images/logo.png' : [
                 {
                     width : 115,
@@ -289,23 +293,10 @@ gulp.task('images', function() {
                 }
             ],
 
-			'assets/logos/garmin-logo.png' : [
-                {
-                    width:200
-                }
-            ],
-
-			'assets/logos/WR-Logo.png' : [
-                {
-                    width:200
-                }
-            ],
-
-            'assets/logos/ggn.png' : [
-                {
-                    width:200
-                }
-            ]
+			'assets/logos/garmin-logo.png' : [{ width: 200 }],
+			'assets/logos/ggn.png' : [{ width: 200 }],
+			'assets/logos/google.png' : [{ width: 200 }],
+			'assets/logos/WR-Logo.png' : [{ width:200 }],
         }))
 		.pipe(gulp.dest(process.env.DIST_DIR));
 });

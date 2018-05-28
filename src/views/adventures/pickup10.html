@@ -1,3 +1,76 @@
-<script>
-    window.location.replace('https://pickup10.org/');
-</script>
+{%- extends "views/_base/layout.html" -%}
+{% from "components/video-player/video-player.html" import videoPlayer %}
+
+{% block title %}Source 2 Sea Expedition{% endblock %}
+{% block viewClass %}adventure-view{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='#pickup10',
+        description="This is the ‘photo recognition revolution’ that gives us the power to confront policy makers and companies. New innovations in photo recognition make it easy, we make it fun. Picking up litter is now a call for change.",
+        image='/assets/images/plastic-soup-s.jpg'
+    ) }}
+
+    <p class="centered-column">
+        The Pick Up 10 app is designed to activate everyone to pick up and photograph litter. There is gamification built in and ways to challenge your friends. We will make picking up litter socially acceptable. The new photo recognition tags the litter you snapped by material, type of packaging and brand. With this data we can now address the root cause and call for change at the highest levels.
+    </p>
+
+    {{ videoPlayer('https://player.vimeo.com/video/269670451?title=0&byline=0&portrait=0') }}
+
+    {% include "components/pickup-app-preview/pickup-app-preview.html" %}
+
+    {% from 'components/quote/quote.html' import quote %}
+    {{ quote('Picking up litter is no longer a fight against the symptoms; it has become a fact-based call for change.', wide=true) }}
+
+    <section class="centered-column">
+        <h2>What will your data achieve?</h2>
+        <div class="grid">
+            <div class="grid__item">
+                <h4>10.000 picks and up</h4>
+                <p>
+                    We knock on the board room doors of Consumer Goods multinationals like UNILEVER and demand them to start anti-litter campaigns, and anti-litter package designs
+                </p>
+                <h4>100.000 picks and up</h4>
+                <p>
+                    We knock on the board room doors of Soda Companies and Supermarkets to demand them to implement deposit fee systems for beverage containers - in and outside Europe.
+                </p>
+                <h4>1.000.000 picks and up</h4>
+                <p>
+                    We knock on the board room doors of Consumer Goods multinationals like UNILEVER again. This time to demand to facilitate better waste management in developing countries.
+                </p>
+            </div>
+            <div class="grid__item">
+                <h4>How do we get into the boardrooms?</h4>
+                <p>We use our bailiffs of course!</p>
+                <img src="/assets/icons/bailiff_v3.svg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="centered-column">
+            <h2>3D printed litter board</h2>
+            <p>You want to do more than pick up and snap? Well you can! You can collect bottles you picked up and we will use those to 3D print the new Plastic Soup Surfer board. A Stand Up Paddle foil board made from littered bottles. So called Foil-supping is a new sport and has a very few practitioners at this moment. It is a spectacular and magical way of flying above the water surface. It is on this board that the Plastic Soup Surfer will do a long distance record attempt.</p>
+            <h3>Become part of the board</h3>
+            <p>The 24th of June National Geographic is organizing a Beach Clean Up in Scheveningen. Bring your bottles there! - more info on the event to be found in our social channels and newsletter.</p>
+            <p>After the first expedition on this 3D printed board it will be passed on to other surfers all over the world. They will be challenged to ride a longer distance on the board than the Plastic Soup Surfer did before them. The call to action is passed on with the board: Pick Up 10.</p>
+        </div>
+
+        {{ videoPlayer('https://player.vimeo.com/video/265601385?title=0&byline=0&portrait=0') }}
+
+        <div class="centered-column">
+            <h2>Litterati, Google and Zwerfinator</h2>
+            <p>
+                For years a select group of litter-picking enthusiasts have been photographing the stuff the came across and uploading this using the Litterati App. It was a cumbersome process of archiving and tagging the photographs, until very recently Google joined forces with the litter-data from Dirk ‘Zwerfinator’ Groot. They used his data for their machine learning tools. This made it possible to recognize litter in a photograph. Seeing the potential of this tool the Plastic Soup Surfer teamed up with the ‘new’ Litterati and initiated ‘Pick Up 10’. He developed a platform together with interaction design studio ‘De Voorhoede’ in Amsterdam. ‘Pick Up 10’ is meant to get users acquainted with litter picking and smoothly convert them into becoming a part of the world wide Litterati community.
+            </p>
+        </div>
+    </section>
+
+    {{ quote('We are small so we pick our battles. We are independent so we are agile. We are always focused on prevent plastic pollution.', wide=true) }}
+
+    {% from 'components/partners-list/partners-list.html' import partnersList %}
+    {{ partnersList(['deVoorhoede', 'hikeOne', 'starboard', 'nationalGeographic', 'fujitsu', 'google', 'adessium']) }}
+
+{%- endblock -%}

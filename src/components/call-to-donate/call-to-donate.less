@@ -1,6 +1,10 @@
 .call-to-donate {
     display: flex;
     flex-direction: column;
+    
+    &__content p {
+        max-width: 25em;
+    }
 
     @media @m {
         flex-direction: row;
@@ -8,7 +12,7 @@
 
         &__illustration {
             width: 100%;
-            max-width: @text-max-width;
+            max-width: 25em;
             margin-right: @margin-quadruple;
         }
 

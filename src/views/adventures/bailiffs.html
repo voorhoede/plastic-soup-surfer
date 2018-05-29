@@ -27,4 +27,7 @@
         <img src="/assets/icons/bailiff_v10.svg" alt="">
     </section>
 
+    {% from 'components/partners-list/partners-list.html' import partnersList %}
+    {{ partnersList(['ggn', 'edoSmid', 'universiteitLeiden']) }}
+
 {%- endblock -%}

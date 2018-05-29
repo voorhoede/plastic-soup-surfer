@@ -2,9 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: @margin-double;
-    margin-bottom: -@margin-quadruple;
-    background-color: @grey-light;
 
     @media @m {
         flex-direction: row;
@@ -21,7 +18,7 @@
         padding: @margin-default;
         border-radius: 2px;
         background-color: @white;
-        box-shadow: 3px 3px 0 0 @grey-lighter;
+        box-shadow: 3px 3px 0 0 rgba(0,0,0,0.2);
         
         @media @m {
             width: 25em;
@@ -60,6 +57,7 @@
         margin-right: 0;
         margin-bottom: @margin-default;
         margin-left: 0;
+        padding-top: @margin-double;
         background: @white;
         
         @media @m {
@@ -101,8 +99,9 @@
 
     &__mascot {
         position: relative;
-        top: 0.93rem;
-        left: 1rem;
-        width: 85%;
+        top: 5rem;
+        left: 2rem;
+        width: 50%;
+        min-width: 17rem;
     }
 }

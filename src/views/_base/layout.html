@@ -13,12 +13,12 @@
         {% include "components/analytics/analytics.html" %}
     </head>
 
-    <body>
+    <body class="{% block viewClass %}{% endblock %}">
         {% block header %}
             {% include "components/header/header.html" %}
         {%- endblock -%}
 
-        <main class="{% block viewClass %}{% endblock %}">
+        <main>
             {% block content %}{% endblock %}
         </main>
 

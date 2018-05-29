@@ -2,6 +2,7 @@
 {% from "components/notification/notification.html" import notification %}
 
 {% block title %}Back me up!{% endblock %}
+{% block viewClass %}donate-view{% endblock %}
 
 {%- block content -%}
 	{% if donationState == "success" %}

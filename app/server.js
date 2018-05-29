@@ -3,6 +3,7 @@ require('dotenv').config(__dirname + '/..');
 const http = require('http');
 const https = require('https');
 const Koa = require('koa');
+const consistentUrls = require('koa-consistent-urls')
 const Router = require('koa-router');
 const flash = require('koa-flash-simple');
 const session = require('koa-session');
@@ -29,6 +30,12 @@ const appCtxt = {
 };
 
 const mainRouter = new Router();
+
+app.use(consistentUrls({
+  www: false,
+  trailingSlash: false,
+}))
+
 mainRouter.redirect('/exploot', '/donate');
 mainRouter.redirect('/expedition', '/adventures/source2sea');
 

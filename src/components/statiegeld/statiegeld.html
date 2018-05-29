@@ -1,8 +1,7 @@
-{% from "components/video-player/video-player.html" import videoPlayer %}
-{% from "components/quote/quote.html" import quote %}
-
 <section class="statiegeld centered-column">
   <h2 class="statiegeld__title">This is how far we’ve come already!</h2>
+
+  {% from "components/video-player/video-player.html" import videoPlayer %}
   {{ videoPlayer('https://www.youtube-nocookie.com/embed/hpUr_0Ca1Eo') }}
 
   <div class="grid">
@@ -26,6 +25,7 @@
 
   </div>
 
+  {% from "components/quote/quote.html" import quote %}
   {{ quote('15 March the Dutch government voted YES to statiegeld on small bottles and cans.', wide=true) }}
 
 </section>

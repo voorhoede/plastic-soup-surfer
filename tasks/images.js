@@ -211,12 +211,6 @@ gulp.task('images', function() {
                 }
             ],
 
-            'assets/logos/de-voorhoede.png' : [
-                {
-                    width:200
-                }
-            ],
-
             'assets/logos/bebr.png' : [
                 {
                     width:200
@@ -280,10 +274,10 @@ gulp.task('images', function() {
                 }
             ],
 
-			'assets/logos/garmin-logo.png' : [{ width: 200 }],
-			'assets/logos/ggn.png' : [{ width: 200 }],
-			'assets/logos/google.png' : [{ width: 200 }],
-			'assets/logos/WR-Logo.png' : [{ width:200 }],
+			'assets/logos/garmin-logo.png': [{ width: 200 }],
+			'assets/logos/ggn.png': [{ width: 200 }],
+			'assets/logos/google.png': [{ width: 200 }],
+			'assets/logos/WR-Logo.png': [{ width: 200 }],
         }))
 		.pipe(gulp.dest(process.env.DIST_DIR));
 });

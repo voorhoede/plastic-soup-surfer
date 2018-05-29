@@ -15,11 +15,16 @@
         <h2>Goal</h2>
         <div class="grid">
             <p class="grid__item">There is a direct relation between the plastic products of these companies and the effects it has on the environment, sea life and eventually us human beings. Once a CEO is made aware of this through the warrant, it morally implies he has to take corporate responsibility and minimize the effects for example through product design, logistics and communication.</p>
-            <p class="grid__item">By targeting the CEOs of the top ten companies we aim to start a movement towards a plastic pollution free society. And these ten powerful CEOs can make a decisive impact straight away. The high profile nature of the campaign and the discussion arising from it will automatically raise awareness among consumers and legislators. The problems arising from plastic pollution are urgent and we need to tackle these together.</p>
+            <p class="grid__item">We make CEOs ‘Formally Aware’ of the plastic pollution problem by sending them a ‘judicial awareness notice’. A notice borrowed from Patent Law but in our case uniquely applied for the plastic pollution problem. The great thing about this Formal Notice is that we can address it to a particular CEO and company and have a bailiff to deliver it in person. Deployed carefully we managed to start a dialog on plastic pollution with several of these very powerful people.</p>
         </div>
 
+        {% from "components/video-player/video-player.html" import videoPlayer %}
+        {{ videoPlayer('https://www.youtube-nocookie.com/embed/hpUr_0Ca1Eo?rel=0&amp;showinfo=0') }}
+
         {% from 'components/quote/quote.html' import quote %}
-        {{ quote('Consumers, legislators and producers all have a shared responsibility to bring about this behavioral change', wide=true) }}
+        {{ quote('From now on the companies and CEOs we visited can never claim they didn’t know...', wide=true) }}
+
+        <img src="/assets/icons/bailiff_v10.svg" alt="">
     </section>
 
 {%- endblock -%}

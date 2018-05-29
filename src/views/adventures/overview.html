@@ -8,11 +8,15 @@
     {{ hero(
         title='Pick up 10',
         subtitle='My current adventure:',
-        description="Pers presentatie 'Pick Up 10'. De 'monitoring revolutie' met partners Google & Litterati Vrijdag 10u Rijnsburgstraat 11 Amsterdam Aanmelden via site enzo.",
+        description="This is the ‘data-revolution’ that gives us the power to confront policy makers and companies. New innovations in photo recognition make it easy, we make it fun. Picking up litter is now a call for change!",
         image='/assets/images/plastic-soup.jpg',
         button={url: '/adventures/pickup10', text: 'Join the movement!'}
     ) }}
 
-    {% include "components/past-adventures/past-adventures.html" %}
+    <section class="centered-column">
+        <h2 class="h3 h3-alt">My other adventures:</h2>
+        {% from 'components/adventures-list/adventures-list.html' import adventuresList %}
+        {{ adventuresList() }}
+    </section>
 
 {%- endblock -%}

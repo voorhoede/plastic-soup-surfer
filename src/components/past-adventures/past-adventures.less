@@ -1,70 +1,14 @@
 .past-adventures {
-	margin-bottom: @margin-double;
-	
-	.adventures {
-		@media @m {
-			display: flex;
-			margin: 0 -@margin-half;
-		}
-	}
+	margin-bottom: @margin-quadruple;
 
-    &__header {
-        margin-bottom: @margin-default;
-        color: @brand-highlight;
-    }
-    
     &__details-link {
 		display: block;
 		width: 100%;
         color: @brand-blue;
 		text-align: right;
-        
+
         &::after {
             content: ' >';
         }
     }
-}
-
-.adventure {
-    position: relative;
-    margin-bottom: @margin-double;
-
-    &__head {
-        position: relative;
-        margin-bottom: @margin-narrow;
-    }
-
-    img {
-        width: 100%;
-        border-radius: 6px;
-    }
-
-    &__title {
-        position: absolute;
-        bottom: 0;
-        left: @margin-narrow;
-        color: @white;
-        text-shadow: 2px 2px 0 @brand-blue;
-        text-transform: uppercase;
-    }
-    
-    &__details-link {
-        color: @brand-pink;
-        text-transform: uppercase;
-        white-space: nowrap;
-        
-        &::after {
-            content: ' >';
-        }
-    }
-
-    @media @m {
-        width: calc(~'100% / 3');
-        margin-bottom: 0;
-        padding: 0 @margin-half;
-    }
-}
-
-.adventure__date {
-    font-weight: normal;
 }

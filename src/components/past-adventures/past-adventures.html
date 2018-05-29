@@ -1,38 +1,8 @@
 <section class="past-adventures centered-column">
-	<h3 class="past-adventures__header">Previous adventures</h3>
+	<h3 class="h3-alt">Previous adventures:</h3>
 
-	<ul class="adventures flat-list">
-		<li class="adventure">
-			<div class="adventure__head">
-				<img src="/assets/images/adventure--plastic-hunters.jpg" alt="">
-				<h4 class="adventure__title h3">From source to sea</h4>
-			</div>
-			<p>
-                A 1000km Stand Up Paddle expedition showing the role rivers play in plastic pollution transport.
-                <a href="/adventures/source2sea" class="adventure__details-link">See more</a>
-            </p>
-		</li>
-		<li class="adventure">
-			<div class="adventure__head">
-				<img src="/assets/images/adventure--message-on-a-bottle.jpg" alt="">
-				<h4 class="adventure__title h3">Message on a bottle</h4>
-			</div>
-			<p>
-                A record attempt to cross the North Sea on a board from plastic bottles to get deposit fee implemented.
-                <a href="http://plasticfreesea.nl/message-on-a-bottle/" class="adventure__details-link">See more</a>
-            </p>
-		</li>
-		<li class="adventure">
-			<div class="adventure__head">
-				<img src="/assets/images/adventure--plastic-soup-board.jpg" alt="">
-				<h4 class="adventure__title h3">Plastic Soup Board</h4>
-			</div>
-			<p>
-                The first surfboard Merijn Tinga made was meant as an artwork. The record attempt on it made him the Plastic Soup Surfer.
-                <a href="http://plasticfreesea.nl/surfboard-from-plastic-waste/" class="adventure__details-link">See more</a>
-            </p>
-		</li>
-	</ul>
+    {% from 'components/adventures-list/adventures-list.html' import adventuresList %}
+    {{ adventuresList(3) }}
 
-    <a href="#" class="past-adventures__details-link">See all adventures</a>
+    <a href="/adventures" class="past-adventures__details-link">See all adventures</a>
 </section>

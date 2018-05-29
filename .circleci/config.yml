@@ -18,7 +18,7 @@ jobs:
 
       - run: npm install
 
-      - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.now.sh' 'plastic-soup-surfer'
+      - run: npx plek now -- '--team devoorhoede' 'plasticsoupsurfer.org' 'plastic-soup-surfer'
 
       - save_cache:
           paths:

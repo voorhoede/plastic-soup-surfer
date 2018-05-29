@@ -59,7 +59,10 @@ const deployFlow = ciEnv => command => {
 };
 
 const aliasFlow = ciEnv => (command, domain) => {
+  console.log('domain', domain);
+  console.log('hasSubdomain', hasSubdomain(domain));
   const domainDivider = hasSubdomain(domain) ? '-' : '.';
+  console.log('domainDivider', domainDivider);
 
   backendAxios({
     data: {
@@ -132,4 +135,3 @@ getCiEnv().then(ciEnv => {
 
 process.title = 'plek';
 process.on('unhandledRejection', logFatalError);
-

@@ -1,0 +1,38 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Resolution{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Plastic Soup Surfer resolution',
+        description="In February 2017 we collected 60.000 signatures which urged the government to implement Deposit Fee on small plastic bottles. When presenting the petition in parliament we surprised the politicians by having them sign a resolution. This official ‘Plastic Soup Surfer resolution’ has now become the basis for new policy.",
+        image='/assets/images/header.jpg'
+    ) }}
+
+    <section class="centered-column">
+        <p>
+            In the Netherlands alone a staggering amount of 75 million small plastic bottles are littered each year. This can be reduced by up to 90% by charging a deposit fee and thus preventing them from reaching our canals, waterways, rivers, beaches and North Sea. The official ‘Plastic Soup Surfer resolution” was adopted by parliament two days after we had the politicians of all the political parties sign it. This resolution aimed at the reduction of littered plastic bottles has become the basis of the new policy and aims to have Deposit Fee instated on small PET bottles by 2021. (2017/2018 campaign)
+        </p>
+
+        {% from "components/video-player/video-player.html" import videoPlayer %}
+        {{ videoPlayer('https://www.youtube.com/embed/XwNgEOb8N2I?rel=0&amp;showinfo=0') }}
+
+
+        <p>
+            <a href="https://jeugdjournaal.nl/artikel/2158165-plastic-soep-surfer-met-handtekeningen-naar-den-haag.html">
+                Also see the ‘Jeugdjournaal ’ Video (Dutch)
+            </a>
+        </p>
+
+        {% from 'components/quote/quote.html' import quote %}
+        {{ quote('From now on the companies and CEOs we visited can never claim they didn’t know...', wide=true) }}
+
+        <img src="/assets/icons/bailiff_v10.svg" alt="">
+    </section>
+
+    {% from 'components/partners-list/partners-list.html' import partnersList %}
+    {{ partnersList(['ggn', 'edoSmid', 'universiteitLeiden']) }}
+
+{%- endblock -%}

@@ -1,6 +1,4 @@
 {%- extends "views/_base/layout.html" -%}
-{% from "components/quote/quote.html" import quote %}
-{% from "components/video-player/video-player.html" import videoPlayer %}
 
 {% block title %}Source 2 Sea Expedition{% endblock %}
 {% block viewClass %}adventure-view{% endblock %}
@@ -10,19 +8,26 @@
     {% from 'components/hero/hero.html' import hero %}
     {{ hero(
         title='#source2sea',
-        description="Paddling down the entire river Rhine on a board made from plastic waste: from its pristine source in Switzerland to where it empties into the North Sea after 1200 kilometres. Along with all the plastic waste it has gathered.",
+        description="Long distance expedition on SUP board made from plastic litter to high-light the role of our rivers as a major source of plastic pollution. Movie director Eelke Dekker followed the Plastic Soup Surfer during his voyage from the high mountains of Switzerland all the way down to the North Sea.",
         image='/assets/images/header.jpg'
     ) }}
 
+    {% from "components/video-player/video-player.html" import videoPlayer %}
     {{ videoPlayer('https://www.youtube-nocookie.com/embed/uDI1fD0_ma8?rel=0&showinfo=0') }}
 
-    {% include "components/map/map.html" %}
-
-    {% include "components/paddle-board-info/paddle-board-info.html" %}
-
-    {% include "components/waste-statistics/waste-statistics.html" %}
-
-    {{ quote('Changes in design and legislation should be acted upon with priority wherever there is risk of plastic litter ending up in a river, lake or sea', 'Merijn Tinga') }}
+    <section>
+        <div class="centered-column">
+            <p>
+                By paddling down the iconic river Rhine we wanted to focus the attention to the rivers as one of the major sources of plastic pollution. It is your own back yard where the ‘Plastic Soup’ originates. Rivers transport mismanaged waste, litter and many tons of micro-plastics to our seas and oceans.During the challenging +1000 kilometer expedition we visited stakeholders, specialists and were able to spread our message via several regional and national media along the banks of the river Rhine. The Plastic Waste board (link to board build movie) was made by the Science Center of the Technical University of Delft.
+            </p>
+            <a href="https://vimeo.com/246456310" class="button button--primary">View movie trailer</a>
+        </div>
+    </section>
+    <section class="centered-column">
+        <img src="https://c1.staticflickr.com/5/4203/34953406401_f11a70825e_h.jpg" width="928" alt="">
+    </section>
+    {% from "components/quote/quote.html" import quote %}
+    {{ quote('I am not accusing plastic as a material. I am accusing our attitude towards plastic') }}
 
     {% from 'components/partners-list/partners-list.html' import partnersList %}
     {{ partnersList([

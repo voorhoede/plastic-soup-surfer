@@ -225,6 +225,7 @@ gulp.task('images', function() {
             ],
 
             'assets/logos/national-geographic.png' : [{ width: 200 }],
+            'assets/logos/natuur-en-milieu.png' : [{ width: 200 }],
 
             'assets/images/logo.png' : [
                 {

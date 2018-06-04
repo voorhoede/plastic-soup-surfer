@@ -25,7 +25,6 @@
         "watch:js": "gulp script:watch",
         "watch:assets": "gulp copy:watch",
         "revision": "gulp revision",
-        "deploy": "now deploy",
         "format": "gulp style:format"
     },
     "dependencies": {

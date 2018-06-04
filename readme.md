@@ -19,8 +19,8 @@ npm run build
 npm start
 ```
 
-## Deploy
-To deploy run `npm run deploy`, this runs the [Now CLI](https://github.com/zeit/now-cli). Make sure Now is configured to run under `devoorhoede` team.
+## Deployment
+Deployment is done automatically for each command with [Plek](https://plek.now.sh/), see [the CI script](.circleci/config.yml) for details. To deploy manually use the [Now CLI](https://github.com/zeit/now-cli). Make sure Now is configured to run under `devoorhoede` team.
 
 ## Style
 For styling [Less](http://lesscss.org/) is used following the [BEM naming methodology](http://getbem.com/).

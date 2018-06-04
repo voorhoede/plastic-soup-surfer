@@ -1,5 +1,5 @@
 # Plastic Soup Surfer
-Live at [www.plasticsoupsurfer.org](https://www.plasticsoupsurfer.org/).
+Live at https://plasticsoupsurfer.org/.
 
 ## Getting started
 To run this project environment variables including secrets are needed, these will be [read from a **.env** file](https://github.com/motdotla/dotenv) if present.

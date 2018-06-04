@@ -1,0 +1,33 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Plastic Hunters{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Plastic Hunters',
+        description="A sailing expedition around the Baltic Sea and North Sea. We took samples using a manta trawl, cleaned beaches daily  and made educational Vlogs about our adventures with my 8 year old daughter.",
+        image='/assets/images/header.jpg'
+    ) }}
+
+    <section class="centered-column">
+        <p>
+            Behavioral change starts with awareness; and no better time to start education on plastic pollution than at primary schools. Embarking and finishing in our hometown of Leiden, the Netherlands my family and I went sailing for five months along the coasts of Germany, Denmark, Norway, Sweden, Finland, Estonia and Poland. During our expedition we took samples of the seawater with a manta trawl; looking for micro-plastics. Moreover we picked up plastic debris from the beaches and islands where we moored or anchored. And we made educational Vlogs (in Dutch) about our explorations. (2015 campaign)
+        </p>
+
+        {% from "components/video-player/video-player.html" import videoPlayer %}
+        {{ videoPlayer('https://www.youtube.com/embed/hZWlvMBRf4o?rel=0&amp;showinfo=0') }}
+
+        <p>
+            <a class="button button--primary" href="http://makersradio.nl/plastic-jagers/">Podcast on the expedition</a>
+        </p>
+
+        {% from 'components/quote/quote.html' import quote %}
+        {{ quote('we have to educate our kids on the harm that plastic can bring to our environment.', wide=true) }}
+    </section>
+
+    {% from 'components/partners-list/partners-list.html' import partnersList %}
+    {{ partnersList(['plasticsoup', 'nioz']) }}
+
+{%- endblock -%}

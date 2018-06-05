@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const { join } = require('path');
 const rollup = require('rollup').rollup;
-const uglify = require('rollup-plugin-uglify');
+const { uglify } = require('rollup-plugin-uglify');
 const buble = require('rollup-plugin-buble');
 const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');

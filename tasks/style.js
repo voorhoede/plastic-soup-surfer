@@ -17,7 +17,7 @@ gulp.task('style', buildStyle);
 gulp.task('style:watch', () =>
     gulp.watch(stylesGlob, () => {
         clearLessCacheHack();
-        buildStyle();
+        return buildStyle();
     })
 );
 

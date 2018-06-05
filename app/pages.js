@@ -136,6 +136,7 @@ module.exports = function (router, {constants, nunjucksEnv}) {
     });
 
     router.get('*', ctx => {
+        ctx.status = 404;
         ctx.body = nunjucksEnv.render('views/404/404.html', Object.assign(ctx.state.baseTemplateData, {
             page : '404'
         }));

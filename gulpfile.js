@@ -1,12 +1,10 @@
 const fs = require('fs');
-const path = require('path');
+const { join } = require('path');
 
 require('dotenv').config();
 
-fs.readdirSync(__dirname + "/tasks").forEach(file => {
-    const fullPath = path.join(__dirname + "/tasks", file);
+const tasksDir = join(__dirname, 'tasks');
 
-    if(fs.statSync(fullPath).isFile()) {
-        require(__dirname + "/tasks/" + file);
-    }
+fs.readdirSync(tasksDir).forEach(file => {
+    require(join(tasksDir, file));
 });

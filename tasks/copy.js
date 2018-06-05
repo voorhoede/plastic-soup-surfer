@@ -1,15 +1,14 @@
 const gulp = require('gulp');
+const { join } = require('path');
 
-gulp.task('copy', function () {
-    return gulp.src(process.env.SRC_DIR + '/assets/!(images)/*')
-        .pipe(gulp.dest(process.env.DIST_DIR + '/assets/'));
-});
+const assetsGlob = join(process.env.SRC_DIR, 'assets', '!(images)', '*');
 
-if(process.env.NODE_ENV === 'development') {
-    const watch = require('gulp-watch');
-    gulp.task('copy:watch', ['copy'], function () {
-        watch(process.env.SRC_DIR  + '/assets/!(images)/*', () => {
-            gulp.start('copy');
-        });
-    });
+gulp.task('copy', copyAssets);
+
+gulp.task('copy:watch', () => gulp.watch(assetsGlob, copyAssets));
+
+function copyAssets() {
+    return gulp
+        .src(assetsGlob)
+        .pipe(gulp.dest(join(process.env.DIST_DIR, 'assets')));
 }

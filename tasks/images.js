@@ -6,35 +6,9 @@ gulp.task('images', function() {
         { base: process.env.SRC_DIR, since: gulp.lastRun('images') }
     )
 		.pipe(responsive({
-            'assets/images/map-overlay-s.png' : [
-                {
-                    rename : 'assets/images/map-overlay-s@2x.jpg',
-                    width  : 750
-                },
-
-                {
-                    rename : 'assets/images/map-overlay-s.jpg',
-                    width  : 375
-                }
-            ],
-
-            'assets/images/map-overlay-l.png' : [
-                {
-                    rename : 'assets/images/map-overlay-l.jpg',
-                    width  : 928,
-                    quality : 90
-                }
-            ],
-
             'assets/images/header.jpg' : [
                 {
                     width:1440
-                }
-            ],
-
-            'assets/images/header-s.jpg' : [
-                {
-                    width:768
                 }
             ],
 
@@ -42,18 +16,6 @@ gulp.task('images', function() {
               {
                   width:1440
               }
-            ],
-
-			'assets/images/about-me.jpg' : [
-                {
-                    width:1440
-                }
-            ],
-
-            'assets/images/about-me-s.jpg' : [
-                {
-                    width:768
-                }
             ],
 
 			'assets/images/about-team-merijn.jpg' : [
@@ -91,12 +53,6 @@ gulp.task('images', function() {
             'assets/images/merijn.jpg' : [
                 {
                     width:700
-                }
-            ],
-
-            'assets/images/paddle-board.jpg' : [
-                {
-                    width:600
                 }
             ],
 
@@ -250,13 +206,13 @@ gulp.task('images', function() {
 				}
             ],
 
-			'assets/logos/fujitsu-red-jpg-rgb_tcm127-1146712.png' : [
+			'assets/logos/fujitsu.png' : [
                 {
                     width:200
                 }
             ],
 
-			'assets/logos/logo-Technolyt-payoff-RGB.png' : [
+			'assets/logos/technolyt.png' : [
                 {
                     width:200
                 }
@@ -274,7 +230,7 @@ gulp.task('images', function() {
                 }
             ],
 
-			'assets/logos/recycling-netwerk-vierkant_400x400.png' : [
+			'assets/logos/recycling-netwerk.png' : [
                 {
                     width:200
                 }
@@ -283,7 +239,7 @@ gulp.task('images', function() {
 			'assets/logos/garmin-logo.png': [{ width: 200 }],
 			'assets/logos/ggn.png': [{ width: 200 }],
 			'assets/logos/google.png': [{ width: 200 }],
-			'assets/logos/WR-Logo.png': [{ width: 200 }],
+			'assets/logos/water-ranger.png': [{ width: 200 }],
         }))
 		.pipe(gulp.dest(process.env.DIST_DIR));
 });

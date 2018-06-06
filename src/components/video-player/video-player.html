@@ -1,7 +1,7 @@
 {% macro videoPlayer(src) %}
 <section class="video-player">
-  <div class="video-player__player">
-    <iframe class="video-player__player--embed" src="{{ src }}" allowfullscreen></iframe>
-  </div>
+    <div class="video-player__wrapper">
+        <iframe class="video-player__frame" src="{{ src }}" height="500" allowfullscreen></iframe>
+    </div>
 </section>
 {% endmacro %}

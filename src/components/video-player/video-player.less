@@ -1,19 +1,24 @@
-.video-player__player {
-	position: relative;
-	height: 0;
-	margin: 0 -@margin-default;
-	padding-bottom: 56.25%;
+.video-player {
+    max-width: 70rem;
+    margin-right: auto;
+    margin-left: auto;
+    
+    &__wrapper {
+        position: relative;
+        height: 0;
+        // 16:9 aspect ratio
+        padding-bottom: 56.25%;
+        overflow: hidden;
+    }
 
-	&--embed {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		border: 0;
-	}
-
-	@media @m {
-		margin: 0 0 @margin-double 0;
-	}
+    &__frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}
+.wat {
 }

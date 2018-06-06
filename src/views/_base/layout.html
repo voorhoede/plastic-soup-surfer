@@ -9,7 +9,8 @@
         <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
         <link rel="icon" type="image/png" href="/assets/images/logo.png">
         <script>document.documentElement.classList.remove('no-js')</script>
-        {% include "./header-styles.html" %}
+        <script src="/{{ allJS }}" defer></script>
+        <link rel="stylesheet" href="/{{ mainCSS }}">
         {% include "components/analytics/analytics.html" %}
     </head>
 
@@ -25,7 +26,5 @@
         {% block footer %}
             {% include "components/footer/footer.html" %}
         {%- endblock -%}
-
-        {% include "./footer-scripts.html" %}
     </body>
 </html>

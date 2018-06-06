@@ -12,9 +12,9 @@
 
 	{% if not content.noThumbnail %}
 		{% if content.imageUrl %}
-			<a class="social-card__panel-image" href="{{ content.social.url }}" style="background-image: url('{{ content.imageUrl }}');"></a>
+			<a class="social-card__panel-image" href="{{ content.social.url }}" rel="noopener" style="background-image: url('{{ content.imageUrl }}');"></a>
 		{% else %}
-			<a class="social-card__panel-image fallback" href="{{ content.social.url }}"></a>
+			<a class="social-card__panel-image fallback" href="{{ content.social.url }}" rel="noopener"></a>
 		{% endif %}
 	{% endif %}
 
@@ -23,7 +23,7 @@
 		<div class="social-card__panel-text">
 			{% if content.social %}
 				<div class="social-card__panel-social">
-					<a href="{{ content.social.url }}">
+					<a href="{{ content.social.url }}" rel="noopener">
 						<img src="{{ icons[content.social.type] }}" alt="{{ content.social.type }}">
 					</a>
 				</div>
@@ -34,7 +34,7 @@
 	{% endif %}
 
 	{% if content.call_to_action %}
-		<a href="{{ content.call_to_action.url }}" class="button button--primary button--full-width">{{ content.call_to_action.label }}</a>
+		<a href="{{ content.call_to_action.url }}" rel="noopener" class="button button--primary button--full-width">{{ content.call_to_action.label }}</a>
 	{% endif %}
 </div>
 {% endmacro %}

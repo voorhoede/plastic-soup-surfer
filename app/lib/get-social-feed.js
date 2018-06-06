@@ -1,5 +1,8 @@
 const juicerCache = require('./juicer-cache');
 
+const addRelNoOpener = html =>
+    html.replace(/target=("|')_blank("|')/g, 'target="_blank" rel="noopener"');
+
 function offsetIdToIndex(posts, offsetId) {
     if(isNaN(offsetId)) {
         return 0;
@@ -15,7 +18,7 @@ function offsetIdToIndex(posts, offsetId) {
 function mapPost(post) {
     return {
         id : post.id,
-        body : post.message,
+        body : addRelNoOpener(post.message),
         imageUrl : post.image,
         social : {
             type : post.source.source,

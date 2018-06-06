@@ -11,7 +11,7 @@ customRenderer.link = function(href, title, text) {
 
     let targetAttr = "";
     if(/^https?:\/\//.test(href)) {
-        targetAttr = `target="_blank"`;
+        targetAttr = `target="_blank" rel="noopener"`;
     }
 
     return `<a href="${href}" ${targetAttr} ${titleAttr}>${text}</a>`;

@@ -1,5 +1,6 @@
 .about-foundation {
     display: block;
+    margin-bottom: @margin-double;
 
     @media @m {
         display: flex;
@@ -14,22 +15,22 @@
             width: inherit;
         }
     }
+    
+    .foundation__title {
+        color: @brand-pink-light;
+    }
 
     .foundation {
         margin-bottom: @margin-default;
         padding: @margin-default;
-        background-color: @brand-highlight-light;
-        color: @white;
+        background-color: @grey-light;
+        color: @brand-pink;
 
         @media @m {
             order: 1;
             width: calc(~'60%' - @margin-half);
             margin-bottom: 0;
             padding: @margin-double;
-        }
-
-        h2 {
-            color: @white;
         }
 
         .button {

@@ -1,66 +1,28 @@
-.team {
-    padding: @margin-double 0;
-    background-color: @grey-light;
+.about-team {
+    margin-bottom: @margin-quadruple;
+    padding: @margin-quadruple 0;
+    background-color: @brand-highlight-white;
+    text-align: center;
 
-    .team-list {
+    &__list {
+        display: grid;
+        grid-gap: @margin-double;
+        grid-template-columns: repeat( auto-fit, minmax(15rem, 1fr) );
+    }
+
+    &__item-avatar {
+        width: 100%;
+        max-width: 10rem;
+        height: auto;
+        margin-bottom: @margin-half;
+        border-radius: 50%;
+        
         @media @m {
-            display: flex;
-            margin: 0 -@margin-default;
-            .clearfix();
+            max-width: 12.5rem;
         }
+    }
 
-        @media @m-l {
-            margin: 0 -@margin-double;
-        }
-
-        .team-list-item {
-            margin-bottom: @margin-double;
-            list-style: none;
-            text-align: center;
-
-            @media @m {
-                display: flex;
-                flex-direction: column;
-                width: 25%;
-                padding: 0 @margin-default;
-                float: left;
-            }
-
-            @media @m-l {
-                padding: 0 @margin-double;
-            }
-
-            .team-list-picture {
-                width: 100%;
-                max-width: 15rem;
-                height: auto;
-                margin: 0 auto @margin-default;
-                border-radius: 50%;
-            }
-
-            h3 {
-                width: 100%;
-                font-size: @text-size-default;
-
-                @media @m {
-                    flex: 1 1 auto;
-                }
-            }
-
-            p {
-                display: block;
-                font-size: @text-size-small;
-                line-height: 1;
-
-                @media @m {
-                    flex: 1 1 auto;
-                }
-            }
-
-            a {
-                display: block;
-                width: 100%;
-            }
-        }
+    &__item-description {
+        margin-bottom: 0;
     }
 }

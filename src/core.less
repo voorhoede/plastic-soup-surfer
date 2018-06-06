@@ -1,6 +1,7 @@
 @import (reference) "variables";
 
 html {
+    min-width: 25rem;
     font-size: @text-size-default;
 }
 
@@ -29,7 +30,6 @@ main {
 
 .two-columns {
     display: flex;
-    .clearfix();
 
     .left-column {
         width: calc(~'50% -' @margin-default);
@@ -89,7 +89,7 @@ main {
     }
 
     &--primary {
-        background-color: @brand-pink;
+        background-color: @brand-pink-light;
         font-size: @text-size-bigger;
         transition: background-color 0.3s ease;
         &:hover {
@@ -123,6 +123,7 @@ h1 {
 
 h2,
 .h2 {
+    margin-bottom: @margin-double;
     color: @brand-highlight;
     font-size: @text-size-heading * 0.7;
     line-height: 1;
@@ -155,6 +156,7 @@ p {
 
 a {
     color: @brand-highlight-light;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -165,17 +167,6 @@ strong {
 
 em {
     font-style: italic;
-}
-
-.clearfix() {
-    &:before,
-    &:after {
-        display: table; /* 2 */
-        content: " "; /* 1 */
-    }
-    &:after {
-        clear: both;
-    }
 }
 
 .mobile-hidden {

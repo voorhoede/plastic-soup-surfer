@@ -1,6 +1,5 @@
 @import (reference) "variables";
 @import (reference) "core";
-
 @header-height: 88px;
 @header-height-mobile: 70px;
 @header-border-size: 4px;
@@ -8,17 +7,16 @@
 .site-header {
     z-index: 1;
     position: relative;
-    height:@header-height-mobile;
+    height: @header-height-mobile;
     background-color: @white;
     text-align: center;
-
     @media @m {
         height: @header-height;
     }
 
     .centered-column {
         position: relative;
-        height:100%;
+        height: 100%;
         .valign-center;
     }
 
@@ -26,7 +24,6 @@
         z-index: 1;
         position: relative;
         background-color: @white;
-        .clearfix();
     }
 
     &__logo {
@@ -34,7 +31,6 @@
         top: calc(@header-height / 4);
         left: @margin-default;
         filter: drop-shadow(0 5px 1px rgba(0,0,0,0.4));
-
         @media @m {
             top: @margin-half;
             width: unset;
@@ -43,14 +39,13 @@
     }
 
     &__s2s {
-        display:inline-block;
-        margin:0;
-        font-size:@text-size-bigger;
-        line-height:@header-height-mobile;
+        display: inline-block;
+        margin: 0;
+        font-size: @text-size-bigger;
+        line-height: @header-height-mobile;
         text-shadow: 1px 1px 0 @brand-pink;
         vertical-align: middle;
         .header;
-
         @media @m {
             line-height: @header-height;
             text-shadow: none;
@@ -58,57 +53,53 @@
     }
 
     &__right {
-        height:100%;
-        float:right;
+        height: 100%;
+        float: right;
         .valign-center;
     }
 
     &__right-content {
-        display:inline-block;
+        display: inline-block;
         text-align: right;
         vertical-align: middle;
     }
 
     &__nav {
-        display:inline-block;
-        font-size:@text-size-bigger;
-        font-weight:bold;
+        display: inline-block;
+        font-size: @text-size-bigger;
+        font-weight: bold;
 
         li {
-            display:inline;
-            font-size:@text-size-bigger*.9;
+            display: inline;
+            font-size: @text-size-bigger*.9;
         }
     }
 
     &__item {
-        margin-right:@margin-default;
-        padding-bottom:3px;
-        color:inherit;
+        margin-right: @margin-default;
+        padding-bottom: 3px;
+        color: inherit;
         text-decoration: none;
-
         @media @l {
             margin-right: @margin-double;
         }
 
         li:last-child & {
-            margin-right:0;
+            margin-right: 0;
         }
 
         &--active {
-            border-bottom:5px solid @brand-highlight;
+            border-bottom: 5px solid @brand-highlight;
         }
     }
 
     &__btn-donate {
-        display:block;
-        margin-bottom:@margin-half;
-        clear:both;
-
+        display: block;
+        margin-bottom: @margin-half;
         @media @m {
             padding-right: @margin-half;
             padding-left: @margin-half;
         }
-
         @media @m-l {
             padding-right: @margin-default*1.5;
             padding-left: @margin-default*1.5;
@@ -117,8 +108,8 @@
 
     &__mobile-menu-toggle {
         position: absolute;
-        top: .6rem;
-        right: .6rem;
+        top: 0.6rem;
+        right: 0.6rem;
         width: 3rem;
         height: 3rem;
         padding: 12px;
@@ -127,7 +118,7 @@
         cursor: pointer;
 
         div {
-            position:absolute;
+            position: absolute;
             width: 1.5625rem;
             height: 2px;
             background-color: @brand-highlight;
@@ -164,7 +155,6 @@
         left: 0;
         width: 100%;
         padding-bottom: @margin-default;
-
         transform: translateY(0%);
         background: @white;
         box-shadow: 0 @header-border-size 0 0 rgba(0,0,0,0.15);
@@ -187,6 +177,18 @@
         .site-header__item {
             margin: 0;
         }
+    }
+}
+
+body.menu-active {
+    &::after {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.5);
+        content: '';
     }
 }
 

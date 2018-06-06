@@ -9,6 +9,6 @@ gulp.task('copy:watch', () => gulp.watch(assetsGlob, copyAssets));
 
 function copyAssets() {
     return gulp
-        .src(assetsGlob)
+        .src(assetsGlob, { since: gulp.lastRun('copy') })
         .pipe(gulp.dest(join(process.env.DIST_DIR, 'assets')));
 }

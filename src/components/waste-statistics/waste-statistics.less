@@ -1,6 +1,5 @@
 .waste-statistics {
 	padding: @margin-default 0;
-	background: @grey-light;
 
 	@media @m {
 		padding: @margin-double;
@@ -10,11 +9,24 @@
 	em {
 		color: @brand-pink;
 		font-style: normal;
+		font-weight: bold;
 	}
     
     &__introduction {
         margin-right: auto;
         margin-left: auto;
+    }
+    
+    &__title {
+        width: 15rem;
+        margin-right: auto;
+        margin-bottom: @margin-double;
+        margin-left: auto;
+        text-align: center;
+
+        @media @m {
+        	width: auto;
+        }
     }
 
 	.statistics-sheet {
@@ -22,7 +34,6 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		padding: @margin-double 0 @margin-default 0;
-		.clearfix();
 
 		&__statistic {
 			width: 100%;

@@ -1,5 +1,4 @@
 {%- extends "views/_base/layout.html" -%}
-{% from "components/quote/quote.html" import quote %}
 
 {% block title %}About{% endblock %}
 
@@ -7,12 +6,15 @@
 
 	{% include "components/about-me/about-me.html" %}
 
-	{{ quote('I am not accusing plastic, I am accusing our attitude toward plastic', 'Merijn Tinga') }}
+	{% include "components/waste-statistics/waste-statistics.html" %}
 
-	{% include "components/past-adventures/past-adventures.html" %}
+    {% from 'components/quote/quote.html' import quote %}
+    {{ quote(
+        "Changes in design and legislation should be acted upon with priority wherever there is risk of plastic litter ending up in a river, lake or sea.", wide=true
+    ) }}
 
-	{% include "components/about-team/about-team.html" %}
+    {% include "components/about-team/about-team.html" %}
 
-	{% include "components/about-stichting/about-stichting.html" %}
+    {% include "components/about-stichting/about-stichting.html" %}
 
 {%- endblock -%}

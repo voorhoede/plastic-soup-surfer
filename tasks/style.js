@@ -23,7 +23,7 @@ gulp.task('style:watch', () =>
 
 gulp.task('style:format', () =>
     gulp
-        .src(stylesGlob, { base: './' })
+        .src(stylesGlob, { base: './', since: gulp.lastRun('style:format') })
         .pipe(
             postcss([cssDeclarationSorter({ order: 'smacss' })], {
                 syntax: postcssLess,
@@ -36,7 +36,9 @@ function buildStyle() {
     const environment = process.env.NODE_ENV;
 
     return gulp
-        .src(process.env.SRC_DIR + '/main.less')
+        .src(join(process.env.SRC_DIR, 'main.less'), {
+            since: gulp.lastRun('style'),
+        })
         .pipe(plumber())
         .pipe(gulpif(environment !== 'production', sourcemaps.init()))
         .pipe(

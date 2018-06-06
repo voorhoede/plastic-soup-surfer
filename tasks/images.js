@@ -2,7 +2,9 @@ const gulp = require('gulp');
 const responsive = require('gulp-responsive');
 
 gulp.task('images', function() {
-	return gulp.src(process.env.SRC_DIR + '/**/*.{png,jpg,jpeg}', {base: process.env.SRC_DIR})
+	return gulp.src(process.env.SRC_DIR + '/**/*.{png,jpg,jpeg}',
+        { base: process.env.SRC_DIR, since: gulp.lastRun('images') }
+    )
 		.pipe(responsive({
             'assets/images/map-overlay-s.png' : [
                 {
@@ -59,6 +61,8 @@ gulp.task('images', function() {
                     width:360
                 }
             ],
+
+            'assets/images/about-team-dalinde-theunissen.jpg': [{ width: 400 }],
 
 			'assets/images/about-team-eelkedekker.jpg' : [
                 {

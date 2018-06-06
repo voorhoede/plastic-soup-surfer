@@ -1,17 +1,13 @@
-require('dotenv').config(__dirname + '/..');
+'use strict';
 
-const http = require('http');
-const https = require('https');
+require('dotenv').config();
+
 const Koa = require('koa');
-const consistentUrls = require('koa-consistent-urls')
+const consistentUrls = require('koa-consistent-urls');
 const Router = require('koa-router');
 const flash = require('koa-flash-simple');
 const session = require('koa-session');
-const fs = require('fs');
-const path = require('path');
-const assert = require('assert');
 const xhr = require('./lib/koa-xhr');
-const contentfulCache = require('./lib/contentful-cache');
 const juicerCache = require('./lib/juicer-cache');
 const nunjucks = require('nunjucks');
 
@@ -31,10 +27,12 @@ const appCtxt = {
 
 const mainRouter = new Router();
 
-app.use(consistentUrls({
-  www: false,
-  trailingSlash: false,
-}))
+app.use(
+    consistentUrls({
+        www: false,
+        trailingSlash: false,
+    })
+);
 
 mainRouter.redirect('/exploot', '/donate');
 mainRouter.redirect('/expedition', '/adventures/source2sea');

@@ -1,6 +1,7 @@
 {%- extends "views/_base/layout.html" -%}
 
 {% block title %}Plastic Hunters{% endblock %}
+{% block viewClass %}adventure-view{% endblock %}
 
 {%- block content -%}
 
@@ -13,15 +14,11 @@
 
     <section class="centered-column">
         <p>
-            Behavioral change starts with awareness; and no better time to start education on plastic pollution than at primary schools. Embarking and finishing in our hometown of Leiden, the Netherlands my family and I went sailing for five months along the coasts of Germany, Denmark, Norway, Sweden, Finland, Estonia and Poland. During our expedition we took samples of the seawater with a manta trawl; looking for micro-plastics. Moreover we picked up plastic debris from the beaches and islands where we moored or anchored. And we made educational Vlogs (in Dutch) about our explorations. (2015 campaign)
+            Behavioral change starts with awareness; and no better time to start education on plastic pollution than at primary schools. Embarking and finishing in our hometown of Leiden, the Netherlands my family and I went sailing for five months along the coasts of Germany, Denmark, Norway, Sweden, Finland, Estonia and Poland. During our expedition we took samples of the seawater with a manta trawl; looking for micro-plastics. Moreover we picked up plastic debris from the beaches and islands where we moored or anchored. We made educational Vlogs (in Dutch) about our explorations and also went on a <a href="http://makersradio.nl/plastic-jagers/">makersradio podcast</a>.
         </p>
 
         {% from "components/video-player/video-player.html" import videoPlayer %}
         {{ videoPlayer('https://www.youtube.com/embed/hZWlvMBRf4o?rel=0&amp;showinfo=0') }}
-
-        <p>
-            <a class="button button--primary" href="http://makersradio.nl/plastic-jagers/">Podcast on the expedition</a>
-        </p>
 
         {% from 'components/quote/quote.html' import quote %}
         {{ quote('we have to educate our kids on the harm that plastic can bring to our environment.', wide=true) }}

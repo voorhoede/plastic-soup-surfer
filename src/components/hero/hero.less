@@ -23,7 +23,7 @@
     .hero__image {
         display: flex;
         position: relative;
-        margin-bottom: @margin-double;
+        margin-bottom: @margin-quadruple;
 
         &__wave {
             position: absolute;
@@ -49,7 +49,7 @@
         }
 
         @media @m {
-            height: 25rem;
+            height: 35rem;
 
             &__wave {
                 background: rgba(0, 0, 0, 0.3);
@@ -64,6 +64,7 @@
     .hero__content {
         .title, .subtitle {
             color: @brand-blue;
+            line-height: 1.2;
         }
 
         .description {

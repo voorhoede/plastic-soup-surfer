@@ -1,0 +1,27 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Message on a bottle{% endblock %}
+{% block viewClass %}adventure-view{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Message on a bottle',
+        description="Record attempt to cross the North Sea on a kite-foil board from Scheveningen (NL) to Lowestoft (GB). The surfboard was made from small plastic bottles. The expedition marked the start of a petition that called for the implementation of deposit fee on small PET bottles.",
+        image='/assets/images/header--beach-stand.jpg'
+    ) }}
+
+    <section class="centered-column">
+        <p>
+            On the 3rd of September 2016 the Plastic Soup Surfer and board shaper Hoogendijk set of to cross the North Sea on kite-foil board made from plastic bottles. The crossing marked the start of a petition that called for the implementation of deposit fee on small PET bottles of which 75 million are littered in the Netherlands on a yearly basis. The petition got signed by 60 thousand people and was presented in parliament in February 2017. The crossing proved a bigger challenge than expected due to changing weather conditions, current and sea state.
+        </p>
+
+        {% from "components/video-player/video-player.html" import videoPlayer %}
+        {{ videoPlayer('https://www.youtube.com/embed/75QhoALVd10?rel=0&amp;showinfo=0') }}
+
+        {% from 'components/quote/quote.html' import quote %}
+        {{ quote('We need to tell the story now and to anyone that will listen.', wide=true) }}
+    </section>
+
+{%- endblock -%}

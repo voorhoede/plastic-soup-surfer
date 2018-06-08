@@ -1,0 +1,29 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}The first Plastic Soup Board{% endblock %}
+{% block viewClass %}adventure-view{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='The first Plastic Soup Board',
+        description="Visual artist and surfer Merijn Tinga makes his first surfboard from plastic waste found on his local beach. It is an artwork and a statement. To enhance the message he surfs this board along the entire Dutch coast; from Belgium to Germany.",
+        image='/assets/images/header--canoe.jpg'
+    ) }}
+
+    <section class="centered-column">
+        <img src="/assets/images/adventure-content--board-infographic.png" width="960" alt="" class="adventure-view__image">
+
+        <p>
+            In 2014 the first surfboard from plastic waste is made in the art studio of Tinga. A welded metal mold, a gas torch and an ironing rod is used to melt the plastic into a surfboard shape. This heavy surfboard is an artwork and a statement. After waiting a few months for the right wind conditions he embarks in August of that year on a three day expedition up the 350 kilometer Dutch coast. This trip marks the birth of the activist in the visual artist. The expedition goal is to raise general awareness and is a statement on state of our seas. “The surfboard was an artwork and I set on the journey as an artist. Three days later I got of the board again as an activist, as the Plastic Soup Surfer.”
+        </p>
+
+        {% from "components/video-player/video-player.html" import videoPlayer %}
+        {{ videoPlayer('https://www.youtube.com/embed/ZoTcSRcD3Vw?rel=0&amp;showinfo=0') }}
+
+        {% from 'components/quote/quote.html' import quote %}
+        {{ quote('I set of as an artist. Three days later I got of the board as the Plastic Soup Surfer.', wide=true) }}
+    </section>
+
+{%- endblock -%}

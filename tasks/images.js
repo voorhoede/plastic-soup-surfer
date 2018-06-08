@@ -22,8 +22,7 @@ gulp.task('images', function() {
                         rename: 'assets/images/logo-large.png',
                     },
                 ],
-                'assets/images/header.jpg': [{ width: 1440 }],
-                'assets/images/header-home.jpg': [{ width: 1440 }],
+                'assets/images/header--*.jpg': [{ width: 1440 }],
                 'assets/images/about-team-*.jpg': [{ width: 360 }],
                 'assets/images/about-stichting.jpg': [{ width: 600 }],
                 'assets/images/merijn.jpg': [{ width: 700 }],
@@ -31,7 +30,7 @@ gulp.task('images', function() {
                 'assets/images/plastic-soup.jpg': [{ width: 1024 }],
                 'assets/images/plastic-soup-s.jpg': [{ width: 768 }],
                 'assets/images/adventure--*.jpg': [{ width: 660 }],
-
+                'assets/images/adventure-content--*': [{ width: 960 }],
                 'assets/logos/*.png': [{ width: 200 }],
             })
         )

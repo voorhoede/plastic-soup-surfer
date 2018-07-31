@@ -12,7 +12,7 @@
 
 {% macro partnerItem(partner) %}
     <li class="partners-list__item">
-        <a href="{{ partner.url }}">
+        <a href="{{ partner.url }}" class="partners-list__item-link">
             <img class="partners-list__company-logo" src="/assets/logos/{{ partner.logo }}" alt="{{ partner.name }}">
         </a>
     </li>

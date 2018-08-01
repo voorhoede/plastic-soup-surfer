@@ -1,7 +1,6 @@
 {
     "public": false,
     "env": {
-        "NODE_ENV": "production",
         "JUICER_FEED": "plastic-soup",
         "SRC_DIR": "src",
         "DIST_DIR": "dist",

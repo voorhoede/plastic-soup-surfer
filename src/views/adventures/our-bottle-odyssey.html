@@ -1,0 +1,46 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Our Bottle Odyssey{% endblock %}
+{% block viewClass %}adventure-view{% endblock %}
+
+{%- block content -%}
+
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Our bottle odyssey',
+        description="A foil-windsurfing expedition on a board 3D printed from littered plastic bottles. From the Seine river to Rhine rivermouth. This 8 day expedition will mark the countdown to World Clean Up Day.",
+        image='/assets/images/header--printing.jpg'
+    ) }}
+
+    <section class="centered-column">
+        <h2>Goal</h2>
+        <p>The Plastic Soup Surfer fights for the introduction of deposit fee in Europe as a means to prevent plastic bottles from being littered.</p>
+        <p>You can help! I challenge you to Pick Up 10 littered bottles and ‘snap’ your catch using our fun and easy webapp: <a href="https://pickup10.org/">PickUp10.org</a>. With your data we can <a href="/adventures/bailiffs">go up to European policymakers and companies</a>.
+        </p>
+
+        <img src="/assets/images/adventure-content--map.jpg" width="960" alt="" class="adventure-view__image">
+
+        <p>
+            The iconic rivers the Seine and the Rhine are chosen as start and finish because of their role in the transportation of plastic waste from inland sources; emphasizing ‘Plastic Soup’ is not an abstract problem but is tangible and starts as litter in your own back yard. The finish in The Hague coincides with <a href='https://www.plasticsoupfoundation.org/2018/07/grootste-opruimactie-ooit-in-nederland/'>World Clean Up Day</a> on 15th of September which fully supports his key message.
+        </p>
+    </section>
+
+    {% from 'components/partners-list/partners-list.html' import partnersList %}
+    {{ partnersList([
+        'severne',
+        'un',
+        'worldEnvironmentDay',
+        'beatPlasticPolution',
+        '10xl',
+        'worldCleanupDay',
+        'fujitsu',
+        'cleanSeas',
+        'millro',
+        'starboard',
+        'technolyt',
+        'plasticsoup',
+        'deVoorhoede',
+        'hikeOne'
+    ]) }}
+
+{%- endblock -%}

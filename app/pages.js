@@ -124,16 +124,22 @@ module.exports = function(router, { constants, nunjucksEnv }) {
     });
 
     router.get('adventures', ctx => {
-        ctx.body = nunjucksEnv.render('views/adventures/overview.html', {
-            ...ctx.state.baseTemplateData,
-            page: 'adventures',
-        });
+        ctx.body = nunjucksEnv.render(
+            'views/adventures/overview.html',
+            {
+                ...ctx.state.baseTemplateData,
+                page: 'adventures',
+            }
+        );
     });
 
     router.get('adventures/:name', ctx => {
         ctx.body = nunjucksEnv.render(
             `views/adventures/${ctx.params.name}.html`,
-            ctx.state.baseTemplateData
+            {
+                ...ctx.state.baseTemplateData,
+                page: 'adventures',
+            }
         );
     });
 
@@ -141,9 +147,10 @@ module.exports = function(router, { constants, nunjucksEnv }) {
         ctx.status = 404;
         ctx.body = nunjucksEnv.render(
             'views/404/404.html',
-            Object.assign(ctx.state.baseTemplateData, {
+            {
+                ...ctx.state.baseTemplateData,
                 page: '404',
-            })
+            }
         );
     });
 };

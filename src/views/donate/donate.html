@@ -6,7 +6,7 @@
 
 {%- block content -%}
 	{% if donationState == "success" %}
-		{{ notification('Your donation was successful. Thank you!') }}
+		{{ notification('Your donation was successful. Thank you! If you want to be kept updated on our work, please subscribe to our quarterly newsletter.') }}
 	{% elif error %}
 		{{ notification(error) }}
 	{% endif %}

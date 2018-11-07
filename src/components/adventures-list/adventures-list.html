@@ -8,17 +8,17 @@
 
 {% macro adventureItem(adventure) %}
     <li class="adventure">
-        <div class="adventure__head">
+        <a class="adventure__head" href="{{ adventure.url }}">
             <img
                 src="/assets/images/adventure--{{ adventure.image }}.jpg"
                 alt=""
                 class="adventure__image"
             >
             <h4 class="adventure__title h3">{{ adventure.title }}</h4>
-        </div>
+        </a>
         <p>
             {{ adventure.description }}
-            <a href="{{ adventure.url }}" class="adventure__details-link">
+            <a class="adventure__call-to-action" href="{{ adventure.url }}">
                 See more
             </a>
         </p>

@@ -13,13 +13,7 @@ const { join } = require('path');
 const stylesGlob = join(process.env.SRC_DIR, '**', '*.less');
 
 gulp.task('style', buildStyle);
-
-gulp.task('style:watch', () =>
-    gulp.watch(stylesGlob, () => {
-        clearLessCacheHack();
-        return buildStyle();
-    })
-);
+gulp.task('style:watch', () => gulp.watch(stylesGlob, buildStyle));
 
 gulp.task('style:format', () =>
     gulp
@@ -54,28 +48,4 @@ function buildStyle() {
         .pipe(gulpif(environment === 'production', cleanCSS()))
         .pipe(gulpif(environment !== 'production', sourcemaps.write('./')))
         .pipe(gulp.dest(process.env.DIST_DIR + '/assets/css/'));
-}
-
-function clearLessCacheHack() {
-    const gulpLessVersion = require('../package-lock.json').dependencies[
-        'gulp-less'
-    ].version;
-
-    if (gulpLessVersion !== '4.0.0') {
-        throw new Error(`
-            This is a temporary hacky workaround to solve:
-            https://github.com/less/less.js/issues/3185
-            Remove when the issue is solved.
-        `);
-    }
-
-    const less = require('less');
-    const fileManagers =
-        (less.environment && less.environment.fileManagers) || [];
-
-    fileManagers.forEach(fileManager => {
-        if (fileManager.contents) {
-            fileManager.contents = {};
-        }
-    });
 }

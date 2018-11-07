@@ -25,6 +25,9 @@
         </p>
     </section>
 
+    {% from "components/video-player/video-player.html" import videoPlayer %}
+    {{ videoPlayer('https://www.youtube.com/embed/LghRiOv4TL4?rel=0&amp;showinfo=0') }}
+
     {% from 'components/partners-list/partners-list.html' import partnersList %}
     {{ partnersList([
         'severne',

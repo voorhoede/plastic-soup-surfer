@@ -5,8 +5,16 @@
 {% block viewClass %}donate-view{% endblock %}
 
 {%- block content -%}
+    {% set donationState = 'success' %}
 	{% if donationState == "success" %}
-		{{ notification('Your donation was successful. Thank you! If you want to be kept updated on our work, please subscribe to our quarterly newsletter.') }}
+		{{ notification(
+            'Your donation was successful.
+            Thank you! If you want to be kept updated on our work,
+            please subscribe to
+            <a href="http://plasticsoupsurfer.us9.list-manage1.com/subscribe?u=913b66d5123f4d287fe729350&id=956e13cc1f">
+                our quarterly newsletter
+            </a>.'
+        ) }}
 	{% elif error %}
 		{{ notification(error) }}
 	{% endif %}

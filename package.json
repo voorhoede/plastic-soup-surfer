@@ -53,7 +53,7 @@
         "nunjucks": "^3.0.0",
         "promise-polyfill": "^8.0.0",
         "shortid": "^2.2.8",
-        "through2": "^2.0.3",
+        "through2": "^3.0.0",
         "write-file-atomic": "^2.3.0"
     },
     "devDependencies": {
@@ -62,7 +62,7 @@
         "del": "^3.0.0",
         "gulp": "^4.0.0",
         "gulp-autoprefixer": "^6.0.0",
-        "gulp-clean-css": "^3.0.4",
+        "gulp-clean-css": "^4.0.0",
         "gulp-if": "^2.0.2",
         "gulp-less": "^4.0.0",
         "gulp-plumber": "^1.1.0",
@@ -75,7 +75,7 @@
         "npm-run-all": "^4.1.2",
         "plek": "^3.0.0",
         "postcss-less": "^3.0.0",
-        "rollup": "^0.66.0",
+        "rollup": "^0.67.0",
         "rollup-plugin-buble": "^0.19.2",
         "rollup-plugin-commonjs": "^9.1.0",
         "rollup-plugin-multi-entry": "^2.0.1",

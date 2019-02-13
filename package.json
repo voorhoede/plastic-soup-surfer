@@ -57,7 +57,7 @@
         "write-file-atomic": "^2.3.0"
     },
     "devDependencies": {
-        "browser-sync": "^2.24.4",
+        "browser-sync": "^2.26.3",
         "css-declaration-sorter": "^4.0.0",
         "del": "^3.0.0",
         "gulp": "^4.0.0",

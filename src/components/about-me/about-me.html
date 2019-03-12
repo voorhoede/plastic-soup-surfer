@@ -1,22 +1,25 @@
 <section class="about-me">
-    <div class="about-me__content centered-column">
-        <h2 class="header">The Plastic Soup Surfer</h2>
-        <p>
-            Merijn Tinga, better known as The Plastic Soup Surfer, is on a mission. He wants to stop the increasing plastic pollution of the marine environment. His campaigns are aimed at preventing plastic litter. The surfboards he used for this expedition are made from plastic litter and are a statement by themselves.
-        </p>
-        <p>
-            Merijn Tinga is a trained biologist, has a career as a visual artist and in now a full time plastic activist.
-        </p>
+    <div class="centered-column about-me__columns">
+        <div class="about-me__content">
+            <h2 class="header">The Plastic Soup Surfer</h2>
+            <p>
+                Merijn Tinga, better known as The Plastic Soup Surfer, is on a mission. He wants to stop the increasing plastic pollution of the marine environment. His campaigns are aimed at preventing plastic litter. The surfboards he used for this expedition are made from plastic litter and are a statement by themselves.
+            </p>
+            <p>
+                Merijn Tinga is a trained biologist, has a career as a visual artist and in now a full time plastic activist.
+            </p>
+            <div class="mobile-hidden">
+                {% from 'components/quote/quote.html' import quote %}
+                {{ quote(
+                    "Plastic waste should not exist at all, it should be regarded as a resource.", wide=true
+                ) }}
+            </div>
+        </div>
 
-        <div class="mobile-hidden">
-            {% from 'components/quote/quote.html' import quote %}
-            {{ quote(
-                "Plastic waste should not exist at all, it should be regarded as a resource.", wide=true
-            ) }}
+        <div class="about-me__image">
+            <img src="/assets/images/merijn.jpg" alt="">
         </div>
     </div>
-
-    <img src="/assets/images/merijn.jpg" alt="" class="about-me__image">
 
     <img src="/assets/icons/expedition-wave.svg" alt="" class="about-me__wave">
 </section>

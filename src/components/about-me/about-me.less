@@ -2,7 +2,7 @@
     position: relative;
     margin-bottom: @margin-double;
     padding-top: @margin-double;
-    
+
     @media @m {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -12,12 +12,20 @@
 
     &__content {
         margin-right: 0;
+
+        @media only screen and (min-width: 1280px) {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            justify-self: flex-end;
+            margin-left: 0;
+        }
     }
 
     &__image {
         width: 75%;
         max-width: 35rem;
-        
+
         @media @m {
             margin-top: @margin-quadruple;
         }

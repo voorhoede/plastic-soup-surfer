@@ -123,22 +123,22 @@ module.exports = function(router, { constants, nunjucksEnv }) {
         );
     });
 
-    router.get('adventures', ctx => {
+    router.get('campaigns', ctx => {
         ctx.body = nunjucksEnv.render(
-            'views/adventures/overview.html',
+            'views/campaigns/overview.html',
             {
                 ...ctx.state.baseTemplateData,
-                page: 'adventures',
+                page: 'campaigns',
             }
         );
     });
 
-    router.get('adventures/:name', ctx => {
+    router.get('campaigns/:name', ctx => {
         ctx.body = nunjucksEnv.render(
-            `views/adventures/${ctx.params.name}.html`,
+            `views/campaigns/${ctx.params.name}.html`,
             {
                 ...ctx.state.baseTemplateData,
-                page: 'adventures',
+                page: 'campaigns',
             }
         );
     });

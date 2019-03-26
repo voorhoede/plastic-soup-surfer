@@ -1,0 +1,28 @@
+.sequential-article {
+    position: relative;
+    margin-left: 1rem;
+    padding: 0 0 2rem 3rem;
+    border-left: 1px solid @grey;
+
+    @media @m {
+        margin-left: 1.5625rem;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -1rem;
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        background: @grey;
+        border-radius: 50%;
+
+        @media @m {
+            left: -1.5625rem;
+            width: 3.125rem;
+            height: 3.125rem;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+<section class="past-campaigns centered-column">
+	<h3 class="h3-alt">Previous campaign:</h3>
+
+    {% from 'components/campaign-list/campaign-list.html' import campaignList %}
+    {{ campaignList(3) }}
+
+    <a href="/campaigns" class="past-campaigns__details-link">See all campaigns</a>
+</section>

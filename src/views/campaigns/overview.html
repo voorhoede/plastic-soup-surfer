@@ -1,6 +1,6 @@
 {%- extends "views/_base/layout.html" -%}
 
-{% block title %}Adventures{% endblock %}
+{% block title %}Campaigns{% endblock %}
 
 {%- block content -%}
 
@@ -14,9 +14,9 @@
     ) }}
 
     <section class="centered-column">
-        <h2 class="h3 h3-alt">My other adventures:</h2>
-        {% from 'components/adventures-list/adventures-list.html' import adventuresList %}
-        {{ adventuresList() }}
+        <h2 class="h3 h3-alt">My other campaigns:</h2>
+        {% from 'components/campaigns-list/campaigns-list.html' import campaignsList %}
+        {{ campaignsList() }}
     </section>
 
 {%- endblock -%}

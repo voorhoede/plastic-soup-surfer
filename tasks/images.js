@@ -29,8 +29,8 @@ gulp.task('images', function() {
                 'assets/images/pickup10-app-hand.png': [{ width: 300 }],
                 'assets/images/plastic-soup.jpg': [{ width: 1024 }],
                 'assets/images/plastic-soup-s.jpg': [{ width: 768 }],
-                'assets/images/adventure--*.jpg': [{ width: 660 }],
-                'assets/images/adventure-content--*': [{ width: 960 }],
+                'assets/images/campaign--*.jpg': [{ width: 660 }],
+                'assets/images/campaign-content--*': [{ width: 960 }],
                 'assets/logos/*.png': [{ width: 200 }],
             })
         )

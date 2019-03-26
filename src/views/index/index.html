@@ -6,23 +6,23 @@
 
     {% from 'components/hero/hero.html' import hero %}
     {{ hero(
-        title='Plastic Avengers Manifest',
-        subtitle='My current campaign:',
-        description="These 5 directives are essential to anyone - individual, NGO, company or legislator - that wants to practically and effectively fight plastic pollution. To really stop the flow of plastic entering our ocean we need to change our attitude towards plastic!",
-        image='/assets/images/header--home.jpg',
-        button={url: 'https://plasticavengersmanifest.org/', text: 'Support the manifest!'}
+        title='Targeted creative campaigning against plastic polution!',
+        image='/assets/images/header--home.jpg'
     ) }}
 
-    {% include "components/introduction-text/introduction-text.html" %}
+    <!-- {% include "components/introduction-text/introduction-text.html" %} -->
 
-    {% include "components/past-campaigns/past-campaigns.html" %}
+    <!-- {% include "components/past-campaigns/past-campaigns.html" %} -->
 
-    {% include "components/achievements/achievements.html" %}
+    <!-- {% include "components/achievements/achievements.html" %} -->
+
+    {% include "components/taking-action/taking-action.html" %}
+
+    {% include "components/events-list/events-list.html" %}
 
     {% include "components/call-to-donate/call-to-donate.html" %}
 
     {% include "components/social-media-carousel/social-media-carousel.html" %}
 
-    {% include "components/events-list/events-list.html" %}
 
 {%- endblock -%}

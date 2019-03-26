@@ -1,0 +1,19 @@
+{% from "../text-image/text-image.html" import textImage %}
+<section class="taking-action centered-column">
+    <h2>Taking action</h2>
+
+    {% call textImage('/assets/images/campaign--pickup10-bottle.jpg') %}
+        <h3>henk</h3>
+        <p>henothjeiothjteoi</p>
+    {% endcall %}
+
+    {% call textImage('/assets/images/campaign--pickup10-bottle.jpg', true) %}
+        <h3>henk</h3>
+        <p>henothjeiothjteoi</p>
+    {% endcall %}
+
+    {% call textImage('/assets/images/campaign--pickup10-bottle.jpg') %}
+        <h3>henk</h3>
+        <p>henothjeiothjteoi</p>
+    {% endcall %}
+</section>

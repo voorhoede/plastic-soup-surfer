@@ -1,0 +1,33 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Vision{% endblock %}
+{% block viewClass %}vision-view{% endblock %}
+
+{%- block content -%}
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Waarom producenten hun verantwoordelijkheid niet nemen',
+        image='/assets/images/header--home.jpg'
+    ) }}
+
+    {% from 'components/sequential-article/sequential-article.html' import sequentialArticle %}
+
+    <div class="centered-column">
+        {% call sequentialArticle() %}
+            <h2>Huidige situatie werkt niet</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et nisl quis purus gravida vestibulum at vehicula enim. Phasellus eget nisl justo. Suspendisse potenti. Quisque eu lorem et ante gravida aliquam molestie nec justo. Phasellus tincidunt sem lectus, nec finibus nisi dapibus non. Sed dictum auctor ligula, eget fringilla arcu.</p>
+        {% endcall %}
+
+        {% call sequentialArticle() %}
+            <h2>Waarom? Uitleg</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et nisl quis purus gravida vestibulum at vehicula enim. Phasellus eget nisl justo. Suspendisse potenti. Quisque eu lorem et ante gravida aliquam molestie nec justo. Phasellus tincidunt sem lectus, nec finibus nisi dapibus non. Sed dictum auctor ligula, eget fringilla arcu. Vestibulum pharetra leo vel pulvinar semper. Maecenas suscipit leo quis nunc pellentesque mattis. Vivamus vel magna pharetra massa commodo iaculis. Sed finibus elementum odio, id commodo turpis convallis eu. Etiam a leo sem.</p>
+        {% endcall %}
+
+        {% call sequentialArticle() %}
+            <h2>Hoe moet het wel?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et nisl quis purus gravida vestibulum at vehicula enim. Phasellus eget nisl justo. Suspendisse potenti. Quisque eu lorem et ante gravida aliquam molestie nec justo. Phasellus tincidunt sem lectus, nec finibus nisi dapibus non.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et nisl quis purus gravida vestibulum at vehicula enim. Phasellus eget nisl justo. Suspendisse potenti. Quisque eu lorem et ante gravida aliquam molestie nec justo. Phasellus tincidunt sem lectus, nec finibus nisi dapibus non.</p>
+        {% endcall %}
+    </div>
+
+{%- endblock -%}

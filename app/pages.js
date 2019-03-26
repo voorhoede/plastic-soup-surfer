@@ -143,6 +143,16 @@ module.exports = function(router, { constants, nunjucksEnv }) {
         );
     });
 
+    router.get('vision', ctx => {
+        ctx.body = nunjucksEnv.render(
+            'views/vision/vision.html',
+            {
+                ...ctx.state.baseTemplateData,
+                page: 'vision',
+            }
+        );
+    });
+
     router.get('*', ctx => {
         ctx.status = 404;
         ctx.body = nunjucksEnv.render(

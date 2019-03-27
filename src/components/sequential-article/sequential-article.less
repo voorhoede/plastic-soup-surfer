@@ -1,28 +1,54 @@
 .sequential-article {
     position: relative;
-    margin-left: 1rem;
-    padding: 0 0 2rem 3rem;
-    border-left: 1px solid @grey;
+    margin-left: 16px;
+    padding: 0 0 32px 48px;
+    border-left: 3px solid @brand-highlight;
 
     @media @m {
-        margin-left: 1.5625rem;
+        margin-left: 25px;
+    }
+
+    &:last-of-type {
+        border: none;
+        margin-left: calc(16px + 3px);
+
+        @media @m {
+            margin-left: calc(25px + 3px);
+        }
+
     }
 
     &::before {
+        content: "";
         display: block;
         position: absolute;
         top: 0;
-        left: -1rem;
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-        background: @grey;
-        content: "";
+        left: -12px;
+        width: 21px;
+        height: 31px;
+        background-image: url("../icons/sequential-middle.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 
-        @media @m {
-            left: -1.5625rem;
-            width: 3.125rem;
-            height: 3.125rem;
+    &--first {
+        &::before {
+            background-image: url("../icons/sequential-start.svg");
+        }
+    }
+
+    &--last {
+        &::before {
+            background-image: url("../icons/sequential-end.svg");
+        }
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        color: @brand-blue;
+
+         @media @m {
+            font-size: 2.25rem;
         }
     }
 }

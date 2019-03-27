@@ -1,5 +1,5 @@
-{% macro sequentialArticle() %}
-    <article class="sequential-article">
+{% macro sequentialArticle(position) %}
+    <article class="sequential-article {% if position == 'first' %} sequential-article--first {% elseif position == 'last' %} sequential-article--last {% endif %}">
         {{ caller() }}
     </article>
 {% endmacro %}

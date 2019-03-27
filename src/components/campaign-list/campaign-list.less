@@ -27,12 +27,27 @@
         border-radius: 6px;
     }
 
-    &__title {
+    &__header {
         position: absolute;
         bottom: 0;
         left: @margin-narrow;
+    }
+
+    &__title {
         color: @white;
         text-shadow: 2px 2px 0 @brand-blue;
+        text-transform: uppercase;
+    }
+
+    &__label {
+        display: inline-block;
+        margin-bottom: 5px;
+        padding: 2px 8px 1px;
+        border-radius: 14px;
+        background: @white;
+        color: @brand-highlight;
+        font-size: @text-size-smaller;
+        line-height: 1;
         text-transform: uppercase;
     }
 

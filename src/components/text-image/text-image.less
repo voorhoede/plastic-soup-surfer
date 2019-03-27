@@ -28,22 +28,23 @@
 
         & a {
             display: inline-block;
-            margin-bottom: @margin-default;
             color: @brand-pink;
             text-transform: uppercase;
+            margin-bottom: @margin-default;
 
             &::after {
-                margin-left: @margin-half;
                 content: ">";
+                margin-left: @margin-half;
             }
         }
     }
 
     &__image-container {
         position: relative;
-        order: 1;
-        max-height: 250px;
+        height: 270px;
         overflow: hidden;
+        order: 1;
+        border-radius: 4px;
 
         @media @m {
             width: calc(50% - 30px);
@@ -54,8 +55,9 @@
     &__image {
         position: absolute;
         top: 50%;
-        width: 100%;
         transform: translateY(-50%);
+        width: 100%;
+        border-radius: 4px;
     }
 }
 

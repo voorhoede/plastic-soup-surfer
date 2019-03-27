@@ -13,25 +13,49 @@
         padding: @margin-default @margin-default 0 @margin-default;
 
         @media @m {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: calc(50% - @margin-default);
+            width: calc(50% - 30px);
             padding: 0;
+        }
+
+        & .text-image__title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+
+            @media @m {
+                font-size: 2.25rem;
+            }
+        }
+
+        & a {
+            display: inline-block;
+            margin-bottom: @margin-default;
+            color: @brand-pink;
+            text-transform: uppercase;
+
+            &::after {
+                margin-left: @margin-half;
+                content: ">";
+            }
         }
     }
 
     &__image-container {
+        position: relative;
         order: 1;
+        max-height: 250px;
+        overflow: hidden;
 
         @media @m {
-            width: calc(50% - @margin-default);
-            margin-right: @margin-double;
+            width: calc(50% - 30px);
+            margin-right: 60px;
         }
     }
 
     &__image {
+        position: absolute;
+        top: 50%;
         width: 100%;
+        transform: translateY(-50%);
     }
 }
 
@@ -39,7 +63,7 @@
     @media @m {
         & .text-image__content-container {
             order: 1;
-            margin-right: @margin-double;
+            margin-right: 60px;
         }
 
         & .text-image__image-container {

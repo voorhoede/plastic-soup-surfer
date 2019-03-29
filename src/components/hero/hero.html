@@ -16,9 +16,11 @@
                 {% endif %}
                 {{ title }}
             </h2>
+            {% if description %}
             <p class="description">
                 {{ description }}
             </p>
+            {% endif %}
             {% if button %}
                 <a
                     href="{{ button.url }}"

@@ -31,6 +31,7 @@ gulp.task('images', function() {
                 'assets/images/plastic-soup-s.jpg': [{ width: 768 }],
                 'assets/images/campaign--*.jpg': [{ width: 660 }],
                 'assets/images/campaign-content--*': [{ width: 960 }],
+                'assets/images/take-action--*.jpg': [{ width: 600 }],
                 'assets/logos/*.png': [{ width: 200 }],
             })
         )

@@ -14,7 +14,10 @@
                 alt=""
                 class="campaign__image"
             >
-            <h4 class="campaign__title h3">{{ campaign.title }}</h4>
+            <div class="campaign__header">
+                <span class="campaign__label">{{ campaign.label }}</span>
+                <h4 class="campaign__title h3">{{ campaign.title }}</h4>
+            </div>
         </a>
         <p>
             {{ campaign.description }}
@@ -30,48 +33,56 @@
         title: 'Pick up 10',
         description: 'This is the ‘data-revolution’ that gives us the power to confront policy makers and companies.',
         image: 'pickup10-bottle',
-        url: '/campaigns/pickup10'
+        url: '/campaigns/pickup10',
+        label: 'campaign'
     },
     {
         title: 'Our bottle odyssey',
         description: 'A foil-windsurfing expedition on a board 3D printed from littered plastic bottles. From the Seine river to Rhine rivermouth.',
         image: 'odyssey-bottle',
-        url: '/campaigns/our-bottle-odyssey'
+        url: '/campaigns/our-bottle-odyssey',
+        label: 'documentary'
     },
     {
         title: 'The resolution',
         description: 'With 60.000 signatures we urged the government to add a deposit fee to plastic bottles.',
         image: 'resolution-delivery',
-        url: '/campaigns/resolution'
+        url: '/campaigns/resolution',
+        label: 'documentary'
     },
     {
         title: 'Sending bailiffs',
         description: 'World first use of bailiffs to confront CEOs of plastic producing companies.',
         image: 'bailiffs',
-        url: '/campaigns/bailiffs'
+        url: '/campaigns/bailiffs',
+        label: 'expedition'
     },
     {
         title: 'From source to sea',
         description: 'A 1000km Stand Up Paddle expedition showing the role rivers play in plastic pollution transport.',
         image: 'source-to-sea',
-        url: '/campaigns/source2sea'
+        url: '/campaigns/source2sea',
+        label: 'expedition'
     },
     {
         title: 'Plastic Hunters',
         description: 'A sailing expedition around the Baltic Sea and North Sea.',
         image: 'plastic-hunters-looking-at-bottle',
-        url: '/campaigns/plastic-hunters'
+        url: '/campaigns/plastic-hunters',
+        label: 'campaign'
     },
     {
         title: 'Message on a bottle',
         description: 'A record attempt to cross the North Sea on a board from plastic bottles to get deposit fee implemented.',
         image: 'message-on-a-bottle',
-        url: '/campaigns/message-on-a-bottle'
+        url: '/campaigns/message-on-a-bottle',
+        label: 'expedition'
     },
     {
         title: 'Plastic Soup Board',
         description: 'The first surfboard Merijn Tinga made was meant as an artwork. The record attempt on it made him the Plastic Soup Surfer.',
         image: 'plastic-soup-board',
-        url: '/campaigns/plastic-soup-board'
+        url: '/campaigns/plastic-soup-board',
+        label: 'documentary'
     }
 ] %}

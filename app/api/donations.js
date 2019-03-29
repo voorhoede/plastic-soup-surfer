@@ -31,21 +31,19 @@ module.exports = function (router, {constants}) {
     }
 
     router.post('/donations/add', body(), json(), error.middleware(), async (ctx) => {
-        let {extra} = ctx.request.body || {};
+        let {amount} = ctx.request.body || {};
 
-        if(!extra) {
-            extra = "0";
+        if(!amount || amount === "0") {
+            throw new error.UserError("Your payment can't be 0 euro's");
         }
 
         //simple check for decimal numbers. Does not accept negative numbers
-        if(!extra.match(/^[0-9]+([\.\,][0-9]+)?$/)) {
+        if(!amount.match(/^[0-9]+([\.\,][0-9]+)?$/)) {
             throw new error.UserError("Optional donation is a invalid value");
         }
 
-        let amount = constants.donationCost + parseFloat(extra.replace(',', '.'));
-
         //don't allow more then 2 decimals
-        amount = amount.toFixed(2);
+        amount = parseFloat(amount).toFixed(2);
 
         let storeId, payment;
 

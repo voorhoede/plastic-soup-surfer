@@ -5,33 +5,25 @@
             The Plastic Soup Surfer works with a small team of dedicated and skilled volunteers. We think of our agile and nimble ways as our strongpoint. We want to be able react quickly when new opportunities and innovations arise. We believe in creativity in campaigning and our strategies and tactics develop all the time. But it is a long persistent fight and a full time job.
         </p>
         <p>
-            We need your support to keep us going! Your donation will be used for the production of our upcoming documentary.
+            We need your support to stop plastic pollution at the source!
         </p>
     </div>
 
     <div class="donate__box">
-        <h3><strong>YES,</strong> I want to help make the new documentary possible!</h3>
+        <h3><strong>YES,</strong> I fully support your work! Stop plastic pollution at the source!</h3>
 
         <form data-donate-form action="/api/donations/add" method="POST">
             {% set exploot = exploot[0] %}
 
             <dl class="donate__items">
-                <dt>One share</dt>
-                <dd>€ 5,-</dd>
                 <dt>
-                            <label class="donate__label" for="extra">
-                                Extra optional donation
-                                <span class="extra-info">for the Plastic Soup Surfer expeditions</span>
-                            </label>
-                        </dt>
+                    <label class="donate__label" for="amount">
+                        Open share:
+                    </label>
+                </dt>
                 <dd>
-                    € <input class="donate__input" type="number" min="0" name="extra" id="extra" step="0.50" placeholder="0,00">
+                    € <input class="donate__input" type="number" min="0" name="amount" id="amount" step="0.50" placeholder="0,00" required>
                 </dd>
-            </dl>
-
-            <dl class="donate__total">
-                <dt>Total</dt>
-                <dd data-total>€ 5,-</dd>
             </dl>
 
             <div class="donate__fine-print">

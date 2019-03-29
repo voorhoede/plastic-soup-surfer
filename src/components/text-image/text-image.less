@@ -26,22 +26,22 @@
 
         & a {
             display: inline-block;
+            margin-bottom: @margin-default;
             color: @brand-pink;
             text-transform: uppercase;
-            margin-bottom: @margin-default;
 
             &::after {
-                content: ">";
                 margin-left: @margin-half;
+                content: ">";
             }
         }
     }
 
     &__image-container {
         position: relative;
+        order: 1;
         height: 270px;
         overflow: hidden;
-        order: 1;
         border-radius: 4px;
 
         @media @m {
@@ -53,8 +53,8 @@
     &__image {
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
         width: 100%;
+        transform: translateY(-50%);
         border-radius: 4px;
     }
 }

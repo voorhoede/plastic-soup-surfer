@@ -1,0 +1,42 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Vision{% endblock %}
+{% block viewClass %}vision-view{% endblock %}
+
+{%- block content -%}
+    {% from 'components/hero/hero.html' import hero %}
+    {{ hero(
+        title='Why we need a plastic transition',
+        image='/assets/images/header--home.jpg'
+    ) }}
+
+    {% from 'components/sequential-article/sequential-article.html' import sequentialArticle %}
+
+    <div class="centered-column">
+        {% call sequentialArticle('first') %}
+            <h3 class="sequential-article__title">Current approach is not working</h3>
+            <p>Ever since plastic was introduced in the fifties consumers have been told that they are responsible for the pollution and that cleaning up and recycling is the answer. This results in 8 billion kilos of plastic spilling into our seas and oceans annually.</p>
+        {% endcall %}
+
+        {% call sequentialArticle() %}
+            <h3 class="sequential-article__title">What needs to be done</h3>
+            <p>The problem of the plastic pollution starts way before it reaches our oceans, our seas, our rivers and waterways. The problem starts on land and structural solutions should also start on land. At the source. In the companies that produce these plastics that finally end up in our oceans.</p>
+        {% endcall %}
+
+        {% call sequentialArticle() %}
+            <h3 class="sequential-article__title">The sustainable way</h3>
+            <p>So how can we handle plastic in a sustainable way without the pollution? Companies and legislators play a huge role. But we as consumers have to play our part as well. The community of active citizens will definitely make the difference! And we know how!</p>
+        {% endcall %}
+
+        {% call sequentialArticle('last') %}
+            <h3 class="sequential-article__title">What the Plastic Soup Surfer does</h3>
+            <p>We do surf expeditions for awareness and then focus that attention on companies and legislators. We target companies with our campaigns, bailiffs and judicial instruments. We talk to politicians, start petitions and write resolutions. We unite the community of plastic- warriors and together developed a manifest with our vision on a sustainable approach to plastics - without the pollution.</p>
+            <p>
+                Support our work!<br />
+                Stop plastic pollution at the source!
+            </p>
+            <a href="/donate" class="button button--primary">Donate</a>
+        {% endcall %}
+    </div>
+
+{%- endblock -%}

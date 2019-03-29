@@ -1,22 +1,22 @@
 {%- extends "views/_base/layout.html" -%}
 
-{% block title %}Adventures{% endblock %}
+{% block title %}Campaigns{% endblock %}
 
 {%- block content -%}
 
     {% from 'components/hero/hero.html' import hero %}
     {{ hero(
         title='Plastic Avengers Manifest',
-        subtitle='My current adventure:',
+        subtitle='My current campaign:',
         description="These 5 directives are essential to anyone - individual, NGO, company or legislator - that wants to practically and effectively fight plastic pollution. To really stop the flow of plastic entering our ocean we need to change our attitude towards plastic!",
         image='/assets/images/plastic-soup.jpg',
         button={url: 'https://plasticavengersmanifest.org/', text: 'Support the manifest!'}
     ) }}
 
     <section class="centered-column">
-        <h2 class="h3 h3-alt">My other adventures:</h2>
-        {% from 'components/adventures-list/adventures-list.html' import adventuresList %}
-        {{ adventuresList() }}
+        <h2 class="h3 h3-alt">My other campaigns:</h2>
+        {% from 'components/campaign-list/campaign-list.html' import campaignList %}
+        {{ campaignList() }}
     </section>
 
 {%- endblock -%}

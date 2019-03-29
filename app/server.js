@@ -35,7 +35,7 @@ app.use(
 );
 
 mainRouter.redirect('/exploot', '/donate');
-mainRouter.redirect('/expedition', '/adventures/source2sea');
+mainRouter.redirect('/expedition', '/campaigns/source2sea');
 
 //register all the api routers
 const apiRouter = new Router();

@@ -1,0 +1,26 @@
+.image-duo {
+    width: 100%;
+
+    @media @m {
+        display: flex;
+    }
+
+    &__image-container {
+        margin-bottom: 30px;
+
+        @media @m {
+            width: calc(50% - 15px);
+            margin-bottom: 0;
+        }
+    }
+
+    &__image-container:first-child {
+        @media @m {
+            margin-right: 30px;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+}

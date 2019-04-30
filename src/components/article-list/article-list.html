@@ -1,0 +1,39 @@
+{% macro articleList(amount) %}
+    <ul class="about-team__list flat-list">
+        {% for article in articleData.slice(0, amount) %}
+            {{ articleItem(article) }}
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% macro articleItem(article) %}
+    <li class="about-team__item">
+        <!-- <img class="about-team__item-avatar" src="assets/images/about-team-merijn.jpg" alt=""> -->
+        <h3>{{ article.title }}</h3>
+        <p class="about-team__item-description">{{ article.description }}</p>
+        <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.displayUrl }}</a>
+    </li>
+{% endmacro %}
+
+{% set articleData = [
+    {
+        title: 'World Cleanup Day',
+        description: 'A day in september on which citizens are activated to pick up litter and monitor what they find.',
+        url: 'https://www.worldcleanupday.org/',
+        displayUrl: 'www.worldcleanupday.org'
+    },
+    {
+        title: 'The Le Havre Landfill',
+        description: 'A landfill in the north of France eroding into the ocean each coming tide.',
+        url: 'https://www.surfriderdefenders.org/actions/stop-la-decharge-cotiere-du-havre/',
+        displayUrl: 'www.surfriderdefenders.org'
+    },
+    {
+        title: 'The Bredene depostis petition',
+        description: 'A municipality in on the Belgium coast that has recently decided to implent deposits all by themselves as
+        a protest.',
+        url: 'https://www.vrt.be/vrtnws/en/2019/04/02/bredene_s-mayor-wants-to-tackle-litter/',
+        displayUrl: 'www.vrt.be'
+    }
+]
+%}

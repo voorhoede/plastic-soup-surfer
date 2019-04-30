@@ -1,0 +1,60 @@
+{%- extends "views/_base/layout.html" -%}
+
+{% block title %}Plastic Paradox{% endblock %}
+{% block viewClass %}campaigns-view{% endblock %}
+
+{%- block content -%}
+
+{% from 'components/hero/hero.html' import hero %}
+{{ hero(
+        title='Plastic Paradox',
+        description="A personal movie about ideals, determination and the search of one man who wants make a difference.",
+        image='/assets/images/header--kenya.jpg'
+    ) }}
+
+<section class="centered-column">
+    <p>Plastic Paradox is a story about the extraordinary campaign against plastic pollution by the so called ‘Plastic Soup
+    Surfer’. It shows the activist Merijn Tinga, who motivated by his previous success, decides to 3D print a new surfboard
+    from plastic litter and windsurf this for 600 kilometers. The expedition is full of setbacks and it confronts him with
+    his ambitions and his ultimate goal. It is a personal movie about passion, grit and the search of one man who wants make
+    a difference.</p>
+</section>
+
+<section class="centered-column">
+    <h2>Trailer</h2>
+    {% from "components/video-player/video-player.html" import videoPlayer %}
+    {{ videoPlayer('https://player.vimeo.com/video/320967220?title=0&byline=0&portrait=0', 'Director: Eelke Dekker (2019)') }}
+</section>
+
+<section class="centered-column">
+    <p>Campaigns covered in Plastic Paradox:</p>
+    {% from 'components/article-list/article-list.html' import articleList %}
+    {{ articleList() }}
+</section>
+
+<section class="centered-column">
+    {% from 'components/partners-list/partners-list.html' import partnersList %}
+    {{ partnersList(['plasticsoup', 'surfriderFoundation', '10xl', 'starboard', 'mystic', 'technolyt', 'fujitsu']) }}
+</section>
+
+<section class="centered-column">
+    <div class="image-block" style="margin-bottom: 30px;">
+        <img class="image-block__image" src="/assets/images/campaign-content--paradox-surfing.jpg" alt=""
+            style="width: 100%;">
+    </div>
+
+    {% from "components/image-duo/image-duo.html" import imageDuo %}
+    {{ imageDuo() }}
+</section>
+
+<section class="centered-column">
+    {% from "components/call-to-donate/call-to-donate.html" import callToDonate %}
+    {{ callToDonate(
+        title="Contact us!",
+        description="Do you want to organize a screening yourself?",
+        buttonLabel="Send an email",
+        buttonLink="/donate"
+    ) }}
+</section>
+
+{%- endblock -%}

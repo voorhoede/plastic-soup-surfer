@@ -14,7 +14,13 @@
 
     {% include "components/events-list/events-list.html" %}
 
-    {% include "components/call-to-donate/call-to-donate.html" %}
+    {% from 'components/call-to-donate/call-to-donate.html' import callToDonate %}
+    {{ callToDonate(
+        title="Let's do something!",
+        description="We are starting to drown in our plastic pollution. It is endangering all life on earth. We need to act now.",
+        buttonLabel="Take action!",
+        buttonLink="https://plasticsoupsurfer.org/donate"
+    ) }}
 
     {% include "components/social-media-carousel/social-media-carousel.html" %}
 

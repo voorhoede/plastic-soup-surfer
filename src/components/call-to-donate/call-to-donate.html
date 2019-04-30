@@ -1,12 +1,12 @@
-<section class="call-to-donate centered-column">
-    <div class="call-to-donate__illustration mobile-hidden">
-        <img src="assets/icons/mascot-next.svg" alt="thumbs up from the plastic soup surfer">
-    </div>
-    <div class="call-to-donate__content">
-        <h2>Let’s do something!</h2>
-        <p>
-            We are starting to drown in our plastic pollution. It is endangering all life on earth. We need to act now.
-        </p>
-        <a href="/donate" class="button button--primary button--full-width">Take action!</a>
-    </div>
-</section>
+{% macro callToDonate(title, description, buttonLabel, buttonLink) %}
+    <section class="call-to-donate centered-column">
+        <div class="call-to-donate__illustration mobile-hidden">
+            <img class="call-to-donate__image" src="/assets/icons/mascot-next.svg" alt="thumbs up from the plastic soup surfer">
+        </div>
+        <div class="call-to-donate__content">
+            <h2>{{ title }}</h2>
+            <p>{{ description }}</p>
+            <a href="{{ buttonLink }}" class="button button--primary button--full-width">{{ buttonLabel }}</a>
+        </div>
+    </section>
+{% endmacro %}

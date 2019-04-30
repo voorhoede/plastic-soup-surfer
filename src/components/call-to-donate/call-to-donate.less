@@ -1,7 +1,14 @@
 .call-to-donate {
     display: flex;
     flex-direction: column;
-    
+    padding-top: 36px;
+    padding-bottom: 36px;
+    background-color: #f7f7f8;
+
+    @media @m {
+        margin-top: 8rem;
+    }
+
     &__content p {
         max-width: 25em;
     }
@@ -10,10 +17,16 @@
         flex-direction: row;
         margin-bottom: -7rem;
 
+        &__image {
+            height: 400px;
+        }
+
         &__illustration {
             width: 100%;
             max-width: 25em;
-            margin-right: @margin-quadruple;
+            // margin-top: -100px;
+            margin-bottom: -73px;
+            margin-right: @margin-double;
         }
 
         &__content a {

@@ -13,6 +13,8 @@
 }
 
 html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
     overflow-y: scroll;
     font-size: @text-size-default;
@@ -43,6 +45,7 @@ h6 {
     font-weight: normal;
     font-weight: bold;
     letter-spacing: 0.03em;
+    text-transform: uppercase;
 }
 
 h1 {
@@ -69,6 +72,7 @@ h2 {
 .h3,
 h3 {
     font-size: @text-size-bigger;
+    text-transform: uppercase;
 }
 
 .h3-alt {
@@ -228,4 +232,10 @@ input {
 
 .text-shadow {
     text-shadow: 2px 2px 0 @brand-pink;
+}
+
+.text {
+    max-width: 43rem;
+    margin-right: auto;
+    margin-left: auto;
 }

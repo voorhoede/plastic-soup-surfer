@@ -13,7 +13,7 @@
     ) }}
 
 <section class="centered-column">
-    <p>Plastic Paradox is a story about the extraordinary campaign against plastic pollution by the so called ‘Plastic Soup
+    <p class="text">Plastic Paradox is a story about the extraordinary campaign against plastic pollution by the so called ‘Plastic Soup
     Surfer’. It shows the activist Merijn Tinga, who motivated by his previous success, decides to 3D print a new surfboard
     from plastic litter and windsurf this for 600 kilometers. The expedition is full of setbacks and it confronts him with
     his ambitions and his ultimate goal. It is a personal movie about passion, grit and the search of one man who wants make
@@ -40,11 +40,16 @@
 <section class="centered-column">
     <div class="image-block" style="margin-bottom: 30px;">
         <img class="image-block__image" src="/assets/images/campaign-content--paradox-surfing.jpg" alt=""
-            style="width: 100%;">
+            style="width: 100%; border-radius: 4px;">
     </div>
 
     {% from "components/image-duo/image-duo.html" import imageDuo %}
-    {{ imageDuo() }}
+    {{ imageDuo(
+        imageSrc1="/assets/images/campaign-content--paradox-sea.jpg",
+        imageAlt1="Merijn Tinga at sea",
+        imageSrc2="/assets/images/campaign-content--paradox-caravan.jpg",
+        imageAlt2="Preparations with Merijn Tinga next to a caravan"
+    ) }}
 </section>
 
 <section class="centered-column">
@@ -53,7 +58,7 @@
         title="Contact us!",
         description="Do you want to organize a screening yourself?",
         buttonLabel="Send an email",
-        buttonLink="/donate"
+        buttonLink="mailto:kim@plasticsoupsurfer.org?subject=screening The Plastic Paradox"
     ) }}
 </section>
 

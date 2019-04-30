@@ -1,6 +1,6 @@
 {% macro textImage(imageSrc, even) %}
     <article class="text-image {% if even %} text-image--even {% endif %}">
-        <div class="text-image__image-container">
+        <div class="text-image__content-container">
             {{ caller() }}
         </div>
         <div class="text-image__image-container">

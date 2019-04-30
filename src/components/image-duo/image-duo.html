@@ -1,10 +1,10 @@
-{% macro imageDuo() %}
+{% macro imageDuo(imageSrc1, imageAlt1, imageSrc2, imageAlt2) %}
 <div class="image-duo">
     <div class="image-duo__image-container">
-        <img src="/assets/images/take-action--public-campaigns.jpg" alt="" class="image-duo__image" />
+        <img src="{{ imageSrc1 }}" alt="{{ imageAlt1 }}" class="image-duo__image" />
     </div>
     <div class="image-duo__image-container">
-        <img src="/assets/images/take-action--public-campaigns.jpg" alt="" class="image-duo__image" />
+        <img src="{{ imageSrc2 }}" alt="{{ imageAlt2 }}" class="image-duo__image" />
     </div>
 </div>
 {% endmacro %}

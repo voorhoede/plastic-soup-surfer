@@ -1,11 +1,19 @@
-{% macro videoPlayer(src, caption) %}
+{% macro videoPlayer(src, caption1, caption2) %}
 <section class="video-player">
     <div class="video-player__wrapper">
         <iframe class="video-player__frame" src="{{ src }}" height="500" allowfullscreen></iframe>
     </div>
 
-    {% if caption %}
-        <div class="video-player__caption">{{ caption }}</div>
+    {% if caption1 or caption2 %}
+        <div class="video-player__captions">
+            {% if caption1 %}
+                <span class="video-player__caption">{{ caption1 }}</span>
+            {% endif %}
+
+            {% if caption2 %}
+                <span class="video-player__caption">{{ caption2 }}</span>
+            {% endif %}
+        </div>
     {% endif %}
 </section>
 {% endmacro %}

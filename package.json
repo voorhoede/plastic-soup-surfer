@@ -28,14 +28,14 @@
         "format": "gulp style:format"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.19.0",
         "bluebird": "^3.5.0",
         "contentful": "^7.0.0",
         "contentful-management": "^5.0.0",
-        "dotenv": "^6.0.0",
+        "dotenv": "^8.0.0",
         "flickity": "^2.0.5",
         "koa": "^2.2.0",
-        "koa-basic-auth": "^3.0.0",
+        "koa-basic-auth": "^4.0.0",
         "koa-body": "^4.0.0",
         "koa-compress": "^3.0.0",
         "koa-conditional-get": "^2.0.0",
@@ -54,12 +54,12 @@
         "promise-polyfill": "^8.0.0",
         "shortid": "^2.2.8",
         "through2": "^3.0.0",
-        "write-file-atomic": "^2.3.0"
+        "write-file-atomic": "^3.0.0"
     },
     "devDependencies": {
         "browser-sync": "^2.26.3",
         "css-declaration-sorter": "^4.0.0",
-        "del": "^3.0.0",
+        "del": "^4.0.0",
         "gulp": "^4.0.0",
         "gulp-autoprefixer": "^6.0.0",
         "gulp-clean-css": "^4.0.0",
@@ -70,16 +70,16 @@
         "gulp-responsive": "^2.10.0",
         "gulp-rev": "^9.0.0",
         "gulp-sourcemaps": "^2.4.1",
-        "husky": "^1.0.0-rc.4",
+        "husky": "^2.0.0",
         "nodemon": "^1.11.0",
         "npm-run-all": "^4.1.2",
         "plek": "^3.2.0",
         "postcss-less": "^3.0.0",
         "rollup": "^1.0.0",
         "rollup-plugin-buble": "^0.19.2",
-        "rollup-plugin-commonjs": "^9.1.0",
+        "rollup-plugin-commonjs": "^10.0.0",
         "rollup-plugin-multi-entry": "^2.0.1",
-        "rollup-plugin-node-resolve": "^4.0.0",
+        "rollup-plugin-node-resolve": "^5.0.0",
         "rollup-plugin-uglify": "^6.0.0"
     },
     "husky": {

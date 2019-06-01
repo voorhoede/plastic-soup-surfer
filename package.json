@@ -28,7 +28,7 @@
         "format": "gulp style:format"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.19.0",
         "bluebird": "^3.5.0",
         "contentful": "^7.0.0",
         "contentful-management": "^5.0.0",

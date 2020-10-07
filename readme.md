@@ -1,4 +1,7 @@
-# Plastic Soup Surfer
+# Plastic Soup 
+
+NOTE: THIS PROJECT IS REBUILD IN LEAN WEBKIT AND CAN BE FOUND AT: https://github.com/voorhoede/plastic-soup
+
 Live at https://plasticsoupsurfer.org/.
 
 ## Getting started
